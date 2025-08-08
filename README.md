@@ -57,7 +57,7 @@ The following figure shows the callbacks to be invoked during the transitions be
 ## Directory Structure
 
 ```
-foundation/ability/ability_cangjie_api
+foundation/ability/ability_cangjie_wrapper
 ├── ohos             # Cangjie Ability code
 ├── kit              # Cangjie kit code
 ├── figures          # architecture pictures
@@ -92,7 +92,7 @@ aa start -d 12345 -a com.ohos.app.MainAbility -b com.ohos.app
 
 **Ability framework**
 
-ability_cangjie_api
+ability_cangjie_wrapper
 
 [ability_base](https://gitee.com/openharmony/ability_ability_base)
 

@@ -20,10 +20,10 @@ ohos_cj_library("ohos.test_runner") {
   ]
 
   cj_external_deps = [
-    "arkui_cangjie_api:ohos.base",
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
-    "hiviewdfx_cangjie_api:ohos.hilog",
+    "arkui_cangjie_wrapper:ohos.base",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
   ]
 
   external_deps = [ "ability_runtime:appkit_delegator" ]
@@ -31,5 +31,5 @@ ohos_cj_library("ohos.test_runner") {
 
   lib_name = "test_runner"
   subsystem_name = "ability"
-  part_name = "ability_cangjie_api"
+  part_name = "ability_cangjie_wrapper"
 }

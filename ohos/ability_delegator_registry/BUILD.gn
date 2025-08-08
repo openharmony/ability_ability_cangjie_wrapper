@@ -22,11 +22,11 @@ ohos_cj_library("ohos.ability_delegator_registry") {
   ]
 
   cj_external_deps = [
-    "arkui_cangjie_api:ohos.base",
-    "cangjie_api:ohos.ffi",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "communication_cangjie_api:ohos.rpc",
-    "cangjie_api:ohos.labels",
+    "arkui_cangjie_wrapper:ohos.base",
+    "cangjie_ark_interop:ohos.ffi",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "communication_cangjie_wrapper:ohos.rpc",
+    "cangjie_ark_interop:ohos.labels",
   ]
 
   cj_deps = [
@@ -38,5 +38,5 @@ ohos_cj_library("ohos.ability_delegator_registry") {
 
   lib_name = "ability_delegator_registry"
   subsystem_name = "ability"
-  part_name = "ability_cangjie_api"
+  part_name = "ability_cangjie_wrapper"
 }
