@@ -23,12 +23,12 @@ ohos_cj_library("kit.AbilityKit") {
   ]
 
   cj_external_deps = [
-    "bundlemanager_cangjie_api:ohos.bundle_manager",
-    "security_cangjie_api:ohos.ability_access_ctrl",
+    "bundlemanager_cangjie_wrapper:ohos.bundle_manager",
+    "security_cangjie_wrapper:ohos.ability_access_ctrl",
   ]
 
   kit = true
   subsystem_name = "ability"
-  part_name = "ability_cangjie_api"
+  part_name = "ability_cangjie_wrapper"
   lib_name = "AbilityKit"
 }

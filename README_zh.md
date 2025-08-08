@@ -55,7 +55,7 @@
 ## 目录
 
 ```
-foundation/ability/ability_cangjie_api
+foundation/ability/ability_cangjie_wrapper
 ├── ohos                       # 仓颉元能力接口层实现
 ├── kit                        # 仓颉kit化代码
 ├── figures                    # 存放readme中的架构图
@@ -90,7 +90,7 @@ aa start -d 12345 -a com.ohos.app.MainAbility -b com.ohos.app
 
 **元能力子系统**
 
-ability_cangjie_api
+ability_cangjie_wrapper
 
 [ability_base](https://gitee.com/openharmony/ability_ability_base)
 

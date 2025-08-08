@@ -42,18 +42,18 @@ ohos_cj_library("ohos.ability") {
   ]
 
   cj_external_deps = [
-    "arkui_cangjie_api:ohos.base",
-    "bundlemanager_cangjie_api:ohos.bundle_manager",
-    "cangjie_api:ohos.ark_interop",
-    "cangjie_api:ohos.ark_interop_helper",
-    "cangjie_api:ohos.encoding.json",
-    "cangjie_api:ohos.ffi",
-    "cangjie_api:ohos.labels",
-    "communication_cangjie_api:ohos.rpc",
-    "global_cangjie_api:ohos.resource_manager",
-    "hiviewdfx_cangjie_api:ohos.hilog",
-    "multimedia_cangjie_api:ohos.image",
-    "window_cangjie_api:ohos.window",
+    "arkui_cangjie_wrapper:ohos.base",
+    "bundlemanager_cangjie_wrapper:ohos.bundle_manager",
+    "cangjie_ark_interop:ohos.ark_interop",
+    "cangjie_ark_interop:ohos.ark_interop_helper",
+    "cangjie_ark_interop:ohos.encoding.json",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+    "communication_cangjie_wrapper:ohos.rpc",
+    "global_cangjie_wrapper:ohos.resource_manager",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "multimedia_cangjie_wrapper:ohos.image",
+    "window_cangjie_wrapper:ohos.window",
   ]
 
   cj_deps = [
@@ -83,5 +83,5 @@ ohos_cj_library("ohos.ability") {
 
   lib_name = "ability"
   subsystem_name = "ability"
-  part_name = "ability_cangjie_api"
+  part_name = "ability_cangjie_wrapper"
 }
