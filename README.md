@@ -1,0 +1,3 @@
+# ability_ability_cangjie_wrapper
+
+元能力仓颉封装
