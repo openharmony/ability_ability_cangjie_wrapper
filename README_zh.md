@@ -61,31 +61,6 @@ foundation/ability/ability_cangjie_wrapper
 ├── figures                    # 存放readme中的架构图
 ```
 
-## **aa命令**
-
-**aa help**
-
-| 命令    | 描述               |
-| ------- | ------------------ |
-| aa help | 显示aa命令帮助信息 |
-
-**aa start**
-
-| 命令                                                      | 描述                     |
-| --------------------------------------------------------- | ------------------------ |
-| aa start [-d <device>] -a <ability-name> -b <bundle-name> | 启动ability，设备ID 可空 |
-
-示例：
-```
-aa start -d 12345 -a com.ohos.app.MainAbility -b com.ohos.app
-```
-
-**aa dump**
-
-| 命令       | 描述                  |
-| ---------- | --------------------- |
-| aa dump -a | 打印栈中的Ability信息 |
-
 ## 相关仓
 
 **元能力子系统**
