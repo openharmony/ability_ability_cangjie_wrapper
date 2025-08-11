@@ -63,31 +63,6 @@ foundation/ability/ability_cangjie_wrapper
 ├── figures          # architecture pictures
 ```
 
-## **aa Commands**
-
-**aa help**
-
-| Command   | Description              |
-| ------- | ------------------ |
-| aa help | Displays the command help information.|
-
-**aa start**
-
-| Command                                                     | Description                    |
-| --------------------------------------------------------- | ------------------------ |
-| aa start [-d <device>] -a <ability-name> -b <bundle-name> | Starts an ability. The device ID can be empty.|
-
-Example:
-```
-aa start -d 12345 -a com.ohos.app.MainAbility -b com.ohos.app
-```
-
-**aa dump**
-
-| Command      | Description                 |
-| ---------- | --------------------- |
-| aa dump -a | Displays the ability information in the stack.|
-
 ## Repositories Involved
 
 **Ability framework**
