@@ -1,8 +1,8 @@
-# 元能力子系统
+# 元能力仓颉接口
 
 ## 简介
 
-**元能力子系统**实现对Ability的运行及生命周期进行统一的调度和管理，应用进程能够支撑多个Ability，Ability具有跨应用进程间和同一进程内调用的能力。Ability管理服务统一调度和管理应用中各Ability，并对Ability的生命周期变更进行管理。
+**元能力仓颉接口**元能力仓颉接口是在 OpenHarmony 上基于元能力子系统能力之上封装的仓颉API。而元能力子系统实现对Ability的运行及生命周期进行统一的调度和管理，应用进程能够支撑多个Ability，Ability具有跨应用进程间和同一进程内调用的能力。Ability管理服务统一调度和管理应用中各Ability，并对Ability的生命周期变更进行管理。
 
 ![](figures/aafwk.png)
 
@@ -44,13 +44,9 @@
 
 ![PageAbility-Lifecycle-Callbacks](figures/page-ability-lifecycle-callbacks.png)
 
-
-
 **ServiceAbility类型Ability生命周期回调如下图所示:**
 
 ![Service-Ability-Lifecycle-Callbacks](figures/service-ability-lifecycle-callbacks.jpg)
-
-
 
 ## 目录
 
@@ -65,10 +61,8 @@ foundation/ability/ability_cangjie_wrapper
 
 **元能力子系统**
 
-ability_cangjie_wrapper
+[ability_base](https://gitee.com/openharmony/ability_ability_base/blob/master/README.md)
 
-[ability_base](https://gitee.com/openharmony/ability_ability_base)
+[ability_runtime](https://gitee.com/openharmony/ability_ability_runtime/blob/master/README.md)
 
-[ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
-
-[form_fwk](https://gitee.com/openharmony/ability_form_fwk)
+[form_fwk](https://gitee.com/openharmony/ability_form_fwk/blob/master/README.md)
