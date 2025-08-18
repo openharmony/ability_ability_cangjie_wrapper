@@ -1,10 +1,10 @@
-# Ability Framework
+# ability_ability_cangjie_wrapper
 
 ## Overview
 
-The **ability framework** (also called the ability management framework) is used to centrally schedule and manage the running and lifecycle of abilities. An application process can support multiple abilities, and an ability can be called either within a process or across processes. The Ability Manager Service provided in the framework schedules and manages abilities in an application and manages the lifecycle changes of these abilities.
+The ability_ability_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based on the capabilities of the Ability subsystem. The **ability framework** (also called the ability management framework) is used to centrally schedule and manage the running and lifecycle of abilities. An application process can support multiple abilities, and an ability can be called either within a process or across processes. The Ability Manager Service provided in the framework schedules and manages abilities in an application and manages the lifecycle changes of these abilities.
 
-![](figures/en_aafwk.png)
+![](figures/ability_cangjie_wrapper_architecture_en.png)
 
 **Architecture Description**
 
@@ -64,10 +64,6 @@ foundation/ability/ability_cangjie_wrapper
 ```
 
 ## Repositories Involved
-
-**Ability framework**
-
-ability_cangjie_wrapper
 
 [ability_base](https://gitee.com/openharmony/ability_ability_base)
 
