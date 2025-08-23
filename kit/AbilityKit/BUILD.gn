@@ -24,7 +24,8 @@ ohos_cj_library("kit.AbilityKit") {
 
   cj_external_deps = [
     "bundlemanager_cangjie_wrapper:ohos.bundle_manager",
-    "security_cangjie_wrapper:ohos.ability_access_ctrl",
+    "accesscontrol_cangjie_wrapper:ohos.ability_access_ctrl",
+    "accesscontrol_cangjie_wrapper:ohos.security.permission_request_result",
   ]
 
   kit = true
