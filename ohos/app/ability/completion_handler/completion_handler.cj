@@ -13,4 +13,6 @@
  * limitations under the License.
  */
 
-package ohos.ability
+package ohos.app.ability.completion_handler
+
+protected class CompletionHandler {}

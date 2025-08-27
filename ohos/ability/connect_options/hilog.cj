@@ -13,4 +13,8 @@
  * limitations under the License.
  */
 
-package ohos.ability
+protected package ohos.ability.connect_options
+
+import ohos.hilog.*
+
+let ABILITY_LOG = HilogChannel(0, 0xD002223, "CJ_ABILITY")

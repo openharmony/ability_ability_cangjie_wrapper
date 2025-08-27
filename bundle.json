@@ -34,7 +34,11 @@
             "cangjie_ark_interop",
             "arkui_cangjie_wrapper",
             "hiviewdfx_cangjie_wrapper",
-            "bundlemanager_cangjie_wrapper"
+            "bundlemanager_cangjie_wrapper",
+            "communication_cangjie_wrapper",
+            "global_cangjie_wrapper",
+            "multimedia_cangjie_wrapper",
+            "window_cangjie_wrapper"
          ]
       },
       "build": {
@@ -44,13 +48,22 @@
         ],
         "inner_api": [
           {
-            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/ability:ohos.ability"
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability:ohos.app.ability"
           },
           {
-            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/ability_delegator_registry:ohos.ability_delegator_registry"
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ui_ability:ohos.app.ability.ui_ability"
           },
           {
-            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/test_runner:ohos.test_runner"
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/want:ohos.app.ability.want"
+          },
+          {
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ability_delegator_registry:ohos.app.ability.ability_delegator_registry"
+          },
+          {
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/context_constant:ohos.app.ability.context_constant"
+          },
+          {
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/application/test_runner:ohos.application.test_runner"
           }
         ],
         "test": []

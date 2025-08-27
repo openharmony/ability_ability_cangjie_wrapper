@@ -13,8 +13,24 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.ability") {
-  sources = [ "ability.cj" ]
+ohos_cangjie_shared_library("ohos.ability.connect_options") {
+  sources = [
+    "connect_options.cj",
+    "hilog.cj",
+  ]
+
+  cj_external_deps = [
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+    "bundlemanager_cangjie_wrapper:ohos.element_name",
+    "communication_cangjie_wrapper:ohos.rpc",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+  ]
+
+  external_deps = [
+    "ability_runtime:abilitykit_native",
+    "ability_runtime:cj_ability_ffi",
+  ]
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"
