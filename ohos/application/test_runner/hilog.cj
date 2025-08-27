@@ -13,4 +13,8 @@
  * limitations under the License.
  */
 
-package ohos.ability
+package ohos.application.test_runner
+
+import ohos.hilog.*
+
+let TEST_RUNNER_LOG = HilogChannel(0, 0xD002223, "CJ_TEST_RUNNER")

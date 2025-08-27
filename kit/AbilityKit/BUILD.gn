@@ -14,22 +14,31 @@
 import("//build/ohos.gni")
 import("//build/cangjie/cjc.gni")
 
-ohos_cj_library("kit.AbilityKit") {
+ohos_cangjie_shared_library("kit.AbilityKit") {
   sources = [ "index.cj" ]
 
   cj_deps = [
-    "../../ohos/ability:ohos.ability",
-    "../../ohos/eventhub:ohos.eventhub",
+    "../../ohos/app/ability/ability_constant:ohos.app.ability.ability_constant",
+    "../../ohos/app/ability/ability_stage:ohos.app.ability.ability_stage",
+    "../../ohos/app/ability/app_recovery:ohos.app.ability.app_recovery",
+    "../../ohos/app/ability/common:ohos.app.ability.common",
+    "../../ohos/app/ability/completion_handler:ohos.app.ability.completion_handler",
+    "../../ohos/app/ability/configuration:ohos.app.ability.configuration",
+    "../../ohos/app/ability/context_constant:ohos.app.ability.context_constant",
+    "../../ohos/app/ability/dialog_request:ohos.app.ability.dialog_request",
+    "../../ohos/app/ability/error_manager:ohos.app.ability.error_manager",
+    "../../ohos/app/ability/open_link_options:ohos.app.ability.open_link_options",
+    "../../ohos/app/ability/start_options:ohos.app.ability.start_options",
+    "../../ohos/app/ability/ui_ability:ohos.app.ability.ui_ability",
+    "../../ohos/app/ability/want:ohos.app.ability.want",
+    "../../ohos/app/ability/want_constant:ohos.app.ability.want_constant",
   ]
 
   cj_external_deps = [
-    "bundlemanager_cangjie_wrapper:ohos.bundle_manager",
+    "bundlemanager_cangjie_wrapper:ohos.bundle.bundle_manager",
     "accesscontrol_cangjie_wrapper:ohos.ability_access_ctrl",
-    "accesscontrol_cangjie_wrapper:ohos.security.permission_request_result",
   ]
 
-  kit = true
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"
-  lib_name = "AbilityKit"
 }

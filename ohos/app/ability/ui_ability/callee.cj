@@ -13,4 +13,18 @@
  * limitations under the License.
  */
 
-package ohos.ability
+package ohos.app.ability.ui_ability
+
+import ohos.rpc.*
+
+const EVENT_CALL_NOTIFY: UInt32 = 1
+const REQUEST_SUCCESS: Int32 = 0
+const PERMISSION_ABILITY_BACKGROUND_COMMUNICATION = 'ohos.permission.ABILITY_BACKGROUND_COMMUNICATION'
+
+foreign func FfiOHOSAbilityAccessCtrlCheckAccessTokenSync(tokenID: UInt32, cPermissionName: CString): Int32
+
+class Callee <: RemoteObject {
+    init() {
+        super("rpc.application.callee")
+    }
+}

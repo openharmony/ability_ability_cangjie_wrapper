@@ -13,4 +13,13 @@
  * limitations under the License.
  */
 
-package ohos.ability
+package ohos.app.ability.common
+
+public import ohos.ability.ability_result.*
+public import ohos.ability.connect_options.*
+
+//base_context
+public import ohos.app.ability.BaseContext
+
+// event_hub
+public import ohos.application.event_hub.*
