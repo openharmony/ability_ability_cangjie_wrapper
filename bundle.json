@@ -30,7 +30,6 @@
         "components": [
             "ability_runtime",
             "access_token",
-
             "cangjie_ark_interop",
             "arkui_cangjie_wrapper",
             "hiviewdfx_cangjie_wrapper",

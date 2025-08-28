@@ -600,7 +600,7 @@ public open class UIAbility <: Ability {
         return true
     }
 
-    func onWindowStageWillDestroy(windowStage: WindowStage): Unit {}
+    func onWindowStageWillDestroy(_: WindowStage): Unit {}
 
     /**
     * Called when a UIAbility instance that has undergone the following states is started again:
@@ -621,7 +621,7 @@ public open class UIAbility <: Ability {
     ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {}
 
-    func onContinue(wantParams: String): OnContinueResult {
+    func onContinue(_: String): OnContinueResult {
         OnContinueResult.Agree
     }
 
@@ -629,13 +629,13 @@ public open class UIAbility <: Ability {
         return false
     }
 
-    func onSaveState(reason: StateType, wantParam: String): OnSaveResult {
+    func onSaveState(_: StateType, _: String): OnSaveResult {
         return OnSaveResult.RecoveryAgree
     }
 
-    func onShare(wantParam: String): Unit {}
+    func onShare(_: String): Unit {}
 
-    func onDump(params: Array<String>): Array<String> {
+    func onDump(_: Array<String>): Array<String> {
         return Array<String>()
     }
 

@@ -24,7 +24,7 @@ ohos_cangjie_shared_library("ohos.app.ability.ui_ability") {
     "context.cj",
     "context_interop.cj",
     "hilog.cj",
-    "system_object_interop.cj",
+    "system_object_interop_type_to_js.cj",
     "ui_ability.cj",
     "ui_ability_context.cj",
   ]
