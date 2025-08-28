@@ -1,0 +1,276 @@
+/*
+ * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package ohos.app.ability.ability_delegator_registry
+
+import ohos.ffi.*
+import ohos.app.ability.ui_ability.*
+import ohos.labels.*
+
+func executeFunc(optFunc: ?(UIAbility) -> Unit, ability: UIAbility): Unit {
+    match (optFunc) {
+        case Some(actFunc) => actFunc(ability)
+        case _ => return
+    }
+}
+
+@C
+func monitorOnAbilityCreate(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityCreate, ability)
+    }
+}
+
+@C
+func monitorOnAbilityForeground(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityForeground, ability)
+    }
+}
+
+@C
+func monitorOnAbilityBackground(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityBackground, ability)
+    }
+}
+
+@C
+func monitorOnAbilityDestroy(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityDestroy, ability)
+    }
+}
+
+@C
+func monitorOnWindowStageCreate(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageCreate, ability)
+    }
+}
+
+@C
+func monitorOnWindowStageRestore(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageRestore, ability)
+    }
+}
+
+@C
+func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
+    let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
+        FFIDataManager.getInstance().getData<UIAbility>(abilityId))
+    match (optPara) {
+        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageDestroy, ability)
+    }
+}
+
+/**
+ * Provide methods for matching monitored Ability objects that meet specified conditions.
+ * The most recently matched Ability objects will be saved in the AbilityMonitor object.
+ *
+ * @relation export interface AbilityMonitor
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public class AbilityMonitor <: FFIData {
+    /**
+        * The name of the ability to monitor.
+        *
+        * @relation abilityName: string
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var abilityName: String
+    /**
+        * The name of the module to monitor.
+        *
+        * @relation moduleName?: string
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var moduleName: String
+    /**
+        * Called back when the ability is created for initialization.
+        *
+        * @relation onAbilityCreate?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onAbilityCreate: ?(UIAbility) -> Unit
+    /**
+        * Called back when the state of the ability changes to foreground.
+        *
+        * @relation onAbilityForeground?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onAbilityForeground: ?(UIAbility) -> Unit
+    /**
+        * Called back when the state of the ability changes to background.
+        *
+        * @relation onAbilityBackground?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onAbilityBackground: ?(UIAbility) -> Unit
+    /**
+        * Called back before the ability is destroyed.
+        *
+        * @relation onAbilityDestroy?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onAbilityDestroy: ?(UIAbility) -> Unit
+    /**
+        * Called back when an ability window stage is created.
+        *
+        * @relation onWindowStageCreate?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onWindowStageCreate: ?(UIAbility) -> Unit
+    /**
+        * Called back when an ability window stage is restored.
+        *
+        * @relation onWindowStageRestore?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onWindowStageRestore: ?(UIAbility) -> Unit
+    /**
+        * Called back when an ability window stage is destroyed.
+        *
+        * @relation onWindowStageDestroy?: (ability: UIAbility) => void
+        */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public var onWindowStageDestroy: ?(UIAbility) -> Unit
+
+    /**
+     * AbilityMonitor constructor.
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public init(
+        abilityName: String,
+        moduleName!: String = "",
+        onAbilityCreate!: ?(UIAbility) -> Unit = None,
+        onAbilityForeground!: ?(UIAbility) -> Unit = None,
+        onAbilityBackground!: ?(UIAbility) -> Unit = None,
+        onAbilityDestroy!: ?(UIAbility) -> Unit = None,
+        onWindowStageCreate!: ?(UIAbility) -> Unit = None,
+        onWindowStageRestore!: ?(UIAbility) -> Unit = None,
+        onWindowStageDestroy!: ?(UIAbility) -> Unit = None
+    ) {
+        registerSelf()
+        this.abilityName = abilityName
+        this.moduleName = moduleName
+        this.onAbilityCreate = onAbilityCreate
+        this.onAbilityForeground = onAbilityForeground
+        this.onAbilityBackground = onAbilityBackground
+        this.onAbilityDestroy = onAbilityDestroy
+        this.onWindowStageCreate = onWindowStageCreate
+        this.onWindowStageRestore = onWindowStageRestore
+        this.onWindowStageDestroy = onWindowStageDestroy
+    }
+
+    ~init() {
+        FFIDataManager.getInstance().releaseData(id_)
+    }
+}
+
+@C
+struct CJMonitorFuncs {
+    CJMonitorFuncs(
+        let onAbilityCreate: CFunc<(Int64, Int64) -> Unit>,
+        let onAbilityForeground: CFunc<(Int64, Int64) -> Unit>,
+        let onAbilityBackground: CFunc<(Int64, Int64) -> Unit>,
+        let onAbilityDestroy: CFunc<(Int64, Int64) -> Unit>,
+        let onWindowStageCreate: CFunc<(Int64, Int64) -> Unit>,
+        let onWindowStageRestore: CFunc<(Int64, Int64) -> Unit>,
+        let onWindowStageDestroy: CFunc<(Int64, Int64) -> Unit>
+    ) {}
+}
+
+@C
+func monitorCjFuncsRegister(result: CPointer<CJMonitorFuncs>): Unit {
+    let atCFuncs = CJMonitorFuncs(
+        monitorOnAbilityCreate,
+        monitorOnAbilityForeground,
+        monitorOnAbilityBackground,
+        monitorOnAbilityDestroy,
+        monitorOnWindowStageCreate,
+        monitorOnWindowStageRestore,
+        monitorOnWindowStageDestroy
+    )
+    unsafe { result.write(atCFuncs) }
+}
+
+foreign func RegisterCJMonitorFuncs(funcs: CFunc<(CPointer<CJMonitorFuncs>) -> Unit>): Unit
+
+let REGISTER_MONITOR = unsafe { RegisterCJMonitorFuncs(monitorCjFuncsRegister) }

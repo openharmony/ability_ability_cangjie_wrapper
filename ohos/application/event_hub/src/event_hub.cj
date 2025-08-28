@@ -13,4 +13,6 @@
  * limitations under the License.
  */
 
-package ohos.ability
+protected package ohos.application.event_hub
+
+protected class EventHub {}

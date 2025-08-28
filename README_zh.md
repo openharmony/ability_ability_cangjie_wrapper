@@ -4,6 +4,10 @@
 
 **元能力仓颉接口**元能力仓颉接口是在 OpenHarmony 上基于元能力子系统能力之上封装的仓颉API。而元能力子系统实现对Ability的运行及生命周期进行统一的调度和管理，应用进程能够支撑多个Ability，Ability具有跨应用进程间和同一进程内调用的能力。Ability管理服务统一调度和管理应用中各Ability，并对Ability的生命周期变更进行管理。
 
+## 系统架构
+
+**图 1** 元能力仓颉架构图
+
 ![](figures/ability_cangjie_wrapper_architecture_zh.png)
 
 ## 目录
@@ -35,7 +39,7 @@ foundation/ability/ability_cangjie_wrapper
   - 对接端侧意图框架的意图执行基类。
   - 启动任务的相关能力。
 
-元能力相关API请参见[元能力API参考](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md)，相关指导请参见[程序框架服务开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_zh_cn/application-models)。
+元能力相关API请参见[ohos.app.ability (Ability)](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md)，相关指导请参见[程序框架服务开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_zh_cn/application-models)。
 
 ## 参与贡献
 

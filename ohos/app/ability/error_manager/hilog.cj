@@ -13,4 +13,8 @@
  * limitations under the License.
  */
 
-package ohos.ability
+package ohos.app.ability.error_manager
+
+import ohos.hilog.*
+
+let ABILITY_LOG = HilogChannel(0, 0xD002223, "CJ_ABILITY")

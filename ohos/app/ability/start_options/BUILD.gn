@@ -13,8 +13,20 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.ability") {
-  sources = [ "ability.cj" ]
+ohos_cangjie_shared_library("ohos.app.ability.start_options") {
+  sources = [ "start_options.cj" ]
+
+  cj_deps = [
+    "../ability_constant:ohos.app.ability.ability_constant",
+    "../completion_handler:ohos.app.ability.completion_handler",
+    "../context_constant:ohos.app.ability.context_constant",
+  ]
+
+  cj_external_deps = [
+    "bundlemanager_cangjie_wrapper:ohos.bundle.bundle_manager",
+    "cangjie_ark_interop:ohos.labels",
+    "multimedia_cangjie_wrapper:ohos.multimedia.image",
+  ]
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"
