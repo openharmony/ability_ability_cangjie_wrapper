@@ -6,54 +6,6 @@ The ability_ability_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony
 
 ![](figures/ability_cangjie_wrapper_architecture_en.png)
 
-**Architecture Description**
-
-- **Ability Kit** provides basic running environment for an ability to run. **Ability** is the minimum unit for the system to schedule an application. It is a component that can implement an independent functionality. An application can contain one or more **Ability** instances. There are two types of abilities: Feature Ability (FA) and Particle Ability (PA). FAs use the Page template, and PAs use the Service and Data templates. (The abilities implemented using the Page, Service, or Data template are referred to as the Page, Service, or Data abilities for short, respectively.)
-
-- **AbilityManagerService** is a system service used to coordinate the running relationships and lifecycle states of **Ability** instances.
-  - The AbilityStackManager sub-module maintains the presentation sequence of abilities in the stack.
-  - The AbilityConnectManager sub-module manages connections to Service abilities.
-  - The DataAbilityManager sub-module manages Data abilities.
-  - The AppScheduler sub-module schedules and manages the App Manager Service.
-  - The AbilityScheduler sub-module schedules and manages abilities.
-  - The LifecycleDeal sub-module schedules and manages ability lifecycle events.
-
-The **ability lifecycle** is a general term for all states of an ability (either a Page or a Service ability), such as **INACTIVE**, **ACTIVE**, and **BACKGROUND**.
-
-  - The following figure shows the transitions between different states in a Page ability's lifecycle.
-
-![PageAbility-Lifecycle](figures/en_page-ability-lifecycle.png)
-
-
-
-  - The following figure shows the transitions between different states in a Service ability's lifecycle.
-
-![ServiceAbility-Lifecycle](figures/en_service-ability-lifecycle.png)
-
-**Description of ability lifecycle states:**
-
-  - **UNINITIALIZED**: The ability is not initialized. This state is a temporary state. An ability changes directly to the **INITIAL** state upon its creation.
-
-  - **INITIAL**: This state refers to the initial or stopped state. The ability in this state is not running. The ability enters the **INACTIVE** state after it is started.
-
-  - **INACTIVE**: The ability is visible but does not gain focus. This state is the same as the **ACTIVE** state because the concept of window focus is not supported currently.
-
-  - **ACTIVE**: The ability is in the foreground and has focus. The ability changes from the **ACTIVE** state to the **INACTIVE** state before returning to the background.
-
-  - **BACKGROUND**: The ability returns to the background. After being re-activated, the ability enters the **ACTIVE** state. After being destroyed, the ability enters the **INITIAL** state.
-
-The following figure shows the callbacks to be invoked during the transitions between different lifecycle states of a Page ability.
-
-![PageAbility-Lifecycle-Callbacks](figures/en_page-ability-lifecycle-callbacks.png)
-
-
-
-The following figure shows the callbacks to be invoked during the transitions between different lifecycle states of a Service ability.
-
-![Service-Ability-Lifecycle-Callbacks](figures/en_service-ability-lifecycle-callbacks.jpg)
-
-
-
 ## Directory Structure
 
 ```
@@ -63,10 +15,26 @@ foundation/ability/ability_cangjie_wrapper
 ├── figures          # architecture pictures
 ```
 
+## Constraints
+
+The currently open Ability Cangjie api only supports standard devices.
+
+## Usage Guidelines
+
+The following features are provided:
+
+  - UIAbility is an application component that has the UI. It provides lifecycle callbacks such as component creation, destruction, and foreground/background switching. Users can inherit this class to implement monitoring capabilities for UIAbility components.
+  - The Context provides the capabilities to obtain component information. The UIAbilityContext provides the capabilities to launch or destroy other UIAbility. Users can obtain relevant information or launch other UIAbility through UIAbilityContext.
+  - The ErrorManager Module provides the capabilities to register and unregister error observers. When users need to register or unregister an error observer, they can use the interfaces provided by this module.
+  - Users can monitor lifecycle state changes of a specified Ability and obtain test parameters through the AbilityDelegatorRegistry Module.
+  - Users can prepare the unit testing environment and run test cases through the TestRunner Module.
+
+The following features are not provided yet:
+
+ - ExtensionAbility which for scenario-specific ExtensionAbilities.
+ - InsightIntent Module.
+ - Startup Module.
+
 ## Repositories Involved
 
-[ability_base](https://gitee.com/openharmony/ability_ability_base)
-
 [ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
-
-[form_fwk](https://gitee.com/openharmony/ability_form_fwk)
