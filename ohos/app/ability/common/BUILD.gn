@@ -13,8 +13,16 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.ability") {
-  sources = [ "ability.cj" ]
+ohos_cangjie_shared_library("ohos.app.ability.common") {
+  sources = [ "common.cj" ]
+
+  cj_deps = [
+    "../../../ability/ability_result:ohos.ability.ability_result",
+    "../../../ability/connect_options:ohos.ability.connect_options",
+    "../../../application/error_observer:ohos.application.error_observer",
+    "../../../application/event_hub:ohos.application.event_hub",
+    "../../ability:ohos.app.ability",
+  ]
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"

@@ -13,4 +13,29 @@
  * limitations under the License.
  */
 
-package ohos.ability
+package ohos.app.ability.ui_ability
+
+import ohos.ark_interop.*
+import ohos.ark_interop_helper.*
+import ohos.labels.*
+
+/**
+ * interface for cangjie object to arkts object 
+ */
+@!APILevel[
+    21,
+    stagemodelonly: true,
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public interface SystemObjectInteropTypeToJS {
+
+    /**
+     * convert cangjie object ot arkts object
+     */
+    @!APILevel[
+        21,
+        stagemodelonly: true,
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    func toJSValue(context: JSContext): JSValue
+}

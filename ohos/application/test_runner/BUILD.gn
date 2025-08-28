@@ -13,8 +13,22 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.ability") {
-  sources = [ "ability.cj" ]
+ohos_cangjie_shared_library("ohos.application.test_runner") {
+  sources = [
+    "hilog.cj",
+    "test_runner.cj",
+  ]
+
+  cj_external_deps = [
+    "arkui_cangjie_wrapper:ohos.base",
+    "cangjie_ark_interop:ohos.ffi",
+    "cangjie_ark_interop:ohos.labels",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
+    "testfwk_cangjie_wrapper:ohos.ui_test",
+  ]
+
+  external_deps = [ "ability_runtime:appkit_delegator" ]
+
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"

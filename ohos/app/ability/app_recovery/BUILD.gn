@@ -13,8 +13,16 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.ability") {
-  sources = [ "ability.cj" ]
+ohos_cangjie_shared_library("ohos.app.ability.app_recovery") {
+  sources = [ "app_recovery.cj" ]
+
+  cj_deps = [ "../want:ohos.app.ability.want" ]
+
+  cj_external_deps = [
+    "cangjie_ark_interop:ohos.labels",
+  ]
+
+  external_deps = [ "ability_runtime:cj_app_recovery_ffi" ]
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"

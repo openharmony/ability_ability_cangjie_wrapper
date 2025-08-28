@@ -13,8 +13,15 @@
 
 import("//build/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.ability") {
-  sources = [ "ability.cj" ]
+ohos_cangjie_shared_library("ohos.app.ability.open_link_options") {
+  sources = [ "open_link_options.cj" ]
+
+  cj_deps = [ "../want:ohos.app.ability.want" ]
+
+  cj_external_deps = [
+    "cangjie_ark_interop:ohos.encoding.json",
+    "cangjie_ark_interop:ohos.labels",
+  ]
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"
