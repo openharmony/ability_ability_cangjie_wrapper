@@ -35,6 +35,12 @@ foundation/ability/ability_cangjie_wrapper
   - 对接端侧意图框架的意图执行基类。
   - 启动任务的相关能力。
 
+元能力相关API请参见[元能力API参考](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_zh_cn/apis/AbilityKit/cj-apis-ability.md)，相关指导请参见[程序框架服务开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_zh_cn/application-models)。
+
+## 参与贡献
+
+欢迎广大开发者代码，文档等，具体的贡献流程和方式请参见[参与贡献](https://gitcode.com/openharmony/docs/blob/master/zh-cn/contribute/%E5%8F%82%E4%B8%8E%E8%B4%A1%E7%8C%AE.md)。
+
 ## 相关仓
 
 **元能力子系统**

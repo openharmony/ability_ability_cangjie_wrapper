@@ -35,6 +35,12 @@ The following features are not provided yet:
  - InsightIntent Module.
  - Startup Module.
 
+For APIs related to Ability, please refer to [Ability References](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/apis/AbilityKit/cj-apis-ability.md). For relevant guidance, please refer to [Ability Kit Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/Dev_Guide/source_en/application-models).
+
+## Code Contribution
+
+Developers are welcome to contribute code, documentation, etc. For specific contribution processes and methods, please refer to [Code Contribution](https://gitcode.com/openharmony/docs/blob/master/en/contribute/code-contribution.md).
+
 ## Repositories Involved
 
 [ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
