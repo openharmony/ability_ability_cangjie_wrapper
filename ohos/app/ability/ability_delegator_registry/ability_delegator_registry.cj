@@ -449,14 +449,12 @@ public class AbilityDelegator <: RemoteDataLite {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public func startAbility(want: Want): Future<Unit> {
-        spawn {
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe { FFIAbilityDelegatorStartAbility(this.getID(), wantHandle) }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_DELEGATOR_LOG.debug("startAbility: errorCode is ${errorCode}")
-            throwIfNotSuccess(errorCode, "startAbility")
-        }
+    public func startAbility(want: Want): Unit {
+        let wantHandle = want.createWantHandle()
+        let errorCode = unsafe { FFIAbilityDelegatorStartAbility(this.getID(), wantHandle) }
+        unsafe { Want.releaseWantHandle(wantHandle) }
+        ABILITY_DELEGATOR_LOG.debug("startAbility: errorCode is ${errorCode}")
+        throwIfNotSuccess(errorCode, "startAbility")
     }
 
     /**
