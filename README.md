@@ -27,11 +27,12 @@ foundation/ability/ability_cangjie_wrapper
 ├── figures                   # architecture pictures
 ├── kit                       # Cangjie AbilityKit kit code
 │   └── AbilityKit
-└── ohos                      # Cangjie Ability code 
-    ├── BUILD.gn
-    ├── ability
-    ├── app
-    └── application
+├── ohos                      # Cangjie Ability code  
+│   ├── BUILD.gn
+│   ├── ability
+│   ├── app
+│   └── application
+└── test                      # Cangjie test code
 ```
 
 
