@@ -27,11 +27,12 @@ foundation/ability/ability_cangjie_wrapper
 ├── figures                   # 存放README中的架构图
 ├── kit                       # 仓颉AbilityKit的kit化代码
 │   └── AbilityKit
-└── ohos                      # 仓颉元能力接口实现   
-    ├── BUILD.gn
-    ├── ability
-    ├── app
-    └── application
+├── ohos                      # 仓颉元能力接口实现   
+│   ├── BUILD.gn
+│   ├── ability
+│   ├── app
+│   └── application
+└── test                      # 仓颉测试代码
 ```
 
 
