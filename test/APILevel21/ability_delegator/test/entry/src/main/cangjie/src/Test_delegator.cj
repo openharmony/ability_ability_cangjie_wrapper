@@ -159,7 +159,7 @@ class Test_ability_delegator {
         let stageMonitor = AbilityStageMonitor("entry", "")
         delegator.addAbilityStageMonitor(stageMonitor)
         delegator.removeAbilityStageMonitor(stageMonitor)
-        delegator.startAbility(want).get()
+        delegator.startAbility(want)
 
         waitForEventWithName("TestAbilityStarted", timeOut: 10.second) {_ =>}
         let testAbility = delegator.getCurrentTopAbility()
