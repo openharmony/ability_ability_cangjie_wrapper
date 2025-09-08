@@ -95,11 +95,11 @@ public open class StartOptions {
         this.displayId = displayId
     }
 
-    protected func toExternal(): CJStartOptions {
+    func toExternal(): CJStartOptions {
         return CJStartOptions(windowMode?.getValue() ?? WINDOW_MODE_UNDEFINED, displayId)
     }
 
-    protected func toCJNewStartOptions(): CJNewStartOptions {
+    func toCJNewStartOptions(): CJNewStartOptions {
         return CJNewStartOptions(
             windowMode?.getValue() ?? WINDOW_MODE_UNDEFINED,
             displayId,
@@ -112,6 +112,14 @@ public open class StartOptions {
             startupVisibility?.getValue() ?? STARTUP_VISIBILITY_UNSPECIFIED
         )
     }
+}
+
+protected func startOptionsToExternal(startOptions: StartOptions): CJStartOptions {
+    return startOptions.toExternal()
+}
+
+protected func startOptionsToCJNewStartOptions(startOptions: StartOptions): CJNewStartOptions {
+    return startOptions.toCJNewStartOptions()
 }
 
 @C
