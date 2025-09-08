@@ -47,8 +47,6 @@ public class ErrorManager {
     /**
     * Register error observer.
     *
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-    * 2. Incorrect parameter types; 3. Parameter verification failed.
     * @throws { BusinessException } 16000003 - The specified ID does not exist.
     * @relation function on(type: 'error', observer: ErrorObserver): number
     */
@@ -76,8 +74,6 @@ public class ErrorManager {
     /**
     * Unregister error observer.
     *
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-    * 2. Incorrect parameter types; 3. Parameter verification failed.
     * @throws { BusinessException } 16000003 - The specified ID does not exist.
     * @relation function off(type: 'error', observerId: number): Promise<void>
     */
