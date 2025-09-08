@@ -33,34 +33,6 @@ const PARAM_INVALID_ERR_MSG: String = "Parameter error: The timeout cannot be le
 const CALLER_ERROR_ERR_MSG: String = "Caller error. Caller from non-main thread."
 
 /**
-* Error manager event type.
-*/
-@!APILevel[
-    21,
-    stagemodelonly: true,
-    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-]
-public enum ErrorManagerEvent {
-    /**
-     * Error event.
-     */
-    @!APILevel[
-        21,
-        stagemodelonly: true,
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    Error
-    | ...
-
-    func getValue(): String {
-        match (this) {
-            case Error => "error"
-            case _ => throw IllegalArgumentException("The type is not supported.")
-        }
-    }
-}
-
-/**
  * This module provides the function of error manager.
  *
  * @relation declare namespace errorManager
@@ -85,12 +57,8 @@ public class ErrorManager {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32 {
-        let eventTypeValue = eventType.getValue()
-        if (eventTypeValue != "error") {
-            throw BusinessException(EXCEPTION_PARAMCHECK, getErrorInfo(EXCEPTION_PARAMCHECK))
-        }
-        let cOnType = unsafe { LibC.mallocCString(eventTypeValue) }
+    public static func onError(observer: ErrorObserver): Int32 {
+        let cOnType = unsafe { LibC.mallocCString("error") }
         try {
             let cObserver = unsafe { CErrorObserver(observer) }
             let res = unsafe { FfiOHOSErrorManagerOn(cOnType, cObserver) }
@@ -118,12 +86,8 @@ public class ErrorManager {
         stagemodelonly: true,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit {
-        let eventTypeValue = eventType.getValue()
-        if (eventTypeValue != "error") {
-            throw BusinessException(EXCEPTION_PARAMCHECK, getErrorInfo(EXCEPTION_PARAMCHECK))
-        }
-        let cOffType = unsafe { LibC.mallocCString(eventTypeValue) }
+    public static func offError(observerId: Int32): Unit {
+        let cOffType = unsafe { LibC.mallocCString("error") }
         let res = unsafe { FfiOHOSErrorManagerOff(cOffType, observerId) }
         unsafe { LibC.free(cOffType) }
         match {
