@@ -251,7 +251,7 @@ public open class UIAbilityContext <: Context {
         var errorCode: Int32 = 0
         let wantHandle = want.createWantHandle()
         if (let Some(opt) <- options) {
-            let cOptions = opt.toCJNewStartOptions()
+            let cOptions = startOptionsToCJNewStartOptions(opt)
             errorCode = unsafe {
                 FFIAbilityContextStartAbilityWithOptions(this.getID(), wantHandle, cOptions)
             }
@@ -273,7 +273,7 @@ public open class UIAbilityContext <: Context {
 
     func startAbilityWithAccount(want: Want, accountId: Int32, options: StartOptions): Future<Unit> {
         spawn {
-            var cOptions = options.toExternal()
+            var cOptions = startOptionsToExternal(options)
             let wantHandle = want.createWantHandle()
             let errorCode = unsafe {
                 BROKER.startAbilityWithAccountAndOption(this.getID(), wantHandle, accountId, inout cOptions)
@@ -526,7 +526,7 @@ public open class UIAbilityContext <: Context {
     ]
     public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit {
         let requestCode = genRequestCode()
-        var cOptions = options.toExternal()
+        var cOptions = startOptionsToExternal(options)
         let wantHandle = want.createWantHandle()
         let lambdaData = ResultCallbackForAbilityResult(callback)
         let errorCode = unsafe {
@@ -570,7 +570,7 @@ public open class UIAbilityContext <: Context {
         callback: AsyncCallback<AbilityResult>
     ): Unit {
         let requestCode = genRequestCode()
-        var cOptions = options.toExternal()
+        var cOptions = startOptionsToExternal(options)
         let wantHandle = want.createWantHandle()
         let lambdaData = ResultCallbackForAbilityResult(callback)
         let errorCode = unsafe {
