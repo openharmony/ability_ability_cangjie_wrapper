@@ -88,8 +88,7 @@ class TestRunnerImpl {}
  * @relation interface TestRunner
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class TestRunner <: FFIData {
@@ -100,8 +99,7 @@ public open class TestRunner <: FFIData {
      * TestRunner register.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func registerCreator(name: String, creator: () -> TestRunner): Unit {
@@ -132,8 +130,7 @@ public open class TestRunner <: FFIData {
      * @relation onRun(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onRun(): Unit {}
@@ -143,8 +140,7 @@ public open class TestRunner <: FFIData {
      * @relation onPrepare(): void
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onPrepare(): Unit {}

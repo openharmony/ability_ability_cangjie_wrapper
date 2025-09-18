@@ -23,8 +23,7 @@ import ohos.labels.*
  * interface for cangjie object to arkts object 
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public interface SystemObjectInteropTypeToJS {
@@ -33,8 +32,7 @@ public interface SystemObjectInteropTypeToJS {
      * convert cangjie object ot arkts object
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     func toJSValue(context: JSContext): JSValue

@@ -426,8 +426,7 @@ class UIAbilityImpl {}
  * @relation declare class UIAbility extends Ability
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
 ]
 public open class UIAbility <: Ability {
@@ -443,8 +442,7 @@ public open class UIAbility <: Ability {
     * @relation launchWant: Want
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public mut prop launchWant: Want {
@@ -462,8 +460,7 @@ public open class UIAbility <: Ability {
     * @relation lastRequestWant: Want
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public mut prop lastRequestWant: Want {
@@ -481,8 +478,7 @@ public open class UIAbility <: Ability {
     * @relation context: UIAbilityContext
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public mut prop context: UIAbilityContext {
@@ -512,8 +508,7 @@ public open class UIAbility <: Ability {
     * @relation onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onCreate(want: Want, launchParam: LaunchParam): Unit {}
@@ -529,8 +524,7 @@ public open class UIAbility <: Ability {
     * @relation onDestroy(): void | Promise<void>
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onDestroy(): Unit {}
@@ -541,8 +535,7 @@ public open class UIAbility <: Ability {
     * @relation onWindowStageCreate(windowStage: window.WindowStage): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onWindowStageCreate(windowStage: WindowStage): Unit {}
@@ -560,8 +553,7 @@ public open class UIAbility <: Ability {
     * @relation onWindowStageDestroy(): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onWindowStageDestroy(): Unit {}
@@ -576,8 +568,7 @@ public open class UIAbility <: Ability {
     * @relation onForeground(): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onForeground(): Unit {}
@@ -590,8 +581,7 @@ public open class UIAbility <: Ability {
     * @relation onBackground(): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onBackground(): Unit {}
@@ -615,8 +605,7 @@ public open class UIAbility <: Ability {
     * @relation onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {}

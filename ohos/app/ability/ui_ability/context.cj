@@ -66,8 +66,7 @@ class ContextImpl {}
  * @relation declare class Context extends BaseContext
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class Context <: BaseContext {
@@ -88,8 +87,7 @@ public open class Context <: BaseContext {
     * @relation resourceManager: resmgr.ResourceManager
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop resourceManager: ResourceManager {
@@ -110,8 +108,7 @@ public open class Context <: BaseContext {
     * @relation applicationInfo: ApplicationInfo
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop applicationInfo: ApplicationInfo {
@@ -134,8 +131,7 @@ public open class Context <: BaseContext {
     * @relation filesDir: string
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop filesDir: String {
@@ -156,8 +152,7 @@ public open class Context <: BaseContext {
     * @relation area: contextConstant.AreaMode
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop area: AreaMode {

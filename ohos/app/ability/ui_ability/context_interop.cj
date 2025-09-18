@@ -47,8 +47,7 @@ extend Context <: SystemObjectInteropTypeToJS {
      * @throws { IllegalArgumentException } - The type is not supported.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func toJSValue(context: JSContext): JSValue {
@@ -68,8 +67,7 @@ extend Context <: SystemObjectInteropTypeToJS {
  * create cangjie object from arkts object
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext {
@@ -83,8 +81,7 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
  * create cangjie object from arkts object
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext {
@@ -98,8 +95,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
  * create cangjie object from arkts object
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext {
@@ -113,8 +109,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
  * create cangjie object from arkts object
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context {

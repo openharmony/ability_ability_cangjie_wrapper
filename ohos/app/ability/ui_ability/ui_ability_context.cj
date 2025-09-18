@@ -160,8 +160,7 @@ class UIAbilityContextImpl {}
  * @relation declare class UIAbilityContext extends Context
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class UIAbilityContext <: Context {
@@ -243,8 +242,7 @@ public open class UIAbilityContext <: Context {
     * @relation startAbility(want: Want, options?: StartOptions): Promise<void>
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbility(want: Want, options!: ?StartOptions = None): Unit {
@@ -328,8 +326,7 @@ public open class UIAbilityContext <: Context {
     * @relation terminateSelf(): Promise<void>
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func terminateSelf(): Unit {
@@ -347,8 +344,7 @@ public open class UIAbilityContext <: Context {
     * @relation terminateSelfWithResult(parameter: AbilityResult): Promise<void>
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func terminateSelfWithResult(parameter: AbilityResult): Unit {
@@ -365,8 +361,7 @@ public open class UIAbilityContext <: Context {
     * @relation isTerminating(): boolean
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func isTerminating(): Bool {
@@ -469,8 +464,7 @@ public open class UIAbilityContext <: Context {
     * @relation startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): Unit {
@@ -520,8 +514,7 @@ public open class UIAbilityContext <: Context {
     * @relation startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit {
@@ -622,8 +615,7 @@ public open class UIAbilityContext <: Context {
     * @relation requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResult>): void
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func requestDialogService(want: Want, result: AsyncCallback<RequestResult>): Unit {

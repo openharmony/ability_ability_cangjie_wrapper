@@ -36,8 +36,7 @@ foreign {
 * @relation function restartApp(): void
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func restartApp(): Unit {

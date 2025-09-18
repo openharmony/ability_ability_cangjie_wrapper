@@ -26,8 +26,7 @@ import ohos.labels.*
 * @relation export interface LaunchParam
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class LaunchParam {
@@ -37,8 +36,7 @@ public class LaunchParam {
      * @relation launchReason: LaunchReason
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var launchReason: LaunchReason
@@ -48,8 +46,7 @@ public class LaunchParam {
      * @relation lastExitReason: LastExitReason
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var lastExitReason: LastExitReason
@@ -80,8 +77,7 @@ public class LaunchParam {
 * @relation export enum LaunchReason
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum LaunchReason {
@@ -91,8 +87,7 @@ public enum LaunchReason {
      * @relation UNKNOWN = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Unknown
@@ -103,8 +98,7 @@ public enum LaunchReason {
      * @relation START_ABILITY = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     StartAbility
@@ -115,8 +109,7 @@ public enum LaunchReason {
      * @relation CALL = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Call
@@ -127,8 +120,7 @@ public enum LaunchReason {
      * @relation CONTINUATION = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Continuation
@@ -139,8 +131,7 @@ public enum LaunchReason {
      * @relation APP_RECOVERY = 4
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppRecovery
@@ -177,8 +168,7 @@ public enum LaunchReason {
 * @relation export enum LastExitReason
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum LastExitReason {
@@ -188,8 +178,7 @@ public enum LastExitReason {
      * @relation UNKNOWN = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Unknown
@@ -200,8 +189,7 @@ public enum LastExitReason {
      * @relation NORMAL = 2
      */ 
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Normal
@@ -212,8 +200,7 @@ public enum LastExitReason {
      * @relation CPP_CRASH = 3
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     CppCrash
@@ -224,8 +211,7 @@ public enum LastExitReason {
      * @relation APP_FREEZE = 5
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppFreeze
@@ -262,8 +248,7 @@ public enum LastExitReason {
 * @relation export enum OnContinueResult
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum OnContinueResult {
@@ -273,8 +258,7 @@ public enum OnContinueResult {
      * @relation AGREE = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Agree
@@ -287,8 +271,7 @@ public enum OnContinueResult {
      * @relation REJECT = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Reject
@@ -301,8 +284,7 @@ public enum OnContinueResult {
      * @relation MISMATCH = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Mismatch
@@ -327,8 +309,7 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
 * @relation export enum WindowMode
 */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum WindowMode {
@@ -338,8 +319,7 @@ public enum WindowMode {
      * @relation WINDOW_MODE_FULLSCREEN = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeFullscreen
@@ -352,8 +332,7 @@ public enum WindowMode {
      * @relation WINDOW_MODE_SPLIT_PRIMARY = 100
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitPrimary
@@ -367,8 +346,7 @@ public enum WindowMode {
      * @relation WINDOW_MODE_SPLIT_SECONDARY = 101
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitSecondary
@@ -401,8 +379,7 @@ public enum WindowMode {
 */
 @Derive[ToString, Equatable]
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum MemoryLevel {
@@ -412,8 +389,7 @@ public enum MemoryLevel {
      * @relation MEMORY_LEVEL_MODERATE = 0
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelModerate
@@ -424,8 +400,7 @@ public enum MemoryLevel {
      * @relation MEMORY_LEVEL_LOW = 1
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelLow
@@ -436,8 +411,7 @@ public enum MemoryLevel {
      * @relation MEMORY_LEVEL_CRITICAL = 2
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelCritical

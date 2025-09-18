@@ -24,8 +24,7 @@ import ohos.app.ability.want.*
  * @relation export interface AbilityResult
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class AbilityResult {
@@ -36,8 +35,7 @@ public class AbilityResult {
     * @relation resultCode: number
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var resultCode: Int32
@@ -49,8 +47,7 @@ public class AbilityResult {
     * @relation want?: Want
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var want: Want
@@ -59,8 +56,7 @@ public class AbilityResult {
     * AbilityResult constructor.
     */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public init(resultCode: Int32, want!: Want = Want()) {

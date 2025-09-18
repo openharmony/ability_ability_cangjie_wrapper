@@ -26,8 +26,7 @@ import ohos.labels.*
  * @relation export interface AbilityStageMonitor
  */
 @!APILevel[
-    21,
-    stagemodelonly: true,
+    22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityStageMonitor <: FFIData {
@@ -37,8 +36,7 @@ public class AbilityStageMonitor <: FFIData {
         * @relation moduleName: string
         */        
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var moduleName: String
@@ -48,8 +46,7 @@ public class AbilityStageMonitor <: FFIData {
         * @relation srcEntrance: string
         */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var srcEntrance: String
@@ -57,8 +54,7 @@ public class AbilityStageMonitor <: FFIData {
      * AbilityStageMonitor constructor.
      */
     @!APILevel[
-        21,
-        stagemodelonly: true,
+        22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(
