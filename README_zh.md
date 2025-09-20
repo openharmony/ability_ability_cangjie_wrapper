@@ -17,22 +17,43 @@
 - 组件管理器：一个Module级别的组件管理器，用于进行Module级别的资源预加载、线程创建等初始化操作，以及维护Module下的应用状态。
 - 错误观测管理：提供了对错误观察器的注册和注销能力。当开发者需要注册或注销错误观察器时，可以使用其提供的接口。
 - 自动化测试框架管理：开发者可通过此模块来监视指定的Ability的生命周期状态更改和获取测试参数。
-- 仓颉元能力FFI接口定义：负责定义C互操作仓颉接口，用于实现仓颉元能力的能力。
-- 元能力基础框架模块：负责提供元能力基础功能，封装C接口提供给仓颉进行互操作。
+- 仓颉元能力FFI接口定义：负责定义C语言互操作仓颉接口，用于实现仓颉元能力的能力。
+- 元能力基础框架模块：负责提供元能力基础功能，封装C语言接口提供给仓颉进行互操作。
+- 访问控制部件：提供鉴权模块，供查询权限是否获取。
+- 仓颉互操作API公共仓：提供仓颉标签与异常类的定义。
+- 仓颉ArkUI开发框架：提供仓颉UI组件接口及基础类型。UIAbility负责加载UI界面。
+- DFX仓颉接口：提供日志系统，使应用/服务可以按照指定级别、标识和格式字符串输出日志内容。
+- 全球化仓颉接口：提供应用资源获取的能力。
+- 包管理仓颉接口：提供获取应用包信息的能力。
+- 分布式软总线仓颉接口：提供基础类型及数组、IPC对象、接口描述符和自定义序列化对象等用来通信的数据格式。
+- OS媒体软件仓颉接口：提供使用媒体资源的能力。
+- 窗口仓颉接口：提供窗口实例管理能力。
 
 ## 目录
 
 ```
 foundation/ability/ability_cangjie_wrapper                
-├── figures                   # 存放README中的架构图
-├── kit                       # 仓颉AbilityKit的kit化代码
+├── figures                                 # 存放README中的架构图
+├── kit                                     # 仓颉AbilityKit的kit化代码
 │   └── AbilityKit
-├── ohos                      # 仓颉元能力接口实现   
+├── ohos                                    # 仓颉元能力接口实现   
 │   ├── BUILD.gn
-│   ├── ability
+│   ├── ability                             # 仓颉元能力依赖类型的定义 
 │   ├── app
+│   │   ├── BUILD.gn
+│   │   ├── ability
+│   │   │   ├── BUILD.gn
+│   │   │   ├── ability.cj
+│   │   │   ├── ability_delegator_registry  # 仓颉自动化测试框架管理封装
+│   │   │   ├── ability_stage               # 仓颉组件管理器封装 
+│   │   │   ├── error_manager               # 仓颉错误观测管理封装
+│   │   │   ├── ...
+│   │   │   └── ui_ability                  # 仓颉UIAbility及应用上下文封装
+│   │   └── app.cj
 │   └── application
-└── test                      # 仓颉测试代码
+│       ├── ...
+│       └── test_runner                     # 仓颉测试框架封装
+└── test                                    # 仓颉测试代码
 ```
 
 
@@ -63,9 +84,15 @@ foundation/ability/ability_cangjie_wrapper
 
 ## 相关仓
 
-[ability_ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
+[ability_ability_runtime](https://gitcode.com/openharmony/ability_ability_runtime)
+
+[security_access_token](https://gitcode.com/openharmony/security_access_token)
 
 [arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
+
+[arkui_arkui_cangjie_wrapper](https://gitcode.com/openharmony-sig/arkui_arkui_cangjie_wrapper)
+
+[hiviewdfx_hiviewdfx_cangjie_wrapper](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
 
 [global_global_cangjie_wrapper](https://gitcode.com/openharmony-sig/global_global_cangjie_wrapper)
 
