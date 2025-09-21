@@ -19,20 +19,41 @@ As shown in the architecture:
 - AbilityDelegatorRegistry: Users can monitor lifecycle state changes of a specified Ability and obtain test parameters through the AbilityDelegatorRegistry Module.
 - Cangjie Ability FFI interface: Based on cross-language interoperability via C interfaces to implement ability Cangjie API.
 - ability_runtime: It is responsible for providing basic functions of ability, and encapsulates C interfaces to provide interoperability for Cangjie.
+- access_token: Provides authorization modules for querying whether permissions have been granted.
+- Cangjie Interop API Public Repository: Provides definitions for APILevel and BusinessException classes.
+- ArkUI Framework Cangjie Interface: Provides Cangjie UI component interfaces and basic types. UIAbility is responsible for loading the UI interface.
+- hiviewdfx_cangjie_wrapper: Provides a logging system that allows applications/services to output log content according to specified levels, identifiers, and format strings.
+- global_cangjie_wrapper: Provides the capability to access application resources.
+- bundlemanager_cangjie_wrapper: Provides the capability to obtain application package information.
+- communication_cangjie_wrapper: Provides data formats used for communication, including basic types and arrays, IPC objects, interface descriptors, and custom serializable objects.
+- multimedia_cangjie_wrapper: Provides the capability to use media resources.
+- Window Cangjie Interface: Provides window instance management capabilities.
 
 ## Directory Structure
 
 ```
 foundation/ability/ability_cangjie_wrapper                
-├── figures                   # architecture pictures
-├── kit                       # Cangjie AbilityKit kit code
+├── figures                                 # architecture pictures
+├── kit                                     # Cangjie AbilityKit kit code
 │   └── AbilityKit
-├── ohos                      # Cangjie Ability code  
+├── ohos                                    # Cangjie Ability code 
 │   ├── BUILD.gn
-│   ├── ability
+│   ├── ability                             # Cangjie Ability dependency type definitions
 │   ├── app
+│   │   ├── BUILD.gn
+│   │   ├── ability
+│   │   │   ├── BUILD.gn
+│   │   │   ├── ability.cj
+│   │   │   ├── ability_delegator_registry  # Cangjie AbilityDelegatorRegistry wrapper
+│   │   │   ├── ability_stage               # Cangjie AbilityStage wrapper
+│   │   │   ├── error_manager               # Cangjie ErrorManager wrapper
+│   │   │   ├── ...
+│   │   │   └── ui_ability                  # Cangjie UIAbility and Context wrapper
+│   │   └── app.cj
 │   └── application
-└── test                      # Cangjie test code
+│       ├── ...
+│       └── test_runner                     # Cangjie TestRunner wrapper
+└── test                                    # Cangjie test code
 ```
 
 
@@ -62,11 +83,17 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 
 ## Repositories Involved
 
-[ability_ability_runtime](https://gitee.com/openharmony/ability_ability_runtime)
+[ability_ability_runtime](https://gitcode.com/openharmony/ability_ability_runtime)
+
+[security_access_token](https://gitcode.com/openharmony/security_access_token)
 
 [arkcompiler_cangjie_ark_interop](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop)
 
+[arkui_arkui_cangjie_wrapper](https://gitcode.com/openharmony-sig/arkui_arkui_cangjie_wrapper)
+
 [hiviewdfx_hiviewdfx_cangjie_wrapper](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
+
+[global_global_cangjie_wrapper](https://gitcode.com/openharmony-sig/global_global_cangjie_wrapper)
 
 [bundlemanager_bundlemanager_cangjie_wrapper](https://gitcode.com/openharmony-sig/bundlemanager_bundlemanager_cangjie_wrapper)
 
