@@ -29,21 +29,14 @@ foundation/ability/ability_cangjie_wrapper
 ├── kit                                     # Cangjie AbilityKit kit code
 │   └── AbilityKit
 ├── ohos                                    # Cangjie Ability code 
-│   ├── BUILD.gn
 │   ├── ability                             # Cangjie Ability dependency type definitions
 │   ├── app
-│   │   ├── BUILD.gn
-│   │   ├── ability
-│   │   │   ├── BUILD.gn
-│   │   │   ├── ability.cj
-│   │   │   ├── ability_delegator_registry  # Cangjie AbilityDelegatorRegistry wrapper
-│   │   │   ├── ability_stage               # Cangjie AbilityStage wrapper
-│   │   │   ├── error_manager               # Cangjie ErrorManager wrapper
-│   │   │   ├── ...
-│   │   │   └── ui_ability                  # Cangjie UIAbility and Context wrapper
-│   │   └── app.cj
+│   │   └── ability
+│   │       ├── ability_delegator_registry  # Cangjie AbilityDelegatorRegistry wrapper
+│   │       ├── ability_stage               # Cangjie AbilityStage wrapper
+│   │       ├── error_manager               # Cangjie ErrorManager wrapper
+│   │       └── ui_ability                  # Cangjie UIAbility and Context wrapper
 │   └── application
-│       ├── ...
 │       └── test_runner                     # Cangjie TestRunner wrapper
 └── test                                    # Cangjie test code
     └── APILevel22
