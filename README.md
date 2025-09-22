@@ -20,14 +20,6 @@ As shown in the architecture:
 - Cangjie Ability FFI interface: Based on cross-language interoperability via C interfaces to implement ability Cangjie API.
 - ability_runtime: It is responsible for providing basic functions of ability, and encapsulates C interfaces to provide interoperability for Cangjie.
 - access_token: Provides authorization modules for querying whether permissions have been granted.
-- Cangjie Interop API Public Repository: Provides definitions for APILevel and BusinessException classes.
-- ArkUI Framework Cangjie Interface: Provides Cangjie UI component interfaces and basic types. UIAbility is responsible for loading the UI interface.
-- hiviewdfx_cangjie_wrapper: Provides a logging system that allows applications/services to output log content according to specified levels, identifiers, and format strings.
-- global_cangjie_wrapper: Provides the capability to access application resources.
-- bundlemanager_cangjie_wrapper: Provides the capability to obtain application package information.
-- communication_cangjie_wrapper: Provides data formats used for communication, including basic types and arrays, IPC objects, interface descriptors, and custom serializable objects.
-- multimedia_cangjie_wrapper: Provides the capability to use media resources.
-- Window Cangjie Interface: Provides window instance management capabilities.
 
 ## Directory Structure
 
@@ -54,6 +46,14 @@ foundation/ability/ability_cangjie_wrapper
 │       ├── ...
 │       └── test_runner                     # Cangjie TestRunner wrapper
 └── test                                    # Cangjie test code
+    └── APILevel22
+        ├── ability_delegator               # Cangjie AbilityDelegator test code
+        ├── ability_delegator_registry      # Cangjie AbilityDelegator test code
+        ├── ability_stage                   # Cangjie AbilityStage test code  
+        ├── app_recovery                    # Cangjie app recovery test code  
+        ├── base_context                    # Cangjie Context test code
+        ├── error_manager                   # Cangjie ErrorManager test code
+        └── ui_ability_context              # Cangjie UIAbilityContext test code
 ```
 
 
@@ -75,7 +75,7 @@ The following features are not provided yet:
  - InsightIntent Module.
  - Startup Module.
 
-For Ability-related APIs, please refer to [ohos.app.ability (Ability)](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/API_Reference/source_en/apis/AbilityKit/cj-apis-ability.md). For relevant guidance, please refer to [Ability Kit Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_en/application-models/cj-abilitykit-overview.md).
+For Ability-related APIs, please refer to [ohos.app.ability (Ability)](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/API_Reference/source_en/apis/AbilityKit). For relevant guidance, please refer to [Ability Kit Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_en/application-models/cj-abilitykit-overview.md).
 
 ## Code Contribution
 
@@ -93,6 +93,8 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 
 [hiviewdfx_hiviewdfx_cangjie_wrapper](https://gitcode.com/openharmony-sig/hiviewdfx_hiviewdfx_cangjie_wrapper)
 
+[accesscontrol_accesscontrol_cangjie_wrapper](https://gitcode.com/openharmony-sig/accesscontrol_accesscontrol_cangjie_wrapper)
+
 [global_global_cangjie_wrapper](https://gitcode.com/openharmony-sig/global_global_cangjie_wrapper)
 
 [bundlemanager_bundlemanager_cangjie_wrapper](https://gitcode.com/openharmony-sig/bundlemanager_bundlemanager_cangjie_wrapper)
@@ -102,3 +104,5 @@ Developers are welcome to contribute code, documentation, etc. For specific cont
 [multimedia_multimedia_cangjie_wrapper](https://gitcode.com/openharmony-sig/multimedia_multimedia_cangjie_wrapper)
 
 [window_window_cangjie_wrapper](https://gitcode.com/openharmony-sig/window_window_cangjie_wrapper)
+
+[testfwk_testfwk_cangjie_wrapper](https://gitcode.com/openharmony-sig/testfwk_testfwk_cangjie_wrapper)
