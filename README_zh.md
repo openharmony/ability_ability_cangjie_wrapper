@@ -76,7 +76,7 @@ foundation/ability/ability_cangjie_wrapper
   - 启动任务的相关能力。
 
 
-元能力相关API请参见[仓颉元能力API文档](doc/API_Reference/source_zh_cn/apis/AbilityKit)，相关指导请参见[程序框架服务开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_zh_cn/application-models/cj-abilitykit-overview.md)。
+元能力相关API请参见[仓颉元能力API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/API_Reference/source_zh_cn/apis/AbilityKit)，相关指导请参见[程序框架服务开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_zh_cn/application-models/cj-abilitykit-overview.md)。
 
 ## 参与贡献
 
