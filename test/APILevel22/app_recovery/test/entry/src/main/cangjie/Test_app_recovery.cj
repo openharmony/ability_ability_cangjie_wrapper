@@ -19,12 +19,12 @@
 package ohos_app_cangjie_entry
 
 import std.unittest.testmacro.*
-internal import kit.AbilityKit.restartApp
+internal import AbilityKit.restartApp
 import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
 import ohos.base.*
-import kit.AbilityKit.Want
+import AbilityKit.Want
 
 @Test
 class Test_app_recovery {

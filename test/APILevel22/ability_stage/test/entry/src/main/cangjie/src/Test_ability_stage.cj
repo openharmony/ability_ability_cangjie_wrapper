@@ -19,11 +19,11 @@
 package ohos_app_cangjie_entry
 
 import std.unittest.testmacro.*
-internal import kit.AbilityKit.*
+internal import AbilityKit.*
 import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
-import kit.PerformanceAnalysisKit.Hilog
+import PerformanceAnalysisKit.Hilog
 
 @Test
 class Test_ability_stage {

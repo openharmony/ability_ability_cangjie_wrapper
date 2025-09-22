@@ -23,10 +23,10 @@ import std.unittest.common.*
 import std.unittest.testmacro.*
 import ohos.base.*
 import std.convert.*
-import kit.AbilityKit.*
-import kit.TestKit.*
+import AbilityKit.*
+import TestKit.*
 import std.runtime.gc
-import kit.PerformanceAnalysisKit.Hilog
+import PerformanceAnalysisKit.Hilog
 
 @Test
 class Test_ability_delegator {
