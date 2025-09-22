@@ -19,25 +19,25 @@
 package ohos_app_cangjie_entry
 
 import std.unittest.testmacro.*
-import kit.AbilityKit.{MemoryLevel, Want, UIAbilityContext, LastExitReason, OnContinueResult, ResultCode,
+import AbilityKit.{MemoryLevel, Want, UIAbilityContext, LastExitReason, OnContinueResult, ResultCode,
     LaunchReason, LaunchParam}
 import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
 import ohos.base.*
 //import ohos.business_exception.{BusinessException, AsyncCallback}
-import kit.TestKit.AbilityDelegatorRegistry
-import kit.AbilityKit.UIAbility
+import TestKit.AbilityDelegatorRegistry
+import AbilityKit.UIAbility
 import kit.ArkUI.{WindowStage}
-import kit.AbilityKit.StartOptions
-import kit.AbilityKit.WindowMode
-import kit.AbilityKit.AbilityResult
+import AbilityKit.StartOptions
+import AbilityKit.WindowMode
+import AbilityKit.AbilityResult
 import stdx.encoding.json.*
 import std.collection.HashMap
-import kit.AbilityKit.RequestResult
-import kit.AbilityKit.Params
-import kit.AbilityKit.Flags
-import kit.PerformanceAnalysisKit.Hilog
+import AbilityKit.RequestResult
+import AbilityKit.Params
+import AbilityKit.Flags
+import PerformanceAnalysisKit.Hilog
 import ohos.business_exception.*
 import std.runtime.gc
 

@@ -19,7 +19,7 @@
 package ohos_app_cangjie_entry
 
 import std.unittest.testmacro.*
-import kit.AbilityKit.{ErrorManager, ErrorManagerEvent, ErrorObserver}
+import AbilityKit.{ErrorManager, ErrorManagerEvent, ErrorObserver}
 import ohos.base.Main
 import std.unittest.*
 import std.unittest.common.*

@@ -15,11 +15,11 @@
 
 package ohos_app_cangjie_entry
 
-import kit.AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason}
+import AbilityKit.{UIAbility, AbilityStage, Want, LaunchParam, LaunchReason}
 import kit.ArkUI.{WindowStage}
 import ohos.arkui.state_management.AppStorage
-import kit.AbilityKit.UIAbilityContext
-import kit.PerformanceAnalysisKit.Hilog
+import AbilityKit.UIAbilityContext
+import PerformanceAnalysisKit.Hilog
 
 class MainAbility <: UIAbility {
     public init() {
