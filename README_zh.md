@@ -29,21 +29,14 @@ foundation/ability/ability_cangjie_wrapper
 ├── kit                                     # 仓颉AbilityKit的kit化代码
 │   └── AbilityKit
 ├── ohos                                    # 仓颉元能力接口实现   
-│   ├── BUILD.gn
 │   ├── ability                             # 仓颉元能力依赖类型的定义 
 │   ├── app
-│   │   ├── BUILD.gn
-│   │   ├── ability
-│   │   │   ├── BUILD.gn
-│   │   │   ├── ability.cj
-│   │   │   ├── ability_delegator_registry  # 仓颉自动化测试框架管理封装
-│   │   │   ├── ability_stage               # 仓颉组件管理器封装 
-│   │   │   ├── error_manager               # 仓颉错误观测管理封装
-│   │   │   ├── ...
-│   │   │   └── ui_ability                  # 仓颉UIAbility及应用上下文封装
-│   │   └── app.cj
+│   │   └── ability
+│   │       ├── ability_delegator_registry  # 仓颉自动化测试框架管理封装
+│   │       ├── ability_stage               # 仓颉组件管理器封装 
+│   │       ├── error_manager               # 仓颉错误观测管理封装
+│   │       └── ui_ability                  # 仓颉UIAbility及应用上下文封装
 │   └── application
-│       ├── ...
 │       └── test_runner                     # 仓颉测试框架封装
 └── test                                    # 仓颉测试代码
     └── APILevel22
