@@ -43,7 +43,7 @@
       "build": {
         "sub_component": [
           "//foundation/ability/ability_cangjie_wrapper/ohos:ability_package",
-          "//foundation/ability/ability_cangjie_wrapper/kit/AbilityKit:kit.AbilityKit"
+          "//foundation/ability/ability_cangjie_wrapper/kit/AbilityKit:AbilityKit"
         ],
         "inner_api": [
           {
