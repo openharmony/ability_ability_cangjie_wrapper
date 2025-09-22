@@ -29,7 +29,7 @@ import kit.PerformanceAnalysisKit.Hilog
 class Test_ability_stage {
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_callback() {
         sleepFor(100 * Duration.millisecond)
         let contex = AbilityStage()

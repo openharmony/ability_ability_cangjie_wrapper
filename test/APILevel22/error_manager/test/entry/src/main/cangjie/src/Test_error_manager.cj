@@ -37,7 +37,7 @@ var id: Int32 = 0
 class Test_error_manager {
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_error_manager_on() {
         try {
             id = ErrorManager.on(ErrorManagerEvent.Error, observer)
@@ -47,7 +47,7 @@ class Test_error_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_error_manager_on_not_main_thread() {
         try {
             id = ErrorManager.on(ErrorManagerEvent.Error, observer)
@@ -57,7 +57,7 @@ class Test_error_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_error_manager_off() {
         spawn (Main) {
             try {
@@ -69,7 +69,7 @@ class Test_error_manager {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_error_manager_off_not_main_thread() {
         try {
             ErrorManager.off(ErrorManagerEvent.Error, id)

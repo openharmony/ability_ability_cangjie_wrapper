@@ -33,7 +33,7 @@ import kit.TestKit.{AbilityDelegator, AbilityDelegatorRegistry}
 @Test
 class Test_base_context {
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_filesDir() {
         var filesDir = getAbilityContext().filesDir
         Hilog.info(0, "cangjie", "abilityContext filesDir:${filesDir}")
@@ -47,7 +47,7 @@ class Test_base_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func area() {
         var filesDir = getAbilityContext().filesDir
         Hilog.info(0, "cangjie", "abilityContext filesDir:${filesDir}")
@@ -63,7 +63,7 @@ class Test_base_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_AreaMode() {
         let enumArray: Array<AreaMode> = [
             AreaMode.El1,
@@ -86,7 +86,7 @@ class Test_base_context {
 
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_applicationInfo() {
         Hilog.info(0, "cangjie", "abilityContext applicationInfo:${getAbilityContext().applicationInfo.codePath}")
         @Expect(getAbilityContext().applicationInfo.codePath, "/data/app/el1/bundle/public/com.example.myapplication")
@@ -101,7 +101,7 @@ class Test_base_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_resourceManager() {
         var rmgr = getAbilityContext().resourceManager
 
@@ -111,7 +111,7 @@ class Test_base_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_wantConstant() {
         @Expect(AbilityBackToOtherMissionStack.getValue(), "ability.params.backToOtherMissionStack")
         @Expect(AbilityRecoveryRestart.getValue(), "ohos.ability.params.abilityRecoveryRestart")
@@ -129,7 +129,7 @@ class Test_base_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_wantValue() {
         var wantType = Int64Value(2)
         wantType = Float64Value(2.0)

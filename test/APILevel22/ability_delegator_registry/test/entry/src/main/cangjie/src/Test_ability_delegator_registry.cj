@@ -34,7 +34,7 @@ class Test_ability_delegator_registry {
         sleepFor(Duration.second)
     }
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_getArguments() {
         let delegatorRegistry = AbilityDelegatorRegistry()
         let args = AbilityDelegatorRegistry.getArguments()
@@ -50,7 +50,7 @@ class Test_ability_delegator_registry {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_setArguments() {
         let args = AbilityDelegatorRegistry.getArguments()
         args.bundleName = ""
@@ -60,7 +60,7 @@ class Test_ability_delegator_registry {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_waitMonitor() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         try {
@@ -69,7 +69,7 @@ class Test_ability_delegator_registry {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_waitMonitor2() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         try {

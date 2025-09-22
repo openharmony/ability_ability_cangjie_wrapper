@@ -29,7 +29,7 @@ import kit.AbilityKit.Want
 @Test
 class Test_app_recovery {
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_app_recovery() {
         restartApp()
     }
