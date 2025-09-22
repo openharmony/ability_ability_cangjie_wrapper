@@ -30,6 +30,7 @@
         "components": [
             "ability_runtime",
             "access_token",
+            "accesscontrol_cangjie_wrapper",
             "cangjie_ark_interop",
             "arkui_cangjie_wrapper",
             "hiviewdfx_cangjie_wrapper",
@@ -37,7 +38,8 @@
             "communication_cangjie_wrapper",
             "global_cangjie_wrapper",
             "multimedia_cangjie_wrapper",
-            "window_cangjie_wrapper"
+            "window_cangjie_wrapper",
+            "testfwk_cangjie_wrapper"
          ]
       },
       "build": {
