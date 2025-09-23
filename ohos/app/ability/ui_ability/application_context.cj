@@ -103,7 +103,7 @@ func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Un
  * @relation declare class ApplicationContext extends Context
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ApplicationContext <: Context {

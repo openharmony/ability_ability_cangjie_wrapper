@@ -66,7 +66,7 @@ class ContextImpl {}
  * @relation declare class Context extends BaseContext
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class Context <: BaseContext {
@@ -87,7 +87,7 @@ public open class Context <: BaseContext {
     * @relation resourceManager: resmgr.ResourceManager
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop resourceManager: ResourceManager {
@@ -108,7 +108,7 @@ public open class Context <: BaseContext {
     * @relation applicationInfo: ApplicationInfo
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop applicationInfo: ApplicationInfo {
@@ -131,7 +131,7 @@ public open class Context <: BaseContext {
     * @relation filesDir: string
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop filesDir: String {
@@ -152,7 +152,7 @@ public open class Context <: BaseContext {
     * @relation area: contextConstant.AreaMode
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop area: AreaMode {

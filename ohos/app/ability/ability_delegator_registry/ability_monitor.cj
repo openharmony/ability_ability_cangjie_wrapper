@@ -103,7 +103,7 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
  * @relation export interface AbilityMonitor
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityMonitor <: FFIData {
@@ -113,7 +113,7 @@ public class AbilityMonitor <: FFIData {
         * @relation abilityName: string
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var abilityName: String
@@ -123,7 +123,7 @@ public class AbilityMonitor <: FFIData {
         * @relation moduleName?: string
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var moduleName: String
@@ -133,7 +133,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onAbilityCreate?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityCreate: ?(UIAbility) -> Unit
@@ -143,7 +143,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onAbilityForeground?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityForeground: ?(UIAbility) -> Unit
@@ -153,7 +153,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onAbilityBackground?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityBackground: ?(UIAbility) -> Unit
@@ -163,7 +163,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onAbilityDestroy?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityDestroy: ?(UIAbility) -> Unit
@@ -173,7 +173,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onWindowStageCreate?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageCreate: ?(UIAbility) -> Unit
@@ -183,7 +183,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onWindowStageRestore?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageRestore: ?(UIAbility) -> Unit
@@ -193,7 +193,7 @@ public class AbilityMonitor <: FFIData {
         * @relation onWindowStageDestroy?: (ability: UIAbility) => void
         */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageDestroy: ?(UIAbility) -> Unit
@@ -202,7 +202,7 @@ public class AbilityMonitor <: FFIData {
      * AbilityMonitor constructor.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(

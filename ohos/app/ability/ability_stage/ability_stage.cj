@@ -129,7 +129,7 @@ class AbilityStageImpl {}
  * @relation declare class AbilityStage
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class AbilityStage <: FFIData {
@@ -142,7 +142,7 @@ public open class AbilityStage <: FFIData {
     * register AbilityStage
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func registerCreator(moduleName: String, creator: () -> AbilityStage): Unit {
@@ -174,7 +174,7 @@ public open class AbilityStage <: FFIData {
     * @relation context: AbilityStageContext
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop context: AbilityStageContext {
@@ -210,7 +210,7 @@ public open class AbilityStage <: FFIData {
     * @relation onCreate(): void
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onCreate(): Unit {}

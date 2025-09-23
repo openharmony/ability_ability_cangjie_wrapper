@@ -73,7 +73,7 @@ struct CJAbilityStageInfo {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum AbilityLifecycleState {
@@ -83,7 +83,7 @@ public enum AbilityLifecycleState {
      * @relation UNINITIALIZED = 0
      */    
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Uninitialized
@@ -94,7 +94,7 @@ public enum AbilityLifecycleState {
      * @relation CREATE = 1
      */       
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Create
@@ -105,7 +105,7 @@ public enum AbilityLifecycleState {
      * @relation FOREGROUND = 2
      */   
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Foreground
@@ -116,7 +116,7 @@ public enum AbilityLifecycleState {
      * @relation BACKGROUND = 3
      */  
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Background
@@ -127,7 +127,7 @@ public enum AbilityLifecycleState {
      * @relation DESTROY = 4
      */  
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Destroy
@@ -275,7 +275,7 @@ struct CRecord {
  * @relation declare namespace abilityDelegatorRegistry
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityDelegatorRegistry {
@@ -288,7 +288,7 @@ public class AbilityDelegatorRegistry {
      * @relation function getAbilityDelegator(): AbilityDelegator
      */    
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func getAbilityDelegator(): AbilityDelegator {
@@ -308,7 +308,7 @@ public class AbilityDelegatorRegistry {
      * @relation function getArguments(): AbilityDelegatorArgs
      */  
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func getArguments(): AbilityDelegatorArgs {
@@ -333,7 +333,7 @@ public class AbilityDelegatorRegistry {
  * @relation export interface ShellCmdResult
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ShellCmdResult <: RemoteDataLite {
@@ -352,7 +352,7 @@ public class ShellCmdResult <: RemoteDataLite {
      * @relation exitCode: number
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop exitCode: Int32 {
@@ -373,7 +373,7 @@ public class ShellCmdResult <: RemoteDataLite {
      * @relation stdResult: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop stdResult: String {
@@ -398,7 +398,7 @@ public class ShellCmdResult <: RemoteDataLite {
  * @relation export interface AbilityDelegator
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityDelegator <: RemoteDataLite {
@@ -432,7 +432,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation startAbility(want: Want): Promise<void>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbility(want: Want): Unit {
@@ -449,7 +449,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation executeShellCommand(cmd: string, timeoutSecs?: number): Promise<ShellCmdResult>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdResult {
@@ -468,7 +468,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation getAppContext(): Context
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func getAppContext(): Context {
@@ -486,7 +486,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation finishTest(msg: string, code: number): Promise<void>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func finishTest(msg: String, code: Int64): Unit {
@@ -506,7 +506,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation addAbilityMonitorSync(monitor: AbilityMonitor): void
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func addAbilityMonitor(monitor: AbilityMonitor): Unit {
@@ -531,7 +531,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation removeAbilityMonitorSync(monitor: AbilityMonitor): void
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func removeAbilityMonitor(monitor: AbilityMonitor): Unit {
@@ -557,7 +557,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility {
@@ -587,7 +587,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
@@ -613,7 +613,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
@@ -640,7 +640,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise<AbilityStage>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int64 = 5000): AbilityStage {
@@ -670,7 +670,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation printSync(msg: string): void
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func print(msg: String): Unit {
@@ -690,7 +690,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation getAbilityState(ability: UIAbility): number
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func getAbilityState(ability: UIAbility): AbilityLifecycleState {
@@ -712,7 +712,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation getCurrentTopAbility(): Promise<UIAbility>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func getCurrentTopAbility(): UIAbility {
@@ -735,7 +735,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation doAbilityForeground(ability: UIAbility): Promise<void>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func doAbilityForeground(ability: UIAbility): Unit {
@@ -758,7 +758,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @relation doAbilityBackground(ability: UIAbility): Promise<void>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func doAbilityBackground(ability: UIAbility): Unit {
@@ -780,7 +780,7 @@ public class AbilityDelegator <: RemoteDataLite {
  * @relation export interface AbilityDelegatorArgs
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityDelegatorArgs <: RemoteDataLite {
@@ -803,7 +803,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @relation bundleName: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop bundleName: String {
@@ -834,7 +834,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @relation parameters: Record<string, string>
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop parameters: HashMap<String, String> {
@@ -864,7 +864,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @relation testCaseNames: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop testCaseNames: String {
@@ -895,7 +895,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @relation testRunnerClassName: string
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop testRunnerClassName: String {

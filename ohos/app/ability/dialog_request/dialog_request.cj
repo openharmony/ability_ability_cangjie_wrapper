@@ -24,7 +24,7 @@ import ohos.labels.*
 * @relation export enum ResultCode
 */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum ResultCode {
@@ -34,7 +34,7 @@ public enum ResultCode {
      * @relation RESULT_OK = 0
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     ResultOk
@@ -45,7 +45,7 @@ public enum ResultCode {
      * @relation RESULT_CANCEL = 1
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     ResultCancel
@@ -75,7 +75,7 @@ public enum ResultCode {
 * @relation export interface RequestResult
 */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class RequestResult {
@@ -85,7 +85,7 @@ public class RequestResult {
      * @relation result: ResultCode
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var result: ResultCode
@@ -96,7 +96,7 @@ public class RequestResult {
      * @relation want?: Want
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var want: Want
