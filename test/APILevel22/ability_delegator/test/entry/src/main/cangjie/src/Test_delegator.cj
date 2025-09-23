@@ -35,7 +35,7 @@ class Test_ability_delegator {
         sleepFor(Duration.second)
     }
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_delegator_changeAbilityState() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         sleepFor(1.second)
@@ -63,7 +63,7 @@ class Test_ability_delegator {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_delegator_startNewAbility() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let entryAbility = delegator.getCurrentTopAbility()
@@ -169,7 +169,7 @@ class Test_ability_delegator {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_enum_AbilityLifecycleState() {
         let enumArray: Array<AbilityLifecycleState> = [
             AbilityLifecycleState.Uninitialized,

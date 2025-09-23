@@ -44,7 +44,7 @@ import std.runtime.gc
 @Test
 class Test_ui_ability_context {
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_interop() {
         let uiabilityCtxInterOp = getUIAbilityContextInterOp()
         let abilityStageCtxInterOp = getAbilityStageContextInterOp()
@@ -55,7 +55,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_ability_prop() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         sleepFor(2.second)
@@ -66,7 +66,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_AbilityContext_startAbility() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let oldAbility = delegator.getCurrentTopAbility()
@@ -94,7 +94,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_AbilityContext_startAbilityForResult() {
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
         let oldAbility = delegator.getCurrentTopAbility()
@@ -136,7 +136,7 @@ class Test_ui_ability_context {
 
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_enumCheck() {
         Hilog.info(0, "CangjieTest", MemoryLevel.MemoryLevelLow.toString())
         let memoryLevel = MemoryLevel.MemoryLevelLow
@@ -144,7 +144,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_startAbility1() {
         sleepFor(100 * Duration.millisecond)
         try {
@@ -158,7 +158,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_startAbility2() {
         sleepFor(100 * Duration.millisecond)
         try {
@@ -172,7 +172,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_startAbility3() {
         sleepFor(100 * Duration.millisecond)
         try {
@@ -186,14 +186,14 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_UIAbility() {
         let ability = UIAbility()
         let want = Want(bundleName: "com.example.myapplication", abilityName: "EntryAbility")
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_DialogRequestResult_two() {
         let context = getAbilityContext()
         let delegator = AbilityDelegatorRegistry.getAbilityDelegator()
@@ -215,7 +215,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_LaunchReason() {
         let enumArray: Array<LaunchReason> = [
             LaunchReason.Unknown,
@@ -226,7 +226,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_LastExitReason() {
         let enumArray: Array<LastExitReason> = [
             LastExitReason.Unknown,
@@ -236,7 +236,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_OnContinueResult() {
         let enumArray: Array<OnContinueResult> = [
             OnContinueResult.Agree,
@@ -245,7 +245,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_WindowMode() {
         let enumArray: Array<WindowMode> = [
             WindowMode.WindowModeFullscreen,
@@ -254,7 +254,7 @@ class Test_ui_ability_context {
     }
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_MemoryLevel() {
         let enumArray: Array<MemoryLevel> = [
             MemoryLevel.MemoryLevelModerate,
@@ -273,7 +273,7 @@ class Test_ui_ability_context {
 
 
     @TestCase
-    @Tag[APILevel21, TestLevel0]
+    @Tag[APILevel22, TestLevel0]
     func test_ResultCode() {
         let enumArray: Array<ResultCode> = [
             ResultCode.ResultOk,
