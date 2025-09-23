@@ -19,7 +19,17 @@
 - 自动化测试框架管理：开发者可通过此模块来监视指定的Ability的生命周期状态更改和获取测试参数。
 - 仓颉元能力FFI接口定义：负责定义C语言互操作仓颉接口，用于实现仓颉元能力的能力。
 - 元能力基础框架模块：负责提供元能力基础功能，封装C语言接口提供给仓颉进行互操作。
-- 访问控制部件：提供鉴权模块，供查询权限是否获取。
+- 访问控制部件：负责提供鉴权模块，用于在应用上下文中鉴定权限是否被授予。
+- cangjie_ark_interop：负责提供仓颉注解类定义，用于对API进行标注。以及提供抛向用户的BusinessException异常类定义。
+- arkui_cangjie_wrapper：负责提供仓颉UI组件接口及基础类型。应用上下文依赖其中的基础类型的定义和解析。
+- hiviewdfx_cangjie_wrapper：负责提供日志接口，用于在关键路径处打印日志。
+- global_cangjie_wrapper：提供应用资源获取的能力，用户可通过应用上下文实例获取ResourceManager实例。
+- bundlemanager_cangjie_wrapper：提供获取应用包信息的定义，用户可通过应用上下文获取ApplicationInfo和HapModuleInfo。
+- communication_cangjie_wrapper：提供基础类型及数组、IPC对象、接口描述符和自定义序列化对象等用来通信的数据格式。应用上下文依赖其中的IRemoteObject进行通信。
+- multimedia_cangjie_wrapper：提供使用媒体资源的能力。应用上下文依赖其中的PixelMap以设置任务图标。
+- window_cangjie_wrapper：提供窗口实例管理能力。UIAbility依赖其中的WindowStage以加载UI组件。
+- accesscontrol_cangjie_wrapper：提供应用程序的权限校验、申请和管理能力。ability_cangjie_wrapper中定义的AbilityKit包含此模块。
+- testfwk_cangjie_wrapper：提供单元测试框架以及UI测试框架。自动化测试框架管理封装依赖其中的UI测试框架。
 
 ## 目录
 
@@ -39,14 +49,13 @@ foundation/ability/ability_cangjie_wrapper
 │   └── application
 │       └── test_runner                     # 仓颉测试框架封装
 └── test                                    # 仓颉测试代码
-    └── APILevel22
-        ├── ability_delegator               # 仓颉自动化测试框架管理接口测试用例
-        ├── ability_delegator_registry      # 仓颉自动化测试框架管理接口测试用例
-        ├── ability_stage                   # 仓颉组件管理器测试用例  
-        ├── app_recovery                    # 仓颉应用恢复测试用例  
-        ├── base_context                    # 仓颉应用上下文测试用例  
-        ├── error_manager                   # 仓颉错误管理测试用例
-        └── ui_ability_context              # 仓颉UI能力上下文测试用例
+    ├── ability_delegator                   # 仓颉自动化测试框架管理接口测试用例
+    ├── ability_delegator_registry          # 仓颉自动化测试框架管理接口测试用例
+    ├── ability_stage                       # 仓颉组件管理器测试用例  
+    ├── app_recovery                        # 仓颉应用恢复测试用例  
+    ├── base_context                        # 仓颉应用上下文测试用例  
+    ├── error_manager                       # 仓颉错误管理测试用例
+    └── ui_ability_context                  # 仓颉UI能力上下文测试用例
 ```
 
 
@@ -66,7 +75,7 @@ foundation/ability/ability_cangjie_wrapper
 
   - 支持特定场景拓展能力的ExtensionAbility。
   - 对接端侧意图框架的意图执行基类。
-  - 启动任务的相关能力。
+  - 应用启动框架AppStartup的相关能力。
 
 
 元能力相关API请参见[仓颉元能力API文档](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/API_Reference/source_zh_cn/apis/AbilityKit)，相关指导请参见[程序框架服务开发指南](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_zh_cn/application-models/cj-abilitykit-overview.md)。
