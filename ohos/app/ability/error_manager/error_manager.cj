@@ -36,7 +36,7 @@ const CALLER_ERROR_ERR_MSG: String = "Caller error. Caller from non-main thread.
 * Error manager event type.
 */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum ErrorManagerEvent {
@@ -44,7 +44,7 @@ public enum ErrorManagerEvent {
      * Error event.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Error
@@ -64,7 +64,7 @@ public enum ErrorManagerEvent {
  * @relation declare namespace errorManager
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ErrorManager {
@@ -78,7 +78,7 @@ public class ErrorManager {
     * @relation function on(type: 'error', observer: ErrorObserver): number
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32 {
@@ -110,7 +110,7 @@ public class ErrorManager {
     * @relation function off(type: 'error', observerId: number): Promise<void>
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit {

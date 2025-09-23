@@ -22,7 +22,7 @@ import ohos.labels.*
 * Error object.
 */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ErrorObject {
@@ -30,7 +30,7 @@ public class ErrorObject {
     * Error object name.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let name: String
@@ -38,7 +38,7 @@ public class ErrorObject {
     * Error object message.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let message: String
@@ -46,7 +46,7 @@ public class ErrorObject {
     * Error object stack.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let stack: Option<String>
@@ -74,7 +74,7 @@ public class ErrorObject {
  * @relaiton export default class ErrorObserver
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ErrorObserver {
@@ -84,7 +84,7 @@ public class ErrorObserver {
     * @relation onUnhandledException(errMsg: string): void
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onUnhandledException: (String) -> Unit
@@ -94,7 +94,7 @@ public class ErrorObserver {
     * @relation onException?(errObject: Error): void
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onException: Option<(ErrorObject) -> Unit>
@@ -103,7 +103,7 @@ public class ErrorObserver {
     * ErrorObserver constructor.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(

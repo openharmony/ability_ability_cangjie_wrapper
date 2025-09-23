@@ -26,7 +26,7 @@ class BaseContextImpl {}
  * @relation export default abstract class BaseContext
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class BaseContext <: RemoteData {
@@ -36,7 +36,7 @@ public abstract class BaseContext <: RemoteData {
     * @relation stageMode: boolean
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let stageMode: Bool

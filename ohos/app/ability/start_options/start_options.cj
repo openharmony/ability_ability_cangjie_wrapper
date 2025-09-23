@@ -30,7 +30,7 @@ class StartOptionsImpl {}
  * @relation export default class StartOptions
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class StartOptions {
@@ -42,7 +42,7 @@ public open class StartOptions {
     * @relation windowMode?: number
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var windowMode: ?WindowMode
@@ -53,7 +53,7 @@ public open class StartOptions {
     * @relation displayId?: number
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var displayId: Int32
@@ -80,7 +80,7 @@ public open class StartOptions {
     * StartOptions constructor.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(

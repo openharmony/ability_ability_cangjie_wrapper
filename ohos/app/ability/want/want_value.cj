@@ -23,7 +23,7 @@ import ohos.labels.*
 * Want value type.
 */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum WantValueType {
@@ -31,7 +31,7 @@ public enum WantValueType {
     * Int64 value type.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     Int64Value(Int64)
@@ -40,7 +40,7 @@ public enum WantValueType {
     * Float64 value type.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     Float64Value(Float64)
@@ -49,7 +49,7 @@ public enum WantValueType {
     * String value type.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     StringValue(String)
@@ -58,7 +58,7 @@ public enum WantValueType {
     * Bool value type.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     BoolValue(Bool)
@@ -67,7 +67,7 @@ public enum WantValueType {
     * Array value type.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ArrayValue(Array<WantValueType>)
@@ -76,7 +76,7 @@ public enum WantValueType {
     * HashMap value type.
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     HashMapValue(HashMap<String, WantValueType>)

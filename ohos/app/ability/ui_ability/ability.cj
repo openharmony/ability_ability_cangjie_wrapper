@@ -27,7 +27,7 @@ class AbilityImpl {}
  * @relation declare class Ability
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
 ]
 abstract sealed class Ability <: FFIData {
@@ -38,7 +38,7 @@ abstract sealed class Ability <: FFIData {
     * register Ability
     */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public static func registerCreator(name: String, creator: () -> Ability): Unit {

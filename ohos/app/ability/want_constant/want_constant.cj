@@ -25,7 +25,7 @@ import ohos.labels.*
 */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum Params {
@@ -36,7 +36,7 @@ public enum Params {
      * @relation ABILITY_BACK_TO_OTHER_MISSION_STACK = 'ability.params.backToOtherMissionStack'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     AbilityBackToOtherMissionStack
@@ -47,7 +47,7 @@ public enum Params {
      * @relation ABILITY_RECOVERY_RESTART = 'ohos.ability.params.abilityRecoveryRestart'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     AbilityRecoveryRestart
@@ -58,7 +58,7 @@ public enum Params {
      * @relation CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ContentTitleKey
@@ -69,7 +69,7 @@ public enum Params {
      * @relation SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ShareAbstractKey
@@ -80,7 +80,7 @@ public enum Params {
      * @relation SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ShareUrlKey
@@ -93,7 +93,7 @@ public enum Params {
      * @relation SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     SupportContinuePageStackKey
@@ -106,7 +106,7 @@ public enum Params {
      * SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     SupportContinueSourceExitKey
@@ -118,7 +118,7 @@ public enum Params {
      * @throws { IllegalArgumentException } - The type is not supported.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public func getValue(): String {
@@ -142,7 +142,7 @@ public enum Params {
 */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum Flags {
@@ -152,7 +152,7 @@ public enum Flags {
      * @relation FLAG_AUTH_READ_URI_PERMISSION = 0x00000001
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagAuthReadUriPermission
@@ -163,7 +163,7 @@ public enum Flags {
      * @relation FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagAuthWriteUriPermission
@@ -174,7 +174,7 @@ public enum Flags {
      * @relation FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagAuthPersistableUriPermission
@@ -185,7 +185,7 @@ public enum Flags {
      * @relation FLAG_INSTALL_ON_DEMAND = 0x00000800
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagInstallOnDemand
@@ -196,7 +196,7 @@ public enum Flags {
      * @relation FLAG_START_WITHOUT_TIPS = 0x40000000
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagStartWithoutTips
@@ -208,7 +208,7 @@ public enum Flags {
      * @throws { IllegalArgumentException } - The type is not supported.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public func getValue(): UInt32 {
