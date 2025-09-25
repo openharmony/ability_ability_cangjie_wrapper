@@ -12,7 +12,7 @@ The ability_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based o
 
 As shown in the architecture:
 
-interface: Provides APIs for developers.
+interface:
 
 - UIAbility: UIAbility is an application component that has the UI. It provides lifecycle callbacks such as component creation, destruction, and foreground/background switching. Users can inherit this class to implement monitoring capabilities for UIAbility components.
 - Context: The Context provides the capabilities to obtain component information. The UIAbilityContext provides the capabilities to launch or destroy other UIAbility. Users can obtain relevant information or launch other UIAbility through UIAbilityContext.
@@ -27,7 +27,9 @@ frameworks:
 - AbilityStage wrapper: Cangjie component manager encapsulation, encapsulating the AbilityStage class to provide component management capabilities.
 - ErrorManager wrapper: Cangjie error observation management encapsulation, encapsulating the ErrorObserver class to provide error observation management capabilities.
 - AbilityDelegatorRegistry wrapper: Cangjie automated test framework management encapsulation, encapsulating the AbilityDelegator and TestRunner classes to provide automated test framework management capabilities.
-- Cangjie Ability FFI interface: Based on cross-language interoperability via C interfaces to implement ability Cangjie API.
+
+Dependency Component Introduction in Architecture:
+
 - ability_runtime: It is responsible for providing basic functions of ability, and encapsulates C interfaces to provide interoperability for Cangjie.
 - access_token: Provides authorization modules for querying whether permissions have been granted. Depends on its authorization module.
 - cangjie_ark_interop: Responsible for providing APILevel definitions, used for annotating APIs. Also provides the BusinessException exception class definition that is thrown to users.
