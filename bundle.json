@@ -58,6 +58,9 @@
             "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/want:ohos.app.ability.want"
           },
           {
+            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/start_options:ohos.app.ability.start_options"
+          },
+          {
             "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ability_delegator_registry:ohos.app.ability.ability_delegator_registry"
           },
           {
