@@ -72,7 +72,7 @@ extend Context <: SystemObjectInteropTypeToJS {
 ]
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext {
     let env = context.getNapiEnv()
-    let napiValue = arkTsValuetoNapiValue(env, input)
+    let napiValue = arktsValueToNapiValue(env, input)
     let remoteId = unsafe { FfiCreateUIAbilityContextFromNapi(env, napiValue) }
     return UIAbilityContext(remoteId)
 }
@@ -86,7 +86,7 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 ]
 public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext {
     let env = context.getNapiEnv()
-    let napiValue = arkTsValuetoNapiValue(env, input)
+    let napiValue = arktsValueToNapiValue(env, input)
     let remoteId = unsafe { FfiCreateAbilityStageContextFromNapi(env, napiValue) }
     return AbilityStageContext(remoteId)
 }
@@ -100,7 +100,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 ]
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext {
     let env = context.getNapiEnv()
-    let napiValue = arkTsValuetoNapiValue(env, input)
+    let napiValue = arktsValueToNapiValue(env, input)
     let remoteId = unsafe { FfiCreateApplicationContextFromNapi(env, napiValue) }
     return ApplicationContext(remoteId)
 }
@@ -114,7 +114,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 ]
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context {
     let env = context.getNapiEnv()
-    let napiValue = arkTsValuetoNapiValue(env, input)
+    let napiValue = arktsValueToNapiValue(env, input)
     let remoteId = unsafe { FfiCreateBaseContextFromNapi(env, napiValue) }
     return Context(remoteId)
 }
