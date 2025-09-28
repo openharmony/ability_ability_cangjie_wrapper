@@ -12,12 +12,24 @@ The ability_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based o
 
 As shown in the architecture:
 
+interface:
+
 - UIAbility: UIAbility is an application component that has the UI. It provides lifecycle callbacks such as component creation, destruction, and foreground/background switching. Users can inherit this class to implement monitoring capabilities for UIAbility components.
 - Context: The Context provides the capabilities to obtain component information. The UIAbilityContext provides the capabilities to launch or destroy other UIAbility. Users can obtain relevant information or launch other UIAbility through UIAbilityContext.
 - AbilityStage: AbilityStage is a component container at the module level. When the HAP or HSP of an application is loaded for the first time, an AbilityStage instance is created. You can use the instance to perform initialization operations such as resource preloading and thread creation at the module level.
 - ErrorManager: The ErrorManager Module provides the capabilities to register and unregister error observers. When users need to register or unregister an error observer, they can use the interfaces provided by this module.
 - AbilityDelegatorRegistry: Users can monitor lifecycle state changes of a specified Ability and obtain test parameters through the AbilityDelegatorRegistry Module.
-- Cangjie Ability FFI interface: Based on cross-language interoperability via C interfaces to implement ability Cangjie API.
+
+frameworks:
+
+- UIAbility wrapper: Implementation encapsulation of Cangjie UIAbility, providing a UIAbility class that users can inherit.
+- Context wrapper: Cangjie application context encapsulation, providing different context capabilities through Context and its subclasses.
+- AbilityStage wrapper: Cangjie component manager encapsulation, encapsulating the AbilityStage class to provide component management capabilities.
+- ErrorManager wrapper: Cangjie error observation management encapsulation, encapsulating the ErrorObserver class to provide error observation management capabilities.
+- AbilityDelegatorRegistry wrapper: Cangjie automated test framework management encapsulation, encapsulating the AbilityDelegator and TestRunner classes to provide automated test framework management capabilities.
+
+Dependency Component Introduction in Architecture:
+
 - ability_runtime: It is responsible for providing basic functions of ability, and encapsulates C interfaces to provide interoperability for Cangjie.
 - access_token: Provides authorization modules for querying whether permissions have been granted. Depends on its authorization module.
 - cangjie_ark_interop: Responsible for providing APILevel definitions, used for annotating APIs. Also provides the BusinessException exception class definition that is thrown to users.
@@ -70,18 +82,19 @@ The following features are provided:
   - AbilityDelegatorRegistry Module can be used to monitor lifecycle state changes of a specified Ability and obtain test parameters through.
   - Test cases can be run through the TestRunner Module.
 
+For Ability-related APIs, please refer to [ohos.app.ability (Ability)](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/API_Reference/source_en/apis/AbilityKit). For relevant guidance, please refer to [Ability Kit Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_en/application-models/cj-abilitykit-overview.md).
+
+## Code Contribution
+
+Developers are welcome to contribute code, documentation, etc. For specific contribution processes and methods, please refer to [Code Contribution](https://gitcode.com/openharmony/docs/blob/master/en/contribute/code-contribution.md).
+
+## Constraints
 
 The following features are not provided yet:
 
  - ExtensionAbility which for scenario-specific ExtensionAbilities.
  - InsightIntent Module.
  - AppStartup Module.
-
-For Ability-related APIs, please refer to [ohos.app.ability (Ability)](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/tree/master/doc/API_Reference/source_en/apis/AbilityKit). For relevant guidance, please refer to [Ability Kit Guide](https://gitcode.com/openharmony-sig/arkcompiler_cangjie_ark_interop/blob/master/doc/Dev_Guide/source_en/application-models/cj-abilitykit-overview.md).
-
-## Code Contribution
-
-Developers are welcome to contribute code, documentation, etc. For specific contribution processes and methods, please refer to [Code Contribution](https://gitcode.com/openharmony/docs/blob/master/en/contribute/code-contribution.md).
 
 ## Repositories Involved
 
