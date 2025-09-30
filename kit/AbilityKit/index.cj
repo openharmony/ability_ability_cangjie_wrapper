@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package AbilityKit
+package kit.AbilityKit
 
 public import ohos.app.ability.ability_constant.*
 public import ohos.app.ability.ability_stage.*
