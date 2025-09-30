@@ -15,7 +15,7 @@
 
 package ohos_app_cangjie_entry
 
-import AbilityKit.{AbilityStage, AbilityStageContext}
+import kit.AbilityKit.{AbilityStage, AbilityStageContext}
 import ohos.arkui.state_management.AppStorage
 
 class MyAbilityStage <: AbilityStage {
