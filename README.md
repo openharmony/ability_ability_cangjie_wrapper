@@ -1,4 +1,4 @@
-# ability_cangjie_wrapper
+# ability_cangjie_wrapper(beta feature)
 
 ## Overview
 
