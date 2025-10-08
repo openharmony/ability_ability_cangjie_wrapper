@@ -22,8 +22,6 @@ import ohos.labels.*
 
 /**
 * The constant for params of the want
-*
-* @relation export enum Params
 */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -34,8 +32,6 @@ public enum Params {
     /**
      * Indicates the ability in this want can back to the current top ability even though they are not in the same
      * mission stack
-     *
-     * @relation ABILITY_BACK_TO_OTHER_MISSION_STACK = 'ability.params.backToOtherMissionStack'
      */
     @!APILevel[
         22,
@@ -45,8 +41,6 @@ public enum Params {
     |
     /**
      * Indicates the param of ability failure restart recovery identification
-     *
-     * @relation ABILITY_RECOVERY_RESTART = 'ohos.ability.params.abilityRecoveryRestart'
      */
     @!APILevel[
         22,
@@ -56,8 +50,6 @@ public enum Params {
     |
     /**
      * Indicates the param of extra content title
-     *
-     * @relation CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'
      */
     @!APILevel[
         22,
@@ -67,8 +59,6 @@ public enum Params {
     |
     /**
      * Indicates the param of extra shared abstract
-     *
-     * @relation SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'
      */
     @!APILevel[
         22,
@@ -78,8 +68,6 @@ public enum Params {
     |
     /**
      * Indicates the param of extra shareURL
-     *
-     * @relation SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'
      */
     @!APILevel[
         22,
@@ -91,8 +79,6 @@ public enum Params {
      * Indicates the param of extra support continue page stack.
      * The default value of the param is true,
      * and the system will automatically flow the page stack information by default.
-     *
-     * @relation SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'
      */
     @!APILevel[
         22,
@@ -139,8 +125,6 @@ public enum Params {
 
 /**
 * Used to indicate how Want is handled.
-*
-* @relation export enum Flags
 */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -150,8 +134,6 @@ public enum Params {
 public enum Flags {
     /**
      * Indicates the grant to perform read operations on the URI.
-     *
-     * @relation FLAG_AUTH_READ_URI_PERMISSION = 0x00000001
      */
     @!APILevel[
         22,
@@ -161,8 +143,6 @@ public enum Flags {
     |
     /**
      * Indicates the grant to perform write operations on the URI.
-     *
-     * @relation FLAG_AUTH_WRITE_URI_PERMISSION = 0x00000002
      */
     @!APILevel[
         22,
@@ -172,8 +152,6 @@ public enum Flags {
     |
     /**
      * Indicates the grant for possible persisting on the URI.
-     *
-     * @relation FLAG_AUTH_PERSISTABLE_URI_PERMISSION = 0x00000040
      */
     @!APILevel[
         22,
@@ -183,8 +161,6 @@ public enum Flags {
     |
     /**
      * Install the specified ability if it's not installed.
-     *
-     * @relation FLAG_INSTALL_ON_DEMAND = 0x00000800
      */
     @!APILevel[
         22,
@@ -194,8 +170,6 @@ public enum Flags {
     |
     /**
      * Indicates that if implicit start ability couldn't match any application, no tip dialog will be pulled up.
-     *
-     * @relation FLAG_START_WITHOUT_TIPS = 0x40000000
      */
     @!APILevel[
         22,

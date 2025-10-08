@@ -64,8 +64,6 @@ class ContextImpl {}
 /**
  * The Context module, inherited frome BaseContext, provides context for abilities or applications, including
  * access to application-specific resources.
- *
- * @relation declare class Context extends BaseContext
  */
 @!APILevel[
     22,
@@ -85,8 +83,6 @@ public open class Context <: BaseContext {
 
     /**
     * Object for resource management.
-    *
-    * @relation resourceManager: resmgr.ResourceManager
     */
     @!APILevel[
         22,
@@ -106,8 +102,6 @@ public open class Context <: BaseContext {
 
     /**
     * Application information.
-    *
-    * @relation applicationInfo: ApplicationInfo
     */
     @!APILevel[
         22,
@@ -129,8 +123,6 @@ public open class Context <: BaseContext {
 
     /**
     * File directory.
-    *
-    * @relation filesDir: string
     */
     @!APILevel[
         22,
@@ -150,8 +142,6 @@ public open class Context <: BaseContext {
 
     /**
     * Encryption level of the directory.
-    *
-    * @relation area: contextConstant.AreaMode
     */
     @!APILevel[
         22,

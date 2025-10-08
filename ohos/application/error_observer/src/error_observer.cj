@@ -82,8 +82,6 @@ public class ErrorObject {
 public class ErrorObserver {
     /**
     * Will be called when the js runtime throws an exception which doesn't caught by user.
-    *
-    * @relation onUnhandledException(errMsg: string): void
     */
     @!APILevel[
         22,
@@ -92,8 +90,6 @@ public class ErrorObserver {
     public var onUnhandledException: (String) -> Unit
     /**
     * Will be called when the js runtime throws an exception which doesn't caught by user.
-    *
-    * @relation onException?(errObject: Error): void
     */
     @!APILevel[
         22,

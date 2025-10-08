@@ -24,8 +24,6 @@ import ohos.labels.*
 /**
  * Provide methods for matching monitored AbilityStage objects that meet specified conditions.
  * The most recently matched AbilityStage objects will be saved in the AbilityStageMonitor object.
- *
- * @relation export interface AbilityStageMonitor
  */
 @!APILevel[
     22,
@@ -34,8 +32,6 @@ import ohos.labels.*
 public class AbilityStageMonitor <: FFIData {
     /**
         * The module name of the abilityStage to monitor.
-        *
-        * @relation moduleName: string
         */        
     @!APILevel[
         22,
@@ -44,8 +40,6 @@ public class AbilityStageMonitor <: FFIData {
     public var moduleName: String
     /**
         * The source path of the abilityStage to monitor.
-        *
-        * @relation srcEntrance: string
         */
     @!APILevel[
         22,

@@ -25,8 +25,6 @@ protected const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0
 
 /**
 * File area mode
-*
-* @relation export enum AreaMode
 */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -36,8 +34,6 @@ protected const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0
 public enum AreaMode {
     /**
      * System level device encryption area
-     *
-     * @relation EL1 = 0
      */
     @!APILevel[
         22,
@@ -47,8 +43,6 @@ public enum AreaMode {
     | 
     /**
      * User credential encryption area
-     *
-     * @relation EL2 = 1
      */
     @!APILevel[
         22,
@@ -59,8 +53,6 @@ public enum AreaMode {
     /**
      * User credential encryption area
      * when screen locked, can read/write, and create file
-     *
-     * @relation EL3 = 2
      */
     @!APILevel[
         22,
@@ -72,8 +64,6 @@ public enum AreaMode {
      * User credential encryption area
      * when screen locked, FEB2.0 can read/write, FEB3.0 can't
      * read/write, and all can't create file
-     *
-     * @relation EL4 = 3
      */
     @!APILevel[
         22,
@@ -85,8 +75,6 @@ public enum AreaMode {
      * User privacy sensitive encryption area
      * when the screen locked, a closed file cannot be opened, read, or written,
      * a file can be created and then opened, read, or written.
-     *
-     * @relation EL5 = 4
      */
     @!APILevel[
         22,

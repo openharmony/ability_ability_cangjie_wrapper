@@ -22,8 +22,6 @@ import ohos.app.ability.want.*
 
 /**
  * AbilityResult
- *
- * @relation export interface AbilityResult
  */
 @!APILevel[
     22,
@@ -33,8 +31,6 @@ public class AbilityResult {
     /**
     * Indicates the result code returned after the ability is destroyed. You can define the result
     * code to identify an error.
-    *
-    * @relation resultCode: number
     */
     @!APILevel[
         22,
@@ -45,8 +41,6 @@ public class AbilityResult {
     /**
     * Indicates the data returned after the ability is destroyed. You can define the data returned.
     * This parameter can be null.
-    *
-    * @relation want?: Want
     */
     @!APILevel[
         22,
