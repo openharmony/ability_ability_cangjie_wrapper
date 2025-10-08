@@ -22,8 +22,6 @@ import ohos.labels.*
 
 /**
 * The modal bullet box requests the result code.
-*
-* @relation export enum ResultCode
 */
 @!APILevel[
     22,
@@ -32,8 +30,6 @@ import ohos.labels.*
 public enum ResultCode {
     /**
      * The modal bullet box requests succeeded.
-     *
-     * @relation RESULT_OK = 0
      */
     @!APILevel[
         22,
@@ -43,8 +39,6 @@ public enum ResultCode {
     | 
     /**
      * The modal bullet box requests Failed.
-     *
-     * @relation RESULT_CANCEL = 1
      */
     @!APILevel[
         22,
@@ -73,8 +67,6 @@ public enum ResultCode {
 
 /**
 * The result of requestDialogService with asynchronous callback.
-*
-* @relation export interface RequestResult
 */
 @!APILevel[
     22,
@@ -83,8 +75,6 @@ public enum ResultCode {
 public class RequestResult {
     /**
      * The request result passed in by the user.
-     *
-     * @relation result: ResultCode
      */
     @!APILevel[
         22,
@@ -94,8 +84,6 @@ public class RequestResult {
 
     /**
      * The request additional want data passed in by the user.
-     *
-     * @relation want?: Want
      */
     @!APILevel[
         22,
