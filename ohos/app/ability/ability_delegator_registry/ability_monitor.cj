@@ -101,8 +101,6 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
 /**
  * Provide methods for matching monitored Ability objects that meet specified conditions.
  * The most recently matched Ability objects will be saved in the AbilityMonitor object.
- *
- * @relation export interface AbilityMonitor
  */
 @!APILevel[
     22,
@@ -111,8 +109,6 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
 public class AbilityMonitor <: FFIData {
     /**
         * The name of the ability to monitor.
-        *
-        * @relation abilityName: string
         */
     @!APILevel[
         22,
@@ -121,8 +117,6 @@ public class AbilityMonitor <: FFIData {
     public var abilityName: String
     /**
         * The name of the module to monitor.
-        *
-        * @relation moduleName?: string
         */
     @!APILevel[
         22,
@@ -131,8 +125,6 @@ public class AbilityMonitor <: FFIData {
     public var moduleName: String
     /**
         * Called back when the ability is created for initialization.
-        *
-        * @relation onAbilityCreate?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,
@@ -141,8 +133,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityCreate: ?(UIAbility) -> Unit
     /**
         * Called back when the state of the ability changes to foreground.
-        *
-        * @relation onAbilityForeground?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,
@@ -151,8 +141,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityForeground: ?(UIAbility) -> Unit
     /**
         * Called back when the state of the ability changes to background.
-        *
-        * @relation onAbilityBackground?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,
@@ -161,8 +149,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityBackground: ?(UIAbility) -> Unit
     /**
         * Called back before the ability is destroyed.
-        *
-        * @relation onAbilityDestroy?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,
@@ -171,8 +157,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityDestroy: ?(UIAbility) -> Unit
     /**
         * Called back when an ability window stage is created.
-        *
-        * @relation onWindowStageCreate?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,
@@ -181,8 +165,6 @@ public class AbilityMonitor <: FFIData {
     public var onWindowStageCreate: ?(UIAbility) -> Unit
     /**
         * Called back when an ability window stage is restored.
-        *
-        * @relation onWindowStageRestore?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,
@@ -191,8 +173,6 @@ public class AbilityMonitor <: FFIData {
     public var onWindowStageRestore: ?(UIAbility) -> Unit
     /**
         * Called back when an ability window stage is destroyed.
-        *
-        * @relation onWindowStageDestroy?: (ability: UIAbility) => void
         */
     @!APILevel[
         22,

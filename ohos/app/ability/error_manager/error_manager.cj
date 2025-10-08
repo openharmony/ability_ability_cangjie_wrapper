@@ -62,8 +62,6 @@ public enum ErrorManagerEvent {
 
 /**
  * This module provides the function of error manager.
- *
- * @relation declare namespace errorManager
  */
 @!APILevel[
     22,
@@ -77,7 +75,6 @@ public class ErrorManager {
     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
     * 2. Incorrect parameter types; 3. Parameter verification failed.
     * @throws { BusinessException } 16000003 - The specified ID does not exist.
-    * @relation function on(type: 'error', observer: ErrorObserver): number
     */
     @!APILevel[
         22,
@@ -109,7 +106,6 @@ public class ErrorManager {
     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
     * 2. Incorrect parameter types; 3. Parameter verification failed.
     * @throws { BusinessException } 16000003 - The specified ID does not exist.
-    * @relation function off(type: 'error', observerId: number): Promise<void>
     */
     @!APILevel[
         22,

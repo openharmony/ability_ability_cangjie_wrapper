@@ -424,8 +424,6 @@ class UIAbilityImpl {}
  * UIAbility is an application component that has the UI.
  * The UIAbility module, inherited from Ability, provides lifecycle callbacks such as component creation, destruction,
  * and foreground/background switching.
- *
- * @relation declare class UIAbility extends Ability
  */
 @!APILevel[
     22,
@@ -440,8 +438,6 @@ public open class UIAbility <: Ability {
 
     /**
     * Parameters for starting the UIAbility.
-    *
-    * @relation launchWant: Want
     */
     @!APILevel[
         22,
@@ -458,8 +454,6 @@ public open class UIAbility <: Ability {
 
     /**
     * Latest Want received through onCreate or onNewWant when the UIAbility is started for multiple times.
-    *
-    * @relation lastRequestWant: Want
     */
     @!APILevel[
         22,
@@ -476,8 +470,6 @@ public open class UIAbility <: Ability {
 
     /**
     * Context of the UIAbility.
-    *
-    * @relation context: UIAbilityContext
     */
     @!APILevel[
         22,
@@ -506,8 +498,6 @@ public open class UIAbility <: Ability {
     * Called to initialize the service logic when a UIAbility instance in the completely closed state is created.
     * In other words, a UIAbility instance enters this lifecycle callback from a cold start. This API returns the
     * result synchronously and does not support asynchronous callback.
-    *
-    * @relation onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void
     */
     @!APILevel[
         22,
@@ -522,8 +512,6 @@ public open class UIAbility <: Ability {
     * the asynchronous function (for example, asynchronously writing data to the database) in onDestroy() may fail to be
     * executed. You can use the asynchronous lifecycle to ensure that the subsequent lifecycle continues only after the
     * asynchronous function in onDestroy() finishes the execution.
-    *
-    * @relation onDestroy(): void | Promise<void>
     */
     @!APILevel[
         22,
@@ -533,8 +521,6 @@ public open class UIAbility <: Ability {
 
     /**
     * Called when a WindowStage is created for this UIAbility.
-    *
-    * @relation onWindowStageCreate(windowStage: window.WindowStage): void
     */
     @!APILevel[
         22,
@@ -544,15 +530,11 @@ public open class UIAbility <: Ability {
 
     /**
     * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance ability.
-    *
-    * @relation onWindowStageRestore(windowStage: window.WindowStage): void
     */
     func onWindowStageRestore(_: WindowStage): Unit {}
 
     /**
     * Called when the WindowStage is destroyed for this UIAbility.
-    *
-    * @relation onWindowStageDestroy(): void
     */
     @!APILevel[
         22,
@@ -566,8 +548,6 @@ public open class UIAbility <: Ability {
     * It can be used to request system resources required, for example, requesting location services when the
     * application transitions to the foreground.
     * This API returns the result synchronously and does not support asynchronous callback.
-    *
-    * @relation onForeground(): void
     */
     @!APILevel[
         22,
@@ -579,8 +559,6 @@ public open class UIAbility <: Ability {
     * Triggered when the application transitions from the foreground to the background.
     * It is called between onWillBackground and onDidBackground.
     * It can be used to release resources when the UI is no longer visible, for example, stopping location services. 
-    * 
-    * @relation onBackground(): void
     */
     @!APILevel[
         22,
@@ -603,8 +581,6 @@ public open class UIAbility <: Ability {
     *
     * If you need to prevent the onNewWant lifecycle from being triggered in specific scenarios,
     * you must call the {@link UIAbilityContext.setOnNewWantSkipScenarios} interface to suppress its callback.
-    *
-    * @relation onNewWant(want: Want, launchParam: AbilityConstant.LaunchParam): void
     */
     @!APILevel[
         22,

@@ -28,8 +28,6 @@ class StartOptionsImpl {}
 
 /**
  * StartOptions is the basic communication component of the system.
- *
- * @relation export default class StartOptions
  */
 @!APILevel[
     22,
@@ -40,8 +38,6 @@ public open class StartOptions {
     * The type of WindowMode
     * WindowModeSplitPrimary and WindowModeSplitSecondary are
     * valid only in intra-app redirection scenarios.
-    *
-    * @relation windowMode?: number
     */
     @!APILevel[
         22,
@@ -51,8 +47,6 @@ public open class StartOptions {
 
     /**
     * The type of displayId
-    *
-    * @relation displayId?: number
     */
     @!APILevel[
         22,

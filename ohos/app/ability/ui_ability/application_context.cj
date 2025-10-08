@@ -101,8 +101,6 @@ func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Un
 /**
  * The ApplicationContext module, inherited from Context, provides application-level context capabilities, including
  * APIs for registering and unregistering the lifecycle of application components.
- *
- * @relation declare class ApplicationContext extends Context
  */
 @!APILevel[
     22,

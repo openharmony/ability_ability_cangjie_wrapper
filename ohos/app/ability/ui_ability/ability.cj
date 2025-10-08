@@ -25,8 +25,6 @@ class AbilityImpl {}
 
 /**
  * The class of an ability.
- *
- * @relation declare class Ability
  */
 @!APILevel[
     22,

@@ -24,22 +24,16 @@ import ohos.labels.*
 
 /**
  * Define the available options for openLink API.
- *
- * @relation export default interface OpenLinkOptions
  */
 class OpenLinkOptions {
     /**
     * Open the URL only if the URL is a valid app linking and
     * there is an installed app capable of opening that URL.
-    *
-    * @relation appLinkingOnly?: boolean
     */
     var appLinkingOnly: Bool
 
     /**
     * OpenLinkOptions parameters in the form of custom key-value pairs.
-    *
-    * @relation parameters?: Record<string, Object>
     */
     var parameters: HashMap<String, WantValueType>
 

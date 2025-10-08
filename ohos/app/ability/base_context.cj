@@ -24,8 +24,6 @@ class BaseContextImpl {}
 
 /**
  * The base context for Stage Mode.
- *
- * @relation export default abstract class BaseContext
  */
 @!APILevel[
     22,
@@ -34,8 +32,6 @@ class BaseContextImpl {}
 public abstract class BaseContext <: RemoteData {
     /**
     * Indicates the context is Stage Mode.
-    *
-    * @relation stageMode: boolean
     */
     @!APILevel[
         22,
