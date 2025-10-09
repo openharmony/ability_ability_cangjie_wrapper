@@ -318,7 +318,7 @@ const ERROR_CODE_CONTROLLED: Int32 = 16000012
 const ERROR_CODE_EDM_CONTROLLED: Int32 = 16000013
 // ability wait start.
 const ERROR_START_ABILITY_WAITTING: Int32 = 16000017
-// jump to other applicaiton is not enable after API12.
+// jump to other applicaiton is not enable.
 const ERROR_CODE_NOT_SUPPORT_CROSS_APP_START: Int32 = 16000018
 // implicit start can not match any component.
 const ERROR_CODE_CANNOT_MATCH_ANY_COMPONENT: Int32 = 16000019
