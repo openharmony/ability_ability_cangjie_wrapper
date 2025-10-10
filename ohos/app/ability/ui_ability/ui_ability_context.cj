@@ -203,13 +203,15 @@ public open class UIAbilityContext <: Context {
 
     /**
     * Starts a new ability. If the caller application is in foreground, you can use this method to start ability;
-    * If the caller application is in the background, you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
+    * If the caller application is in the background, you need to apply for
+    * permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
     * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
     *
     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
+    * 2.Incorrect parameter types.
     * @throws { BusinessException } 801 - Capability not support.
     * @throws { BusinessException } 16000001 - The specified ability does not exist.
     * @throws { BusinessException } 16000002 - Incorrect ability type.
@@ -222,7 +224,8 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000011 - The context does not exist.
     * @throws { BusinessException } 16000012 - The application is controlled.
     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version greater than 11.
+    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
+    * greater than 11.
     * @throws { BusinessException } 16000019 - No matching ability is found.
     * @throws { BusinessException } 16000050 - Internal error.
     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
@@ -335,7 +338,8 @@ public open class UIAbilityContext <: Context {
     /**
     * Destroys the Page ability while returning the specified result code and data to the caller.
     *
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
+    * 2.Incorrect parameter types.
     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
     * @throws { BusinessException } 16000011 - The context does not exist.
     * @throws { BusinessException } 16000050 - Internal error.
@@ -423,7 +427,8 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is in foreground,
+    * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is in
+    * foreground,
     * you can use this method to start ability; If the caller application is in the background,
     * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
@@ -431,7 +436,8 @@ public open class UIAbilityContext <: Context {
     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
     *
     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
+    * 2.Incorrect parameter types.
     * @throws { BusinessException } 16000001 - The specified ability does not exist.
     * @throws { BusinessException } 16000002 - Incorrect ability type.
     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
@@ -443,7 +449,8 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000011 - The context does not exist.
     * @throws { BusinessException } 16000012 - The application is controlled.
     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version greater than 11.
+    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
+    * greater than 11.
     * @throws { BusinessException } 16000019 - No matching ability is found.
     * @throws { BusinessException } 16000050 - Internal error.
     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
@@ -474,7 +481,8 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is in foreground,
+    * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is in
+    * foreground,
     * you can use this method to start ability; If the caller application is in the background,
     * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
@@ -482,7 +490,8 @@ public open class UIAbilityContext <: Context {
     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
     *
     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
+    * 2.Incorrect parameter types.
     * @throws { BusinessException } 16000001 - The specified ability does not exist.
     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
@@ -492,7 +501,8 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000011 - The context does not exist.
     * @throws { BusinessException } 16000012 - The application is controlled.
     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version greater than 11.
+    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API
+    * version greater than 11.
     * @throws { BusinessException } 16000019 - No matching ability is found.
     * @throws { BusinessException } 16000050 - Internal error.
     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
@@ -587,10 +597,12 @@ public open class UIAbilityContext <: Context {
     * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
     * If the target service extension ability is visible, you can start the target service extension ability;
     * If the target service extension ability is invisible,
-    * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible service extension ability.
+    * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible service
+    * extension ability.
     *
     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
+    * 2.Incorrect parameter types.
     * @throws { BusinessException } 16000001 - The specified ability does not exist.
     * @throws { BusinessException } 16000002 - Incorrect ability type.
     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
