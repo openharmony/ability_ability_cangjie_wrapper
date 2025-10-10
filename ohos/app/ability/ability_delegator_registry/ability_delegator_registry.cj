@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ability_delegator_registry
 
 import ohos.business_exception.{BusinessException, getUniversalErrorMsg}
@@ -68,8 +70,6 @@ struct CJAbilityStageInfo {
 
 /**
  * Describes all lifecycle states of an ability.
- *
- * @relation export enum AbilityLifecycleState
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -79,8 +79,6 @@ struct CJAbilityStageInfo {
 public enum AbilityLifecycleState {
     /**
      * Ability is in invalid state.
-     *
-     * @relation UNINITIALIZED = 0
      */    
     @!APILevel[
         since: "22",
@@ -90,8 +88,6 @@ public enum AbilityLifecycleState {
     | 
     /**
      * Ability is in invalid state.
-     *
-     * @relation CREATE = 1
      */       
     @!APILevel[
         since: "22",
@@ -101,8 +97,6 @@ public enum AbilityLifecycleState {
     | 
     /**
      * Ability is in invalid state.
-     *
-     * @relation FOREGROUND = 2
      */   
     @!APILevel[
         since: "22",
@@ -112,8 +106,6 @@ public enum AbilityLifecycleState {
     | 
     /**
      * Ability is in invalid state.
-     *
-     * @relation BACKGROUND = 3
      */  
     @!APILevel[
         since: "22",
@@ -123,8 +115,6 @@ public enum AbilityLifecycleState {
     | 
     /**
      * Ability is in invalid state.
-     *
-     * @relation DESTROY = 4
      */  
     @!APILevel[
         since: "22",
@@ -271,8 +261,6 @@ struct CRecord {
 /**
  * A global register used to store the AbilityDelegator and AbilityDelegatorArgs objects registered
  * during application startup.
- *
- * @relation declare namespace abilityDelegatorRegistry
  */
 @!APILevel[
     since: "22",
@@ -284,8 +272,6 @@ public class AbilityDelegatorRegistry {
 
     /**
      * Get the AbilityDelegator object of the application.
-     *
-     * @relation function getAbilityDelegator(): AbilityDelegator
      */    
     @!APILevel[
         since: "22",
@@ -304,8 +290,6 @@ public class AbilityDelegatorRegistry {
 
     /**
      * Get unit test arguments stored in the AbilityDelegatorArgs object.
-     *
-     * @relation function getArguments(): AbilityDelegatorArgs
      */  
     @!APILevel[
         since: "22",
@@ -329,8 +313,6 @@ public class AbilityDelegatorRegistry {
 
 /**
  * A object that records the result of shell command executes.
- *
- * @relation export interface ShellCmdResult
  */
 @!APILevel[
     since: "22",
@@ -348,8 +330,6 @@ public class ShellCmdResult <: RemoteDataLite {
     }
     /**
      * shell cmd exec result.
-     *
-     * @relation exitCode: number
      */
     @!APILevel[
         since: "22",
@@ -369,8 +349,6 @@ public class ShellCmdResult <: RemoteDataLite {
     }
     /**
      * the cmd standard result.
-     *
-     * @relation stdResult: string
      */
     @!APILevel[
         since: "22",
@@ -394,8 +372,6 @@ public class ShellCmdResult <: RemoteDataLite {
 
 /**
  * A global test utility interface used for adding AbilityMonitor objects and control lifecycle states of abilities.
- *
- * @relation export interface AbilityDelegator
  */
 @!APILevel[
     since: "22",
@@ -429,7 +405,6 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000053 - The ability is not on the top of the UI.
      * @throws { BusinessExecption } 16000055 - Installation-free timed out.
      * @throws { BusinessExecption } 16200001 - The caller has been released.
-     * @relation startAbility(want: Want): Promise<void>
      */
     @!APILevel[
         since: "22",
@@ -445,8 +420,6 @@ public class AbilityDelegator <: RemoteDataLite {
 
     /**
      * Execute the given command in the aa tools side.
-     *
-     * @relation executeShellCommand(cmd: string, timeoutSecs?: number): Promise<ShellCmdResult>
      */
     @!APILevel[
         since: "22",
@@ -464,8 +437,6 @@ public class AbilityDelegator <: RemoteDataLite {
 
     /**
      * Obtain the application context.
-     *
-     * @relation getAppContext(): Context
      */
     @!APILevel[
         since: "22",
@@ -482,8 +453,6 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Finish the test and print log information to the unit testing console.
      * The total length of the log information to be printed cannot exceed 1000 characters.
-     *
-     * @relation finishTest(msg: string, code: number): Promise<void>
      */
     @!APILevel[
         since: "22",
@@ -503,7 +472,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityMonitor failed.
-     * @relation addAbilityMonitorSync(monitor: AbilityMonitor): void
      */
     @!APILevel[
         since: "22",
@@ -528,7 +496,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityMonitor failed.
-     * @relation removeAbilityMonitorSync(monitor: AbilityMonitor): void
      */
     @!APILevel[
         since: "22",
@@ -554,7 +521,6 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityMonitor failed.
      * @throws { IllegalMemoryException } - Invalid Ability.
-     * @relation waitAbilityMonitor(monitor: AbilityMonitor, timeout?: number): Promise<UIAbility>
      */
     @!APILevel[
         since: "22",
@@ -584,7 +550,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityStageMonitor failed.
-     * @relation addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
      */
     @!APILevel[
         since: "22",
@@ -610,7 +575,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityStageMonitor failed.
-     * @relation removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void
      */
     @!APILevel[
         since: "22",
@@ -637,7 +601,6 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityStageMonitor failed.
      * @throws { IllegalMemoryException } - Invalid AbilityStage.
-     * @relation waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: number): Promise<AbilityStage>
      */
     @!APILevel[
         since: "22",
@@ -667,7 +630,6 @@ public class AbilityDelegator <: RemoteDataLite {
      * The total length of the log information to be printed cannot exceed 1000 characters.
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
-     * @relation printSync(msg: string): void
      */
     @!APILevel[
         since: "22",
@@ -687,7 +649,6 @@ public class AbilityDelegator <: RemoteDataLite {
      * Obtain the lifecycle state of a specified ability.
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
-     * @relation getAbilityState(ability: UIAbility): number
      */
     @!APILevel[
         since: "22",
@@ -709,7 +670,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
      * @throws { BusinessExecption } 16000100 - Calling GetCurrentTopAbility failed.
      * @throws { IllegalMemoryException } - Invalid Ability.
-     * @relation getCurrentTopAbility(): Promise<UIAbility>
      */
     @!APILevel[
         since: "22",
@@ -732,7 +692,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityForeground failed.
-     * @relation doAbilityForeground(ability: UIAbility): Promise<void>
      */
     @!APILevel[
         since: "22",
@@ -755,7 +714,6 @@ public class AbilityDelegator <: RemoteDataLite {
      *
      * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityBackground failed.
-     * @relation doAbilityBackground(ability: UIAbility): Promise<void>
      */
     @!APILevel[
         since: "22",
@@ -776,8 +734,6 @@ public class AbilityDelegator <: RemoteDataLite {
 
 /**
  * Store unit testing-related parameters, including test case names, and test runner name.
- *
- * @relation export interface AbilityDelegatorArgs
  */
 @!APILevel[
     since: "22",
@@ -799,8 +755,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the bundle name of the application being tested.
-     *
-     * @relation bundleName: string
      */
     @!APILevel[
         since: "22",
@@ -830,8 +784,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the parameters used for unit testing.
-     *
-     * @relation parameters: Record<string, string>
      */
     @!APILevel[
         since: "22",
@@ -860,8 +812,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the class names of all test cases.
-     *
-     * @relation testCaseNames: string
      */
     @!APILevel[
         since: "22",
@@ -891,8 +841,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the class name of the test runner used to execute test cases.
-     *
-     * @relation testRunnerClassName: string
      */
     @!APILevel[
         since: "22",

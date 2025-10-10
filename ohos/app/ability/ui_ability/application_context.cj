@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ui_ability
 
 import ohos.app.ability.want.*
@@ -99,8 +101,6 @@ func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Un
 /**
  * The ApplicationContext module, inherited from Context, provides application-level context capabilities, including
  * APIs for registering and unregistering the lifecycle of application components.
- *
- * @relation declare class ApplicationContext extends Context
  */
 @!APILevel[
     since: "22",

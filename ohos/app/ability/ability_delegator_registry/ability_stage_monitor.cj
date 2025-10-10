@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ability_delegator_registry
 
 import ohos.ffi.*
@@ -22,8 +24,6 @@ import ohos.labels.*
 /**
  * Provide methods for matching monitored AbilityStage objects that meet specified conditions.
  * The most recently matched AbilityStage objects will be saved in the AbilityStageMonitor object.
- *
- * @relation export interface AbilityStageMonitor
  */
 @!APILevel[
     since: "22",
@@ -32,8 +32,6 @@ import ohos.labels.*
 public class AbilityStageMonitor <: FFIData {
     /**
         * The module name of the abilityStage to monitor.
-        *
-        * @relation moduleName: string
         */        
     @!APILevel[
         since: "22",
@@ -42,8 +40,6 @@ public class AbilityStageMonitor <: FFIData {
     public var moduleName: String
     /**
         * The source path of the abilityStage to monitor.
-        *
-        * @relation srcEntrance: string
         */
     @!APILevel[
         since: "22",

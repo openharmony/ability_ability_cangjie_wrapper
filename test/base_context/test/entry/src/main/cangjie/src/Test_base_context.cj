@@ -22,13 +22,13 @@ import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
 import ohos.base.*
-import AbilityKit.{Context, AreaMode, ApplicationInfo, AbilityStageContext, WantValueType}
-import AbilityKit.*
+import kit.AbilityKit.{Context, AreaMode, ApplicationInfo, AbilityStageContext, WantValueType}
+import kit.AbilityKit.*
 import std.collection.HashMap
 import stdx.encoding.json.*
 import ohos.base.*
-import PerformanceAnalysisKit.Hilog
-import TestKit.{AbilityDelegator, AbilityDelegatorRegistry}
+import kit.PerformanceAnalysisKit.Hilog
+import kit.TestKit.{AbilityDelegator, AbilityDelegatorRegistry}
 
 @Test
 class Test_base_context {

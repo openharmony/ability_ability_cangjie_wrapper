@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.error_manager
 
 public import ohos.application.error_observer.*
@@ -60,8 +62,6 @@ public enum ErrorManagerEvent {
 
 /**
  * This module provides the function of error manager.
- *
- * @relation declare namespace errorManager
  */
 @!APILevel[
     since: "22",
@@ -75,7 +75,6 @@ public class ErrorManager {
     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
     * 2. Incorrect parameter types; 3. Parameter verification failed.
     * @throws { BusinessException } 16000003 - The specified ID does not exist.
-    * @relation function on(type: 'error', observer: ErrorObserver): number
     */
     @!APILevel[
         since: "22",
@@ -107,7 +106,6 @@ public class ErrorManager {
     * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
     * 2. Incorrect parameter types; 3. Parameter verification failed.
     * @throws { BusinessException } 16000003 - The specified ID does not exist.
-    * @relation function off(type: 'error', observerId: number): Promise<void>
     */
     @!APILevel[
         since: "22",

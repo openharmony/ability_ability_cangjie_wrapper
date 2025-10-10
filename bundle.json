@@ -1,7 +1,7 @@
 {
   "name": "@ohos/ability_cangjie_wrapper",
   "description": "The ability_cangjie_wrapper is a Cangjie API encapsulated on OpenHarmony based on the ability_runtime subsystem.",
-  "version": "6.0",
+  "version": "6.1",
   "license": "Apache License 2.0",
   "publishAs": "code-segment",
   "segment": {
@@ -45,7 +45,7 @@
       "build": {
         "sub_component": [
           "//foundation/ability/ability_cangjie_wrapper/ohos:ability_package",
-          "//foundation/ability/ability_cangjie_wrapper/kit/AbilityKit:AbilityKit"
+          "//foundation/ability/ability_cangjie_wrapper/kit/AbilityKit:kit.AbilityKit"
         ],
         "inner_api": [
           {
@@ -56,9 +56,6 @@
           },
           {
             "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/want:ohos.app.ability.want"
-          },
-          {
-            "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/start_options:ohos.app.ability.start_options"
           },
           {
             "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ability_delegator_registry:ohos.app.ability.ability_delegator_registry"

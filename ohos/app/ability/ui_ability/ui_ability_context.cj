@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ui_ability
 
 import ohos.app.ability.want.*
@@ -156,8 +158,6 @@ class UIAbilityContextImpl {}
 
 /**
  * The context of an ability. It allows access to ability-specific resources.
- *
- * @relation declare class UIAbilityContext extends Context
  */
 @!APILevel[
     since: "22",
@@ -239,7 +239,6 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
     * @throws { BusinessException } 16200001 - The caller has been released.
     * @throws { BusinessException } 16300003 - The target application is not the current application.
-    * @relation startAbility(want: Want, options?: StartOptions): Promise<void>
     */
     @!APILevel[
         since: "22",
@@ -323,7 +322,6 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
     * @throws { BusinessException } 16000011 - The context does not exist.
     * @throws { BusinessException } 16000050 - Internal error.
-    * @relation terminateSelf(): Promise<void>
     */
     @!APILevel[
         since: "22",
@@ -341,7 +339,6 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
     * @throws { BusinessException } 16000011 - The context does not exist.
     * @throws { BusinessException } 16000050 - Internal error.
-    * @relation terminateSelfWithResult(parameter: AbilityResult): Promise<void>
     */
     @!APILevel[
         since: "22",
@@ -358,7 +355,6 @@ public open class UIAbilityContext <: Context {
     * Check to see ability is in terminating state.
     *
     * @throws { BusinessException } 16000011 - The context does not exist.
-    * @relation isTerminating(): boolean
     */
     @!APILevel[
         since: "22",
@@ -461,7 +457,6 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
     * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
     * @throws { BusinessException } 16200001 - The caller has been released.
-    * @relation startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): void
     */
     @!APILevel[
         since: "22",
@@ -511,7 +506,6 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
     * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
     * @throws { BusinessException } 16200001 - The caller has been released.
-    * @relation startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): void
     */
     @!APILevel[
         since: "22",
@@ -612,7 +606,6 @@ public open class UIAbilityContext <: Context {
     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
     * @throws { BusinessException } 16000055 - Installation-free timed out.
     * @throws { BusinessException } 16200001 - The caller has been released.
-    * @relation requestDialogService(want: Want, result: AsyncCallback<dialogRequest.RequestResult>): void
     */
     @!APILevel[
         since: "22",

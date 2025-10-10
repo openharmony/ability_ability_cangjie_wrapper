@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.dialog_request
 
 import ohos.app.ability.want.*
@@ -20,8 +22,6 @@ import ohos.labels.*
 
 /**
 * The modal bullet box requests the result code.
-*
-* @relation export enum ResultCode
 */
 @!APILevel[
     since: "22",
@@ -30,8 +30,6 @@ import ohos.labels.*
 public enum ResultCode {
     /**
      * The modal bullet box requests succeeded.
-     *
-     * @relation RESULT_OK = 0
      */
     @!APILevel[
         since: "22",
@@ -41,8 +39,6 @@ public enum ResultCode {
     | 
     /**
      * The modal bullet box requests Failed.
-     *
-     * @relation RESULT_CANCEL = 1
      */
     @!APILevel[
         since: "22",
@@ -71,8 +67,6 @@ public enum ResultCode {
 
 /**
 * The result of requestDialogService with asynchronous callback.
-*
-* @relation export interface RequestResult
 */
 @!APILevel[
     since: "22",
@@ -81,8 +75,6 @@ public enum ResultCode {
 public class RequestResult {
     /**
      * The request result passed in by the user.
-     *
-     * @relation result: ResultCode
      */
     @!APILevel[
         since: "22",
@@ -92,8 +84,6 @@ public class RequestResult {
 
     /**
      * The request additional want data passed in by the user.
-     *
-     * @relation want?: Want
      */
     @!APILevel[
         since: "22",

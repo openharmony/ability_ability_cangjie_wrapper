@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability
 
 import ohos.ffi.*
@@ -22,8 +24,6 @@ class BaseContextImpl {}
 
 /**
  * The base context for Stage Mode.
- *
- * @relation export default abstract class BaseContext
  */
 @!APILevel[
     since: "22",
@@ -32,8 +32,6 @@ class BaseContextImpl {}
 public abstract class BaseContext <: RemoteData {
     /**
     * Indicates the context is Stage Mode.
-    *
-    * @relation stageMode: boolean
     */
     @!APILevel[
         since: "22",
