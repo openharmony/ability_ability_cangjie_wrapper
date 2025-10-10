@@ -389,7 +389,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Start a new ability.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000001 - The specified ability does not exist.
      * @throws { BusinessExecption } 16000002 - Incorrect ability type.
      * @throws { BusinessExecption } 16000004 - Cannot start an invisible component.
@@ -397,7 +398,8 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000006 - Cross-user operations are not allowed.
      * @throws { BusinessExecption } 16000008 - The crowdtesting application expires.
      * @throws { BusinessExecption } 16000009 - An ability cannot be started or stopped in Wukong mode.
-     * @throws { BusinessExecption } 16000010 - The call with the continuation and prepare continuation flag is forbidden.
+     * @throws { BusinessExecption } 16000010 - The call with the continuation and prepare continuation flag
+     * is forbidden.
      * @throws { BusinessExecption } 16000011 - The context does not exist.
      * @throws { BusinessExecption } 16000012 - The application is controlled.
      * @throws { BusinessExecption } 16000013 - The application is controlled by EDM.
@@ -470,7 +472,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Add an AbilityMonitor object for monitoring the lifecycle state changes of the specified ability in this process.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityMonitor failed.
      */
     @!APILevel[
@@ -494,7 +497,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Remove a specified AbilityMonitor object from the application memory.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityMonitor failed.
      */
     @!APILevel[
@@ -518,7 +522,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Wait for and returns the Ability object that matches the conditions set in the given AbilityMonitor.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityMonitor failed.
      * @throws { IllegalMemoryException } - Invalid Ability.
      */
@@ -546,9 +551,11 @@ public class AbilityDelegator <: RemoteDataLite {
     }
 
     /**
-     * Add an AbilityStageMonitor object for monitoring the lifecycle state changes of the specified abilityStage in this process.
+     * Add an AbilityStageMonitor object for monitoring the lifecycle state changes of the specified abilityStage in
+     * this process.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityStageMonitor failed.
      */
     @!APILevel[
@@ -573,7 +580,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Remove a specified AbilityStageMonitor object from the application memory.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityStageMonitor failed.
      */
     @!APILevel[
@@ -598,7 +606,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Wait for and returns the AbilityStage object that matches the conditions set in the given AbilityStageMonitor.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityStageMonitor failed.
      * @throws { IllegalMemoryException } - Invalid AbilityStage.
      */
@@ -629,7 +638,8 @@ public class AbilityDelegator <: RemoteDataLite {
      * Prints log information to the unit testing console.
      * The total length of the log information to be printed cannot exceed 1000 characters.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      */
     @!APILevel[
         22,
@@ -648,7 +658,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Obtain the lifecycle state of a specified ability.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      */
     @!APILevel[
         22,
@@ -690,7 +701,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Invoke the Ability.onForeground() callback of a specified ability without changing its lifecycle state.
      *
-    * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+    * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+    * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityForeground failed.
      */
     @!APILevel[
@@ -712,7 +724,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Invoke the Ability.onBackground() callback of a specified ability without changing its lifecycle state.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left
+     * unspecified. 2.Incorrect parameter types.
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityBackground failed.
      */
     @!APILevel[
