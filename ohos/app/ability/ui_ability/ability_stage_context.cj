@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ui_ability
 
 import ohos.app.ability.configuration.*
@@ -52,8 +54,6 @@ foreign func FFICJGetConfiguration(id: Int64): CConfiguration
 
 /**
  * The context of an abilityStage. It allows access to abilityStage-specific resources.
- *
- * @relation declare class AbilityStageContext extends Context
  */
 @!APILevel[
     since: "22",
@@ -62,8 +62,6 @@ foreign func FFICJGetConfiguration(id: Int64): CConfiguration
 public class AbilityStageContext <: Context {
     /**
     * Indicates configuration information about an module.
-    *
-    * @relation currentHapModuleInfo: HapModuleInfo
     */
     @!APILevel[
         since: "22",

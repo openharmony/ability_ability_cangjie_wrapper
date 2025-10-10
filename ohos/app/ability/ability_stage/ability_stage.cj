@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ability_stage
 
 import std.collection.*
@@ -125,8 +127,6 @@ class AbilityStageImpl {}
  * AbilityStage is a runtime class for HAP files.
  * AbilityStage notifies you of when you can perform HAP initialization such as resource pre-loading and thread
  * creation during the HAP loading.
- *
- * @relation declare class AbilityStage
  */
 @!APILevel[
     since: "22",
@@ -170,8 +170,6 @@ public open class AbilityStage <: FFIData {
     /**
     * Defines the context of AbilityStage.
     * The context is obtained in the callback invoked when initialization is performed during ability startup.
-    *
-    * @relation context: AbilityStageContext
     */
     @!APILevel[
         since: "22",
@@ -206,8 +204,6 @@ public open class AbilityStage <: FFIData {
     /**
     * Called when the application is created.
     * This API returns the result synchronously and does not support asynchronous callbacks.
-    *
-    * @relation onCreate(): void
     */
     @!APILevel[
         since: "22",

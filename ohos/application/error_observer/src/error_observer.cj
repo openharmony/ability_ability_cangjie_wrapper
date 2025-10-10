@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.application.error_observer
 
 import std.collection.*
@@ -80,8 +82,6 @@ public class ErrorObject {
 public class ErrorObserver {
     /**
     * Will be called when the js runtime throws an exception which doesn't caught by user.
-    *
-    * @relation onUnhandledException(errMsg: string): void
     */
     @!APILevel[
         since: "22",
@@ -90,8 +90,6 @@ public class ErrorObserver {
     public var onUnhandledException: (String) -> Unit
     /**
     * Will be called when the js runtime throws an exception which doesn't caught by user.
-    *
-    * @relation onException?(errObject: Error): void
     */
     @!APILevel[
         since: "22",

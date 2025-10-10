@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.ui_ability
 
 import ohos.ffi.*
@@ -23,8 +25,6 @@ class AbilityImpl {}
 
 /**
  * The class of an ability.
- *
- * @relation declare class Ability
  */
 @!APILevel[
     since: "22",

@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.ability.ability_result
 
 import ohos.labels.*
@@ -20,8 +22,6 @@ import ohos.app.ability.want.*
 
 /**
  * AbilityResult
- *
- * @relation export interface AbilityResult
  */
 @!APILevel[
     since: "22",
@@ -31,8 +31,6 @@ public class AbilityResult {
     /**
     * Indicates the result code returned after the ability is destroyed. You can define the result
     * code to identify an error.
-    *
-    * @relation resultCode: number
     */
     @!APILevel[
         since: "22",
@@ -43,8 +41,6 @@ public class AbilityResult {
     /**
     * Indicates the data returned after the ability is destroyed. You can define the data returned.
     * This parameter can be null.
-    *
-    * @relation want?: Want
     */
     @!APILevel[
         since: "22",

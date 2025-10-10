@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-package AbilityKit
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
+package kit.AbilityKit
 
 public import ohos.app.ability.ability_constant.*
 public import ohos.app.ability.ability_stage.*

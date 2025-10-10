@@ -22,10 +22,10 @@ import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
 import ohos.base.*
-import TestKit.*
+import kit.TestKit.*
 import std.collection.*
 import std.runtime.gc
-import PerformanceAnalysisKit.Hilog
+import kit.PerformanceAnalysisKit.Hilog
 
 @Test
 class Test_ability_delegator_registry {

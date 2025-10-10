@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
+// The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
+
 package ohos.app.ability.want
 
 import std.collection.HashMap
@@ -59,8 +61,6 @@ foreign func FFICJWantAddEntity(want: WantHandle, entity: CString): Unit
  * ability and the ability name in the bundle.
  * When UIAbilityA needs to start UIAbilityB and transfer some data to UIAbilityB, it can use Want a carrier to
  * transfer the data.
- *
- * @relation export default class Want
  */
 @!APILevel[
     since: "22",
@@ -73,8 +73,6 @@ public class Want {
     /**
     * ID of the device running the ability.
     * If this field is unspecified, the local device is used.
-    *
-    * @relation deviceId?: string
     */
     @!APILevel[
         since: "22",
@@ -84,8 +82,6 @@ public class Want {
 
     /**
     * Bundle name of the ability.
-    *
-    * @relation bundleName?: string
     */
     @!APILevel[
         since: "22",
@@ -97,8 +93,6 @@ public class Want {
     * Name of the ability.
     * If both bundleName and abilityName are specified in a Want object, the Want object can match a specific ability.
     * The value of abilityName must be unique in an application.
-    * 
-    * @relation abilityName?: string
    */
     @!APILevel[
         since: "22",
@@ -110,8 +104,6 @@ public class Want {
     * Name of the module to which the ability belongs.
     * If the ability belongs to a HAR module, moduleName must be set to the name of the HAP or HSP module that
     * depends on this HAR.
-    *
-    * @relation moduleName?: string
     */
     @!APILevel[
         since: "22",
@@ -123,8 +115,6 @@ public class Want {
     * How the Want object will be handled. By default, a number is passed in.
     * For example, wantConstant.Flags.FLAG_ABILITY_CONTINUATION specifies whether to start the ability in cross-device
     * migration scenarios.
-    *
-    * @relation flags?: number
     */
     @!APILevel[
         since: "22",
@@ -137,8 +127,6 @@ public class Want {
     * This field is used together with type to specify the data type.
     * If uri is specified in a Want, the Want will match the specified URI information, including scheme,
     * schemeSpecificPart, authority, and path.
-    *
-    * @relation uri?: string
     */
     @!APILevel[
         since: "22",
@@ -150,8 +138,6 @@ public class Want {
     * Action to take, such as viewing and sharing application details.
     * In implicit Want, you can define this field and use it together with uri or parameters to specify the operation
     * to be performed on the data.
-    *
-    * @relation action?: string
     */
     @!APILevel[
         since: "22",
@@ -162,8 +148,6 @@ public class Want {
     /**
     * Additional category information (such as browser and video player) of the ability.
     * It is a supplement to the action field for implicit Want. and is used to filter ability types.
-    *
-    * @relation entities?: Array<string>
     */
     @!APILevel[
         since: "22",
@@ -173,8 +157,6 @@ public class Want {
 
     /**
     * MIME type, that is, the type of the file to open.
-    *
-    * @relation type?: string
     */
     @!APILevel[
         since: "22",
@@ -239,8 +221,6 @@ public class Want {
     * 200 KB, transfer data in WriteRawDataBuffer or uri mode.
     * The values of parameters must be of the following basic data types: String, Number, Boolean, Object,
     * undefined, and null. Functions in an object cannot be transferred.
-    *
-    * @relation parameters?: Record<string, Object>
     */
     @!APILevel[
         since: "22",
