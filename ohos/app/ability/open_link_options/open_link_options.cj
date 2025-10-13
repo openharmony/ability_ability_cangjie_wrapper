@@ -24,24 +24,26 @@ import ohos.labels.*
 
 /**
  * Define the available options for openLink API.
+ *
  */
 class OpenLinkOptions {
     /**
-    * Open the URL only if the URL is a valid app linking and
-    * there is an installed app capable of opening that URL.
-    */
+     * Open the URL only if the URL is a valid app linking and
+     * there is an installed app capable of opening that URL.
+     *
+     */
     var appLinkingOnly: Bool
 
     /**
-    * OpenLinkOptions parameters in the form of custom key-value pairs.
-    */
+     * OpenLinkOptions parameters in the form of custom key-value pairs.
+     *
+     */
     var parameters: HashMap<String, WantValueType>
 
     /**
-    * OpenLinkOptions constructor.
-    */
-    init(appLinkingOnly!: Bool = false,
-        parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>()) {
+     * OpenLinkOptions constructor.
+     */
+    init(appLinkingOnly!: Bool = false, parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>()) {
         this.appLinkingOnly = appLinkingOnly
         this.parameters = parameters
     }

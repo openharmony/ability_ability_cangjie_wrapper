@@ -76,11 +76,11 @@ let STATE_CHANGE_CALLBCAK_MUTEX = Mutex()
 func abilityCallbackWapperId(callback: (UIAbility) -> Unit): Int64 {
     let wrapper = {
         id: Int64 =>
-        let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-        match (optAbility) {
-            case None => ABILITY_LOG.error("No such Ability: " + id.toString())
-            case Some(ability) => callback(ability)
-        }
+            let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
+            match (optAbility) {
+                case None => ABILITY_LOG.error("No such Ability: " + id.toString())
+                case Some(ability) => callback(ability)
+            }
     }
     return Callback1Param<Int64, Unit>(wrapper).getID()
 }
@@ -88,12 +88,12 @@ func abilityCallbackWapperId(callback: (UIAbility) -> Unit): Int64 {
 func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Unit): Int64 {
     let wrapper = {
         id: Int64, windowStageHandle: WindowStageHandle =>
-        let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-        let windowStage = WindowStage(windowStageHandle)
-        match (optAbility) {
-            case None => ABILITY_LOG.error("No such Ability: " + id.toString())
-            case Some(ability) => callback(ability, windowStage)
-        }
+            let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
+            let windowStage = WindowStage(windowStageHandle)
+            match (optAbility) {
+                case None => ABILITY_LOG.error("No such Ability: " + id.toString())
+                case Some(ability) => callback(ability, windowStage)
+            }
     }
     return Callback2Param<Int64, WindowStageHandle, Unit>(wrapper).getID()
 }
@@ -101,6 +101,7 @@ func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Un
 /**
  * The ApplicationContext module, inherited from Context, provides application-level context capabilities, including
  * APIs for registering and unregistering the lifecycle of application components.
+ *
  */
 @!APILevel[
     22,

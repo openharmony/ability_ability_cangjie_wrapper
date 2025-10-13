@@ -24,6 +24,7 @@ ohos_cangjie_shared_library("ohos.ability.connect_options") {
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
     "cangjie_ark_interop:ohos.labels",
+    "cangjie_ark_interop:ohos.business_exception",
     "bundlemanager_cangjie_wrapper:ohos.element_name",
     "communication_cangjie_wrapper:ohos.rpc",
     "hiviewdfx_cangjie_wrapper:ohos.hilog",

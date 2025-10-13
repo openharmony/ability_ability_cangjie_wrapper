@@ -17,8 +17,8 @@ import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.application.error_observer") {
   sources = [
-    "src/error_observer.cj",
-    "src/error_observer_ffi.cj",
+    "error_observer.cj",
+    "error_observer_ffi.cj",
   ]
 
   cj_external_deps = [

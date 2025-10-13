@@ -18,13 +18,14 @@
 package ohos.app.ability.want
 
 import std.collection.HashMap
-
-import ohos.base.{ VectorStringHandle, FFIVectorString }
+import ohos.base.{VectorStringHandle, FFIVectorString}
 import ohos.element_name.ElementName
 import ohos.encoding.json.*
 import ohos.labels.*
+import ohos.business_exception.BusinessException
 
 protected type WantHandle = UIntNative
+
 type ElementNameHandle = UIntNative
 
 const NULL_PTR: UIntNative = 0
@@ -61,6 +62,7 @@ foreign func FFICJWantAddEntity(want: WantHandle, entity: CString): Unit
  * ability and the ability name in the bundle.
  * When UIAbilityA needs to start UIAbilityB and transfer some data to UIAbilityB, it can use Want a carrier to
  * transfer the data.
+ *
  */
 @!APILevel[
     22,
@@ -71,9 +73,10 @@ public class Want {
     private var paramJsonObj_: JsonObject
 
     /**
-    * ID of the device running the ability.
-    * If this field is unspecified, the local device is used.
-    */
+     * ID of the device running the ability.
+     * If this field is unspecified, the local device is used.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -81,8 +84,9 @@ public class Want {
     public var deviceId: String
 
     /**
-    * Bundle name of the ability.
-    */
+     * Bundle name of the ability.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -90,10 +94,11 @@ public class Want {
     public var bundleName: String
 
     /**
-    * Name of the ability.
-    * If both bundleName and abilityName are specified in a Want object, the Want object can match a specific ability.
-    * The value of abilityName must be unique in an application.
-   */
+     * Name of the ability.
+     * If both bundleName and abilityName are specified in a Want object, the Want object can match a specific ability.
+     * The value of abilityName must be unique in an application.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -101,10 +106,11 @@ public class Want {
     public var abilityName: String
 
     /**
-    * Name of the module to which the ability belongs.
-    * If the ability belongs to a HAR module, moduleName must be set to the name of the HAP or HSP module that
-    * depends on this HAR.
-    */
+     * Name of the module to which the ability belongs.
+     * If the ability belongs to a HAR module, moduleName must be set to the name of the HAP or HSP module that
+     * depends on this HAR.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -112,10 +118,11 @@ public class Want {
     public var moduleName: String
 
     /**
-    * How the Want object will be handled. By default, a number is passed in.
-    * For example, wantConstant.Flags.FLAG_ABILITY_CONTINUATION specifies whether to start the ability in cross-device
-    * migration scenarios.
-    */
+     * How the Want object will be handled. By default, a number is passed in.
+     * For example, wantConstant.Flags.FLAG_ABILITY_CONTINUATION specifies whether to start the ability in cross-device
+     * migration scenarios.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -123,11 +130,12 @@ public class Want {
     public var flags: UInt32
 
     /**
-    * Data carried.
-    * This field is used together with type to specify the data type.
-    * If uri is specified in a Want, the Want will match the specified URI information, including scheme,
-    * schemeSpecificPart, authority, and path.
-    */
+     * Data carried.
+     * This field is used together with type to specify the data type.
+     * If uri is specified in a Want, the Want will match the specified URI information, including scheme,
+     * schemeSpecificPart, authority, and path.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -135,10 +143,11 @@ public class Want {
     public var uri: String
 
     /**
-    * Action to take, such as viewing and sharing application details.
-    * In implicit Want, you can define this field and use it together with uri or parameters to specify the operation
-    * to be performed on the data.
-    */
+     * Action to take, such as viewing and sharing application details.
+     * In implicit Want, you can define this field and use it together with uri or parameters to specify the operation
+     * to be performed on the data.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -146,9 +155,10 @@ public class Want {
     public var action: String
 
     /**
-    * Additional category information (such as browser and video player) of the ability.
-    * It is a supplement to the action field for implicit Want. and is used to filter ability types.
-    */
+     * Additional category information (such as browser and video player) of the ability.
+     * It is a supplement to the action field for implicit Want. and is used to filter ability types.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -156,8 +166,9 @@ public class Want {
     public var entities: Array<String>
 
     /**
-    * MIME type, that is, the type of the file to open.
-    */
+     * MIME type, that is, the type of the file to open.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -165,63 +176,64 @@ public class Want {
     public var wantType: String
 
     /**
-    * List of parameters in the Want object.
-    * 
-    * 1. The values of the following keys are assigned by the system. Manual settings do not take effect, since the
-    * system automatically changes the values to the actual values during data transfer.
-    * -ohos.aafwk.param.callerPid: PID of the caller. The value is a string.
-    * -ohos.aafwk.param.callerBundleName: bundle name of the caller. The value is a string.
-    * -ohos.aafwk.param.callerAbilityName: ability name of the caller. The value is a string.
-    * -ohos.aafwk.param.callerNativeName: process name of the caller when the native method is called. The value is
-    * a string.
-    * -ohos.aafwk.param.callerAppId: appId of the caller. The value is a string.
-    * -ohos.aafwk.param.callerAppIdentifier: appIdentifier of the caller. The value is a string.
-    * -ohos.aafwk.param.callerToken: token of the caller. The value is a string.
-    * -ohos.aafwk.param.callerUid: UID in BundleInfo, that is, the application's UID in the bundle information. The
-    * value is a number.
-    * -ohos.param.callerAppCloneIndex: clone index of the caller. The value is of the numeric type.
-    * -component.startup.newRules: enabled status of the new control rule. The value is of the Boolean type.
-    * -moduleName: module name of the caller. The value is a string.
-    * -ability.params.backToOtherMissionStack: support for redirection back across mission stacks. The value is of
-    * the Boolean type.
-    * -ohos.ability.params.abilityRecoveryRestart: support for ability restart upon fault recovery. The value is of
-    * the Boolean type.
-    * -ohos.extra.param.key.contentTitle: title that can be shared by the atomic service. The value is a string.
-    * -ohos.extra.param.key.shareAbstract: content that can be shared by the atomic service. The value is a string.
-    * -ohos.extra.param.key.shareUrl: URL of the content that can be shared by the atomic service. The value is
-    * a string.
-    * -ohos.extra.param.key.supportContinuePageStack: support for migration of page stack information during
-    * cross-device migration. The value is of the Boolean type. The default value is true, indicating that page stack
-    * information is automatically migrated.
-    * -ohos.extra.param.key.supportContinueSourceExit: support for application exit on the source device during
-    * cross-device migration. The value is of the Boolean type. The default value is true, indicating that the
-    * application on the source device automatically exits.
-    * -ohos.extra.param.key.showMode: mode to show the atomic service startup. The value is an enumerated value of
-    * wantConstant.ShowMode.
-    * -ohos.dlp.params.sandbox: available only for DLP files. This key is involved only in system applications.
-    * -ohos.dlp.params.bundleName: bundle name of DLP. The value is a string. This key is involved only in system
-    * applications.
-    * -ohos.dlp.params.moduleName: module name of DLP. The value is a string. This key is involved only in system
-    * applications.
-    * -ohos.dlp.params.abilityName: ability name of DLP. The value is a string. This key is involved only in system
-    * applications.
-    * -ohos.dlp.params.index: DLP index. The value is a number. This key is involved only in system applications.
-    * -ohos.ability.params.asssertFaultSessionId: session ID of the fault assertion. The value is a string. This key
-    * is involved only in system applications.
-    * 
-    * 2. The following keys are defined by the system, and their values need to be manually assigned.
-    * -ability.params.stream: File URIs to be authorized to the target ability. The value is a file URI array of the
-    * string type.
-    * -ohos.extra.param.key.appCloneIndex: index of the application clone.
-    * 
-    * 3. In addition to the foregoing cases, applications may further agree on the key-value pairs to transfer.
-    * 
-    * For details about the constants of Params in want, see wantConstant.
-    * Note that a maximum of 200 KB data that can be transferred by using WantParams. If the data volume exceeds
-    * 200 KB, transfer data in WriteRawDataBuffer or uri mode.
-    * The values of parameters must be of the following basic data types: String, Number, Boolean, Object,
-    * undefined, and null. Functions in an object cannot be transferred.
-    */
+     * List of parameters in the Want object.
+     *
+     * 1. The values of the following keys are assigned by the system. Manual settings do not take effect, since the
+     * system automatically changes the values to the actual values during data transfer.
+     * -ohos.aafwk.param.callerPid: PID of the caller. The value is a string.
+     * -ohos.aafwk.param.callerBundleName: bundle name of the caller. The value is a string.
+     * -ohos.aafwk.param.callerAbilityName: ability name of the caller. The value is a string.
+     * -ohos.aafwk.param.callerNativeName: process name of the caller when the native method is called. The value is
+     * a string.
+     * -ohos.aafwk.param.callerAppId: appId of the caller. The value is a string.
+     * -ohos.aafwk.param.callerAppIdentifier: appIdentifier of the caller. The value is a string.
+     * -ohos.aafwk.param.callerToken: token of the caller. The value is a string.
+     * -ohos.aafwk.param.callerUid: UID in BundleInfo, that is, the application's UID in the bundle information. The
+     * value is a number.
+     * -ohos.param.callerAppCloneIndex: clone index of the caller. The value is of the numeric type.
+     * -component.startup.newRules: enabled status of the new control rule. The value is of the Boolean type.
+     * -moduleName: module name of the caller. The value is a string.
+     * -ability.params.backToOtherMissionStack: support for redirection back across mission stacks. The value is of
+     * the Boolean type.
+     * -ohos.ability.params.abilityRecoveryRestart: support for ability restart upon fault recovery. The value is of
+     * the Boolean type.
+     * -ohos.extra.param.key.contentTitle: title that can be shared by the atomic service. The value is a string.
+     * -ohos.extra.param.key.shareAbstract: content that can be shared by the atomic service. The value is a string.
+     * -ohos.extra.param.key.shareUrl: URL of the content that can be shared by the atomic service. The value is
+     * a string.
+     * -ohos.extra.param.key.supportContinuePageStack: support for migration of page stack information during
+     * cross-device migration. The value is of the Boolean type. The default value is true, indicating that page stack
+     * information is automatically migrated.
+     * -ohos.extra.param.key.supportContinueSourceExit: support for application exit on the source device during
+     * cross-device migration. The value is of the Boolean type. The default value is true, indicating that the
+     * application on the source device automatically exits.
+     * -ohos.extra.param.key.showMode: mode to show the atomic service startup. The value is an enumerated value of
+     * wantConstant.ShowMode.
+     * -ohos.dlp.params.sandbox: available only for DLP files. This key is involved only in system applications.
+     * -ohos.dlp.params.bundleName: bundle name of DLP. The value is a string. This key is involved only in system
+     * applications.
+     * -ohos.dlp.params.moduleName: module name of DLP. The value is a string. This key is involved only in system
+     * applications.
+     * -ohos.dlp.params.abilityName: ability name of DLP. The value is a string. This key is involved only in system
+     * applications.
+     * -ohos.dlp.params.index: DLP index. The value is a number. This key is involved only in system applications.
+     * -ohos.ability.params.asssertFaultSessionId: session ID of the fault assertion. The value is a string. This key
+     * is involved only in system applications.
+     *
+     * 2. The following keys are defined by the system, and their values need to be manually assigned.
+     * -ability.params.stream: File URIs to be authorized to the target ability. The value is a file URI array of the
+     * string type.
+     * -ohos.extra.param.key.appCloneIndex: index of the application clone.
+     *
+     * 3. In addition to the foregoing cases, applications may further agree on the key-value pairs to transfer.
+     *
+     * For details about the constants of Params in want, see wantConstant.
+     * Note that a maximum of 200 KB data that can be transferred by using WantParams. If the data volume exceeds
+     * 200 KB, transfer data in WriteRawDataBuffer or uri mode.
+     * The values of parameters must be of the following basic data types: String, Number, Boolean, Object,
+     * undefined, and null. Functions in an object cannot be transferred.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -231,8 +243,26 @@ public class Want {
     let fds: HashMap<String, Int32>
 
     /**
-    * Want constructor.
-    */
+     * Want constructor.
+     *
+     * @param { String } deviceId - ID of the device running the ability. The default value is "".
+     * @param { String } bundleName - Bundle name of the ability. The default value is "".
+     * @param { String } abilityName - Name of the ability. The default value is "".
+     * @param { String } moduleName - Name of the module to which the ability belongs. The default value is "".
+     * @param { UInt32 } flags - How the Want object will be handled. By default, a number is passed in. The default
+     * value is 0.
+     * @param { String } uri - Data carried. The default value is "".
+     * @param { String } action - Action to take, such as viewing and sharing application details. The default value is
+     * "".
+     * @param { Array<String> } entities - Additional category information (such as browser and video player) of the
+     * ability. The default value is an empty array.
+     * @param { String } wantType - MIME type, that is, the type of the file to open. The default value is "".
+     * @param { HashMap<String, WantValueType> } parameters - Map of parameters in the Want object. The default value
+     * is an empty map.
+     * @param { HashMap<String, Int32> } fds - Want file descriptor (FD), which is used to identify the Want file
+     * opened. Not supported yet. The default value is an empty map.
+     * @throws { BusinessException } 16000050 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -263,7 +293,7 @@ public class Want {
         this.parameters = parameters
         this.paramJsonObj_ = mapToJsonObject(parameters)
         if (fds.size != 0) {
-            throw IllegalArgumentException("fds is not supported yet")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
         this.fds = fds
     }
@@ -271,7 +301,7 @@ public class Want {
     // Attention: Do not modify the wantHandle on the native side. Otherwise, inconsistency may occur.
     protected init(wantHandle: WantHandle) {
         if (wantHandle == NULL_PTR) {
-            throw IllegalArgumentException("no such wantHandle")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
         var paramsHandle = unsafe { FFICJWantGetWantInfo(wantHandle) }
         let params = unsafe { paramsHandle.read() }
@@ -308,12 +338,11 @@ public class Want {
     protected func createWantHandle(): WantHandle {
         var wantHandle: WantHandle = NULL_PTR
         unsafe {
-            try (
-                unsafeUri = LibC.mallocCString(uri).asResource(),
-                unsafeAction = LibC.mallocCString(action).asResource(),
-                unsafeType = LibC.mallocCString(wantType).asResource(),
-                unsafeParameters = LibC.mallocCString(jsonObjectWrapper(paramJsonObj_).toString()).asResource()
-            ) {
+            try (unsafeUri = LibC.mallocCString(uri).asResource(), unsafeAction = LibC
+                .mallocCString(action)
+                .asResource(), unsafeType = LibC.mallocCString(wantType).asResource(), unsafeParameters = LibC
+                .mallocCString(jsonObjectWrapper(paramJsonObj_).toString())
+                .asResource()) {
                 let elementNameHandle = this.elementName_.createElementNameHandle()
                 // Entities handled later.
                 let param = CJWantParams(elementNameHandle, flags, unsafeUri.value, unsafeAction.value,
@@ -321,7 +350,7 @@ public class Want {
                 wantHandle = FFICJWantCreateWithWantInfo(param)
                 ElementName.release(elementNameHandle)
                 if (wantHandle == NULL_PTR) {
-                    throw IllegalArgumentException("Invalid wantHandle")
+                    throw BusinessException(ERROR_CODE_INNER, "Internal error.")
                 }
                 for (entity in entities) {
                     var value = LibC.mallocCString(entity)
