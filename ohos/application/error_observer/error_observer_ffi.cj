@@ -44,9 +44,9 @@ protected struct CErrorObserver {
     protected init(obsever: ErrorObserver) {
         let wrapper1 = {
             errMsg: CString =>
-            let cjErrMsg = errMsg.toString()
-            unsafe { LibC.free(errMsg) }
-            obsever.onUnhandledException(cjErrMsg)
+                let cjErrMsg = errMsg.toString()
+                unsafe { LibC.free(errMsg) }
+                obsever.onUnhandledException(cjErrMsg)
         }
         let lambdaData1 = Callback1Param<CString, Unit>(wrapper1)
         this.onUnhandledException = lambdaData1.getID()
@@ -54,9 +54,9 @@ protected struct CErrorObserver {
         if (let Some(v) <- obsever.onException) {
             let wrapper2 = {
                 errObject: CErrorObject =>
-                let cjErrObject = ErrorObject(errObject)
-                unsafe { errObject.free() }
-                v(cjErrObject)
+                    let cjErrObject = ErrorObject(errObject)
+                    unsafe { errObject.free() }
+                    v(cjErrObject)
             }
             let lambdaData2 = Callback1Param<CErrorObject, Unit>(wrapper2)
             this.onException = lambdaData2.getID()

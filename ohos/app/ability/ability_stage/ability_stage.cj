@@ -95,7 +95,7 @@ func abilityStageOnAcceptWant(id: Int64, _: WantHandle): CString {
         let result = ""
         unsafe { LibC.mallocCString(result) }
     } else {
-        throw NoneValueException("No such AbilityStage!")
+        throw BusinessException(16000050, "Internal error.")
     }
 }
 
@@ -106,7 +106,7 @@ func abilityStageOnNewProcessRequest(id: Int64, _: WantHandle): CString {
         let result = ""
         unsafe { LibC.mallocCString(result) }
     } else {
-        throw NoneValueException("No such AbilityStage!")
+        throw BusinessException(16000050, "Internal error.")
     }
 }
 
@@ -127,6 +127,7 @@ class AbilityStageImpl {}
  * AbilityStage is a runtime class for HAP files.
  * AbilityStage notifies you of when you can perform HAP initialization such as resource pre-loading and thread
  * creation during the HAP loading.
+ *
  */
 @!APILevel[
     22,
@@ -139,8 +140,11 @@ public open class AbilityStage <: FFIData {
     private let impl_: AbilityStageImpl = AbilityStageImpl()
 
     /**
-    * register AbilityStage
-    */
+     * register AbilityStage
+     *
+     * @param { String } moduleName - Indicates the module name of the AbilityStage.
+     * @param { () -> AbilityStage } creator - Indicates the creator of the AbilityStage.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -168,9 +172,11 @@ public open class AbilityStage <: FFIData {
     }
 
     /**
-    * Defines the context of AbilityStage.
-    * The context is obtained in the callback invoked when initialization is performed during ability startup.
-    */
+     * Defines the context of AbilityStage.
+     * The context is obtained in the callback invoked when initialization is performed during ability startup.
+     *
+     * @returns { AbilityStageContext } Returns the context of AbilityStageContext.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -189,22 +195,23 @@ public open class AbilityStage <: FFIData {
 
     func abilityStageInit(remote: AbilityStageHandle): Unit {
         if (remote == 0) {
-            throw IllegalStateException("Invalid remote AbilityStage")
+            throw BusinessException(16000050, "Internal error.")
         }
 
         // Init abilityContext
         let nativeAbilityStageContextId = unsafe { FFIAbilityGetAbilityStageContext(remote) }
         if (nativeAbilityStageContextId == ERR_INVALID_INSTANCE_CODE) {
-            throw IllegalStateException("Invalid remote AbilityStageContext")
+            throw BusinessException(16000050, "Internal error.")
         }
         var value = AbilityStageContext(nativeAbilityStageContextId)
         abilityStageContext = Option<AbilityStageContext>.Some(value)
     }
 
     /**
-    * Called when the application is created.
-    * This API returns the result synchronously and does not support asynchronous callbacks.
-    */
+     * Called when the application is created.
+     * This API returns the result synchronously and does not support asynchronous callbacks.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"

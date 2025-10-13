@@ -19,10 +19,14 @@ package ohos.app.ability.want_constant
 
 import std.deriving.Derive
 import ohos.labels.*
+import ohos.business_exception.*
+
+const ERROR_CODE_INNER: Int32 = 16000050
 
 /**
-* The constant for params of the want
-*/
+ * The constant for params of the want
+ *
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     22,
@@ -32,6 +36,7 @@ public enum Params {
     /**
      * Indicates the ability in this want can back to the current top ability even though they are not in the same
      * mission stack
+     *
      */
     @!APILevel[
         22,
@@ -41,6 +46,7 @@ public enum Params {
     |
     /**
      * Indicates the param of ability failure restart recovery identification
+     *
      */
     @!APILevel[
         22,
@@ -50,6 +56,7 @@ public enum Params {
     |
     /**
      * Indicates the param of extra content title
+     *
      */
     @!APILevel[
         22,
@@ -59,6 +66,7 @@ public enum Params {
     |
     /**
      * Indicates the param of extra shared abstract
+     *
      */
     @!APILevel[
         22,
@@ -68,6 +76,7 @@ public enum Params {
     |
     /**
      * Indicates the param of extra shareURL
+     *
      */
     @!APILevel[
         22,
@@ -79,6 +88,7 @@ public enum Params {
      * Indicates the param of extra support continue page stack.
      * The default value of the param is true,
      * and the system will automatically flow the page stack information by default.
+     *
      */
     @!APILevel[
         22,
@@ -103,7 +113,8 @@ public enum Params {
     /**
      * get the corresponding mapping value.
      *
-     * @throws { IllegalArgumentException } - The type is not supported.
+     * @returns { String } Returns the corresponding mapping value.
+     * @throws { BusinessException } 401 - Parameter error.
      */
     @!APILevel[
         22,
@@ -118,14 +129,15 @@ public enum Params {
             case ShareUrlKey => "ohos.extra.param.key.shareUrl"
             case SupportContinuePageStackKey => "ohos.extra.param.key.supportContinuePageStack"
             case SupportContinueSourceExitKey => "ohos.extra.param.key.supportContinueSourceExit"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
 
 /**
-* Used to indicate how Want is handled.
-*/
+ * Used to indicate how Want is handled.
+ *
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     22,
@@ -134,6 +146,7 @@ public enum Params {
 public enum Flags {
     /**
      * Indicates the grant to perform read operations on the URI.
+     *
      */
     @!APILevel[
         22,
@@ -143,6 +156,7 @@ public enum Flags {
     |
     /**
      * Indicates the grant to perform write operations on the URI.
+     *
      */
     @!APILevel[
         22,
@@ -152,6 +166,7 @@ public enum Flags {
     |
     /**
      * Indicates the grant for possible persisting on the URI.
+     *
      */
     @!APILevel[
         22,
@@ -161,6 +176,7 @@ public enum Flags {
     |
     /**
      * Install the specified ability if it's not installed.
+     *
      */
     @!APILevel[
         22,
@@ -170,6 +186,7 @@ public enum Flags {
     |
     /**
      * Indicates that if implicit start ability couldn't match any application, no tip dialog will be pulled up.
+     *
      */
     @!APILevel[
         22,
@@ -181,7 +198,8 @@ public enum Flags {
     /**
      * get the corresponding mapping value.
      *
-     * @throws { IllegalArgumentException } - The type is not supported.
+     * @returns { UInt32 } Returns the corresponding mapping value.
+     * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
         22,
@@ -194,7 +212,7 @@ public enum Flags {
             case FlagAuthPersistableUriPermission => 0x00000040
             case FlagInstallOnDemand => 0x00000800
             case FlagStartWithoutTips => 0x40000000
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }

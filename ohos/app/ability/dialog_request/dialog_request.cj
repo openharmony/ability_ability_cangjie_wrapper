@@ -19,10 +19,14 @@ package ohos.app.ability.dialog_request
 
 import ohos.app.ability.want.*
 import ohos.labels.*
+import ohos.business_exception.BusinessException
+
+const ERROR_CODE_INNER: Int32 = 16000050
 
 /**
-* The modal bullet box requests the result code.
-*/
+ * The modal bullet box requests the result code.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -30,6 +34,7 @@ import ohos.labels.*
 public enum ResultCode {
     /**
      * The modal bullet box requests succeeded.
+     *
      */
     @!APILevel[
         22,
@@ -39,6 +44,7 @@ public enum ResultCode {
     | 
     /**
      * The modal bullet box requests Failed.
+     *
      */
     @!APILevel[
         22,
@@ -51,8 +57,7 @@ public enum ResultCode {
         match (value) {
             case 0 => ResultOk
             case 1 => ResultCancel
-            case _ =>
-                throw IllegalArgumentException("No corresponding ResultCode: ${value}")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
@@ -60,14 +65,15 @@ public enum ResultCode {
         match (this) {
             case ResultOk => 0
             case ResultCancel => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
 
 /**
-* The result of requestDialogService with asynchronous callback.
-*/
+ * The result of requestDialogService with asynchronous callback.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -75,6 +81,7 @@ public enum ResultCode {
 public class RequestResult {
     /**
      * The request result passed in by the user.
+     *
      */
     @!APILevel[
         22,
@@ -84,6 +91,7 @@ public class RequestResult {
 
     /**
      * The request additional want data passed in by the user.
+     *
      */
     @!APILevel[
         22,

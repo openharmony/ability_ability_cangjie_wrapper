@@ -24,6 +24,7 @@ import ohos.labels.*
 /**
  * Provide methods for matching monitored AbilityStage objects that meet specified conditions.
  * The most recently matched AbilityStage objects will be saved in the AbilityStageMonitor object.
+ *
  */
 @!APILevel[
     22,
@@ -31,16 +32,18 @@ import ohos.labels.*
 ]
 public class AbilityStageMonitor <: FFIData {
     /**
-        * The module name of the abilityStage to monitor.
-        */        
+     * The module name of the abilityStage to monitor.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var moduleName: String
     /**
-        * The source path of the abilityStage to monitor.
-        */
+     * The source path of the abilityStage to monitor.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -48,6 +51,9 @@ public class AbilityStageMonitor <: FFIData {
     public var srcEntrance: String
     /**
      * AbilityStageMonitor constructor.
+     *
+     * @param { String } moduleName - The module name of the abilityStage to monitor.
+     * @param { String } srcEntrance - The source path of the abilityStage to monitor.
      */
     @!APILevel[
         22,

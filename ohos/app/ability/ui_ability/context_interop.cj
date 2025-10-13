@@ -44,9 +44,10 @@ foreign {
  */
 extend Context <: SystemObjectInteropTypeToJS {
     /**
-     * convert cangjie object ot arkts object
+     * convert cangjie object ot arkts object.
      *
-     * @throws { IllegalArgumentException } - The type is not supported.
+     * @param { JSContext } context - The JSRuntime context.
+     * @return { JSValue } Returns the JSValue converted from the cangjie object.
      */
     @!APILevel[
         22,
@@ -54,7 +55,7 @@ extend Context <: SystemObjectInteropTypeToJS {
     ]
     public func toJSValue(context: JSContext): JSValue {
         let napiValue = unsafe {
-            match(this) {
+            match (this) {
                 case _: UIAbilityContext => FfiConvertUIAbilityContext2Napi(context.getNapiEnv(), getID())
                 case _: AbilityStageContext => FfiConvertAbilityStageContext2Napi(context.getNapiEnv(), getID())
                 case _: ApplicationContext => FfiConvertApplicationContext2Napi(context.getNapiEnv(), getID())
@@ -66,7 +67,11 @@ extend Context <: SystemObjectInteropTypeToJS {
 }
 
 /**
- * create cangjie object from arkts object
+ * create cangjie object from arkts object.
+ *
+ * @param { JSContext } context - The JSRuntime context.
+ * @param { JSValue } input - The JSValue to be converted.
+ * @return { UIAbilityContext } Returns the UIAbilityContext converted from the JSValue.
  */
 @!APILevel[
     22,
@@ -80,7 +85,11 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
 }
 
 /**
- * create cangjie object from arkts object
+ * create cangjie object from arkts object.
+ *
+ * @param { JSContext } context - The JSRuntime context.
+ * @param { JSValue } input - The JSValue to be converted.
+ * @return { AbilityStageContext } Returns the AbilityStageContext converted from the JSValue.
  */
 @!APILevel[
     22,
@@ -94,7 +103,11 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
 }
 
 /**
- * create cangjie object from arkts object
+ * create cangjie object from arkts object.
+ *
+ * @param { JSContext } context - The JSRuntime context.
+ * @param { JSValue } input - The JSValue to be converted.
+ * @return { ApplicationContext } Returns the ApplicationContext converted from the JSValue.
  */
 @!APILevel[
     22,
@@ -108,7 +121,11 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
 }
 
 /**
- * create cangjie object from arkts object
+ * create cangjie object from arkts object.
+ *
+ * @param { JSContext } context - The JSRuntime context.
+ * @param { JSValue } input - The JSValue to be converted.
+ * @return { Context } Returns the Context converted from the JSValue.
  */
 @!APILevel[
     22,

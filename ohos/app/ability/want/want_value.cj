@@ -20,18 +20,21 @@ package ohos.app.ability.want
 import std.collection.*
 import ohos.encoding.json.*
 import ohos.labels.*
+import ohos.business_exception.BusinessException
+
+const ERROR_CODE_INNER: Int32 = 16000050
 
 /**
-* Want value type.
-*/
+ * Want value type.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum WantValueType {
     /**
-    * Int64 value type.
-    */
+     * Int64 value type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -39,8 +42,8 @@ public enum WantValueType {
     Int64Value(Int64)
     |
     /**
-    * Float64 value type.
-    */
+     * Float64 value type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -48,8 +51,8 @@ public enum WantValueType {
     Float64Value(Float64)
     |
     /**
-    * String value type.
-    */
+     * String value type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -57,8 +60,8 @@ public enum WantValueType {
     StringValue(String)
     |
     /**
-    * Bool value type.
-    */
+     * Bool value type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -66,8 +69,8 @@ public enum WantValueType {
     BoolValue(Bool)
     |
     /**
-    * Array value type.
-    */
+     * Array value type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -75,8 +78,8 @@ public enum WantValueType {
     ArrayValue(Array<WantValueType>)
     |
     /**
-    * HashMap value type.
-    */
+     * HashMap value type.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -85,26 +88,26 @@ public enum WantValueType {
     | ...
 
     protected func toJsonValue(): JsonValue {
-        match(this) {
+        match (this) {
             case Int64Value(n) => JsonInt(n)
             case Float64Value(n) => JsonFloat(n)
             case StringValue(n) => JsonString(n)
             case BoolValue(n) => JsonBool(n)
             case ArrayValue(n) => arrayToJsonArray(n)
             case HashMapValue(n) => mapToJsonObject(n)
-            case _ => throw IllegalArgumentException("this type is not supported yet")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
     protected static func fromJsonValue(jsValue: JsonValue): WantValueType {
-        return match(jsValue.kind()) {
+        return match (jsValue.kind()) {
             case JsonKind.JsInt => Int64Value(jsValue.asInt().getValue())
             case JsonKind.JsFloat => Float64Value(jsValue.asFloat().getValue())
             case JsonKind.JsString => StringValue(jsValue.asString().getValue())
             case JsonKind.JsBool => BoolValue(jsValue.asBool().getValue())
             case JsonKind.JsArray => ArrayValue(arrayFromJsonArray(jsValue.asArray()))
             case JsonKind.JsObject => HashMapValue(mapFromJsonObject(jsValue.asObject()))
-            case _ => throw IllegalArgumentException("this type is not supported yet")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -124,7 +127,7 @@ func arrayFromJsonArray(jsArray: JsonArray): Array<WantValueType> {
 
 protected func mapToJsonObject(map: HashMap<String, WantValueType>): JsonObject {
     let paramMap = HashMap<String, JsonValue>()
-    for ((k,v) in map) {
+    for ((k, v) in map) {
         paramMap.add(k, v.toJsonValue())
     }
     return JsonObject(paramMap)
@@ -132,7 +135,7 @@ protected func mapToJsonObject(map: HashMap<String, WantValueType>): JsonObject 
 
 protected func mapFromJsonObject(jsObj: JsonObject): HashMap<String, WantValueType> {
     let paramMap = HashMap<String, WantValueType>()
-    for ((k,v) in jsObj.getFields()) {
+    for ((k, v) in jsObj.getFields()) {
         paramMap.add(k, WantValueType.fromJsonValue(v))
     }
     return paramMap

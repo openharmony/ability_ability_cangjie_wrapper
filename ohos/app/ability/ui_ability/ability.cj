@@ -25,6 +25,7 @@ class AbilityImpl {}
 
 /**
  * The class of an ability.
+ *
  */
 @!APILevel[
     22,
@@ -35,8 +36,11 @@ abstract sealed class Ability <: FFIData {
     private let impl_ = AbilityImpl()
 
     /**
-    * register Ability
-    */
+     * register Ability
+     *
+     * @param { String } name - The module name of the Ability.
+     * @param { () -> Ability } creator - The creator of the Ability.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"

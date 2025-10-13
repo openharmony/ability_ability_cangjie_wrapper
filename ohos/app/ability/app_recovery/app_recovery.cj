@@ -31,10 +31,11 @@ foreign {
 }
 
 /**
-* Restart current process and launch the first ability(the entry ability in most cases) of current process.
-* The previous saved state will be filled in the want.wantParams of UIAbility.onCreate interface.
-* and the param of UIAbility.onCreate will be set to AppRecovery.
-*/
+ * Restart current process and launch the first ability(the entry ability in most cases) of current process.
+ * The previous saved state will be filled in the want.wantParams of UIAbility.onCreate interface.
+ * and the param of UIAbility.onCreate will be set to AppRecovery.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"

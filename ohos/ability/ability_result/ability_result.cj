@@ -22,6 +22,7 @@ import ohos.app.ability.want.*
 
 /**
  * AbilityResult
+ *
  */
 @!APILevel[
     22,
@@ -29,9 +30,10 @@ import ohos.app.ability.want.*
 ]
 public class AbilityResult {
     /**
-    * Indicates the result code returned after the ability is destroyed. You can define the result
-    * code to identify an error.
-    */
+     * Indicates the result code returned after the ability is destroyed. You can define the result
+     * code to identify an error.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -39,9 +41,10 @@ public class AbilityResult {
     public var resultCode: Int32
 
     /**
-    * Indicates the data returned after the ability is destroyed. You can define the data returned.
-    * This parameter can be null.
-    */
+     * Indicates the data returned after the ability is destroyed. You can define the data returned.
+     * This parameter can be null.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -49,8 +52,11 @@ public class AbilityResult {
     public var want: Want
 
     /**
-    * AbilityResult constructor.
-    */
+     * AbilityResult constructor.
+     *
+     * @param { Int32 } resultCode - Indicates the result code returned after the ability is destroyed.
+     * @param { Want } want - Indicates the data returned after the ability is destroyed. The default value is Want().
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityBase"

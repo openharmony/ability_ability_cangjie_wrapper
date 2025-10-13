@@ -29,7 +29,9 @@ import ohos.labels.*
 import ohos.business_exception.BusinessException
 
 type AbilityHandle = UIntNative
+
 type VectorStringHandle = CPointer<Unit>
+
 type WindowStageHandle = Int64
 
 foreign func FFIAbilityGetAbilityContext(handle: AbilityHandle): Int64
@@ -98,8 +100,7 @@ func createAbility(name: CString): Int64 {
 func releaseAbility(id: Int64): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
-        case None =>
-            throw BusinessException(ERROR_CODE_INNER, "No such Ability: " + id.toString())
+        case None => throw BusinessException(ERROR_CODE_INNER, "No such Ability: " + id.toString())
         case Some(ability) => ABILITY_LOG.info("Release abilityContext end")
     }
     FFIDataManager.getInstance().releaseData(id)
@@ -112,7 +113,7 @@ func abilityOnStart(id: Int64, wantHandle: WantHandle, launchParam: CJLaunchPara
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let want = Want(wantHandle)
             ability.setLaunchWant(want)
@@ -135,7 +136,7 @@ func abilityOnStop(id: Int64): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) => ability.onDestroy()
     }
 }
@@ -146,7 +147,7 @@ func abilityOnSceneCreated(id: Int64, windowStageHandle: WindowStageHandle): Uni
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let windowStage = WindowStage(windowStageHandle)
             ability.context.windowStage_ = windowStage
@@ -160,7 +161,7 @@ func abilityOnSceneRestored(id: Int64, windowStageHandle: WindowStageHandle): Un
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let windowStage = WindowStage(windowStageHandle)
             ability.context.windowStage_ = windowStage
@@ -174,7 +175,7 @@ func abilityOnSceneDestroyed(id: Int64): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             ability.context.windowStage_ = None
             ability.onWindowStageDestroy()
@@ -187,7 +188,7 @@ func abilityOnSceneWillDestroy(id: Int64, windowStageHandle: WindowStageHandle):
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let windowStage = WindowStage(windowStageHandle)
             ability.context.windowStage_ = windowStage
@@ -201,7 +202,7 @@ func abilityOnForeground(id: Int64, wantHandle: WantHandle): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let want = Want(wantHandle)
             ability.setLastRequestWant(want)
@@ -215,7 +216,7 @@ func abilityOnBackground(id: Int64): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) => ability.onBackground()
     }
 }
@@ -226,7 +227,7 @@ func abilityOnBackPress(id: Int64): Bool {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) => ability.onBackPressed()
     }
 }
@@ -237,7 +238,7 @@ func abilityOnConfigurationUpdated(id: Int64, _: CJConfiguration): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) => ()
     }
 }
@@ -248,7 +249,7 @@ func abilityOnNewWant(id: Int64, wantHandle: WantHandle, launchParams: CJLaunchP
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let want = Want(wantHandle)
             ability.setLastRequestWant(want)
@@ -291,7 +292,7 @@ func abilityOnContinue(id: Int64, params: CString): Int32 {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let jsonValue = jsonStringUnWrapper(params.toString())
             let res = ability.onContinue(jsonValue.toString())
@@ -305,7 +306,7 @@ func abilityInit(id: Int64, abilityHandle: AbilityHandle): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) => ability.abilityInit(abilityHandle)
     }
 }
@@ -316,9 +317,8 @@ func abilityOnConfigurationUpdate(id: Int64, configuration: CConfiguration): Uni
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            unsafe { configuration.free() }
+            throw BusinessException(16000050, "Internal error.")
+        case Some(ability) => unsafe { configuration.free() }
     }
 }
 
@@ -328,9 +328,8 @@ func abilityOnMemoryLevel(id: Int64, _: Int32): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            ()
+            throw BusinessException(16000050, "Internal error.")
+        case Some(ability) => ()
     }
 }
 
@@ -340,7 +339,7 @@ func abilityOnPrepareTerminate(id: Int64): Bool {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) => ability.onPrepareToTerminate()
     }
 }
@@ -351,7 +350,7 @@ func abilityOnSaveState(id: Int64, reason: Int32, params: CString): CJNumberParm
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let reasonType = StateType.parse(reason)
             let wantParam = jsonStringUnWrapper(params.toString())
@@ -369,7 +368,7 @@ func abilityOnShare(id: Int64, params: CString): CString {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let wantParam = jsonStringUnWrapper(params.toString())
             ability.onShare(wantParam.toString())
@@ -386,7 +385,7 @@ func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw NoneValueException("No such Ability: " + id.toString())
+            throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let wantParam = jsonStringUnWrapper(params.toString())
             let continueResult = ability.onContinue(wantParam.toString())
@@ -401,7 +400,7 @@ func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
 func abilityOnCallRequest(id: Int64): Int64 {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
-        case None => throw NoneValueException("No such Ability: " + id.toString())
+        case None => throw BusinessException(16000050, "Internal error.")
         case Some(ability) =>
             let callee = ability.onCallRequest()
             return callee.getID()
@@ -412,9 +411,8 @@ func abilityOnCallRequest(id: Int64): Int64 {
 func abilityOnSetCalleeFlag(id: Int64, _: Bool): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
-        case None => throw NoneValueException("No such Ability: " + id.toString())
-        case Some(ability) =>
-            ()
+        case None => throw BusinessException(16000050, "Internal error.")
+        case Some(ability) => ()
     }
 }
 
@@ -424,6 +422,7 @@ class UIAbilityImpl {}
  * UIAbility is an application component that has the UI.
  * The UIAbility module, inherited from Ability, provides lifecycle callbacks such as component creation, destruction,
  * and foreground/background switching.
+ *
  */
 @!APILevel[
     22,
@@ -437,8 +436,10 @@ public open class UIAbility <: Ability {
     private let impl_: UIAbilityImpl = UIAbilityImpl()
 
     /**
-    * Parameters for starting the UIAbility.
-    */
+     * Parameters for starting the UIAbility.
+     *
+     * @returns { Want } Returns the parameters for starting the UIAbility.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -453,8 +454,11 @@ public open class UIAbility <: Ability {
     }
 
     /**
-    * Latest Want received through onCreate or onNewWant when the UIAbility is started for multiple times.
-    */
+     * Latest Want received through onCreate or onNewWant when the UIAbility is started for multiple times.
+     *
+     * @returns { Want } Returns the latest Want received through onCreate or onNewWant when the UIAbility is started
+     * for multiple times.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -469,8 +473,10 @@ public open class UIAbility <: Ability {
     }
 
     /**
-    * Context of the UIAbility.
-    */
+     * Context of the UIAbility.
+     *
+     * @returns { UIAbilityContext } Returns the context of the UIAbility.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -478,8 +484,7 @@ public open class UIAbility <: Ability {
     public mut prop context: UIAbilityContext {
         get() {
             match (abilityContext) {
-                case None =>
-                    throw BusinessException(ERROR_CODE_INNER, "Invalid context")
+                case None => throw BusinessException(ERROR_CODE_INNER, "Invalid context")
                 case Some(value) => return value
             }
         }
@@ -495,10 +500,13 @@ public open class UIAbility <: Ability {
     }
 
     /**
-    * Called to initialize the service logic when a UIAbility instance in the completely closed state is created.
-    * In other words, a UIAbility instance enters this lifecycle callback from a cold start. This API returns the
-    * result synchronously and does not support asynchronous callback.
-    */
+     * Called to initialize the service logic when a UIAbility instance in the completely closed state is created.
+     * In other words, a UIAbility instance enters this lifecycle callback from a cold start. This API returns the
+     * result synchronously and does not support asynchronous callback.
+     *
+     * @param { Want } want - Indicates the Want information for starting the UIAbility.
+     * @param { LaunchParam } launchParam - Indicates the launch parameters.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -506,13 +514,15 @@ public open class UIAbility <: Ability {
     public open func onCreate(want: Want, launchParam: LaunchParam): Unit {}
 
     /**
-    * Called to clear resources when this UIAbility is destroyed.
-    * This API returns the result synchronously or uses a promise to return the result.
-    * After the onDestroy() lifecycle callback is executed, the application may exit. Consequently,
-    * the asynchronous function (for example, asynchronously writing data to the database) in onDestroy() may fail to be
-    * executed. You can use the asynchronous lifecycle to ensure that the subsequent lifecycle continues only after the
-    * asynchronous function in onDestroy() finishes the execution.
-    */
+     * Called to clear resources when this UIAbility is destroyed.
+     * This API returns the result synchronously or uses a promise to return the result.
+     * After the onDestroy() lifecycle callback is executed, the application may exit. Consequently,
+     * the asynchronous function (for example, asynchronously writing data to the database) in onDestroy() may fail to
+     * be
+     * executed. You can use the asynchronous lifecycle to ensure that the subsequent lifecycle continues only after the
+     * asynchronous function in onDestroy() finishes the execution.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -520,8 +530,10 @@ public open class UIAbility <: Ability {
     public open func onDestroy(): Unit {}
 
     /**
-    * Called when a WindowStage is created for this UIAbility.
-    */
+     * Called when a WindowStage is created for this UIAbility.
+     *
+     * @param { WindowStage } windowStage - Indicates the WindowStage object for this UIAbility.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -529,13 +541,16 @@ public open class UIAbility <: Ability {
     public open func onWindowStageCreate(windowStage: WindowStage): Unit {}
 
     /**
-    * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance ability.
-    */
+     * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance
+     * ability.
+     *
+     */
     func onWindowStageRestore(_: WindowStage): Unit {}
 
     /**
-    * Called when the WindowStage is destroyed for this UIAbility.
-    */
+     * Called when the WindowStage is destroyed for this UIAbility.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -543,12 +558,13 @@ public open class UIAbility <: Ability {
     public open func onWindowStageDestroy(): Unit {}
 
     /**
-    * Triggered when the application transitions from the background to the foreground.
-    * It is called between onWillForeground and onDidForeground.
-    * It can be used to request system resources required, for example, requesting location services when the
-    * application transitions to the foreground.
-    * This API returns the result synchronously and does not support asynchronous callback.
-    */
+     * Triggered when the application transitions from the background to the foreground.
+     * It is called between onWillForeground and onDidForeground.
+     * It can be used to request system resources required, for example, requesting location services when the
+     * application transitions to the foreground.
+     * This API returns the result synchronously and does not support asynchronous callback.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -556,10 +572,11 @@ public open class UIAbility <: Ability {
     public open func onForeground(): Unit {}
 
     /**
-    * Triggered when the application transitions from the foreground to the background.
-    * It is called between onWillBackground and onDidBackground.
-    * It can be used to release resources when the UI is no longer visible, for example, stopping location services. 
-    */
+     * Triggered when the application transitions from the foreground to the background.
+     * It is called between onWillBackground and onDidBackground.
+     * It can be used to release resources when the UI is no longer visible, for example, stopping location services.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -573,15 +590,18 @@ public open class UIAbility <: Ability {
     func onWindowStageWillDestroy(_: WindowStage): Unit {}
 
     /**
-    * Called when a UIAbility instance that has undergone the following states is started again:
-    * started in the foreground, running in the foreground, and switched to the background.
-    *
-    * The triggering of the onNewWant lifecycle of a UIAbility instance indicates that this launch is a hot launch.
-    * Note that a hot launch does not necessarily trigger the onNewWant lifecycle.
-    *
-    * If you need to prevent the onNewWant lifecycle from being triggered in specific scenarios,
-    * you must call the {@link UIAbilityContext.setOnNewWantSkipScenarios} interface to suppress its callback.
-    */
+     * Called when a UIAbility instance that has undergone the following states is started again:
+     * started in the foreground, running in the foreground, and switched to the background.
+     *
+     * The triggering of the onNewWant lifecycle of a UIAbility instance indicates that this launch is a hot launch.
+     * Note that a hot launch does not necessarily trigger the onNewWant lifecycle.
+     *
+     * If you need to prevent the onNewWant lifecycle from being triggered in specific scenarios,
+     * you must call the {@link UIAbilityContext.setOnNewWantSkipScenarios} interface to suppress its callback.
+     *
+     * @param { Want } want - Indicates the Want information for starting the UIAbility.
+     * @param { LaunchParam } launchParam - Indicates the launch parameters.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
@@ -613,7 +633,7 @@ public open class UIAbility <: Ability {
     func abilityInit(remote: AbilityHandle): Unit {
         if (remote == 0) {
             ABILITY_LOG.error("Invalid remote Ability")
-            throw NoneValueException("Invalid remote Ability")
+            throw BusinessException(16000050, "Internal error.")
         }
 
         // Init abilityContext
