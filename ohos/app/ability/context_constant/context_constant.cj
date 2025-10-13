@@ -19,13 +19,17 @@ package ohos.app.ability.context_constant
 
 import std.deriving.Derive
 import ohos.labels.*
+import ohos.business_exception.*
 
 protected const PROCESS_MODE_UNSPECIFIED: Int32 = 0
 protected const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0
 
+const ERROR_CODE_INNER: Int32 = 16000050
+
 /**
-* File area mode
-*/
+ * File area mode
+ *
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     22,
@@ -34,36 +38,40 @@ protected const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0
 public enum AreaMode {
     /**
      * System level device encryption area
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     El1
-    | 
+    |
     /**
      * User credential encryption area
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     El2
-    | 
+    |
     /**
      * User credential encryption area
      * when screen locked, can read/write, and create file
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     El3
-    | 
+    |
     /**
      * User credential encryption area
      * when screen locked, FEB2.0 can read/write, FEB3.0 can't
-     * read/write, and all can't create file
+     * read/write, and all can't create file.
+     *
      */
     @!APILevel[
         22,
@@ -75,6 +83,7 @@ public enum AreaMode {
      * User privacy sensitive encryption area
      * when the screen locked, a closed file cannot be opened, read, or written,
      * a file can be created and then opened, read, or written.
+     *
      */
     @!APILevel[
         22,
@@ -90,7 +99,7 @@ public enum AreaMode {
             case 2 => El3
             case 3 => El4
             case 4 => El5
-            case _ => throw IllegalArgumentException("No corresponding AreaMode: ${value}")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
@@ -101,7 +110,7 @@ public enum AreaMode {
             case El3 => 2
             case El4 => 3
             case El5 => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -118,7 +127,7 @@ protected enum ProcessMode {
             case NewProcessAttachToParent => 1
             case NewProcessAttachToStatusBarItem => 2
             case AttachToStatusBarItem => 3
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -133,7 +142,7 @@ protected enum StartupVisibility {
         match (this) {
             case StartupHide => 0
             case StartupShow => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }

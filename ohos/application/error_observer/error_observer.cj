@@ -21,32 +21,32 @@ import std.collection.*
 import ohos.labels.*
 
 /**
-* Error object.
-*/
+ * Error object.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ErrorObject {
     /**
-    * Error object name.
-    */
+     * Error object name.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let name: String
     /**
-    * Error object message.
-    */
+     * Error object message.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let message: String
     /**
-    * Error object stack.
-    */
+     * Error object stack.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -81,16 +81,18 @@ public class ErrorObject {
 ]
 public class ErrorObserver {
     /**
-    * Will be called when the js runtime throws an exception which doesn't caught by user.
-    */
+     * Will be called when the js runtime throws an exception which doesn't caught by user.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onUnhandledException: (String) -> Unit
     /**
-    * Will be called when the js runtime throws an exception which doesn't caught by user.
-    */
+     * Will be called when the js runtime throws an exception which doesn't caught by user.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -98,8 +100,13 @@ public class ErrorObserver {
     public var onException: Option<(ErrorObject) -> Unit>
 
     /**
-    * ErrorObserver constructor.
-    */
+     * ErrorObserver constructor.
+     *
+     * @param { (String) -> Unit } onUnhandledException - Will be called when the js runtime throws an exception which
+     * doesn't caught by user.
+     * @param { Option<(ErrorObject) -> Unit> } onException - Will be called when the js runtime throws an exception
+     * which doesn't caught by user. The default value is None.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"

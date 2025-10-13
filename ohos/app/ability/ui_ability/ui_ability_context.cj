@@ -24,7 +24,7 @@ import ohos.app.ability.configuration.*
 import ohos.app.ability.dialog_request.*
 import ohos.app.ability.open_link_options.*
 import ohos.app.ability.start_options.*
-import ohos.base.{ VectorInt32Handle, FFIVectorString, }
+import ohos.base.{VectorInt32Handle, FFIVectorString}
 import ohos.business_exception.{BusinessException, AsyncCallback}
 import ohos.bundle.bundle_manager.*
 import ohos.ffi.*
@@ -158,6 +158,7 @@ class UIAbilityContextImpl {}
 
 /**
  * The context of an ability. It allows access to ability-specific resources.
+ *
  */
 @!APILevel[
     22,
@@ -185,7 +186,7 @@ public open class UIAbilityContext <: Context {
     private static func getBroker(): AbilityContextBroker {
         let nativeHandle = unsafe { FFIAbilityContextGetBroker() }
         if (nativeHandle.isNull()) {
-            throw IllegalStateException("Invalid broker, failed to get AbilityContextBroker")
+            throw BusinessException(16000050, "Internal error.")
         }
 
         let abilityContextBroker = unsafe { nativeHandle.read() }
@@ -198,51 +199,53 @@ public open class UIAbilityContext <: Context {
         if (status == true) {
             return id
         }
-        throw IllegalStateException("Invalid id, failed to create UIAbilityContext")
+        throw BusinessException(16000050, "Internal error.")
     }
 
     /**
-    * Starts a new ability. If the caller application is in foreground, you can use this method to start ability;
-    * If the caller application is in the background, you need to apply for
-    * permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
-    * If the target ability is visible, you can start the target ability; If the target ability is invisible,
-    * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
-    * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
-    *
-    * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
-    * 2.Incorrect parameter types.
-    * @throws { BusinessException } 801 - Capability not support.
-    * @throws { BusinessException } 16000001 - The specified ability does not exist.
-    * @throws { BusinessException } 16000002 - Incorrect ability type.
-    * @throws { BusinessException } 16000004 - Cannot start an invisible component.
-    * @throws { BusinessException } 16000005 - The specified process does not have the permission.
-    * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
-    * @throws { BusinessException } 16000008 - The crowdtesting application expires.
-    * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
-    * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is forbidden.
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    * @throws { BusinessException } 16000012 - The application is controlled.
-    * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
-    * greater than 11.
-    * @throws { BusinessException } 16000019 - No matching ability is found.
-    * @throws { BusinessException } 16000050 - Internal error.
-    * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
-    * @throws { BusinessException } 16000055 - Installation-free timed out.
-    * @throws { BusinessException } 16000067 - The StartOptions check failed.
-    * @throws { BusinessException } 16000068 - The ability is already running.
-    * @throws { BusinessException } 16000071 - App clone is not supported.
-    * @throws { BusinessException } 16000072 - App clone or multi-instance is not supported.
-    * @throws { BusinessException } 16000073 - The app clone index is invalid.
-    * @throws { BusinessException } 16000076 - The app instance key is invalid.
-    * @throws { BusinessException } 16000077 - The number of app instances reaches the limit.
-    * @throws { BusinessException } 16000078 - The multi-instance is not supported.
-    * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
-    * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
-    * @throws { BusinessException } 16200001 - The caller has been released.
-    * @throws { BusinessException } 16300003 - The target application is not the current application.
-    */
+     * Starts a new ability. If the caller application is in foreground, you can use this method to start ability;
+     * If the caller application is in the background, you need to apply for
+     * permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
+     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
+     * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
+     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
+     *
+     * @param { Want } want - Indicates the Want information for starting the ability.
+     * @param { ?StartOptions } options - Indicates the start options. The default value is None.
+     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 801 - Capability not support.
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000002 - Incorrect ability type.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is
+     * forbidden.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000012 - The application is controlled.
+     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
+     * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
+     * greater than 11.
+     * @throws { BusinessException } 16000019 - No matching ability is found.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     * @throws { BusinessException } 16000055 - Installation-free timed out.
+     * @throws { BusinessException } 16000067 - The StartOptions check failed.
+     * @throws { BusinessException } 16000068 - The ability is already running.
+     * @throws { BusinessException } 16000071 - App clone is not supported.
+     * @throws { BusinessException } 16000072 - App clone or multi-instance is not supported.
+     * @throws { BusinessException } 16000073 - The app clone index is invalid.
+     * @throws { BusinessException } 16000076 - The app instance key is invalid.
+     * @throws { BusinessException } 16000077 - The number of app instances reaches the limit.
+     * @throws { BusinessException } 16000078 - The multi-instance is not supported.
+     * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
+     * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
+     * @throws { BusinessException } 16200001 - The caller has been released.
+     * @throws { BusinessException } 16300003 - The target application is not the current application.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -320,12 +323,12 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Destroys this Page ability.
-    *
-    * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    * @throws { BusinessException } 16000050 - Internal error.
-    */
+     * Destroys this Page ability.
+     *
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000050 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -336,14 +339,14 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Destroys the Page ability while returning the specified result code and data to the caller.
-    *
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
-    * 2.Incorrect parameter types.
-    * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    * @throws { BusinessException } 16000050 - Internal error.
-    */
+     * Destroys the Page ability while returning the specified result code and data to the caller.
+     *
+     * @param { AbilityResult } parameter - Indicates the result parameter to return to the caller.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000050 - Internal error.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -356,10 +359,11 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Check to see ability is in terminating state.
-    *
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    */
+     * Check to see ability is in terminating state.
+     *
+     * @returns { Bool } Returns true if the ability is in terminating state, false otherwise.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -391,7 +395,7 @@ public open class UIAbilityContext <: Context {
             return id
         }
         options.onFailed(res)
-        throw IllegalStateException("Failed to connect ability, errorCode is ${res}")
+        throw BusinessException(16000050, "Internal error.")
     }
 
     func connectAbilityWithAccount(want: Want, accountId: Int32, options: ConnectOptions): Int64 {
@@ -427,44 +431,46 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is in
-    * foreground,
-    * you can use this method to start ability; If the caller application is in the background,
-    * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
-    * If the target ability is visible, you can start the target ability; If the target ability is invisible,
-    * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
-    * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
-    *
-    * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
-    * 2.Incorrect parameter types.
-    * @throws { BusinessException } 16000001 - The specified ability does not exist.
-    * @throws { BusinessException } 16000002 - Incorrect ability type.
-    * @throws { BusinessException } 16000004 - Cannot start an invisible component.
-    * @throws { BusinessException } 16000005 - The specified process does not have the permission.
-    * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
-    * @throws { BusinessException } 16000008 - The crowdtesting application expires.
-    * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
-    * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is forbidden.
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    * @throws { BusinessException } 16000012 - The application is controlled.
-    * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
-    * greater than 11.
-    * @throws { BusinessException } 16000019 - No matching ability is found.
-    * @throws { BusinessException } 16000050 - Internal error.
-    * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
-    * @throws { BusinessException } 16000055 - Installation-free timed out.
-    * @throws { BusinessException } 16000071 - App clone is not supported.
-    * @throws { BusinessException } 16000072 - App clone or multi-instance is not supported.
-    * @throws { BusinessException } 16000073 - The app clone index is invalid.
-    * @throws { BusinessException } 16000076 - The app instance key is invalid.
-    * @throws { BusinessException } 16000077 - The number of app instances reaches the limit.
-    * @throws { BusinessException } 16000078 - The multi-instance is not supported.
-    * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
-    * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
-    * @throws { BusinessException } 16200001 - The caller has been released.
-    */
+     * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is
+     * in foreground,
+     * you can use this method to start ability; If the caller application is in the background,
+     * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
+     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
+     * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
+     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
+     *
+     * @param { Want } want - Indicates the Want information for starting the ability.
+     * @param { AsyncCallback<AbilityResult> } callback - Indicates the callback to receive the result.
+     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000002 - Incorrect ability type.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is
+     * forbidden.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000012 - The application is controlled.
+     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
+     * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
+     * greater than 11.
+     * @throws { BusinessException } 16000019 - No matching ability is found.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     * @throws { BusinessException } 16000055 - Installation-free timed out.
+     * @throws { BusinessException } 16000071 - App clone is not supported.
+     * @throws { BusinessException } 16000072 - App clone or multi-instance is not supported.
+     * @throws { BusinessException } 16000073 - The app clone index is invalid.
+     * @throws { BusinessException } 16000076 - The app instance key is invalid.
+     * @throws { BusinessException } 16000077 - The number of app instances reaches the limit.
+     * @throws { BusinessException } 16000078 - The multi-instance is not supported.
+     * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
+     * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
+     * @throws { BusinessException } 16200001 - The caller has been released.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -481,42 +487,44 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is in
-    * foreground,
-    * you can use this method to start ability; If the caller application is in the background,
-    * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
-    * If the target ability is visible, you can start the target ability; If the target ability is invisible,
-    * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
-    * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
-    *
-    * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
-    * 2.Incorrect parameter types.
-    * @throws { BusinessException } 16000001 - The specified ability does not exist.
-    * @throws { BusinessException } 16000004 - Cannot start an invisible component.
-    * @throws { BusinessException } 16000005 - The specified process does not have the permission.
-    * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
-    * @throws { BusinessException } 16000008 - The crowdtesting application expires.
-    * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    * @throws { BusinessException } 16000012 - The application is controlled.
-    * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API
-    * version greater than 11.
-    * @throws { BusinessException } 16000019 - No matching ability is found.
-    * @throws { BusinessException } 16000050 - Internal error.
-    * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
-    * @throws { BusinessException } 16000055 - Installation-free timed out.
-    * @throws { BusinessException } 16000071 - App clone is not supported.
-    * @throws { BusinessException } 16000072 - App clone or multi-instance is not supported.
-    * @throws { BusinessException } 16000073 - The app clone index is invalid.
-    * @throws { BusinessException } 16000076 - The app instance key is invalid.
-    * @throws { BusinessException } 16000077 - The number of app instances reaches the limit.
-    * @throws { BusinessException } 16000078 - The multi-instance is not supported.
-    * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
-    * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
-    * @throws { BusinessException } 16200001 - The caller has been released.
-    */
+     * Starts an ability and returns the execution result when the ability is destroyed. If the caller application is
+     * in foreground,
+     * you can use this method to start ability; If the caller application is in the background,
+     * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
+     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
+     * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
+     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
+     *
+     * @param { Want } want - Indicates the Want information for starting the ability.
+     * @param { StartOptions } options - Indicates the start options.
+     * @param { AsyncCallback<AbilityResult> } callback - Indicates the callback to receive the result.
+     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000012 - The application is controlled.
+     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
+     * @throws { BusinessException } 16000018 - Redirection to a third-party application is not allowed in API version
+     * greater than 11.
+     * @throws { BusinessException } 16000019 - No matching ability is found.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     * @throws { BusinessException } 16000055 - Installation-free timed out.
+     * @throws { BusinessException } 16000071 - App clone is not supported.
+     * @throws { BusinessException } 16000072 - App clone or multi-instance is not supported.
+     * @throws { BusinessException } 16000073 - The app clone index is invalid.
+     * @throws { BusinessException } 16000076 - The app instance key is invalid.
+     * @throws { BusinessException } 16000077 - The number of app instances reaches the limit.
+     * @throws { BusinessException } 16000078 - The multi-instance is not supported.
+     * @throws { BusinessException } 16000079 - The APP_INSTANCE_KEY cannot be specified.
+     * @throws { BusinessException } 16000080 - Creating a new instance is not supported.
+     * @throws { BusinessException } 16200001 - The caller has been released.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -592,33 +600,35 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-    * Starts a service extension ability that supports modal dialog. If the caller application is in foreground,
-    * you can use this method to start service extension ability; If the caller application is in the background,
-    * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
-    * If the target service extension ability is visible, you can start the target service extension ability;
-    * If the target service extension ability is invisible,
-    * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible service
-    * extension ability.
-    *
-    * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified.
-    * 2.Incorrect parameter types.
-    * @throws { BusinessException } 16000001 - The specified ability does not exist.
-    * @throws { BusinessException } 16000002 - Incorrect ability type.
-    * @throws { BusinessException } 16000004 - Cannot start an invisible component.
-    * @throws { BusinessException } 16000005 - The specified process does not have the permission.
-    * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
-    * @throws { BusinessException } 16000008 - The crowdtesting application expires.
-    * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
-    * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is forbidden.
-    * @throws { BusinessException } 16000011 - The context does not exist.
-    * @throws { BusinessException } 16000012 - The application is controlled.
-    * @throws { BusinessException } 16000013 - The application is controlled by EDM.
-    * @throws { BusinessException } 16000050 - Internal error.
-    * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
-    * @throws { BusinessException } 16000055 - Installation-free timed out.
-    * @throws { BusinessException } 16200001 - The caller has been released.
-    */
+     * Starts a service extension ability that supports modal dialog. If the caller application is in foreground,
+     * you can use this method to start service extension ability; If the caller application is in the background,
+     * you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
+     * If the target service extension ability is visible, you can start the target service extension ability;
+     * If the target service extension ability is invisible,
+     * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible service
+     * extension ability.
+     *
+     * @param { Want } want - Indicates the Want information for starting the service extension ability.
+     * @param { AsyncCallback<RequestResult> } result - Indicates the callback to receive the request result.
+     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000002 - Incorrect ability type.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is
+     * forbidden.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000012 - The application is controlled.
+     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     * @throws { BusinessException } 16000055 - Installation-free timed out.
+     * @throws { BusinessException } 16200001 - The caller has been released.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"

@@ -31,12 +31,13 @@ foreign func FfiOHOSErrorManagerLoopObserverOff(): Int32
 const SUCCESS_CODE: Int32 = 0
 const EXCEPTION_PARAMCHECK: Int32 = 401
 const CALLER_ERROR: Int32 = 16200001
+const ERROR_CODE_INNER: Int32 = 16000050
 const PARAM_INVALID_ERR_MSG: String = "Parameter error: The timeout cannot be less than 0."
 const CALLER_ERROR_ERR_MSG: String = "Caller error. Caller from non-main thread."
 
 /**
-* Error manager event type.
-*/
+ * Error manager event type.
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -49,19 +50,19 @@ public enum ErrorManagerEvent {
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    Error
-    | ...
+    Error | ...
 
     func getValue(): String {
         match (this) {
             case Error => "error"
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
 
 /**
  * This module provides the function of error manager.
+ *
  */
 @!APILevel[
     22,
@@ -70,12 +71,14 @@ public enum ErrorManagerEvent {
 public class ErrorManager {
     protected init() {}
     /**
-    * Register error observer.
-    *
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-    * 2. Incorrect parameter types; 3. Parameter verification failed.
-    * @throws { BusinessException } 16000003 - The specified ID does not exist.
-    */
+     * Register error observer.
+     *
+     * @param { ErrorManagerEvent } eventType - Indicates the error event type to observe.
+     * @param { ErrorObserver } observer - Indicates the error observer callback.
+     * @returns { Int32 } Returns the observer ID for unregistration.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 16000003 - The specified ID does not exist.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -101,12 +104,13 @@ public class ErrorManager {
     }
 
     /**
-    * Unregister error observer.
-    *
-    * @throws { BusinessException } 401 - Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;
-    * 2. Incorrect parameter types; 3. Parameter verification failed.
-    * @throws { BusinessException } 16000003 - The specified ID does not exist.
-    */
+     * Unregister error observer.
+     *
+     * @param { ErrorManagerEvent } eventType - Indicates the error event type to unregister.
+     * @param { Int32 } observerId - Indicates the observer ID returned from registration.
+     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessException } 16000003 - The specified ID does not exist.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"

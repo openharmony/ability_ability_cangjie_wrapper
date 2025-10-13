@@ -530,7 +530,7 @@ let ERROR_MSG_MAP = HashMap<Int32, String>(
         (16000080, "Creating an instance is not supported."),
         (16000081, "Get target application info failed."),
         (16000082, "The UIAbility is being started."),
-        (16000100, " - Calling AddAbilityMonitor failed."),
+        (16000100, "Calling AddAbilityMonitor failed."),
         (16000101, "Failed to run the shell command."),
         (16000151, "Invalid wantAgent object."),
         (16000152, "The wantAgent object does not exist."),

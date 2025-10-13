@@ -20,6 +20,7 @@ package ohos.app.ability.ability_delegator_registry
 import ohos.ffi.*
 import ohos.app.ability.ui_ability.*
 import ohos.labels.*
+import ohos.business_exception.BusinessException
 
 func executeFunc(optFunc: ?(UIAbility) -> Unit, ability: UIAbility): Unit {
     match (optFunc) {
@@ -33,7 +34,7 @@ func monitorOnAbilityCreate(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityCreate, ability)
     }
 }
@@ -43,7 +44,7 @@ func monitorOnAbilityForeground(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityForeground, ability)
     }
 }
@@ -53,7 +54,7 @@ func monitorOnAbilityBackground(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityBackground, ability)
     }
 }
@@ -63,7 +64,7 @@ func monitorOnAbilityDestroy(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityDestroy, ability)
     }
 }
@@ -73,7 +74,7 @@ func monitorOnWindowStageCreate(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageCreate, ability)
     }
 }
@@ -83,7 +84,7 @@ func monitorOnWindowStageRestore(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageRestore, ability)
     }
 }
@@ -93,7 +94,7 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw NoneValueException("No such Ability or no such Monitor")
+        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageDestroy, ability)
     }
 }
@@ -101,6 +102,7 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
 /**
  * Provide methods for matching monitored Ability objects that meet specified conditions.
  * The most recently matched Ability objects will be saved in the AbilityMonitor object.
+ *
  */
 @!APILevel[
     22,
@@ -108,72 +110,81 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
 ]
 public class AbilityMonitor <: FFIData {
     /**
-        * The name of the ability to monitor.
-        */
+     * The name of the ability to monitor.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var abilityName: String
     /**
-        * The name of the module to monitor.
-        */
+     * The name of the module to monitor.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var moduleName: String
     /**
-        * Called back when the ability is created for initialization.
-        */
+     * Called back when the ability is created for initialization.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityCreate: ?(UIAbility) -> Unit
     /**
-        * Called back when the state of the ability changes to foreground.
-        */
+     * Called back when the state of the ability changes to foreground.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityForeground: ?(UIAbility) -> Unit
     /**
-        * Called back when the state of the ability changes to background.
-        */
+     * Called back when the state of the ability changes to background.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityBackground: ?(UIAbility) -> Unit
     /**
-        * Called back before the ability is destroyed.
-        */
+     * Called back before the ability is destroyed.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityDestroy: ?(UIAbility) -> Unit
     /**
-        * Called back when an ability window stage is created.
-        */
+     * Called back when an ability window stage is created.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageCreate: ?(UIAbility) -> Unit
     /**
-        * Called back when an ability window stage is restored.
-        */
+     * Called back when an ability window stage is restored.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageRestore: ?(UIAbility) -> Unit
     /**
-        * Called back when an ability window stage is destroyed.
-        */
+     * Called back when an ability window stage is destroyed.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -182,6 +193,23 @@ public class AbilityMonitor <: FFIData {
 
     /**
      * AbilityMonitor constructor.
+     *
+     * @param { String } abilityName - The name of the ability to monitor.
+     * @param { String } moduleName - The name of the module to monitor. The default value is "".
+     * @param { ?(UIAbility) -> Unit } onAbilityCreate - Called back when the ability is created for initialization.
+     * The default value is None.
+     * @param { ?(UIAbility) -> Unit } onAbilityForeground - Called back when the state of the ability changes to
+     * foreground. The default value is None.
+     * @param { ?(UIAbility) -> Unit } onAbilityBackground - Called back when the state of the ability changes to
+     * background. The default value is None.
+     * @param { ?(UIAbility) -> Unit } onAbilityDestroy - Called back before the ability is destroyed. The default
+     * value is None.
+     * @param { ?(UIAbility) -> Unit } onWindowStageCreate - Called back when an ability window stage is created. The
+     * default value is None.
+     * @param { ?(UIAbility) -> Unit } onWindowStageRestore - Called back when an ability window stage is restored. The
+     * default value is None.
+     * @param { ?(UIAbility) -> Unit } onWindowStageDestroy - Called back when an ability window stage is destroyed.
+     * The default value is None.
      */
     @!APILevel[
         22,

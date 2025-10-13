@@ -28,6 +28,7 @@ class StartOptionsImpl {}
 
 /**
  * StartOptions is the basic communication component of the system.
+ *
  */
 @!APILevel[
     22,
@@ -35,10 +36,11 @@ class StartOptionsImpl {}
 ]
 public open class StartOptions {
     /**
-    * The type of WindowMode
-    * WindowModeSplitPrimary and WindowModeSplitSecondary are
-    * valid only in intra-app redirection scenarios.
-    */
+     * The type of WindowMode
+     * WindowModeSplitPrimary and WindowModeSplitSecondary are
+     * valid only in intra-app redirection scenarios.
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -46,8 +48,9 @@ public open class StartOptions {
     public var windowMode: ?WindowMode
 
     /**
-    * The type of displayId
-    */
+     * The type of displayId
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -73,8 +76,11 @@ public open class StartOptions {
     private let impl_: StartOptionsImpl = StartOptionsImpl()
 
     /**
-    * StartOptions constructor.
-    */
+     * StartOptions constructor.
+     *
+     * @param { ?WindowMode } windowMode - The type of WindowMode. The default value is None.
+     * @param { Int32 } displayId - The type of displayId. The default value is 0.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
