@@ -19,12 +19,16 @@ package ohos.app.ability.ability_constant
 
 import std.deriving.Derive
 import ohos.labels.*
+import ohos.business_exception.BusinessException
+
+const ERROR_CODE_INNER: Int32 = 16000050
 
 /**
-* Defines the parameters for starting an ability.
-* The parameter values are automatically passed in by the system when the ability is started. You do not need to
-* change the values.
-*/
+ * Defines the parameters for starting an ability.
+ * The parameter values are automatically passed in by the system when the ability is started. You do not need to
+ * change the values.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -32,14 +36,17 @@ import ohos.labels.*
 public class LaunchParam {
     /**
      * Ability launch reason, which is an enumerated type.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var launchReason: LaunchReason
+
     /**
      * Reason for the last exit, which is an enumerated type.
+     *
      */
     @!APILevel[
         22,
@@ -66,10 +73,11 @@ public class LaunchParam {
 }
 
 /**
-* Enumerates the initial ability launch reasons.
-* You can use it together with the value of launchReason in
-* onCreate(want, launchParam) of the UIAbility to complete different operations.
-*/
+ * Enumerates the initial ability launch reasons.
+ * You can use it together with the value of launchReason in
+ * onCreate(want, launchParam) of the UIAbility to complete different operations.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -77,6 +85,7 @@ public class LaunchParam {
 public enum LaunchReason {
     /**
      * Unknown reason.
+     *
      */
     @!APILevel[
         22,
@@ -86,6 +95,7 @@ public enum LaunchReason {
     |
     /**
      * The ability is started by calling startAbility.
+     *
      */
     @!APILevel[
         22,
@@ -95,6 +105,7 @@ public enum LaunchReason {
     |
     /**
      * The ability is started by calling startAbilityByCall.
+     *
      */
     @!APILevel[
         22,
@@ -104,6 +115,7 @@ public enum LaunchReason {
     |
     /**
      * The ability is started by means of cross-device migration.
+     *
      */
     @!APILevel[
         22,
@@ -113,6 +125,7 @@ public enum LaunchReason {
     |
     /**
      * The ability is automatically started when the application is restored from a fault.
+     *
      */
     @!APILevel[
         22,
@@ -128,7 +141,7 @@ public enum LaunchReason {
             case 2 => Call
             case 3 => Continuation
             case 4 => AppRecovery
-            case _ => throw IllegalArgumentException("No corresponding LaunchReason: ${value}")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
@@ -139,16 +152,17 @@ public enum LaunchReason {
             case Call => 2
             case Continuation => 3
             case AppRecovery => 4
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
 
 /**
-* Enumerates the reasons for the last exit.
-* You can use it together with the value of lastExitReason in
-* onCreate(want, launchParam) of the UIAbility to complete different operations.
-*/
+ * Enumerates the reasons for the last exit.
+ * You can use it together with the value of lastExitReason in
+ * onCreate(want, launchParam) of the UIAbility to complete different operations.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -156,6 +170,7 @@ public enum LaunchReason {
 public enum LastExitReason {
     /**
      * Unknown reason.
+     *
      */
     @!APILevel[
         22,
@@ -165,24 +180,27 @@ public enum LastExitReason {
     |
     /**
      * The ability exits normally because the user closes the application.
-     */ 
+     *
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Normal
-    | 
+    |
     /**
      * The ability exits due to abnormal signals on the local host.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     CppCrash
-    | 
+    |
     /**
      * The ability exits because watchdog detects that the application is frozen.
+     *
      */
     @!APILevel[
         22,
@@ -209,16 +227,17 @@ public enum LastExitReason {
             case Normal => 2
             case CppCrash => 3
             case AppFreeze => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
 
 /**
-* Enumerates the ability continuation results.
-* You can use it together with <code>onContinue(wantParam)</code> of the UIAbility to complete different
-* operations.
-*/
+ * Enumerates the ability continuation results.
+ * You can use it together with <code>onContinue(wantParam)</code> of the UIAbility to complete different
+ * operations.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -226,28 +245,31 @@ public enum LastExitReason {
 public enum OnContinueResult {
     /**
      * The ability continuation is accepted.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Agree
-    | 
+    |
     /**
      * The ability continuation is rejected.
      * If the application is abnormal in onContinue, which results in abnormal display during data restoration, this
      * error code is returned.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Reject
-    | 
+    |
     /**
      * The version does not match.
      * The application on the initiator can obtain the version of the target application from onContinue. If the
      * ability continuation cannot be performed due to version mismatch, this error code is returned.
+     *
      */
     @!APILevel[
         22,
@@ -261,7 +283,7 @@ public enum OnContinueResult {
             case Agree => 0
             case Reject => 1
             case Mismatch => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -269,9 +291,10 @@ public enum OnContinueResult {
 protected const WINDOW_MODE_UNDEFINED: Int32 = 0
 
 /**
-* Enumerates the window mode when the ability is started.
-* It can be used together with startAbility to specify the window mode for starting the ability.
-*/
+ * Enumerates the window mode when the ability is started.
+ * It can be used together with startAbility to specify the window mode for starting the ability.
+ *
+ */
 @!APILevel[
     22,
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -279,29 +302,31 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
 public enum WindowMode {
     /**
      * Full screen mode. It takes effect only on 2-in-1 devices and tablets.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeFullscreen
-    | 
+    |
     /**
      * Primary screen (left screen in the case of horizontal orientation) in split-screen mode. It is valid only in
      * intra-app redirection scenarios.
      * It takes effect only on foldable devices and tablets.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitPrimary
-    | 
-    
+    |
     /**
      * Secondary screen (right screen in the case of horizontal orientation) in split-screen mode. It is valid only in
      * intra-app redirection scenarios.
      * It takes effect only on foldable devices and tablets.
+     *
      */
     @!APILevel[
         22,
@@ -315,7 +340,7 @@ public enum WindowMode {
             case 1 => WindowModeFullscreen
             case 100 => WindowModeSplitPrimary
             case 101 => WindowModeSplitSecondary
-            case _ => throw IllegalArgumentException("Unknown windowMode type of value: ${value}")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
@@ -324,15 +349,16 @@ public enum WindowMode {
             case WindowModeFullscreen => 1
             case WindowModeSplitPrimary => 100
             case WindowModeSplitSecondary => 101
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
 
 /**
-* Enumerates the memory levels. You can use it in onMemoryLevel(level) of the UIAbility to complete
-* different operations.
-*/
+ * Enumerates the memory levels. You can use it in onMemoryLevel(level) of the UIAbility to complete
+ * different operations.
+ *
+ */
 @Derive[ToString, Equatable]
 @!APILevel[
     22,
@@ -341,24 +367,27 @@ public enum WindowMode {
 public enum MemoryLevel {
     /**
      * Moderate memory usage.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelModerate
-    | 
+    |
     /**
      * Low memory usage.
+     *
      */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelLow
-    | 
+    |
     /**
      * High memory usage.
+     *
      */
     @!APILevel[
         22,
@@ -372,7 +401,7 @@ public enum MemoryLevel {
             case 0 => MemoryLevelModerate
             case 1 => MemoryLevelLow
             case 2 => MemoryLevelCritical
-            case _ => throw IllegalArgumentException("No corresponding MemoryLevel: ${value}")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
@@ -381,7 +410,7 @@ public enum MemoryLevel {
             case MemoryLevelModerate => 0
             case MemoryLevelLow => 1
             case MemoryLevelCritical => 2
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -396,7 +425,7 @@ protected enum StateType {
         match (this) {
             case Continuation => 0
             case AppRecovery => 1
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 
@@ -404,7 +433,7 @@ protected enum StateType {
         match (value) {
             case 0 => Continuation
             case 1 => AppRecovery
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -427,7 +456,7 @@ protected enum OnSaveResult {
             case RecoveryAgree => 3
             case RecoveryReject => 4
             case AllReject => 5
-            case _ => throw IllegalArgumentException("The type is not supported.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }

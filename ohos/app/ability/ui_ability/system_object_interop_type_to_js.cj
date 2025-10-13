@@ -22,7 +22,7 @@ import ohos.ark_interop_helper.*
 import ohos.labels.*
 
 /**
- * interface for cangjie object to arkts object 
+ * interface for cangjie object to arkts object
  */
 @!APILevel[
     22,
@@ -32,6 +32,9 @@ public interface SystemObjectInteropTypeToJS {
 
     /**
      * convert cangjie object ot arkts object
+     *
+     * @param { JSContext } context - The JSRuntime context.
+     * @return { JSValue } Returns the JSValue converted from the cangjie object.
      */
     @!APILevel[
         22,

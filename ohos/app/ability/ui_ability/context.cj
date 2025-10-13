@@ -64,6 +64,7 @@ class ContextImpl {}
 /**
  * The Context module, inherited frome BaseContext, provides context for abilities or applications, including
  * access to application-specific resources.
+ *
  */
 @!APILevel[
     22,
@@ -82,8 +83,10 @@ public open class Context <: BaseContext {
     }
 
     /**
-    * Object for resource management.
-    */
+     * Object for resource management.
+     *
+     * @returns { ResourceManager } Returns the Object for resource management.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -101,8 +104,10 @@ public open class Context <: BaseContext {
     }
 
     /**
-    * Application information.
-    */
+     * Application information.
+     *
+     * @returns { ApplicationInfo } Returns the Application information.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -122,8 +127,10 @@ public open class Context <: BaseContext {
     }
 
     /**
-    * File directory.
-    */
+     * File directory.
+     *
+     * @returns { String } Returns the file directory.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -141,8 +148,10 @@ public open class Context <: BaseContext {
     }
 
     /**
-    * Encryption level of the directory.
-    */
+     * Encryption level of the directory.
+     *
+     * @returns { AreaMode } Returns the encryption level of the directory.
+     */
     @!APILevel[
         22,
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
