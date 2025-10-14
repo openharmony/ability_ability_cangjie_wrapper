@@ -21,6 +21,9 @@ import std.collection.*
 import ohos.ffi.*
 import ohos.labels.*
 import ohos.ui_test.UITest
+import ohos.business_exception.BusinessException
+
+const ERROR_CODE_INNER: Int32 = 16000050
 
 @C
 struct CJTestRunnerFuncs {
@@ -51,7 +54,7 @@ func releaseTestRunner(id: Int64): Unit {
     match (optTestRunner) {
         case None =>
             TEST_RUNNER_LOG.error("No such TestRunner: " + id.toString())
-            throw Exception("No such TestRunner: " + id.toString())
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(testRunner) => TEST_RUNNER_LOG.info("Release abilityContext end")
     }
     FFIDataManager.getInstance().releaseData(id)
@@ -64,7 +67,7 @@ func testRunnerOnRun(id: Int64): Unit {
     match (optTestRunner) {
         case None =>
             TEST_RUNNER_LOG.error("No such TestRunner: " + id.toString())
-            throw NoneValueException("No such TestRunner: " + id.toString())
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(testRunner) => testRunner.onRun()
     }
 }
@@ -75,8 +78,8 @@ func testRunnerOnPrepare(id: Int64): Unit {
     match (optTestRunner) {
         case None =>
             TEST_RUNNER_LOG.error("No such TestRunner: " + id.toString())
-            throw NoneValueException("No such TestRunner: " + id.toString())
-        case Some(testRunner) => 
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
+        case Some(testRunner) =>
             UITest.setup()
             testRunner.onPrepare()
     }
@@ -86,6 +89,7 @@ class TestRunnerImpl {}
 /**
  * Base class for the test framework.
  * If you want to implement your own unit test framework, you must inherit this class and overrides all its methods.
+ *
  */
 @!APILevel[
     since: "22",
@@ -97,6 +101,9 @@ public open class TestRunner <: FFIData {
 
     /**
      * TestRunner register.
+     *
+     * @param { String } name - The module name of the TestRunner.
+     * @param { () -> TestRunner } creator - The creator of the TestRunner.
      */
     @!APILevel[
         since: "22",
@@ -126,6 +133,7 @@ public open class TestRunner <: FFIData {
 
     /**
      * Run all test cases.
+     *
      */
     @!APILevel[
         since: "22",
@@ -134,6 +142,7 @@ public open class TestRunner <: FFIData {
     public open func onRun(): Unit {}
     /**
      * Prepare the unit testing environment for running test cases.
+     *
      */
     @!APILevel[
         since: "22",

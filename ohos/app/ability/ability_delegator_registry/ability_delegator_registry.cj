@@ -26,6 +26,26 @@ import std.deriving.*
 import std.collection.HashMap
 import ohos.labels.*
 
+// ERRORCODE
+const SUCCESS_CODE: Int32 = 0
+const COMMON_FAILED: Int32 = 16000100
+const INVALID_PARA: Int32 = 401
+const ERROR_CODE_RESOLVE_ABILITY: Int32 = 16000001
+const EERROR_CODE_INVALID_ABILITY_TYPE: Int32 = 16000002
+const ERROR_CODE_NO_INVISIBLE_PERMISSION: Int32 = 16000004
+const ERROR_CODE_STATIC_CFG_PERMISSION: Int32 = 16000005
+const ERROR_CODE_CROSS_USER: Int32 = 16000006
+const ERROR_CODE_CROWDTEST_EXPIRED: Int32 = 16000008
+const ERROR_CODE_WUKONG_MODE: Int32 = 16000009
+const ERROR_CODE_CONTINUATION_FLAG: Int32 = 16000010
+const ERROR_CODE_INVALID_CONTEXT: Int32 = 16000011
+const ERROR_CODE_CONTROLLED: Int32 = 16000012
+const ERROR_CODE_EDM_CONTROLLED: Int32 = 16000013
+const ERROR_CODE_INNER: Int32 = 16000050
+const ERROR_CODE_NOT_TOP_ABILITY: Int32 = 16000053
+const ERROR_CODE_FREE_INSTALL_TIMEOUT: Int32 = 16000055
+const ERROR_CALLER_RELEASED: Int32 = 16200001
+
 foreign func FFIAbilityDelegatorRegistryGetAbilityDelegator(): Int64
 
 foreign func FFIAbilityDelegatorStartAbility(id: Int64, wantHandle: WantHandle): Int32
@@ -70,6 +90,7 @@ struct CJAbilityStageInfo {
 
 /**
  * Describes all lifecycle states of an ability.
+ *
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -79,42 +100,47 @@ struct CJAbilityStageInfo {
 public enum AbilityLifecycleState {
     /**
      * Ability is in invalid state.
-     */    
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Uninitialized
-    | 
+    |
     /**
      * Ability is in invalid state.
+     *
      */       
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Create
-    | 
+    |
     /**
      * Ability is in invalid state.
+     *
      */   
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Foreground
-    | 
+    |
     /**
      * Ability is in invalid state.
+     *
      */  
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Background
-    | 
+    |
     /**
      * Ability is in invalid state.
+     *
      */  
     @!APILevel[
         since: "22",
@@ -130,7 +156,7 @@ public enum AbilityLifecycleState {
             case 2 => Foreground
             case 3 => Background
             case 4 => Destroy
-            case _ => throw NoneValueException("internal error")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -146,9 +172,11 @@ foreign {
 
     func FFIAbilityDelegatorPrint(id: Int64, msg: CString): Int32
 
-    func FFIAbilityDelegatorAddAbilityMonitor(id: Int64, monitorId: Int64, abilityName: CString, moduleName: CString): Int32
+    func FFIAbilityDelegatorAddAbilityMonitor(
+        id: Int64, monitorId: Int64, abilityName: CString, moduleName: CString): Int32
 
-    func FFIAbilityDelegatorRemoveAbilityMonitor(id: Int64, monitorId: Int64, abilityName: CString, moduleName: CString): Int32
+    func FFIAbilityDelegatorRemoveAbilityMonitor(
+        id: Int64, monitorId: Int64, abilityName: CString, moduleName: CString): Int32
 
     func FFIAbilityDelegatorWaitAbilityMonitor(id: Int64, monitorId: Int64, abilityInfo: CJAbilityInfo,
         abilityId: CPointer<Int64>): Int32
@@ -169,25 +197,6 @@ foreign {
         abilityStageInfo: CJAbilityStageInfo, timeout: Int64, abilityStageId: CPointer<Int64>): Int32
 }
 
-// ERRORCODE
-const SUCCESS_CODE: Int32 = 0
-const COMMON_FAILED: Int32 = 16000100
-const INVALID_PARA: Int32 = 401
-const ERROR_CODE_RESOLVE_ABILITY: Int32 = 16000001
-const EERROR_CODE_INVALID_ABILITY_TYPE: Int32 = 16000002
-const ERROR_CODE_NO_INVISIBLE_PERMISSION: Int32 = 16000004
-const ERROR_CODE_STATIC_CFG_PERMISSION: Int32 = 16000005
-const ERROR_CODE_CROSS_USER: Int32 = 16000006
-const ERROR_CODE_CROWDTEST_EXPIRED: Int32 = 16000008
-const ERROR_CODE_WUKONG_MODE: Int32 = 16000009
-const ERROR_CODE_CONTINUATION_FLAG: Int32 = 16000010
-const ERROR_CODE_INVALID_CONTEXT: Int32 = 16000011
-const ERROR_CODE_CONTROLLED: Int32 = 16000012
-const ERROR_CODE_EDM_CONTROLLED: Int32 = 16000013
-const ERROR_CODE_INNER: Int32 = 16000050
-const ERROR_CODE_NOT_TOP_ABILITY: Int32 = 16000053
-const ERROR_CODE_FREE_INSTALL_TIMEOUT: Int32 = 16000055
-const ERROR_CALLER_RELEASED: Int32 = 16200001
 let ERROR_MSG = HashMap<String, String>(
     [
         ("addAbilityMonitor", "Calling AddAbilityMonitor failed."),
@@ -201,8 +210,8 @@ let ERROR_MSG = HashMap<String, String>(
         ("waitAbilityStageMonitor", "Calling WaitAbilityStageMonitor failed.")
     ]
 )
-
 let ERROR_CODE_MAP = HashMap<Int32, String>(
+    (INVALID_PARA, "Parameter error."),
     (ERROR_CODE_RESOLVE_ABILITY, "The specified ability does not exist."),
     (EERROR_CODE_INVALID_ABILITY_TYPE, "Incorrect ability type."),
     (ERROR_CODE_NO_INVISIBLE_PERMISSION, "Cannot start an invisible component."),
@@ -227,16 +236,13 @@ func getErrorMsg(code: Int32, funcName: String): String {
         return ERROR_MSG[funcName]
     } else if (ERROR_CODE_MAP.contains(code)) {
         return ERROR_CODE_MAP[code]
-    } 
+    }
     return "Unknown error code ${code}"
 }
 
 func throwIfNotSuccess(code: Int32, funcName: String): Unit {
     if (code != SUCCESS_CODE) {
         let msg = getErrorMsg(code, funcName)
-        if (code == INVALID_PARA) {
-            throw IllegalArgumentException(msg)
-        }
         throw BusinessException(code, msg)
     }
 }
@@ -261,6 +267,7 @@ struct CRecord {
 /**
  * A global register used to store the AbilityDelegator and AbilityDelegatorArgs objects registered
  * during application startup.
+ *
  */
 @!APILevel[
     since: "22",
@@ -272,7 +279,9 @@ public class AbilityDelegatorRegistry {
 
     /**
      * Get the AbilityDelegator object of the application.
-     */    
+     *
+     * @returns { AbilityDelegator } Returns the AbilityDelegator instance.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -290,7 +299,10 @@ public class AbilityDelegatorRegistry {
 
     /**
      * Get unit test arguments stored in the AbilityDelegatorArgs object.
-     */  
+     *
+     * @returns { AbilityDelegatorArgs } Returns the AbilityDelegatorArgs instance.
+     * @throws { BusinessException } 16000050 - Internal error.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -301,7 +313,7 @@ public class AbilityDelegatorRegistry {
             case _ => unsafe {
                 let id = FfiAbilityDelegatorRegistryGetArguments()
                 if (id < 0) {
-                    throw BusinessException(INVALID_PARA, "ApplicationContext getArguments failed.")
+                    throw BusinessException(ERROR_CODE_INNER, "Internal error.")
                 }
                 let res = AbilityDelegatorArgs(id)
                 delegatorArgs_ = res
@@ -313,6 +325,7 @@ public class AbilityDelegatorRegistry {
 
 /**
  * A object that records the result of shell command executes.
+ *
  */
 @!APILevel[
     since: "22",
@@ -330,6 +343,8 @@ public class ShellCmdResult <: RemoteDataLite {
     }
     /**
      * shell cmd exec result.
+     *
+     * @returns { Int32 } Returns the exit code of shell command execution.
      */
     @!APILevel[
         since: "22",
@@ -349,6 +364,8 @@ public class ShellCmdResult <: RemoteDataLite {
     }
     /**
      * the cmd standard result.
+     *
+     * @returns { String } Returns the standard output result of shell command execution.
      */
     @!APILevel[
         since: "22",
@@ -372,6 +389,7 @@ public class ShellCmdResult <: RemoteDataLite {
 
 /**
  * A global test utility interface used for adding AbilityMonitor objects and control lifecycle states of abilities.
+ *
  */
 @!APILevel[
     since: "22",
@@ -389,7 +407,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Start a new ability.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { Want } want - Indicates the Want information for starting the ability.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000001 - The specified ability does not exist.
      * @throws { BusinessExecption } 16000002 - Incorrect ability type.
      * @throws { BusinessExecption } 16000004 - Cannot start an invisible component.
@@ -397,7 +416,8 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000006 - Cross-user operations are not allowed.
      * @throws { BusinessExecption } 16000008 - The crowdtesting application expires.
      * @throws { BusinessExecption } 16000009 - An ability cannot be started or stopped in Wukong mode.
-     * @throws { BusinessExecption } 16000010 - The call with the continuation and prepare continuation flag is forbidden.
+     * @throws { BusinessExecption } 16000010 - The call with the continuation and prepare continuation flag is
+     * forbidden.
      * @throws { BusinessExecption } 16000011 - The context does not exist.
      * @throws { BusinessExecption } 16000012 - The application is controlled.
      * @throws { BusinessExecption } 16000013 - The application is controlled by EDM.
@@ -420,6 +440,10 @@ public class AbilityDelegator <: RemoteDataLite {
 
     /**
      * Execute the given command in the aa tools side.
+     *
+     * @param { String } cmd - Indicates the shell command to be executed.
+     * @param { Int64 } timeoutSecs - Indicates the timeout duration in seconds. Default is 0.
+     * @returns { ShellCmdResult } Returns the result of the shell command execution.
      */
     @!APILevel[
         since: "22",
@@ -437,6 +461,8 @@ public class AbilityDelegator <: RemoteDataLite {
 
     /**
      * Obtain the application context.
+     *
+     * @returns { Context } Returns the application context.
      */
     @!APILevel[
         since: "22",
@@ -453,6 +479,9 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Finish the test and print log information to the unit testing console.
      * The total length of the log information to be printed cannot exceed 1000 characters.
+     *
+     * @param { String } msg - Indicates the log message to be printed.
+     * @param { Int64 } code - Indicates the result code of the test.
      */
     @!APILevel[
         since: "22",
@@ -470,7 +499,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Add an AbilityMonitor object for monitoring the lifecycle state changes of the specified ability in this process.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { AbilityMonitor } monitor - Indicates the AbilityMonitor object to be added.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityMonitor failed.
      */
     @!APILevel[
@@ -480,10 +510,9 @@ public class AbilityDelegator <: RemoteDataLite {
     public func addAbilityMonitor(monitor: AbilityMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
         unsafe {
-            try (
-                abilityName = LibC.mallocCString(monitor.abilityName).asResource(),
-                moduleName = LibC.mallocCString(monitor.moduleName).asResource()
-            ) {
+            try (abilityName = LibC.mallocCString(monitor.abilityName).asResource(), moduleName = LibC
+                .mallocCString(monitor.moduleName)
+                .asResource()) {
                 errorCode = FFIAbilityDelegatorAddAbilityMonitor(this.getID(), monitor.getID(), abilityName.value,
                     moduleName.value)
             }
@@ -494,7 +523,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Remove a specified AbilityMonitor object from the application memory.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { AbilityMonitor } monitor - Indicates the AbilityMonitor object to be removed.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityMonitor failed.
      */
     @!APILevel[
@@ -504,10 +534,9 @@ public class AbilityDelegator <: RemoteDataLite {
     public func removeAbilityMonitor(monitor: AbilityMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
         unsafe {
-            try (
-                abilityName = LibC.mallocCString(monitor.abilityName).asResource(),
-                moduleName = LibC.mallocCString(monitor.moduleName).asResource()
-            ) {
+            try (abilityName = LibC.mallocCString(monitor.abilityName).asResource(), moduleName = LibC
+                .mallocCString(monitor.moduleName)
+                .asResource()) {
                 errorCode = FFIAbilityDelegatorRemoveAbilityMonitor(this.getID(), monitor.getID(), abilityName.value,
                     moduleName.value)
             }
@@ -518,9 +547,12 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Wait for and returns the Ability object that matches the conditions set in the given AbilityMonitor.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { AbilityMonitor } monitor - Indicates the AbilityMonitor object that sets the conditions to match.
+     * @param { Int64 } timeout - Indicates the timeout duration in milliseconds. Default is 5000.
+     * @returns { UIAbility } Returns the Ability object that matches the conditions.
+     * @throws { BusinessExecption } 401 - Parameter error.
+     * @throws { BusinessExecption } 16000050 - Internal error.
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityMonitor failed.
-     * @throws { IllegalMemoryException } - Invalid Ability.
      */
     @!APILevel[
         since: "22",
@@ -530,10 +562,9 @@ public class AbilityDelegator <: RemoteDataLite {
         var errorCode: Int32 = COMMON_FAILED
         var abilityId: Int64 = 0i64
         unsafe {
-            try (
-                abilityName = LibC.mallocCString(monitor.abilityName).asResource(),
-                moduleName = LibC.mallocCString(monitor.moduleName).asResource()
-            ) {
+            try (abilityName = LibC.mallocCString(monitor.abilityName).asResource(), moduleName = LibC
+                .mallocCString(monitor.moduleName)
+                .asResource()) {
                 let abilityInfo = CJAbilityInfo(abilityName.value, moduleName.value)
                 errorCode = FFIAbilityDelegatorWaitAbilityMonitorWithTimeout(this.getID(), monitor.getID(), abilityInfo,
                     timeout, inout abilityId)
@@ -542,13 +573,15 @@ public class AbilityDelegator <: RemoteDataLite {
 
         throwIfNotSuccess(errorCode, "waitAbilityMonitor")
         let optAbility = FFIDataManager.getInstance().getData<UIAbility>(abilityId)
-        return optAbility.getOrThrow {=> IllegalMemoryException("Invalid Ability")}
+        return optAbility.getOrThrow {=> BusinessException(ERROR_CODE_INNER, "Internal error.")}
     }
 
     /**
-     * Add an AbilityStageMonitor object for monitoring the lifecycle state changes of the specified abilityStage in this process.
+     * Add an AbilityStageMonitor object for monitoring the lifecycle state changes of the specified abilityStage in
+     * this process.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { AbilityStageMonitor } monitor - Indicates the AbilityStageMonitor object to be added.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityStageMonitor failed.
      */
     @!APILevel[
@@ -558,12 +591,11 @@ public class AbilityDelegator <: RemoteDataLite {
     public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
         unsafe {
-            try (
-                moduleName = LibC.mallocCString(monitor.moduleName).asResource(),
-                srcEntrance = LibC.mallocCString(monitor.srcEntrance).asResource()
-            ) {
-                errorCode = FFIAbilityDelegatorAddAbilityStageMonitor(this.getID(), monitor.getID(),
-                    moduleName.value, srcEntrance.value)
+            try (moduleName = LibC.mallocCString(monitor.moduleName).asResource(), srcEntrance = LibC
+                .mallocCString(monitor.srcEntrance)
+                .asResource()) {
+                errorCode = FFIAbilityDelegatorAddAbilityStageMonitor(this.getID(), monitor.getID(), moduleName.value,
+                    srcEntrance.value)
             }
         }
 
@@ -573,7 +605,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Remove a specified AbilityStageMonitor object from the application memory.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { AbilityStageMonitor } monitor - Indicates the AbilityStageMonitor object to be removed.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityStageMonitor failed.
      */
     @!APILevel[
@@ -583,12 +616,11 @@ public class AbilityDelegator <: RemoteDataLite {
     public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
         unsafe {
-            try (
-                moduleName = LibC.mallocCString(monitor.moduleName).asResource(),
-                srcEntrance = LibC.mallocCString(monitor.srcEntrance).asResource()
-            ) {
-                errorCode = FFIAbilityDelegatorRemoveAbilityStageMonitor(this.getID(), monitor.getID(),
-                    moduleName.value, srcEntrance.value)
+            try (moduleName = LibC.mallocCString(monitor.moduleName).asResource(), srcEntrance = LibC
+                .mallocCString(monitor.srcEntrance)
+                .asResource()) {
+                errorCode = FFIAbilityDelegatorRemoveAbilityStageMonitor(this.getID(), monitor.getID(), moduleName.value,
+                    srcEntrance.value)
             }
         }
 
@@ -598,9 +630,13 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Wait for and returns the AbilityStage object that matches the conditions set in the given AbilityStageMonitor.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { AbilityStageMonitor } monitor - Indicates the AbilityStageMonitor object that sets the conditions to
+     * match.
+     * @param { Int64 } timeout - Indicates the timeout duration in milliseconds. Default is 5000.
+     * @returns { AbilityStage } Returns the AbilityStage object that matches the conditions.
+     * @throws { BusinessExecption } 401 - Parameter error.
+     * @throws { BusinessExecption } 16000050 - Internal error.
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityStageMonitor failed.
-     * @throws { IllegalMemoryException } - Invalid AbilityStage.
      */
     @!APILevel[
         since: "22",
@@ -610,10 +646,9 @@ public class AbilityDelegator <: RemoteDataLite {
         var abilityStageId: Int64 = 0i64
         var errorCode: Int32 = COMMON_FAILED
         unsafe {
-            try (
-                moduleName = LibC.mallocCString(monitor.moduleName).asResource(),
-                srcEntrance = LibC.mallocCString(monitor.srcEntrance).asResource()
-            ) {
+            try (moduleName = LibC.mallocCString(monitor.moduleName).asResource(), srcEntrance = LibC
+                .mallocCString(monitor.srcEntrance)
+                .asResource()) {
                 let abilityStageInfo = CJAbilityStageInfo(moduleName.value, srcEntrance.value)
                 errorCode = FFIAbilityDelegatorWaitAbilityStageMonitorWithTimeout(this.getID(), monitor.getID(),
                     abilityStageInfo, timeout, inout abilityStageId)
@@ -622,14 +657,15 @@ public class AbilityDelegator <: RemoteDataLite {
 
         throwIfNotSuccess(errorCode, "waitAbilityStageMonitor")
         let optAbilityStage = FFIDataManager.getInstance().getData<AbilityStage>(abilityStageId)
-        return optAbilityStage.getOrThrow {=> IllegalMemoryException("Invalid AbilityStage")}
+        return optAbilityStage.getOrThrow {=> BusinessException(ERROR_CODE_INNER, "Internal error.")}
     }
 
     /**
      * Prints log information to the unit testing console.
      * The total length of the log information to be printed cannot exceed 1000 characters.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { String } msg - Indicates the log message to be printed.
+     * @throws { BusinessExecption } 401 - Parameter error.
      */
     @!APILevel[
         since: "22",
@@ -648,7 +684,9 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Obtain the lifecycle state of a specified ability.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { UIAbility } ability - Indicates the UIAbility object to get the state.
+     * @returns { AbilityLifecycleState } Returns the lifecycle state of the specified ability.
+     * @throws { BusinessExecption } 401 - Parameter error.
      */
     @!APILevel[
         since: "22",
@@ -668,8 +706,9 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Obtain the ability that is currently being displayed in this process.
      *
+     * @returns { UIAbility } Returns the UIAbility object that is currently on top.
+     * @throws { BusinessExecption } 16000050 - Internal error.
      * @throws { BusinessExecption } 16000100 - Calling GetCurrentTopAbility failed.
-     * @throws { IllegalMemoryException } - Invalid Ability.
      */
     @!APILevel[
         since: "22",
@@ -684,13 +723,14 @@ public class AbilityDelegator <: RemoteDataLite {
 
         throwIfNotSuccess(errorCode, "getCurrentTopAbility")
         let optAbility = FFIDataManager.getInstance().getData<UIAbility>(abilityId)
-        return optAbility.getOrThrow {=> IllegalMemoryException("Invalid Ability")}
+        return optAbility.getOrThrow {=> BusinessException(ERROR_CODE_INNER, "Internal error.")}
     }
 
     /**
      * Invoke the Ability.onForeground() callback of a specified ability without changing its lifecycle state.
      *
-    * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { UIAbility } ability - Indicates the UIAbility object to call onForeground.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityForeground failed.
      */
     @!APILevel[
@@ -712,7 +752,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Invoke the Ability.onBackground() callback of a specified ability without changing its lifecycle state.
      *
-     * @throws { BusinessExecption } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
+     * @param { UIAbility } ability - Indicates the UIAbility object to call onBackground.
+     * @throws { BusinessExecption } 401 - Parameter error.
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityBackground failed.
      */
     @!APILevel[
@@ -734,6 +775,7 @@ public class AbilityDelegator <: RemoteDataLite {
 
 /**
  * Store unit testing-related parameters, including test case names, and test runner name.
+ *
  */
 @!APILevel[
     since: "22",
@@ -755,6 +797,8 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the bundle name of the application being tested.
+     *
+     * @returns { String } Returns the bundle name of the application being tested.
      */
     @!APILevel[
         since: "22",
@@ -784,6 +828,8 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the parameters used for unit testing.
+     *
+     * @returns { HashMap<String, String> } Returns the parameters used for unit testing.
      */
     @!APILevel[
         since: "22",
@@ -812,6 +858,8 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the class names of all test cases.
+     *
+     * @returns { String } Returns the class names of all test cases.
      */
     @!APILevel[
         since: "22",
@@ -841,6 +889,8 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the class name of the test runner used to execute test cases.
+     *
+     * @returns { String } Returns the class name of the test runner.
      */
     @!APILevel[
         since: "22",
@@ -879,10 +929,10 @@ unsafe func getArrayStringAndFree(arr: CArrString): Array<String> {
         size,
         {
             i =>
-            let cString = ptr.read(i)
-            let data = cString.toString()
-            LibC.free(cString)
-            data
+                let cString = ptr.read(i)
+                let data = cString.toString()
+                LibC.free(cString)
+                data
         }
     )
     LibC.free<CString>(ptr)

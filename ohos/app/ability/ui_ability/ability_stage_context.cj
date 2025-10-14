@@ -54,6 +54,7 @@ foreign func FFICJGetConfiguration(id: Int64): CConfiguration
 
 /**
  * The context of an abilityStage. It allows access to abilityStage-specific resources.
+ *
  */
 @!APILevel[
     since: "22",
@@ -61,8 +62,9 @@ foreign func FFICJGetConfiguration(id: Int64): CConfiguration
 ]
 public class AbilityStageContext <: Context {
     /**
-    * Indicates configuration information about an module.
-    */
+     * Indicates configuration information about an module.
+     *
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"

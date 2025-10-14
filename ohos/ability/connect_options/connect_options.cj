@@ -20,8 +20,10 @@ protected package ohos.ability.connect_options
 import ohos.element_name.ElementName
 import ohos.ffi.*
 import ohos.rpc.*
+import ohos.business_exception.BusinessException
 
 type ElementNameHandle = UIntNative
+const ERROR_CODE_INNER: Int32 = 16000050
 
 @C
 struct CJAbilityConnectCallbackFuncs {
@@ -50,8 +52,7 @@ func connectOptionsOnDisconnect(id: Int64, elementHandle: ElementNameHandle, res
     ABILITY_LOG.info("connectOptionsOnDisconnect begin, resultCode is ${resultCode}")
     let optConnection = FFIDataManager.getInstance().getData<ConnectOptions>(id)
     match (optConnection) {
-        case None =>
-            throw IllegalStateException("No such connectOptions: " + id.toString())
+        case None => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(connections) =>
             let element = ElementName(elementHandle)
             connections.onDisconnect(element)
@@ -108,6 +109,7 @@ func connectOptionsCJFuncsRegister(result: CPointer<CJAbilityConnectCallbackFunc
     unsafe { result.write(funcs) }
 }
 
-foreign func RegisterCJAbilityConnectCallbackFuncs(funcs: CFunc<(CPointer<CJAbilityConnectCallbackFuncs>) -> Unit>): Unit
+foreign func RegisterCJAbilityConnectCallbackFuncs(
+    funcs: CFunc<(CPointer<CJAbilityConnectCallbackFuncs>) -> Unit>): Unit
 
 let REGISTER_CONNECT_OPTIONS = unsafe { RegisterCJAbilityConnectCallbackFuncs(connectOptionsCJFuncsRegister) }
