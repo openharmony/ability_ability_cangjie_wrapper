@@ -76,8 +76,8 @@ public class ErrorManager {
      * @param { ErrorManagerEvent } eventType - Indicates the error event type to observe.
      * @param { ErrorObserver } observer - Indicates the error observer callback.
      * @returns { Int32 } Returns the observer ID for unregistration.
-     * @throws { BusinessException } 401 - Parameter error.
      * @throws { BusinessException } 16000003 - The specified ID does not exist.
+     * @throws { BusinessExecption } 16000050 - Internal error.
      */
     @!APILevel[
         22,
@@ -86,7 +86,7 @@ public class ErrorManager {
     public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32 {
         let eventTypeValue = eventType.getValue()
         if (eventTypeValue != "error") {
-            throw BusinessException(EXCEPTION_PARAMCHECK, getErrorInfo(EXCEPTION_PARAMCHECK))
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
         let cOnType = unsafe { LibC.mallocCString(eventTypeValue) }
         try {
@@ -108,8 +108,8 @@ public class ErrorManager {
      *
      * @param { ErrorManagerEvent } eventType - Indicates the error event type to unregister.
      * @param { Int32 } observerId - Indicates the observer ID returned from registration.
-     * @throws { BusinessException } 401 - Parameter error.
      * @throws { BusinessException } 16000003 - The specified ID does not exist.
+     * @throws { BusinessExecption } 16000050 - Internal error.
      */
     @!APILevel[
         22,
@@ -118,7 +118,7 @@ public class ErrorManager {
     public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit {
         let eventTypeValue = eventType.getValue()
         if (eventTypeValue != "error") {
-            throw BusinessException(EXCEPTION_PARAMCHECK, getErrorInfo(EXCEPTION_PARAMCHECK))
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
         let cOffType = unsafe { LibC.mallocCString(eventTypeValue) }
         let res = unsafe { FfiOHOSErrorManagerOff(cOffType, observerId) }

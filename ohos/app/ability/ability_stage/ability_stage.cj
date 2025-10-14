@@ -95,7 +95,7 @@ func abilityStageOnAcceptWant(id: Int64, _: WantHandle): CString {
         let result = ""
         unsafe { LibC.mallocCString(result) }
     } else {
-        throw BusinessException(16000050, "Internal error.")
+        throw BusinessException(ERROR_CODE_INNER, "Internal error.")
     }
 }
 
@@ -106,7 +106,7 @@ func abilityStageOnNewProcessRequest(id: Int64, _: WantHandle): CString {
         let result = ""
         unsafe { LibC.mallocCString(result) }
     } else {
-        throw BusinessException(16000050, "Internal error.")
+        throw BusinessException(ERROR_CODE_INNER, "Internal error.")
     }
 }
 
@@ -195,13 +195,13 @@ public open class AbilityStage <: FFIData {
 
     func abilityStageInit(remote: AbilityStageHandle): Unit {
         if (remote == 0) {
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
 
         // Init abilityContext
         let nativeAbilityStageContextId = unsafe { FFIAbilityGetAbilityStageContext(remote) }
         if (nativeAbilityStageContextId == ERR_INVALID_INSTANCE_CODE) {
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
         var value = AbilityStageContext(nativeAbilityStageContextId)
         abilityStageContext = Option<AbilityStageContext>.Some(value)
