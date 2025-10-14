@@ -26,6 +26,26 @@ import std.deriving.*
 import std.collection.HashMap
 import ohos.labels.*
 
+// ERRORCODE
+const SUCCESS_CODE: Int32 = 0
+const COMMON_FAILED: Int32 = 16000100
+const INVALID_PARA: Int32 = 401
+const ERROR_CODE_RESOLVE_ABILITY: Int32 = 16000001
+const EERROR_CODE_INVALID_ABILITY_TYPE: Int32 = 16000002
+const ERROR_CODE_NO_INVISIBLE_PERMISSION: Int32 = 16000004
+const ERROR_CODE_STATIC_CFG_PERMISSION: Int32 = 16000005
+const ERROR_CODE_CROSS_USER: Int32 = 16000006
+const ERROR_CODE_CROWDTEST_EXPIRED: Int32 = 16000008
+const ERROR_CODE_WUKONG_MODE: Int32 = 16000009
+const ERROR_CODE_CONTINUATION_FLAG: Int32 = 16000010
+const ERROR_CODE_INVALID_CONTEXT: Int32 = 16000011
+const ERROR_CODE_CONTROLLED: Int32 = 16000012
+const ERROR_CODE_EDM_CONTROLLED: Int32 = 16000013
+const ERROR_CODE_INNER: Int32 = 16000050
+const ERROR_CODE_NOT_TOP_ABILITY: Int32 = 16000053
+const ERROR_CODE_FREE_INSTALL_TIMEOUT: Int32 = 16000055
+const ERROR_CALLER_RELEASED: Int32 = 16200001
+
 foreign func FFIAbilityDelegatorRegistryGetAbilityDelegator(): Int64
 
 foreign func FFIAbilityDelegatorStartAbility(id: Int64, wantHandle: WantHandle): Int32
@@ -136,7 +156,7 @@ public enum AbilityLifecycleState {
             case 2 => Foreground
             case 3 => Background
             case 4 => Destroy
-            case _ => throw BusinessException(16000050, "Internal error.")
+            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -177,25 +197,6 @@ foreign {
         abilityStageInfo: CJAbilityStageInfo, timeout: Int64, abilityStageId: CPointer<Int64>): Int32
 }
 
-// ERRORCODE
-const SUCCESS_CODE: Int32 = 0
-const COMMON_FAILED: Int32 = 16000100
-const INVALID_PARA: Int32 = 401
-const ERROR_CODE_RESOLVE_ABILITY: Int32 = 16000001
-const EERROR_CODE_INVALID_ABILITY_TYPE: Int32 = 16000002
-const ERROR_CODE_NO_INVISIBLE_PERMISSION: Int32 = 16000004
-const ERROR_CODE_STATIC_CFG_PERMISSION: Int32 = 16000005
-const ERROR_CODE_CROSS_USER: Int32 = 16000006
-const ERROR_CODE_CROWDTEST_EXPIRED: Int32 = 16000008
-const ERROR_CODE_WUKONG_MODE: Int32 = 16000009
-const ERROR_CODE_CONTINUATION_FLAG: Int32 = 16000010
-const ERROR_CODE_INVALID_CONTEXT: Int32 = 16000011
-const ERROR_CODE_CONTROLLED: Int32 = 16000012
-const ERROR_CODE_EDM_CONTROLLED: Int32 = 16000013
-const ERROR_CODE_INNER: Int32 = 16000050
-const ERROR_CODE_NOT_TOP_ABILITY: Int32 = 16000053
-const ERROR_CODE_FREE_INSTALL_TIMEOUT: Int32 = 16000055
-const ERROR_CALLER_RELEASED: Int32 = 16200001
 let ERROR_MSG = HashMap<String, String>(
     [
         ("addAbilityMonitor", "Calling AddAbilityMonitor failed."),
