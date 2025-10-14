@@ -23,6 +23,7 @@ import ohos.rpc.*
 import ohos.business_exception.BusinessException
 
 type ElementNameHandle = UIntNative
+const ERROR_CODE_INNER: Int32 = 16000050
 
 @C
 struct CJAbilityConnectCallbackFuncs {
@@ -51,7 +52,7 @@ func connectOptionsOnDisconnect(id: Int64, elementHandle: ElementNameHandle, res
     ABILITY_LOG.info("connectOptionsOnDisconnect begin, resultCode is ${resultCode}")
     let optConnection = FFIDataManager.getInstance().getData<ConnectOptions>(id)
     match (optConnection) {
-        case None => throw BusinessException(16000050, "Internal error.")
+        case None => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(connections) =>
             let element = ElementName(elementHandle)
             connections.onDisconnect(element)

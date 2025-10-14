@@ -23,6 +23,8 @@ import ohos.labels.*
 import ohos.ui_test.UITest
 import ohos.business_exception.BusinessException
 
+const ERROR_CODE_INNER: Int32 = 16000050
+
 @C
 struct CJTestRunnerFuncs {
     CJTestRunnerFuncs(
@@ -52,7 +54,7 @@ func releaseTestRunner(id: Int64): Unit {
     match (optTestRunner) {
         case None =>
             TEST_RUNNER_LOG.error("No such TestRunner: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(testRunner) => TEST_RUNNER_LOG.info("Release abilityContext end")
     }
     FFIDataManager.getInstance().releaseData(id)
@@ -65,7 +67,7 @@ func testRunnerOnRun(id: Int64): Unit {
     match (optTestRunner) {
         case None =>
             TEST_RUNNER_LOG.error("No such TestRunner: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(testRunner) => testRunner.onRun()
     }
 }
@@ -76,7 +78,7 @@ func testRunnerOnPrepare(id: Int64): Unit {
     match (optTestRunner) {
         case None =>
             TEST_RUNNER_LOG.error("No such TestRunner: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(testRunner) =>
             UITest.setup()
             testRunner.onPrepare()

@@ -114,7 +114,7 @@ public enum Params {
      * get the corresponding mapping value.
      *
      * @returns { String } Returns the corresponding mapping value.
-     * @throws { BusinessException } 401 - Parameter error.
+     * @throws { BusinessExecption } 16000050 - Internal error.
      */
     @!APILevel[
         22,

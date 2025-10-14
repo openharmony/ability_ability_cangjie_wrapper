@@ -34,7 +34,7 @@ func monitorOnAbilityCreate(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityCreate, ability)
     }
 }
@@ -44,7 +44,7 @@ func monitorOnAbilityForeground(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityForeground, ability)
     }
 }
@@ -54,7 +54,7 @@ func monitorOnAbilityBackground(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityBackground, ability)
     }
 }
@@ -64,7 +64,7 @@ func monitorOnAbilityDestroy(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onAbilityDestroy, ability)
     }
 }
@@ -74,7 +74,7 @@ func monitorOnWindowStageCreate(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageCreate, ability)
     }
 }
@@ -84,7 +84,7 @@ func monitorOnWindowStageRestore(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageRestore, ability)
     }
 }
@@ -94,7 +94,7 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
         FFIDataManager.getInstance().getData<UIAbility>(abilityId))
     match (optPara) {
-        case (None, _) | (_, None) => throw BusinessException(16000050, "Internal error.")
+        case (None, _) | (_, None) => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case (Some(monitor), Some(ability)) => executeFunc(monitor.onWindowStageDestroy, ability)
     }
 }

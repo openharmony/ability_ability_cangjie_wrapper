@@ -94,7 +94,7 @@ func invokeAbilityResultCallback(id: Int64, error: Int32, cjAbilityResult: CPoin
     match (res) {
         case None =>
             ABILITY_LOG.error("Invalid id, failed to get ResultCallbackForAbilityResult")
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(callback) =>
             if (error != 0 || cjAbilityResult.isNull()) {
                 callback(BusinessException(error, getErrorMsg(error)), Option<AbilityResult>.None)
@@ -126,7 +126,7 @@ func invokeDialogRequestResultCallback(
 ): Unit {
     let res = ResultCallbackForDialogRequestResult.getCallback(id)
     match (res) {
-        case None => throw BusinessException(16000050, "Internal error.")
+        case None => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(callback) =>
             if (error != 0 || cjDialogRequestResult.isNull()) {
                 callback(BusinessException(error, getErrorMsg(error)), Option<RequestResult>.None)

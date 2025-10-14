@@ -113,7 +113,7 @@ func abilityOnStart(id: Int64, wantHandle: WantHandle, launchParam: CJLaunchPara
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let want = Want(wantHandle)
             ability.setLaunchWant(want)
@@ -136,7 +136,7 @@ func abilityOnStop(id: Int64): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ability.onDestroy()
     }
 }
@@ -147,7 +147,7 @@ func abilityOnSceneCreated(id: Int64, windowStageHandle: WindowStageHandle): Uni
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let windowStage = WindowStage(windowStageHandle)
             ability.context.windowStage_ = windowStage
@@ -161,7 +161,7 @@ func abilityOnSceneRestored(id: Int64, windowStageHandle: WindowStageHandle): Un
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let windowStage = WindowStage(windowStageHandle)
             ability.context.windowStage_ = windowStage
@@ -175,7 +175,7 @@ func abilityOnSceneDestroyed(id: Int64): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             ability.context.windowStage_ = None
             ability.onWindowStageDestroy()
@@ -188,7 +188,7 @@ func abilityOnSceneWillDestroy(id: Int64, windowStageHandle: WindowStageHandle):
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let windowStage = WindowStage(windowStageHandle)
             ability.context.windowStage_ = windowStage
@@ -202,7 +202,7 @@ func abilityOnForeground(id: Int64, wantHandle: WantHandle): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let want = Want(wantHandle)
             ability.setLastRequestWant(want)
@@ -216,7 +216,7 @@ func abilityOnBackground(id: Int64): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ability.onBackground()
     }
 }
@@ -227,7 +227,7 @@ func abilityOnBackPress(id: Int64): Bool {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ability.onBackPressed()
     }
 }
@@ -238,7 +238,7 @@ func abilityOnConfigurationUpdated(id: Int64, _: CJConfiguration): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ()
     }
 }
@@ -249,7 +249,7 @@ func abilityOnNewWant(id: Int64, wantHandle: WantHandle, launchParams: CJLaunchP
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let want = Want(wantHandle)
             ability.setLastRequestWant(want)
@@ -292,7 +292,7 @@ func abilityOnContinue(id: Int64, params: CString): Int32 {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let jsonValue = jsonStringUnWrapper(params.toString())
             let res = ability.onContinue(jsonValue.toString())
@@ -306,7 +306,7 @@ func abilityInit(id: Int64, abilityHandle: AbilityHandle): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ability.abilityInit(abilityHandle)
     }
 }
@@ -317,7 +317,7 @@ func abilityOnConfigurationUpdate(id: Int64, configuration: CConfiguration): Uni
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => unsafe { configuration.free() }
     }
 }
@@ -328,7 +328,7 @@ func abilityOnMemoryLevel(id: Int64, _: Int32): Unit {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ()
     }
 }
@@ -339,7 +339,7 @@ func abilityOnPrepareTerminate(id: Int64): Bool {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ability.onPrepareToTerminate()
     }
 }
@@ -350,7 +350,7 @@ func abilityOnSaveState(id: Int64, reason: Int32, params: CString): CJNumberParm
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let reasonType = StateType.parse(reason)
             let wantParam = jsonStringUnWrapper(params.toString())
@@ -368,7 +368,7 @@ func abilityOnShare(id: Int64, params: CString): CString {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let wantParam = jsonStringUnWrapper(params.toString())
             ability.onShare(wantParam.toString())
@@ -385,7 +385,7 @@ func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let wantParam = jsonStringUnWrapper(params.toString())
             let continueResult = ability.onContinue(wantParam.toString())
@@ -400,7 +400,7 @@ func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
 func abilityOnCallRequest(id: Int64): Int64 {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
-        case None => throw BusinessException(16000050, "Internal error.")
+        case None => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let callee = ability.onCallRequest()
             return callee.getID()
@@ -411,7 +411,7 @@ func abilityOnCallRequest(id: Int64): Int64 {
 func abilityOnSetCalleeFlag(id: Int64, _: Bool): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
     match (optAbility) {
-        case None => throw BusinessException(16000050, "Internal error.")
+        case None => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => ()
     }
 }
@@ -633,7 +633,7 @@ public open class UIAbility <: Ability {
     func abilityInit(remote: AbilityHandle): Unit {
         if (remote == 0) {
             ABILITY_LOG.error("Invalid remote Ability")
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
 
         // Init abilityContext

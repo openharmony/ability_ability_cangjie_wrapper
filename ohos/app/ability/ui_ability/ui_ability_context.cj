@@ -186,7 +186,7 @@ public open class UIAbilityContext <: Context {
     private static func getBroker(): AbilityContextBroker {
         let nativeHandle = unsafe { FFIAbilityContextGetBroker() }
         if (nativeHandle.isNull()) {
-            throw BusinessException(16000050, "Internal error.")
+            throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
 
         let abilityContextBroker = unsafe { nativeHandle.read() }
@@ -199,7 +199,7 @@ public open class UIAbilityContext <: Context {
         if (status == true) {
             return id
         }
-        throw BusinessException(16000050, "Internal error.")
+        throw BusinessException(ERROR_CODE_INNER, "Internal error.")
     }
 
     /**
@@ -395,7 +395,7 @@ public open class UIAbilityContext <: Context {
             return id
         }
         options.onFailed(res)
-        throw BusinessException(16000050, "Internal error.")
+        throw BusinessException(ERROR_CODE_INNER, "Internal error.")
     }
 
     func connectAbilityWithAccount(want: Want, accountId: Int32, options: ConnectOptions): Int64 {
