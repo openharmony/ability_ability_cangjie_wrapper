@@ -40,9 +40,9 @@ class TestView {
     func build() {
         Row {
             Column {
-                Text(message).onClick {
+                Text(message).onClick ({
                     evt =>
-                }.fontSize(40).height(80)
+                }).fontSize(40).height(80)
             }.width(100.percent)
         }.height(100.percent)
     }
