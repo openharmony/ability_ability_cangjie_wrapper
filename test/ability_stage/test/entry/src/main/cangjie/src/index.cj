@@ -39,9 +39,9 @@ class EntryView {
     func build() {
         Row {
             Column {
-                Text(message).onClick {
+                Text(message).onClick ({
                     evt =>
-                }.fontSize(50)
+                }).fontSize(50)
                 .fontWeight(FontWeight.Bold)
             }.width(100.percent)
         }.height(100.percent)
