@@ -20,7 +20,7 @@ package ohos_app_cangjie_entry
 
 import std.unittest.testmacro.*
 import kit.AbilityKit.{ErrorManager, ErrorManagerEvent, ErrorObserver}
-import ohos.base.Main
+import ohos.base.UIThread
 import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
@@ -59,7 +59,7 @@ class Test_error_manager {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func test_error_manager_off() {
-        spawn (Main) {
+        spawn (UIThread) {
             try {
                 ErrorManager.off(ErrorManagerEvent.Error, id)
             } catch (e: BusinessException) {
