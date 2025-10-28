@@ -17,8 +17,8 @@
 
 package ohos.app.ability.dialog_request
 
-import ohos.app.ability.want.*
-import ohos.labels.*
+import ohos.app.ability.want.{Want, WantHandle}
+import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
 const ERROR_CODE_INNER: Int32 = 16000050

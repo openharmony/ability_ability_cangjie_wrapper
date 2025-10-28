@@ -17,9 +17,9 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.ffi.*
-import std.collection.*
-import ohos.labels.*
+import ohos.ffi.FFIData
+import std.collection.HashMap
+import ohos.labels.APILevel
 
 class AbilityImpl {}
 

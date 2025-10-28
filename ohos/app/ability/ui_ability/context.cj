@@ -18,12 +18,11 @@
 package ohos.app.ability.ui_ability
 
 import ohos.app.ability.BaseContext
-import ohos.app.ability.context_constant.*
-import ohos.ffi.*
-import ohos.resource_manager.*
-import ohos.bundle.bundle_manager.*
-import ohos.application.event_hub.*
-import ohos.labels.*
+import ohos.app.ability.context_constant.AreaMode
+import ohos.resource_manager.ResourceManager
+import ohos.bundle.bundle_manager.{ApplicationInfo, RetApplicationInfoV2}
+import ohos.application.event_hub.EventHub
+import ohos.labels.APILevel
 
 foreign {
     func FfiContextGetContext(id: Int64, contextType: Int32): CPointer<Unit>

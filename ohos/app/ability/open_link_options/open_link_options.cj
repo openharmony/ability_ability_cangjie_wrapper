@@ -18,9 +18,9 @@
 package ohos.app.ability.open_link_options
 
 import std.collection.HashMap
-import ohos.app.ability.want.{WantValueType, mapToJsonObject}
-import ohos.encoding.json.*
-import ohos.labels.*
+import ohos.app.ability.want.{Want, mapToJsonObject, WantValueType}
+import ohos.encoding.json.jsonObjectWrapper
+import ohos.labels.APILevel
 
 /**
  * Define the available options for openLink API.

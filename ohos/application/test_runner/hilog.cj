@@ -17,6 +17,6 @@
 
 package ohos.application.test_runner
 
-import ohos.hilog.*
+import ohos.hilog.HilogChannel
 
 let TEST_RUNNER_LOG = HilogChannel(0, 0xD002223, "CJ_TEST_RUNNER")

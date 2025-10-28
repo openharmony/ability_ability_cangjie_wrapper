@@ -17,8 +17,8 @@
 
 package ohos.app.ability.app_recovery
 
-import ohos.app.ability.want.*
-import ohos.labels.*
+import ohos.app.ability.want.{Want, WantHandle}
+import ohos.labels.APILevel
 
 foreign {
     func FFIAppRecoveryEnable(restartFlag: Int32, saveOccasionFlag: Int32, saveModeFlag: Int32): Unit

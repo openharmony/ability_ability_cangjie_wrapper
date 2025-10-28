@@ -17,7 +17,7 @@
 
 package ohos.application.error_observer
 
-import ohos.ffi.*
+import ohos.ffi.Callback1Param
 
 @C
 protected struct CErrorObject {
