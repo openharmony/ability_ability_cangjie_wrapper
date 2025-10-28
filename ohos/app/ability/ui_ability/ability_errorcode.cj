@@ -17,7 +17,7 @@
 
 package ohos.app.ability.ui_ability
 
-import std.collection.*
+import std.collection.HashMap
 import ohos.business_exception.BusinessException
 
 const INVALID_PARA: Int32 = 401

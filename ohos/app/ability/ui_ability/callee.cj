@@ -17,7 +17,7 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.rpc.*
+import ohos.rpc.RemoteObject
 
 const EVENT_CALL_NOTIFY: UInt32 = 1
 const REQUEST_SUCCESS: Int32 = 0

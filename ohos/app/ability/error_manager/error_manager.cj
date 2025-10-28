@@ -18,8 +18,8 @@
 package ohos.app.ability.error_manager
 
 public import ohos.application.error_observer.*
-import ohos.application.error_observer.*
-import ohos.labels.*
+import ohos.application.error_observer.{CErrorObserver, RetDataI32, getErrorInfo}
+import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
 foreign func FfiOHOSErrorManagerOn(eventType: CString, observer: CErrorObserver): RetDataI32

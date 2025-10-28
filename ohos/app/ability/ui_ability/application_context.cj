@@ -17,11 +17,10 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.app.ability.want.*
-import ohos.ffi.*
-import ohos.window.*
-import std.sync.*
-import ohos.labels.*
+import ohos.app.ability.want.{Want, WantHandle}
+import ohos.ffi.{RemoteDataManager, CArrI64, FFIDataManager, Callback1Param, Callback2Param}
+import ohos.window.WindowStage
+import ohos.labels.APILevel
 
 @C
 struct CApplicationInfo {
@@ -70,8 +69,6 @@ foreign {
 
     func FfiCJApplicationContextSetFontSizeScale(id: Int64, fontSizeScale: Float64): Int32
 }
-
-let STATE_CHANGE_CALLBCAK_MUTEX = Mutex()
 
 func abilityCallbackWapperId(callback: (UIAbility) -> Unit): Int64 {
     let wrapper = {

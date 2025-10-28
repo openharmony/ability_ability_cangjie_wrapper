@@ -17,9 +17,9 @@
 
 package ohos.app.ability.ability_delegator_registry
 
-import ohos.ffi.*
-import ohos.app.ability.ui_ability.*
-import ohos.labels.*
+import ohos.ffi.{FFIData, FFIDataManager}
+import ohos.app.ability.ui_ability.UIAbility
+import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
 func executeFunc(optFunc: ?(UIAbility) -> Unit, ability: UIAbility): Unit {
