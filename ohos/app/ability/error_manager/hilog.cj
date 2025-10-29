@@ -17,6 +17,6 @@
 
 package ohos.app.ability.error_manager
 
-import ohos.hilog.*
+import ohos.hilog.HilogChannel
 
 let ABILITY_LOG = HilogChannel(0, 0xD002223, "CJ_ABILITY")

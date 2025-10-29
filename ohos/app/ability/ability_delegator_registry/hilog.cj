@@ -17,6 +17,6 @@
 
 package ohos.app.ability.ability_delegator_registry
 
-import ohos.hilog.*
+import ohos.hilog.HilogChannel
 
 let ABILITY_DELEGATOR_LOG = HilogChannel(0, 0xD002223, "CJ_ABILITY_DELEGATOR")

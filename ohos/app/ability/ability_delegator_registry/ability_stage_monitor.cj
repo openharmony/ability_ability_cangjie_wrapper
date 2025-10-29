@@ -17,9 +17,8 @@
 
 package ohos.app.ability.ability_delegator_registry
 
-import ohos.ffi.*
-import ohos.app.ability.ui_ability.*
-import ohos.labels.*
+import ohos.ffi.{FFIData, FFIDataManager}
+import ohos.labels.APILevel
 
 /**
  * Provide methods for matching monitored AbilityStage objects that meet specified conditions.

@@ -17,8 +17,8 @@
 
 package ohos.application.error_observer
 
-import std.collection.*
-import ohos.labels.*
+import std.collection.HashMap
+import ohos.labels.APILevel
 
 /**
  * Error object.

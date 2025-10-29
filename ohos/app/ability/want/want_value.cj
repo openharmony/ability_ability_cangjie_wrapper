@@ -17,9 +17,9 @@
 
 package ohos.app.ability.want
 
-import std.collection.*
-import ohos.encoding.json.*
-import ohos.labels.*
+import std.collection.HashMap
+import ohos.encoding.json.{JsonValue, JsonKind, JsonObject, JsonInt, JsonArray, JsonFloat, JsonString, JsonBool}
+import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
 const ERROR_CODE_INNER: Int32 = 16000050

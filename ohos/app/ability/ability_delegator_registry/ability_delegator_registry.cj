@@ -18,13 +18,13 @@
 package ohos.app.ability.ability_delegator_registry
 
 import ohos.business_exception.{BusinessException, getUniversalErrorMsg}
-import ohos.ffi.*
-import ohos.app.ability.ui_ability.*
-import ohos.app.ability.want.*
-import ohos.app.ability.ability_stage.*
-import std.deriving.*
+import ohos.ffi.{RemoteDataLite, CArrString, releaseFFIData, FFIDataManager}
+import ohos.app.ability.ui_ability.{UIAbility, Context, ApplicationContext}
+import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.ability_stage.AbilityStage
+import std.deriving.Derive
 import std.collection.HashMap
-import ohos.labels.*
+import ohos.labels.APILevel
 
 // ERRORCODE
 const SUCCESS_CODE: Int32 = 0

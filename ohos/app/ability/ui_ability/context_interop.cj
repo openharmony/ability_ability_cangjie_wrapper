@@ -17,9 +17,10 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.ark_interop.*
-import ohos.ark_interop_helper.*
-import ohos.labels.*
+import ohos.ark_interop.{JSContext, JSValue, napi_env, napi_value}
+import ohos.ark_interop_helper.{arktsValueToNapiValue, napiValueToArkTsValue}
+
+import ohos.labels.APILevel
 
 foreign {
     func FfiConvertBaseContext2Napi(env: napi_env, id: Int64): napi_value

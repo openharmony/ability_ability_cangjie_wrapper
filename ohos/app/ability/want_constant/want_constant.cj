@@ -18,8 +18,8 @@
 package ohos.app.ability.want_constant
 
 import std.deriving.Derive
-import ohos.labels.*
-import ohos.business_exception.*
+import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 const ERROR_CODE_INNER: Int32 = 16000050
 

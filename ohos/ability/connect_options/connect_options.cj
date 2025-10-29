@@ -18,8 +18,8 @@
 protected package ohos.ability.connect_options
 
 import ohos.element_name.ElementName
-import ohos.ffi.*
-import ohos.rpc.*
+import ohos.ffi.{FFIData, FFIDataManager}
+import ohos.rpc.{IRemoteObject, createIRemoteObject}
 import ohos.business_exception.BusinessException
 
 type ElementNameHandle = UIntNative

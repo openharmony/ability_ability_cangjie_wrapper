@@ -17,9 +17,9 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.app.ability.configuration.*
-import ohos.bundle.bundle_manager.*
-import ohos.labels.*
+import ohos.app.ability.configuration.CConfiguration
+import ohos.bundle.bundle_manager.{HapModuleInfo, RetHapModuleInfoV2}
+import ohos.labels.APILevel
 
 @C
 struct CurrentHapModuleInfo {

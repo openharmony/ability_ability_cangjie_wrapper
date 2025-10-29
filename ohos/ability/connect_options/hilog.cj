@@ -17,6 +17,6 @@
 
 protected package ohos.ability.connect_options
 
-import ohos.hilog.*
+import ohos.hilog.HilogChannel
 
 let ABILITY_LOG = HilogChannel(0, 0xD002223, "CJ_ABILITY")
