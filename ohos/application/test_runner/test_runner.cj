@@ -17,9 +17,9 @@
 
 package ohos.application.test_runner
 
-import std.collection.*
-import ohos.ffi.*
-import ohos.labels.*
+import std.collection.HashMap
+import ohos.ffi.{FFIData, FFIDataManager}
+import ohos.labels.APILevel
 import ohos.ui_test.UITest
 import ohos.business_exception.BusinessException
 

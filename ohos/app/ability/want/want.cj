@@ -20,8 +20,8 @@ package ohos.app.ability.want
 import std.collection.HashMap
 import ohos.base.{VectorStringHandle, FFIVectorString}
 import ohos.element_name.ElementName
-import ohos.encoding.json.*
-import ohos.labels.*
+import ohos.encoding.json.{jsonStringUnWrapper, jsonObjectWrapper, JsonObject}
+import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
 protected type WantHandle = UIntNative

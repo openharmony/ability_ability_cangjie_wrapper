@@ -17,12 +17,12 @@
 
 package ohos.app.ability.ability_stage
 
-import std.collection.*
-import ohos.ffi.*
-import ohos.labels.*
-import ohos.app.ability.configuration.*
-import ohos.app.ability.want.*
-import ohos.app.ability.ui_ability.*
+import std.collection.HashMap
+import ohos.ffi.{FFIData, FFIDataManager}
+import ohos.labels.APILevel
+import ohos.app.ability.configuration.{CJConfiguration, CConfiguration}
+import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.ui_ability.AbilityStageContext
 import ohos.business_exception.BusinessException
 
 const ERROR_CODE_INNER: Int32 = 16000050

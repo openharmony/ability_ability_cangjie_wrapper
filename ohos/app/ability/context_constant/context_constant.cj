@@ -18,8 +18,8 @@
 package ohos.app.ability.context_constant
 
 import std.deriving.Derive
-import ohos.labels.*
-import ohos.business_exception.*
+import ohos.labels.APILevel
+import ohos.business_exception.BusinessException
 
 protected const PROCESS_MODE_UNSPECIFIED: Int32 = 0
 protected const STARTUP_VISIBILITY_UNSPECIFIED: Int32 = 0

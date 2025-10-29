@@ -17,8 +17,8 @@
 
 package ohos.ability.ability_result
 
-import ohos.labels.*
-import ohos.app.ability.want.*
+import ohos.labels.APILevel
+import ohos.app.ability.want.{Want, WantHandle}
 
 /**
  * AbilityResult
