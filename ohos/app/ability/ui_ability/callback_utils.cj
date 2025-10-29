@@ -17,12 +17,12 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.ability.ability_result.*
-import ohos.app.ability.dialog_request.*
-import ohos.app.ability.want.*
+import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
+import ohos.app.ability.dialog_request.{RequestResult, ResultCode, CJDialogRequestResult}
+import ohos.app.ability.want.Want
 import ohos.business_exception.{BusinessException, AsyncCallback}
-import std.collection.*
-import std.sync.*
+import std.collection.HashMap
+import std.sync.{AtomicInt64, Mutex}
 
 class ResultCallbackForAbilityResult {
     private static var callbacks = HashMap<Int64, AsyncCallback<AbilityResult>>()

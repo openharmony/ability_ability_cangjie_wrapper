@@ -17,8 +17,8 @@
 
 package ohos.app.ability
 
-import ohos.ffi.*
-import ohos.labels.*
+import ohos.ffi.RemoteData
+import ohos.labels.APILevel
 
 class BaseContextImpl {}
 

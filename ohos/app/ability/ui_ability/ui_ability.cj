@@ -17,15 +17,15 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.app.ability.ability_constant.*
-import ohos.app.ability.want.*
-import ohos.app.ability.configuration.*
+import ohos.app.ability.ability_constant.{LastExitReason, LaunchReason, LaunchParam,
+    OnContinueResult, StateType, OnSaveResult}
+import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.configuration.{CConfiguration, CJConfiguration}
 import ohos.base.FFIVectorString
-import ohos.ffi.*
-import ohos.rpc.*
-import ohos.window.*
-import ohos.encoding.json.*
-import ohos.labels.*
+import ohos.ffi.{FFIDataManager}
+import ohos.window.WindowStage
+import ohos.encoding.json.{jsonObjectWrapper, jsonStringUnWrapper}
+import ohos.labels.APILevel
 import ohos.business_exception.BusinessException
 
 type AbilityHandle = UIntNative

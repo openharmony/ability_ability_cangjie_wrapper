@@ -17,9 +17,8 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.ark_interop.*
-import ohos.ark_interop_helper.*
-import ohos.labels.*
+import ohos.ark_interop.{JSValue, JSContext}
+import ohos.labels.APILevel
 
 /**
  * interface for cangjie object to arkts object

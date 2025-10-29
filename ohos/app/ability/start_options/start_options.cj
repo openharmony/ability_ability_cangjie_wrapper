@@ -17,12 +17,12 @@
 
 package ohos.app.ability.start_options
 
-import ohos.app.ability.ability_constant.*
-import ohos.app.ability.completion_handler.*
-import ohos.app.ability.context_constant.*
+import ohos.app.ability.ability_constant.{WindowMode, WINDOW_MODE_UNDEFINED}
+import ohos.app.ability.completion_handler.CompletionHandler
+import ohos.app.ability.context_constant.{ProcessMode, StartupVisibility, PROCESS_MODE_UNSPECIFIED, STARTUP_VISIBILITY_UNSPECIFIED}
 import ohos.bundle.bundle_manager.SupportWindowMode
 import ohos.multimedia.image.PixelMap
-import ohos.labels.*
+import ohos.labels.APILevel
 
 class StartOptionsImpl {}
 
