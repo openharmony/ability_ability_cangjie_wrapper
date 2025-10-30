@@ -113,19 +113,19 @@ class Test_base_context {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func test_wantConstant() {
-        @Expect(AbilityBackToOtherMissionStack.getValue(), "ability.params.backToOtherMissionStack")
-        @Expect(AbilityRecoveryRestart.getValue(), "ohos.ability.params.abilityRecoveryRestart")
-        @Expect(ContentTitleKey.getValue(), "ohos.extra.param.key.contentTitle")
-        @Expect(ShareAbstractKey.getValue(), "ohos.extra.param.key.shareAbstract")
-        @Expect(ShareUrlKey.getValue(), "ohos.extra.param.key.shareUrl")
-        @Expect(SupportContinuePageStackKey.getValue(), "ohos.extra.param.key.supportContinuePageStack")
-        @Expect(SupportContinueSourceExitKey.getValue(), "ohos.extra.param.key.supportContinueSourceExit")
+        @Expect(Params.ABILITY_BACK_TO_OTHER_MISSION_STACK, "ability.params.backToOtherMissionStack")
+        @Expect(Params.ABILITY_RECOVERY_RESTART, "ohos.ability.params.abilityRecoveryRestart")
+        @Expect(Params.CONTENT_TITLE_KEY, "ohos.extra.param.key.contentTitle")
+        @Expect(Params.SHARE_ABSTRACT_KEY, "ohos.extra.param.key.shareAbstract")
+        @Expect(Params.SHARE_URL_KEY, "ohos.extra.param.key.shareUrl")
+        @Expect(Params.SUPPORT_CONTINUE_PAGE_STACK_KEY, "ohos.extra.param.key.supportContinuePageStack")
+        @Expect(Params.SUPPORT_CONTINUE_SOURCE_EXIT_KEY, "ohos.extra.param.key.supportContinueSourceExit")
 
-        @Expect(FlagAuthReadUriPermission.getValue(), 0x00000001)
-        @Expect(FlagAuthWriteUriPermission.getValue(), 0x00000002)
-        @Expect(FlagAuthPersistableUriPermission.getValue(), 0x00000040)
-        @Expect(FlagInstallOnDemand.getValue(), 0x00000800)
-        @Expect(FlagStartWithoutTips.getValue(), 0x40000000)
+        @Expect(Flags.FLAG_AUTH_READ_URI_PERMISSION, 0x00000001)
+        @Expect(Flags.FLAG_AUTH_WRITE_URI_PERMISSION, 0x00000002)
+        @Expect(Flags.FLAG_AUTH_PERSISTABLE_URI_PERMISSION, 0x00000040)
+        @Expect(Flags.FLAG_INSTALL_ON_DEMAND, 0x00000800)
+        @Expect(Flags.FLAG_START_WITHOUT_TIPS, 0x40000000)
     }
 
     @TestCase
