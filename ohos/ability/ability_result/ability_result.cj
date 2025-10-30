@@ -25,7 +25,7 @@ import ohos.app.ability.want.{Want, WantHandle}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class AbilityResult {
@@ -35,7 +35,7 @@ public class AbilityResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var resultCode: Int32
@@ -46,7 +46,7 @@ public class AbilityResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var want: Want
@@ -58,7 +58,7 @@ public class AbilityResult {
      * @param { Want } want - Indicates the data returned after the ability is destroyed. The default value is Want().
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public init(resultCode: Int32, want!: Want = Want()) {

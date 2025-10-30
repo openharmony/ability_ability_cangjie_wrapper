@@ -425,7 +425,7 @@ class UIAbilityImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
 ]
 public open class UIAbility <: Ability {
@@ -441,7 +441,7 @@ public open class UIAbility <: Ability {
      * @returns { Want } Returns the parameters for starting the UIAbility.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public mut prop launchWant: Want {
@@ -460,7 +460,7 @@ public open class UIAbility <: Ability {
      * for multiple times.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public mut prop lastRequestWant: Want {
@@ -478,7 +478,7 @@ public open class UIAbility <: Ability {
      * @returns { UIAbilityContext } Returns the context of the UIAbility.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public mut prop context: UIAbilityContext {
@@ -508,7 +508,7 @@ public open class UIAbility <: Ability {
      * @param { LaunchParam } launchParam - Indicates the launch parameters.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onCreate(want: Want, launchParam: LaunchParam): Unit {}
@@ -524,7 +524,7 @@ public open class UIAbility <: Ability {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onDestroy(): Unit {}
@@ -535,7 +535,7 @@ public open class UIAbility <: Ability {
      * @param { WindowStage } windowStage - Indicates the WindowStage object for this UIAbility.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onWindowStageCreate(windowStage: WindowStage): Unit {}
@@ -552,7 +552,7 @@ public open class UIAbility <: Ability {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onWindowStageDestroy(): Unit {}
@@ -566,7 +566,7 @@ public open class UIAbility <: Ability {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onForeground(): Unit {}
@@ -578,7 +578,7 @@ public open class UIAbility <: Ability {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onBackground(): Unit {}
@@ -603,7 +603,7 @@ public open class UIAbility <: Ability {
      * @param { LaunchParam } launchParam - Indicates the launch parameters.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {}

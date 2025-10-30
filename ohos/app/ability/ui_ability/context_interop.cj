@@ -51,7 +51,7 @@ extend Context <: SystemObjectInteropTypeToJS {
      * @return { JSValue } Returns the JSValue converted from the cangjie object.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func toJSValue(context: JSContext): JSValue {
@@ -75,7 +75,7 @@ extend Context <: SystemObjectInteropTypeToJS {
  * @return { UIAbilityContext } Returns the UIAbilityContext converted from the JSValue.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext {
@@ -93,7 +93,7 @@ public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue
  * @return { AbilityStageContext } Returns the AbilityStageContext converted from the JSValue.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext {
@@ -111,7 +111,7 @@ public func createAbilityStageContextFromJSValue(context: JSContext, input: JSVa
  * @return { ApplicationContext } Returns the ApplicationContext converted from the JSValue.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext {
@@ -129,7 +129,7 @@ public func createApplicationContextFromJSValue(context: JSContext, input: JSVal
  * @return { Context } Returns the Context converted from the JSValue.
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context {

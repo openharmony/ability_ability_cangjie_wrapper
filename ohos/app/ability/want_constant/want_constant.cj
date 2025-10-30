@@ -29,7 +29,7 @@ const ERROR_CODE_INNER: Int32 = 16000050
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum Params {
@@ -39,7 +39,7 @@ public enum Params {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     AbilityBackToOtherMissionStack
@@ -49,7 +49,7 @@ public enum Params {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     AbilityRecoveryRestart
@@ -59,7 +59,7 @@ public enum Params {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ContentTitleKey
@@ -69,7 +69,7 @@ public enum Params {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ShareAbstractKey
@@ -79,7 +79,7 @@ public enum Params {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     ShareUrlKey
@@ -91,7 +91,7 @@ public enum Params {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     SupportContinuePageStackKey
@@ -104,7 +104,7 @@ public enum Params {
      * SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     SupportContinueSourceExitKey
@@ -117,7 +117,7 @@ public enum Params {
      * @throws { BusinessExecption } 16000050 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public func getValue(): String {
@@ -140,7 +140,7 @@ public enum Params {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum Flags {
@@ -149,7 +149,7 @@ public enum Flags {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagAuthReadUriPermission
@@ -159,7 +159,7 @@ public enum Flags {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagAuthWriteUriPermission
@@ -169,7 +169,7 @@ public enum Flags {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagAuthPersistableUriPermission
@@ -179,7 +179,7 @@ public enum Flags {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagInstallOnDemand
@@ -189,7 +189,7 @@ public enum Flags {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagStartWithoutTips
@@ -202,7 +202,7 @@ public enum Flags {
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public func getValue(): UInt32 {

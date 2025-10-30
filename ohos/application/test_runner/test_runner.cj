@@ -92,7 +92,7 @@ class TestRunnerImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class TestRunner <: FFIData {
@@ -106,7 +106,7 @@ public open class TestRunner <: FFIData {
      * @param { () -> TestRunner } creator - The creator of the TestRunner.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func registerCreator(name: String, creator: () -> TestRunner): Unit {
@@ -136,7 +136,7 @@ public open class TestRunner <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onRun(): Unit {}
@@ -145,7 +145,7 @@ public open class TestRunner <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onPrepare(): Unit {}

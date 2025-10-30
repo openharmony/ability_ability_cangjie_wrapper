@@ -37,7 +37,7 @@ foreign {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public func restartApp(): Unit {

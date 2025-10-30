@@ -28,7 +28,7 @@ const ERROR_CODE_INNER: Int32 = 16000050
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum ResultCode {
@@ -37,7 +37,7 @@ public enum ResultCode {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     ResultOk
@@ -47,7 +47,7 @@ public enum ResultCode {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     ResultCancel
@@ -75,7 +75,7 @@ public enum ResultCode {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class RequestResult {
@@ -84,7 +84,7 @@ public class RequestResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var result: ResultCode
@@ -94,7 +94,7 @@ public class RequestResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var want: Want

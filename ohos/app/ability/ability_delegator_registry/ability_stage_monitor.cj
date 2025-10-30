@@ -26,7 +26,7 @@ import ohos.labels.APILevel
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityStageMonitor <: FFIData {
@@ -35,7 +35,7 @@ public class AbilityStageMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var moduleName: String
@@ -44,7 +44,7 @@ public class AbilityStageMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var srcEntrance: String
@@ -55,7 +55,7 @@ public class AbilityStageMonitor <: FFIData {
      * @param { String } srcEntrance - The source path of the abilityStage to monitor.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(

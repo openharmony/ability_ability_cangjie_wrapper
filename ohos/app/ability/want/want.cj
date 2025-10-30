@@ -65,7 +65,7 @@ foreign func FFICJWantAddEntity(want: WantHandle, entity: CString): Unit
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class Want {
@@ -78,7 +78,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var deviceId: String
@@ -88,7 +88,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var bundleName: String
@@ -100,7 +100,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var abilityName: String
@@ -112,7 +112,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var moduleName: String
@@ -124,7 +124,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var flags: UInt32
@@ -137,7 +137,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var uri: String
@@ -149,7 +149,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var action: String
@@ -160,7 +160,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var entities: Array<String>
@@ -170,7 +170,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var wantType: String
@@ -235,7 +235,7 @@ public class Want {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var parameters: HashMap<String, WantValueType>
@@ -264,7 +264,7 @@ public class Want {
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public init(

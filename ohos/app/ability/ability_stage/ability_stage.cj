@@ -130,7 +130,7 @@ class AbilityStageImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class AbilityStage <: FFIData {
@@ -146,7 +146,7 @@ public open class AbilityStage <: FFIData {
      * @param { () -> AbilityStage } creator - Indicates the creator of the AbilityStage.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func registerCreator(moduleName: String, creator: () -> AbilityStage): Unit {
@@ -178,7 +178,7 @@ public open class AbilityStage <: FFIData {
      * @returns { AbilityStageContext } Returns the context of AbilityStageContext.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop context: AbilityStageContext {
@@ -213,7 +213,7 @@ public open class AbilityStage <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onCreate(): Unit {}

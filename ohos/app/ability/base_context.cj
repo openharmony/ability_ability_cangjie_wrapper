@@ -27,7 +27,7 @@ class BaseContextImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public abstract class BaseContext <: RemoteData {
@@ -36,7 +36,7 @@ public abstract class BaseContext <: RemoteData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public let stageMode: Bool

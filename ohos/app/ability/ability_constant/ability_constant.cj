@@ -30,7 +30,7 @@ const ERROR_CODE_INNER: Int32 = 16000050
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class LaunchParam {
@@ -39,7 +39,7 @@ public class LaunchParam {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var launchReason: LaunchReason
@@ -49,7 +49,7 @@ public class LaunchParam {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var lastExitReason: LastExitReason
@@ -79,7 +79,7 @@ public class LaunchParam {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum LaunchReason {
@@ -88,7 +88,7 @@ public enum LaunchReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Unknown
@@ -98,7 +98,7 @@ public enum LaunchReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     StartAbility
@@ -108,7 +108,7 @@ public enum LaunchReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Call
@@ -118,7 +118,7 @@ public enum LaunchReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Continuation
@@ -128,7 +128,7 @@ public enum LaunchReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppRecovery
@@ -164,7 +164,7 @@ public enum LaunchReason {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum LastExitReason {
@@ -173,7 +173,7 @@ public enum LastExitReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Unknown
@@ -183,7 +183,7 @@ public enum LastExitReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Normal
@@ -193,7 +193,7 @@ public enum LastExitReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     CppCrash
@@ -203,7 +203,7 @@ public enum LastExitReason {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppFreeze
@@ -239,7 +239,7 @@ public enum LastExitReason {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum OnContinueResult {
@@ -248,7 +248,7 @@ public enum OnContinueResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Agree
@@ -260,7 +260,7 @@ public enum OnContinueResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Reject
@@ -272,7 +272,7 @@ public enum OnContinueResult {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Mismatch
@@ -296,7 +296,7 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum WindowMode {
@@ -305,7 +305,7 @@ public enum WindowMode {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeFullscreen
@@ -317,7 +317,7 @@ public enum WindowMode {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitPrimary
@@ -329,7 +329,7 @@ public enum WindowMode {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitSecondary
@@ -361,7 +361,7 @@ public enum WindowMode {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum MemoryLevel {
@@ -370,7 +370,7 @@ public enum MemoryLevel {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelModerate
@@ -380,7 +380,7 @@ public enum MemoryLevel {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelLow
@@ -390,7 +390,7 @@ public enum MemoryLevel {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     MemoryLevelCritical

@@ -105,7 +105,7 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityMonitor <: FFIData {
@@ -114,7 +114,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var abilityName: String
@@ -123,7 +123,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var moduleName: String
@@ -132,7 +132,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityCreate: ?(UIAbility) -> Unit
@@ -141,7 +141,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityForeground: ?(UIAbility) -> Unit
@@ -150,7 +150,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityBackground: ?(UIAbility) -> Unit
@@ -159,7 +159,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onAbilityDestroy: ?(UIAbility) -> Unit
@@ -168,7 +168,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageCreate: ?(UIAbility) -> Unit
@@ -177,7 +177,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageRestore: ?(UIAbility) -> Unit
@@ -186,7 +186,7 @@ public class AbilityMonitor <: FFIData {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var onWindowStageDestroy: ?(UIAbility) -> Unit
@@ -212,7 +212,7 @@ public class AbilityMonitor <: FFIData {
      * The default value is None.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(

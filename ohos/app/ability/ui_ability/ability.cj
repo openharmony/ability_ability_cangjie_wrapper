@@ -28,7 +28,7 @@ class AbilityImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
 ]
 abstract sealed class Ability <: FFIData {
@@ -42,7 +42,7 @@ abstract sealed class Ability <: FFIData {
      * @param { () -> Ability } creator - The creator of the Ability.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public static func registerCreator(name: String, creator: () -> Ability): Unit {

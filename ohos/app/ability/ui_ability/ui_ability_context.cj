@@ -161,7 +161,7 @@ class UIAbilityContextImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class UIAbilityContext <: Context {
@@ -247,7 +247,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16300003 - The target application is not the current application.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbility(want: Want, options!: ?StartOptions = None): Unit {
@@ -330,7 +330,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func terminateSelf(): Unit {
@@ -348,7 +348,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func terminateSelfWithResult(parameter: AbilityResult): Unit {
@@ -365,7 +365,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16000011 - The context does not exist.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func isTerminating(): Bool {
@@ -472,7 +472,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16200001 - The caller has been released.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): Unit {
@@ -526,7 +526,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16200001 - The caller has been released.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit {
@@ -630,7 +630,7 @@ public open class UIAbilityContext <: Context {
      * @throws { BusinessException } 16200001 - The caller has been released.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func requestDialogService(want: Want, result: AsyncCallback<RequestResult>): Unit {

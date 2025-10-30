@@ -94,7 +94,7 @@ struct CJAbilityStageInfo {
  */
 @Derive[ToString, Equatable]
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum AbilityLifecycleState {
@@ -103,7 +103,7 @@ public enum AbilityLifecycleState {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Uninitialized
@@ -113,7 +113,7 @@ public enum AbilityLifecycleState {
      *
      */       
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Create
@@ -123,7 +123,7 @@ public enum AbilityLifecycleState {
      *
      */   
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Foreground
@@ -133,7 +133,7 @@ public enum AbilityLifecycleState {
      *
      */  
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Background
@@ -143,7 +143,7 @@ public enum AbilityLifecycleState {
      *
      */  
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Destroy
@@ -270,7 +270,7 @@ struct CRecord {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityDelegatorRegistry {
@@ -283,7 +283,7 @@ public class AbilityDelegatorRegistry {
      * @returns { AbilityDelegator } Returns the AbilityDelegator instance.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func getAbilityDelegator(): AbilityDelegator {
@@ -304,7 +304,7 @@ public class AbilityDelegatorRegistry {
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public static func getArguments(): AbilityDelegatorArgs {
@@ -328,7 +328,7 @@ public class AbilityDelegatorRegistry {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class ShellCmdResult <: RemoteDataLite {
@@ -347,7 +347,7 @@ public class ShellCmdResult <: RemoteDataLite {
      * @returns { Int32 } Returns the exit code of shell command execution.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop exitCode: Int32 {
@@ -368,7 +368,7 @@ public class ShellCmdResult <: RemoteDataLite {
      * @returns { String } Returns the standard output result of shell command execution.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop stdResult: String {
@@ -392,7 +392,7 @@ public class ShellCmdResult <: RemoteDataLite {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityDelegator <: RemoteDataLite {
@@ -427,7 +427,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16200001 - The caller has been released.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func startAbility(want: Want): Unit {
@@ -446,7 +446,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @returns { ShellCmdResult } Returns the result of the shell command execution.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdResult {
@@ -465,7 +465,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @returns { Context } Returns the application context.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func getAppContext(): Context {
@@ -484,7 +484,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @param { Int64 } code - Indicates the result code of the test.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func finishTest(msg: String, code: Int64): Unit {
@@ -504,7 +504,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityMonitor failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func addAbilityMonitor(monitor: AbilityMonitor): Unit {
@@ -528,7 +528,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityMonitor failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func removeAbilityMonitor(monitor: AbilityMonitor): Unit {
@@ -555,7 +555,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityMonitor failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility {
@@ -585,7 +585,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling AddAbilityStageMonitor failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
@@ -610,7 +610,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityStageMonitor failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
@@ -639,7 +639,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling WaitAbilityStageMonitor failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int64 = 5000): AbilityStage {
@@ -668,7 +668,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 401 - Parameter error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func print(msg: String): Unit {
@@ -689,7 +689,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 401 - Parameter error.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func getAbilityState(ability: UIAbility): AbilityLifecycleState {
@@ -711,7 +711,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling GetCurrentTopAbility failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func getCurrentTopAbility(): UIAbility {
@@ -734,7 +734,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityForeground failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func doAbilityForeground(ability: UIAbility): Unit {
@@ -757,7 +757,7 @@ public class AbilityDelegator <: RemoteDataLite {
      * @throws { BusinessExecption } 16000100 - Calling DoAbilityBackground failed.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public func doAbilityBackground(ability: UIAbility): Unit {
@@ -778,7 +778,7 @@ public class AbilityDelegator <: RemoteDataLite {
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityDelegatorArgs <: RemoteDataLite {
@@ -801,7 +801,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @returns { String } Returns the bundle name of the application being tested.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop bundleName: String {
@@ -832,7 +832,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @returns { HashMap<String, String> } Returns the parameters used for unit testing.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop parameters: HashMap<String, String> {
@@ -862,7 +862,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @returns { String } Returns the class names of all test cases.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop testCaseNames: String {
@@ -893,7 +893,7 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
      * @returns { String } Returns the class name of the test runner.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop testRunnerClassName: String {

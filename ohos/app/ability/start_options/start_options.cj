@@ -31,7 +31,7 @@ class StartOptionsImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class StartOptions {
@@ -42,7 +42,7 @@ public open class StartOptions {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var windowMode: ?WindowMode
@@ -52,7 +52,7 @@ public open class StartOptions {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var displayId: Int32
@@ -82,7 +82,7 @@ public open class StartOptions {
      * @param { Int32 } displayId - The type of displayId. The default value is 0.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public init(

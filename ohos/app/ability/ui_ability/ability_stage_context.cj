@@ -57,7 +57,7 @@ foreign func FFICJGetConfiguration(id: Int64): CConfiguration
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class AbilityStageContext <: Context {
@@ -66,7 +66,7 @@ public class AbilityStageContext <: Context {
      *
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var currentHapModuleInfo: HapModuleInfo

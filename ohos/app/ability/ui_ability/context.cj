@@ -66,7 +66,7 @@ class ContextImpl {}
  *
  */
 @!APILevel[
-    22,
+    since: "22",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public open class Context <: BaseContext {
@@ -87,7 +87,7 @@ public open class Context <: BaseContext {
      * @returns { ResourceManager } Returns the Object for resource management.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop resourceManager: ResourceManager {
@@ -108,7 +108,7 @@ public open class Context <: BaseContext {
      * @returns { ApplicationInfo } Returns the Application information.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop applicationInfo: ApplicationInfo {
@@ -131,7 +131,7 @@ public open class Context <: BaseContext {
      * @returns { String } Returns the file directory.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public prop filesDir: String {
@@ -152,7 +152,7 @@ public open class Context <: BaseContext {
      * @returns { AreaMode } Returns the encryption level of the directory.
      */
     @!APILevel[
-        22,
+        since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public mut prop area: AreaMode {
