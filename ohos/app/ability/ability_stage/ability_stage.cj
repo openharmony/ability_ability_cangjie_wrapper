@@ -88,6 +88,9 @@ func abilityStageOnCreate(id: Int64): Unit {
 @C
 func abilityStageOnDestroy(_: Int64): Unit {}
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityStageOnAcceptWant(id: Int64, _: WantHandle): CString {
     let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
@@ -99,6 +102,9 @@ func abilityStageOnAcceptWant(id: Int64, _: WantHandle): CString {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityStageOnNewProcessRequest(id: Int64, _: WantHandle): CString {
     let optStage = FFIDataManager.getInstance().getData<AbilityStage>(id)
@@ -193,6 +199,9 @@ public open class AbilityStage <: FFIData {
         }
     }
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     func abilityStageInit(remote: AbilityStageHandle): Unit {
         if (remote == 0) {
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
