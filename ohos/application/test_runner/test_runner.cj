@@ -48,6 +48,9 @@ func createTestRunner(name: CString): Int64 {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func releaseTestRunner(id: Int64): Unit {
     let optTestRunner = FFIDataManager.getInstance().getData<TestRunner>(id)
@@ -61,6 +64,9 @@ func releaseTestRunner(id: Int64): Unit {
     TEST_RUNNER_LOG.info("Release ability end")
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func testRunnerOnRun(id: Int64): Unit {
     let optTestRunner = FFIDataManager.getInstance().getData<TestRunner>(id)
@@ -72,6 +78,9 @@ func testRunnerOnRun(id: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func testRunnerOnPrepare(id: Int64): Unit {
     let optTestRunner = FFIDataManager.getInstance().getData<TestRunner>(id)
