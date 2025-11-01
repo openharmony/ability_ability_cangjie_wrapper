@@ -134,6 +134,9 @@ public enum LaunchReason {
     AppRecovery
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): LaunchReason {
         match (value) {
             case 0 => Unknown
@@ -209,6 +212,9 @@ public enum LastExitReason {
     AppFreeze
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): LastExitReason {
         match (value) {
             case 0 => Unknown
@@ -335,6 +341,9 @@ public enum WindowMode {
     WindowModeSplitSecondary
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): WindowMode {
         match (value) {
             case 1 => WindowModeFullscreen
@@ -396,6 +405,9 @@ public enum MemoryLevel {
     MemoryLevelCritical
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): MemoryLevel {
         match (value) {
             case 0 => MemoryLevelModerate
@@ -429,6 +441,9 @@ protected enum StateType {
         }
     }
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): StateType {
         match (value) {
             case 0 => Continuation

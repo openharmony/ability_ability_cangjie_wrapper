@@ -29,6 +29,9 @@ func executeFunc(optFunc: ?(UIAbility) -> Unit, ability: UIAbility): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnAbilityCreate(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
@@ -39,6 +42,9 @@ func monitorOnAbilityCreate(monitorId: Int64, abilityId: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnAbilityForeground(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
@@ -49,6 +55,9 @@ func monitorOnAbilityForeground(monitorId: Int64, abilityId: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnAbilityBackground(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
@@ -59,6 +68,9 @@ func monitorOnAbilityBackground(monitorId: Int64, abilityId: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnAbilityDestroy(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
@@ -69,6 +81,9 @@ func monitorOnAbilityDestroy(monitorId: Int64, abilityId: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnWindowStageCreate(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
@@ -79,6 +94,9 @@ func monitorOnWindowStageCreate(monitorId: Int64, abilityId: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnWindowStageRestore(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
@@ -89,6 +107,9 @@ func monitorOnWindowStageRestore(monitorId: Int64, abilityId: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
     let optPara = (FFIDataManager.getInstance().getData<AbilityMonitor>(monitorId),
