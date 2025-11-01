@@ -53,6 +53,9 @@ public enum ResultCode {
     ResultCancel
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): ResultCode {
         match (value) {
             case 0 => ResultOk

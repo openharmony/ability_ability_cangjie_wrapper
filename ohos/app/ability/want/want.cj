@@ -298,7 +298,11 @@ public class Want {
         this.fds = fds
     }
 
+
     // Attention: Do not modify the wantHandle on the native side. Otherwise, inconsistency may occur.
+    /**
+     * @throws { BusinessException } 16000050 - Internal error.
+     */
     protected init(wantHandle: WantHandle) {
         if (wantHandle == NULL_PTR) {
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
@@ -335,6 +339,9 @@ public class Want {
     }
 
     // available only for this package.
+    /**
+     * @throws { BusinessException } 16000050 - Internal error.
+     */
     protected func createWantHandle(): WantHandle {
         var wantHandle: WantHandle = NULL_PTR
         unsafe {

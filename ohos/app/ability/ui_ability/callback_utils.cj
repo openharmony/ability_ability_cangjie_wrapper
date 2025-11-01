@@ -88,6 +88,9 @@ class ResultCallbackForDialogRequestResult {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func invokeAbilityResultCallback(id: Int64, error: Int32, cjAbilityResult: CPointer<CJAbilityResult>): Unit {
     let res = ResultCallbackForAbilityResult.getCallback(id)
@@ -118,6 +121,9 @@ func invokePermissionRequestResultCallback(
     _: CPointer<CJPermissionRequestResult>
 ): Unit {}
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func invokeDialogRequestResultCallback(
     id: Int64,
