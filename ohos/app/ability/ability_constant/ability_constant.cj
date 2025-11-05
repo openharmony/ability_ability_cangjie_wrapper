@@ -18,7 +18,7 @@
 package ohos.app.ability.ability_constant
 
 import std.deriving.Derive
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 const ERROR_CODE_INNER: Int32 = 16000050
@@ -55,6 +55,12 @@ public class LaunchParam {
     public var lastExitReason: LastExitReason
 
     var lastExitMessage: String = ""
+    
+    @!Hide
+    internal var launchReasonMessage: Option<String> = None
+
+    @!Hide
+    internal var lastExitDetailInfo: Option<LastExitDetailInfo> = None
 
     protected init(
         launchReason!: LaunchReason = LaunchReason.Unknown,
@@ -132,6 +138,21 @@ public enum LaunchReason {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppRecovery
+    |
+    @!Hide
+    Share
+    |
+    @!Hide
+    AutoStartup
+    |
+    @!Hide
+    InsightIntent
+    |
+    @!Hide
+    PrepareContinuation
+    |
+    @!Hide
+    Preload
     | ...
 
     protected static func parse(value: Int32): LaunchReason {
@@ -207,6 +228,27 @@ public enum LastExitReason {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppFreeze
+    |
+    @!Hide
+    AbilityNotResponding
+    |
+    @!Hide
+    JsError
+    |
+    @!Hide
+    PerformanceControl
+    |
+    @!Hide
+    ResourceControl
+    |
+    @!Hide
+    Upgrade
+    |
+    @!Hide
+    UserRequest
+    |
+    @!Hide
+    Signal
     | ...
 
     protected static func parse(value: Int32): LastExitReason {
@@ -333,6 +375,12 @@ public enum WindowMode {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitSecondary
+    |
+    @!Hide
+    WindowModeUndefined
+    |
+    @!Hide
+    WindowModeFloating
     | ...
 
     protected static func parse(value: Int32): WindowMode {
@@ -459,4 +507,9 @@ protected enum OnSaveResult {
             case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
+}
+
+@!Hide
+class LastExitDetailInfo {
+    init() {}
 }

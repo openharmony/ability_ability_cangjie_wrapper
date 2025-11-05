@@ -20,20 +20,20 @@ package ohos.app.ability.ui_ability
 import ohos.app.ability.want.{Want, WantHandle}
 import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
 import ohos.ability.connect_options.ConnectOptions
-import ohos.app.ability.configuration.CConfiguration
+import ohos.app.ability.configuration.{CConfiguration, Configuration}
 import ohos.app.ability.dialog_request.{RequestResult, ResultCode}
 import ohos.app.ability.open_link_options.CJOpenLinkOptions
 import ohos.app.ability.start_options.{StartOptions, CJStartOptions,
     CJNewStartOptions, startOptionsToCJNewStartOptions, startOptionsToExternal}
 import ohos.base.{VectorInt32Handle, FFIVectorString}
 import ohos.business_exception.{BusinessException, AsyncCallback}
-import ohos.bundle.bundle_manager.{RetAbilityInfoV2, RetHapModuleInfoV2}
+import ohos.bundle.bundle_manager.{RetAbilityInfoV2, RetHapModuleInfoV2, AbilityInfo, HapModuleInfo}
 import ohos.ffi.{RetDataBool, FFIDataManager, Callback1Param, Callback2Param}
 import ohos.multimedia.image.PixelMap
 import ohos.window.WindowStage
 import std.sync.{AtomicInt32, Mutex, AtomicInt64}
 import std.collection.HashMap
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 internal type AbilityInfoHandle = UIntNative
 
@@ -178,6 +178,50 @@ public open class UIAbilityContext <: Context {
     var windowStage_: ?WindowStage = None
 
     private let UIAbilityContextImpl_ = UIAbilityContextImpl()
+
+    @!Hide
+    internal mut prop abilityInfo: AbilityInfo {
+        get() {
+            throw Exception()
+        }
+
+        set(value) {
+            throw Exception()
+        }
+    }
+
+    @!Hide
+    internal mut prop currentHapModuleInfo: HapModuleInfo {
+        get() {
+            throw Exception()
+        }
+
+        set(value) {
+            throw Exception()
+        }
+    }
+
+    @!Hide
+    internal mut prop config: Configuration {
+        get() {
+            throw Exception()
+        }
+
+        set(value) {
+            throw Exception()
+        }
+    }
+
+    @!Hide
+    internal mut prop windowStage: WindowStage {
+        get() {
+            throw Exception()
+        }
+
+        set(value) {
+            throw Exception()
+        }
+    }
 
     init(id: Int64) {
         super(UIAbilityContext.create(id))

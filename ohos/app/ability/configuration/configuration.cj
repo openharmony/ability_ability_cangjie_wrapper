@@ -17,6 +17,8 @@
 
 package ohos.app.ability.configuration
 
+import ohos.labels.Hide
+
 @C
 protected struct CConfiguration {
     protected CConfiguration(
@@ -62,4 +64,9 @@ protected struct CJConfiguration {
         let screenDensity: Int32,
         let displayId: Int32
     ) {}
+}
+
+@!Hide
+protected class Configuration {
+    protected init() {}
 }
