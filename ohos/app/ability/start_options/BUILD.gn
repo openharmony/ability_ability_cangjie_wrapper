@@ -28,6 +28,7 @@ ohos_cangjie_shared_library("ohos.app.ability.start_options") {
     "bundlemanager_cangjie_wrapper:ohos.bundle.bundle_manager",
     "cangjie_ark_interop:ohos.labels",
     "multimedia_cangjie_wrapper:ohos.multimedia.image",
+    "window_cangjie_wrapper:ohos.window",
   ]
 
   subsystem_name = "ability"

@@ -25,7 +25,8 @@ import ohos.base.FFIVectorString
 import ohos.ffi.{FFIDataManager}
 import ohos.window.WindowStage
 import ohos.encoding.json.{jsonObjectWrapper, jsonStringUnWrapper}
-import ohos.labels.APILevel
+
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 type AbilityHandle = UIntNative
@@ -436,6 +437,27 @@ public open class UIAbility <: Ability {
     private let impl_: UIAbilityImpl = UIAbilityImpl()
 
     /**
+     * Context of the UIAbility.
+     *
+     * @returns { UIAbilityContext } Returns the context of the UIAbility.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public mut prop context: UIAbilityContext {
+        get() {
+            match (abilityContext) {
+                case None => throw BusinessException(ERROR_CODE_INNER, "Invalid context")
+                case Some(value) => return value
+            }
+        }
+        set(value) {
+            abilityContext = value
+        }
+    }
+
+    /**
      * Parameters for starting the UIAbility.
      *
      * @returns { Want } Returns the parameters for starting the UIAbility.
@@ -472,27 +494,6 @@ public open class UIAbility <: Ability {
         }
     }
 
-    /**
-     * Context of the UIAbility.
-     *
-     * @returns { UIAbilityContext } Returns the context of the UIAbility.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
-    ]
-    public mut prop context: UIAbilityContext {
-        get() {
-            match (abilityContext) {
-                case None => throw BusinessException(ERROR_CODE_INNER, "Invalid context")
-                case Some(value) => return value
-            }
-        }
-        set(value) {
-            abilityContext = value
-        }
-    }
-
     prop callee: Callee {
         get() {
             callee_
@@ -514,6 +515,36 @@ public open class UIAbility <: Ability {
     public open func onCreate(want: Want, launchParam: LaunchParam): Unit {}
 
     /**
+     * Called when a WindowStage is created for this UIAbility.
+     *
+     * @param { WindowStage } windowStage - Indicates the WindowStage object for this UIAbility.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onWindowStageCreate(windowStage: WindowStage): Unit {}
+
+    func onWindowStageWillDestroy(_: WindowStage): Unit {}
+
+    /**
+     * Called when the WindowStage is destroyed for this UIAbility.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onWindowStageDestroy(): Unit {}
+
+    /**
+     * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance
+     * ability.
+     *
+     */
+    func onWindowStageRestore(_: WindowStage): Unit {}
+
+    /**
      * Called to clear resources when this UIAbility is destroyed.
      * This API returns the result synchronously or uses a promise to return the result.
      * After the onDestroy() lifecycle callback is executed, the application may exit. Consequently,
@@ -530,34 +561,6 @@ public open class UIAbility <: Ability {
     public open func onDestroy(): Unit {}
 
     /**
-     * Called when a WindowStage is created for this UIAbility.
-     *
-     * @param { WindowStage } windowStage - Indicates the WindowStage object for this UIAbility.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
-    ]
-    public open func onWindowStageCreate(windowStage: WindowStage): Unit {}
-
-    /**
-     * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance
-     * ability.
-     *
-     */
-    func onWindowStageRestore(_: WindowStage): Unit {}
-
-    /**
-     * Called when the WindowStage is destroyed for this UIAbility.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
-    ]
-    public open func onWindowStageDestroy(): Unit {}
-
-    /**
      * Triggered when the application transitions from the background to the foreground.
      * It is called between onWillForeground and onDidForeground.
      * It can be used to request system resources required, for example, requesting location services when the
@@ -571,6 +574,12 @@ public open class UIAbility <: Ability {
     ]
     public open func onForeground(): Unit {}
 
+    @!Hide
+    public open func onWillForeground(): Unit {}
+
+    @!Hide
+    public open func onDidForeground(): Unit {}
+
     /**
      * Triggered when the application transitions from the foreground to the background.
      * It is called between onWillBackground and onDidBackground.
@@ -583,11 +592,15 @@ public open class UIAbility <: Ability {
     ]
     public open func onBackground(): Unit {}
 
-    func onBackPressed(): Bool {
-        return true
-    }
+    @!Hide
+    public open func onWillBackground(): Unit {}
 
-    func onWindowStageWillDestroy(_: WindowStage): Unit {}
+    @!Hide
+    public open func onDidBackground(): Unit {}
+
+    func onContinue(_: String): OnContinueResult {
+        OnContinueResult.Agree
+    }
 
     /**
      * Called when a UIAbility instance that has undergone the following states is started again:
@@ -608,12 +621,8 @@ public open class UIAbility <: Ability {
     ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {}
 
-    func onContinue(_: String): OnContinueResult {
-        OnContinueResult.Agree
-    }
-
-    func onPrepareToTerminate(): Bool {
-        return false
+    func onDump(_: Array<String>): Array<String> {
+        return Array<String>()
     }
 
     func onSaveState(_: StateType, _: String): OnSaveResult {
@@ -622,8 +631,17 @@ public open class UIAbility <: Ability {
 
     func onShare(_: String): Unit {}
 
-    func onDump(_: Array<String>): Array<String> {
-        return Array<String>()
+    func onPrepareToTerminate(): Bool {
+        return false
+    }
+
+    func onBackPressed(): Bool {
+        return true
+    }
+
+    @!Hide
+    public open func onCollaborate(_: String): CollaborateResult {
+        throw Exception()
     }
 
     func onCallRequest(): Callee {
@@ -686,3 +704,13 @@ func abilityCjFuncsRegister(result: CPointer<CJAbilityFuncs>): Unit {
 foreign func RegisterCJAbilityFuncs(funcs: CFunc<(CPointer<CJAbilityFuncs>) -> Unit>): Unit
 
 let REGISTER_ABILITY = unsafe { RegisterCJAbilityFuncs(abilityCjFuncsRegister) }
+
+@!Hide
+public enum CollaborateResult {
+    @!Hide
+    Accept
+    |
+    @!Hide
+    Reject
+    | ...
+}

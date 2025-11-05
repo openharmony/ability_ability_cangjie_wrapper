@@ -132,15 +132,6 @@ public open class TestRunner <: FFIData {
     }
 
     /**
-     * Run all test cases.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onRun(): Unit {}
-    /**
      * Prepare the unit testing environment for running test cases.
      *
      */
@@ -149,6 +140,16 @@ public open class TestRunner <: FFIData {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onPrepare(): Unit {}
+
+    /**
+     * Run all test cases.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public open func onRun(): Unit {}
 }
 
 @C
