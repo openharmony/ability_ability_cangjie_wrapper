@@ -22,7 +22,8 @@ import ohos.app.ability.completion_handler.CompletionHandler
 import ohos.app.ability.context_constant.{ProcessMode, StartupVisibility, PROCESS_MODE_UNSPECIFIED, STARTUP_VISIBILITY_UNSPECIFIED}
 import ohos.bundle.bundle_manager.SupportWindowMode
 import ohos.multimedia.image.PixelMap
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
+import ohos.window.WindowCreateParams
 
 class StartOptionsImpl {}
 
@@ -74,6 +75,9 @@ public open class StartOptions {
     var completionHandler: ?CompletionHandler = None
     var hideStartWindow: Bool = false
     private let impl_: StartOptionsImpl = StartOptionsImpl()
+
+    @!Hide
+    internal var windowCreateParams: Option<WindowCreateParams> = None
 
     /**
      * StartOptions constructor.

@@ -17,9 +17,9 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.app.ability.configuration.CConfiguration
+import ohos.app.ability.configuration.{CConfiguration, Configuration}
 import ohos.bundle.bundle_manager.{HapModuleInfo, RetHapModuleInfoV2}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 @C
 struct CurrentHapModuleInfo {
@@ -70,6 +70,9 @@ public class AbilityStageContext <: Context {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var currentHapModuleInfo: HapModuleInfo
+
+    @!Hide
+    internal var config: Configuration = Configuration()
 
     protected init(id: Int64) {
         super(id)

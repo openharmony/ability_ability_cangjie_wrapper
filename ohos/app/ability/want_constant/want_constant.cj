@@ -18,7 +18,7 @@
 package ohos.app.ability.want_constant
 
 import std.deriving.Derive
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
 
 const ERROR_CODE_INNER: Int32 = 16000050
@@ -108,6 +108,78 @@ public enum Params {
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     SupportContinueSourceExitKey
+    |
+    @!Hide
+    DlpParamsSandbox
+    |
+    @!Hide
+    DlpParamsBundleName
+    |
+    @!Hide
+    DlpParamsModuleName
+    |
+    @!Hide
+    DlpParamsAbilityName
+    |
+    @!Hide
+    DlpParamsIndex
+    |
+    @!Hide
+    HideSensitiveType
+    |
+    @!Hide
+    AssertFaultSessionId
+    |
+    @!Hide
+    ShowModeKey
+    |
+    @!Hide
+    ParamsStream
+    |
+    @!Hide
+    AppCloneIndexKey
+    |
+    @!Hide
+    CallerRequestCode
+    |
+    @!Hide
+    PagePath
+    |
+    @!Hide
+    RouterName
+    |
+    @!Hide
+    PageSourceFile
+    |
+    @!Hide
+    BuildFunction
+    |
+    @!Hide
+    SubPackageName
+    |
+    @!Hide
+    AppInstanceKey
+    |
+    @!Hide
+    CreateAppInstanceKey
+    |
+    @!Hide
+    CallerAppCloneIndex
+    |
+    @!Hide
+    LaunchReasonMessage
+    |
+    @!Hide
+    DestinationPluginAbility
+    |
+    @!Hide
+    AppLaunchTrustlist
+    |
+    @!Hide
+    AbilityUnifiedDataKey
+    |
+    @!Hide
+    AtomicServiceShareRouter
     | ...
 
     /**
@@ -193,6 +265,9 @@ public enum Flags {
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagStartWithoutTips
+    |
+    @!Hide
+    FlagAbilityOnCollaborate
     | ...
 
     /**

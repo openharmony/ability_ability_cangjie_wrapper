@@ -22,7 +22,7 @@ import ohos.app.ability.context_constant.AreaMode
 import ohos.resource_manager.ResourceManager
 import ohos.bundle.bundle_manager.{ApplicationInfo, RetApplicationInfoV2}
 import ohos.application.event_hub.EventHub
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 foreign {
     func FfiContextGetContext(id: Int64, contextType: Int32): CPointer<Unit>
@@ -169,4 +169,34 @@ public open class Context <: BaseContext {
             }
         }
     }
+
+    @!Hide
+    internal var cacheDir: String = ""
+
+    @!Hide
+    var tempDir: String = ""
+
+    @!Hide
+    var databaseDir: String = ""
+
+    @!Hide
+    var preferencesDir: String = ""
+
+    @!Hide
+    var bundleCodeDir: String = ""
+
+    @!Hide
+    var distributedFilesDir: String = ""
+
+    @!Hide
+    var resourceDir: String = ""
+
+    @!Hide
+    var cloudFileDir: String = ""
+
+    @!Hide
+    let logFileDir: String = ""
+
+    @!Hide
+    var processName: String = ""
 }
