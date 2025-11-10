@@ -27,7 +27,6 @@ import std.collection.HashMap
 import ohos.labels.APILevel
 
 // ERRORCODE
-const SUCCESS_CODE: Int32 = 0
 const COMMON_FAILED: Int32 = 16000100
 const INVALID_PARA: Int32 = 401
 const ERROR_CODE_RESOLVE_ABILITY: Int32 = 16000001
@@ -149,6 +148,9 @@ public enum AbilityLifecycleState {
     Destroy
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     static func parse(mode: Int64): AbilityLifecycleState {
         match (mode) {
             case 0 => Uninitialized
@@ -241,7 +243,7 @@ func getErrorMsg(code: Int32, funcName: String): String {
 }
 
 func throwIfNotSuccess(code: Int32, funcName: String): Unit {
-    if (code != SUCCESS_CODE) {
+    if (code != 0) {
         let msg = getErrorMsg(code, funcName)
         throw BusinessException(code, msg)
     }

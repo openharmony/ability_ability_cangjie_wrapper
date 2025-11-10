@@ -92,6 +92,9 @@ public enum AreaMode {
     El5
     | ...
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     protected static func parse(value: Int32): AreaMode {
         match (value) {
             case 0 => El1

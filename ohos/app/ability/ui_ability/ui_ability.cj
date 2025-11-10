@@ -97,6 +97,9 @@ func createAbility(name: CString): Int64 {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func releaseAbility(id: Int64): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -108,6 +111,9 @@ func releaseAbility(id: Int64): Unit {
     ABILITY_LOG.info("Release ability end")
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnStart(id: Int64, wantHandle: WantHandle, launchParam: CJLaunchParam): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -131,6 +137,9 @@ func abilityOnStart(id: Int64, wantHandle: WantHandle, launchParam: CJLaunchPara
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnStop(id: Int64): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -142,6 +151,9 @@ func abilityOnStop(id: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnSceneCreated(id: Int64, windowStageHandle: WindowStageHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -156,6 +168,9 @@ func abilityOnSceneCreated(id: Int64, windowStageHandle: WindowStageHandle): Uni
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnSceneRestored(id: Int64, windowStageHandle: WindowStageHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -170,6 +185,9 @@ func abilityOnSceneRestored(id: Int64, windowStageHandle: WindowStageHandle): Un
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnSceneDestroyed(id: Int64): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -183,6 +201,9 @@ func abilityOnSceneDestroyed(id: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnSceneWillDestroy(id: Int64, windowStageHandle: WindowStageHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -197,6 +218,9 @@ func abilityOnSceneWillDestroy(id: Int64, windowStageHandle: WindowStageHandle):
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnForeground(id: Int64, wantHandle: WantHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -211,6 +235,9 @@ func abilityOnForeground(id: Int64, wantHandle: WantHandle): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnBackground(id: Int64): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -222,6 +249,9 @@ func abilityOnBackground(id: Int64): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnBackPress(id: Int64): Bool {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -233,6 +263,9 @@ func abilityOnBackPress(id: Int64): Bool {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnConfigurationUpdated(id: Int64, _: CJConfiguration): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -244,6 +277,9 @@ func abilityOnConfigurationUpdated(id: Int64, _: CJConfiguration): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnNewWant(id: Int64, wantHandle: WantHandle, launchParams: CJLaunchParam): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -287,6 +323,9 @@ func abilityDump(id: Int64, params: VectorStringHandle): VectorStringHandle {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnContinue(id: Int64, params: CString): Int32 {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -301,6 +340,9 @@ func abilityOnContinue(id: Int64, params: CString): Int32 {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityInit(id: Int64, abilityHandle: AbilityHandle): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -312,6 +354,9 @@ func abilityInit(id: Int64, abilityHandle: AbilityHandle): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnConfigurationUpdate(id: Int64, configuration: CConfiguration): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -323,6 +368,9 @@ func abilityOnConfigurationUpdate(id: Int64, configuration: CConfiguration): Uni
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnMemoryLevel(id: Int64, _: Int32): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -334,6 +382,9 @@ func abilityOnMemoryLevel(id: Int64, _: Int32): Unit {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnPrepareTerminate(id: Int64): Bool {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -345,6 +396,9 @@ func abilityOnPrepareTerminate(id: Int64): Bool {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnSaveState(id: Int64, reason: Int32, params: CString): CJNumberParmas {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -363,6 +417,9 @@ func abilityOnSaveState(id: Int64, reason: Int32, params: CString): CJNumberParm
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnShare(id: Int64, params: CString): CString {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -380,6 +437,9 @@ func abilityOnShare(id: Int64, params: CString): CString {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -397,6 +457,9 @@ func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnCallRequest(id: Int64): Int64 {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -408,6 +471,9 @@ func abilityOnCallRequest(id: Int64): Int64 {
     }
 }
 
+/**
+ * @throws { BusinessException } 16000050 - Internal error.
+ */
 @C
 func abilityOnSetCalleeFlag(id: Int64, _: Bool): Unit {
     let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
@@ -648,6 +714,9 @@ public open class UIAbility <: Ability {
         return this.callee
     }
 
+    /**
+    * @throws { BusinessException } 16000050 - Internal error.
+    */
     func abilityInit(remote: AbilityHandle): Unit {
         if (remote == 0) {
             ABILITY_LOG.error("Invalid remote Ability")

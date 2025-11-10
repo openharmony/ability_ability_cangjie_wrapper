@@ -47,6 +47,9 @@ func connectOptionsOnConnect(id: Int64, elementHandle: ElementNameHandle, object
     }
 }
 
+/**
+* @throws { BusinessException } 16000050 - Internal error.
+*/
 @C
 func connectOptionsOnDisconnect(id: Int64, elementHandle: ElementNameHandle, resultCode: Int32): Unit {
     ABILITY_LOG.info("connectOptionsOnDisconnect begin, resultCode is ${resultCode}")
