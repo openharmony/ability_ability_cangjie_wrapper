@@ -73,17 +73,6 @@ public class Want {
     private var paramJsonObj_: JsonObject
 
     /**
-     * ID of the device running the ability.
-     * If this field is unspecified, the local device is used.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public var deviceId: String
-
-    /**
      * Bundle name of the ability.
      *
      */
@@ -106,28 +95,15 @@ public class Want {
     public var abilityName: String
 
     /**
-     * Name of the module to which the ability belongs.
-     * If the ability belongs to a HAR module, moduleName must be set to the name of the HAP or HSP module that
-     * depends on this HAR.
+     * ID of the device running the ability.
+     * If this field is unspecified, the local device is used.
      *
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    public var moduleName: String
-
-    /**
-     * How the Want object will be handled. By default, a number is passed in.
-     * For example, wantConstant.Flags.FLAG_ABILITY_CONTINUATION specifies whether to start the ability in cross-device
-     * migration scenarios.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public var flags: UInt32
+    public var deviceId: String
 
     /**
      * Data carried.
@@ -143,6 +119,28 @@ public class Want {
     public var uri: String
 
     /**
+     * MIME type, that is, the type of the file to open.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var wantType: String
+
+    /**
+     * How the Want object will be handled. By default, a number is passed in.
+     * For example, wantConstant.Flags.FLAG_ABILITY_CONTINUATION specifies whether to start the ability in cross-device
+     * migration scenarios.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var flags: UInt32
+
+    /**
      * Action to take, such as viewing and sharing application details.
      * In implicit Want, you can define this field and use it together with uri or parameters to specify the operation
      * to be performed on the data.
@@ -153,27 +151,6 @@ public class Want {
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var action: String
-
-    /**
-     * Additional category information (such as browser and video player) of the ability.
-     * It is a supplement to the action field for implicit Want. and is used to filter ability types.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public var entities: Array<String>
-
-    /**
-     * MIME type, that is, the type of the file to open.
-     *
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityBase"
-    ]
-    public var wantType: String
 
     /**
      * List of parameters in the Want object.
@@ -239,6 +216,29 @@ public class Want {
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     public var parameters: HashMap<String, WantValueType>
+
+    /**
+     * Additional category information (such as browser and video player) of the ability.
+     * It is a supplement to the action field for implicit Want. and is used to filter ability types.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var entities: Array<String>
+
+    /**
+     * Name of the module to which the ability belongs.
+     * If the ability belongs to a HAR module, moduleName must be set to the name of the HAP or HSP module that
+     * depends on this HAR.
+     *
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var moduleName: String
 
     let fds: HashMap<String, Int32>
 

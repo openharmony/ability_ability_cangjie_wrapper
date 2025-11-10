@@ -44,6 +44,9 @@ public class LaunchParam {
     ]
     public var launchReason: LaunchReason
 
+    @!Hide
+    internal var launchReasonMessage: Option<String> = None
+
     /**
      * Reason for the last exit, which is an enumerated type.
      *
@@ -55,9 +58,6 @@ public class LaunchParam {
     public var lastExitReason: LastExitReason
 
     var lastExitMessage: String = ""
-    
-    @!Hide
-    internal var launchReasonMessage: Option<String> = None
 
     @!Hide
     internal var lastExitDetailInfo: Option<LastExitDetailInfo> = None
@@ -202,6 +202,9 @@ public enum LastExitReason {
     ]
     Unknown
     |
+    @!Hide
+    AbilityNotResponding
+    |
     /**
      * The ability exits normally because the user closes the application.
      *
@@ -222,6 +225,9 @@ public enum LastExitReason {
     ]
     CppCrash
     |
+    @!Hide
+    JsError
+    |
     /**
      * The ability exits because watchdog detects that the application is frozen.
      *
@@ -231,12 +237,6 @@ public enum LastExitReason {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     AppFreeze
-    |
-    @!Hide
-    AbilityNotResponding
-    |
-    @!Hide
-    JsError
     |
     @!Hide
     PerformanceControl
@@ -348,6 +348,9 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum WindowMode {
+    @!Hide
+    WindowModeUndefined
+    |
     /**
      * Full screen mode. It takes effect only on 2-in-1 devices and tablets.
      *
@@ -381,9 +384,6 @@ public enum WindowMode {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     WindowModeSplitSecondary
-    |
-    @!Hide
-    WindowModeUndefined
     |
     @!Hide
     WindowModeFloating
