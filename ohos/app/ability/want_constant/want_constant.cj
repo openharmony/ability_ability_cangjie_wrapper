@@ -33,6 +33,24 @@ const ERROR_CODE_INNER: Int32 = 16000050
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public enum Params {
+    @!Hide
+    DlpParamsSandbox
+    |
+    @!Hide
+    DlpParamsBundleName
+    |
+    @!Hide
+    DlpParamsModuleName
+    |
+    @!Hide
+    DlpParamsAbilityName
+    |
+    @!Hide
+    DlpParamsIndex
+    |
+    @!Hide
+    HideSensitiveType
+    |
     /**
      * Indicates the ability in this want can back to the current top ability even though they are not in the same
      * mission stack
@@ -108,24 +126,6 @@ public enum Params {
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     SupportContinueSourceExitKey
-    |
-    @!Hide
-    DlpParamsSandbox
-    |
-    @!Hide
-    DlpParamsBundleName
-    |
-    @!Hide
-    DlpParamsModuleName
-    |
-    @!Hide
-    DlpParamsAbilityName
-    |
-    @!Hide
-    DlpParamsIndex
-    |
-    @!Hide
-    HideSensitiveType
     |
     @!Hide
     AssertFaultSessionId
@@ -256,6 +256,9 @@ public enum Flags {
     ]
     FlagInstallOnDemand
     |
+    @!Hide
+    FlagAbilityOnCollaborate
+    |
     /**
      * Indicates that if implicit start ability couldn't match any application, no tip dialog will be pulled up.
      *
@@ -265,9 +268,6 @@ public enum Flags {
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
     FlagStartWithoutTips
-    |
-    @!Hide
-    FlagAbilityOnCollaborate
     | ...
 
     /**

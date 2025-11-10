@@ -74,7 +74,6 @@ public open class Context <: BaseContext {
     private var applicationInfo_: ?ApplicationInfo = None
     private var processName_: ?String = None
     private static var applicationContext_: ?ApplicationContext = None
-    private var eventHub: EventHub = EventHub()
     private let impl_: ContextImpl = ContextImpl()
 
     init(id: Int64) {
@@ -125,6 +124,12 @@ public open class Context <: BaseContext {
         }
     }
 
+    @!Hide
+    var cacheDir: ?String = None
+
+    @!Hide
+    var tempDir: ?String = None
+
     /**
      * File directory.
      *
@@ -145,6 +150,29 @@ public open class Context <: BaseContext {
             return filesDir_
         }
     }
+
+    @!Hide
+    var databaseDir: ?String = None
+
+    @!Hide
+    var preferencesDir: ?String = None
+
+    @!Hide
+    var bundleCodeDir: ?String = None
+
+    @!Hide
+    var distributedFilesDir: ?String = None
+
+    @!Hide
+    var resourceDir: ?String = None
+
+    @!Hide
+    var cloudFileDir: ?String = None
+
+    @!Hide
+    let logFileDir: ?String = None
+
+    private var eventHub: ?EventHub = None
 
     /**
      * Encryption level of the directory.
@@ -171,32 +199,5 @@ public open class Context <: BaseContext {
     }
 
     @!Hide
-    internal var cacheDir: String = ""
-
-    @!Hide
-    var tempDir: String = ""
-
-    @!Hide
-    var databaseDir: String = ""
-
-    @!Hide
-    var preferencesDir: String = ""
-
-    @!Hide
-    var bundleCodeDir: String = ""
-
-    @!Hide
-    var distributedFilesDir: String = ""
-
-    @!Hide
-    var resourceDir: String = ""
-
-    @!Hide
-    var cloudFileDir: String = ""
-
-    @!Hide
-    let logFileDir: String = ""
-
-    @!Hide
-    var processName: String = ""
+    var processName: ?String = None
 }
