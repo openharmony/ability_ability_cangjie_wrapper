@@ -341,27 +341,7 @@ public class ShellCmdResult <: RemoteDataLite {
     ~init() {
         releaseFFIData(myDataId)
     }
-    /**
-     * shell cmd exec result.
-     *
-     * @returns { Int32 } Returns the exit code of shell command execution.
-     */
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public mut prop exitCode: Int32 {
-        get() {
-            if (let Some(v) <- exitCode_) {
-                return v
-            }
-            exitCode_ = unsafe { FFIGetExitCode(this.getID()) }
-            return exitCode_.getOrThrow()
-        }
-        set(v) {
-            exitCode_ = v
-        }
-    }
+
     /**
      * the cmd standard result.
      *
@@ -383,6 +363,28 @@ public class ShellCmdResult <: RemoteDataLite {
         }
         set(v) {
             stdResult_ = v
+        }
+    }
+    
+    /**
+     * shell cmd exec result.
+     *
+     * @returns { Int32 } Returns the exit code of shell command execution.
+     */
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public mut prop exitCode: Int32 {
+        get() {
+            if (let Some(v) <- exitCode_) {
+                return v
+            }
+            exitCode_ = unsafe { FFIGetExitCode(this.getID()) }
+            return exitCode_.getOrThrow()
+        }
+        set(v) {
+            exitCode_ = v
         }
     }
 }
