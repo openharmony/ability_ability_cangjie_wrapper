@@ -38,7 +38,7 @@ struct CJWantParams {
         let uri: CString,
         let action: CString,
         let entities: VectorStringHandle,
-        let wantType: CString,
+        let dataType: CString,
         let parameters: CString
     ) {}
 }
@@ -62,7 +62,6 @@ foreign func FFICJWantAddEntity(want: WantHandle, entity: CString): Unit
  * ability and the ability name in the bundle.
  * When UIAbilityA needs to start UIAbilityB and transfer some data to UIAbilityB, it can use Want a carrier to
  * transfer the data.
- *
  */
 @!APILevel[
     since: "22",
@@ -74,7 +73,6 @@ public class Want {
 
     /**
      * Bundle name of the ability.
-     *
      */
     @!APILevel[
         since: "22",
@@ -83,11 +81,11 @@ public class Want {
     public var bundleName: String
 
     /**
-     * Name of the ability.
-     * If both bundleName and abilityName are specified in a Want object, the Want object can match a specific ability.
-     * The value of abilityName must be unique in an application.
-     *
-     */
+    * Name of the ability.
+    * If both bundleName and abilityName are specified in a Want object, the Want object can match a specific ability.
+    * 
+    * The value of abilityName must be unique in an application.
+    */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -96,8 +94,8 @@ public class Want {
 
     /**
      * ID of the device running the ability.
+     * 
      * If this field is unspecified, the local device is used.
-     *
      */
     @!APILevel[
         since: "22",
@@ -110,7 +108,6 @@ public class Want {
      * This field is used together with type to specify the data type.
      * If uri is specified in a Want, the Want will match the specified URI information, including scheme,
      * schemeSpecificPart, authority, and path.
-     *
      */
     @!APILevel[
         since: "22",
@@ -119,20 +116,18 @@ public class Want {
     public var uri: String
 
     /**
-     * MIME type, that is, the type of the file to open.
-     *
+     * MIME type, that is, the type of the file to open, for example, 'text/xml'.
      */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-    public var wantType: String
+    public var dataType: String
 
     /**
      * How the Want object will be handled. By default, a number is passed in.
      * For example, wantConstant.Flags.FLAG_ABILITY_CONTINUATION specifies whether to start the ability in cross-device
      * migration scenarios.
-     *
      */
     @!APILevel[
         since: "22",
@@ -144,7 +139,6 @@ public class Want {
      * Action to take, such as viewing and sharing application details.
      * In implicit Want, you can define this field and use it together with uri or parameters to specify the operation
      * to be performed on the data.
-     *
      */
     @!APILevel[
         since: "22",
@@ -154,7 +148,7 @@ public class Want {
 
     /**
      * List of parameters in the Want object.
-     *
+     * 
      * 1. The values of the following keys are assigned by the system. Manual settings do not take effect, since the
      * system automatically changes the values to the actual values during data transfer.
      * -ohos.aafwk.param.callerPid: PID of the caller. The value is a string.
@@ -174,9 +168,9 @@ public class Want {
      * the Boolean type.
      * -ohos.ability.params.abilityRecoveryRestart: support for ability restart upon fault recovery. The value is of
      * the Boolean type.
-     * -ohos.extra.param.key.contentTitle: title that can be shared by the atomic service. The value is a string.
-     * -ohos.extra.param.key.shareAbstract: content that can be shared by the atomic service. The value is a string.
-     * -ohos.extra.param.key.shareUrl: URL of the content that can be shared by the atomic service. The value is
+     * -ohos.extra.param.key.contentTitle: title that can be shared. The value is a string.
+     * -ohos.extra.param.key.shareAbstract: content that can be shared. The value is a string.
+     * -ohos.extra.param.key.shareUrl: URL of the content that can be shared. The value is
      * a string.
      * -ohos.extra.param.key.supportContinuePageStack: support for migration of page stack information during
      * cross-device migration. The value is of the Boolean type. The default value is true, indicating that page stack
@@ -204,12 +198,12 @@ public class Want {
      *
      * 3. In addition to the foregoing cases, applications may further agree on the key-value pairs to transfer.
      *
+     *
      * For details about the constants of Params in want, see wantConstant.
      * Note that a maximum of 200 KB data that can be transferred by using WantParams. If the data volume exceeds
      * 200 KB, transfer data in WriteRawDataBuffer or uri mode.
      * The values of parameters must be of the following basic data types: String, Number, Boolean, Object,
      * undefined, and null. Functions in an object cannot be transferred.
-     *
      */
     @!APILevel[
         since: "22",
@@ -220,7 +214,6 @@ public class Want {
     /**
      * Additional category information (such as browser and video player) of the ability.
      * It is a supplement to the action field for implicit Want. and is used to filter ability types.
-     *
      */
     @!APILevel[
         since: "22",
@@ -230,9 +223,9 @@ public class Want {
 
     /**
      * Name of the module to which the ability belongs.
+     * 
      * If the ability belongs to a HAR module, moduleName must be set to the name of the HAP or HSP module that
      * depends on this HAR.
-     *
      */
     @!APILevel[
         since: "22",
@@ -245,27 +238,28 @@ public class Want {
     /**
      * Want constructor.
      *
-     * @param { String } deviceId - ID of the device running the ability. The default value is "".
-     * @param { String } bundleName - Bundle name of the ability. The default value is "".
-     * @param { String } abilityName - Name of the ability. The default value is "".
-     * @param { String } moduleName - Name of the module to which the ability belongs. The default value is "".
-     * @param { UInt32 } flags - How the Want object will be handled. By default, a number is passed in. The default
+     * @param { String } [deviceId] - ID of the device running the ability. The default value is "".
+     * @param { String } [bundleName] - Bundle name of the ability. The default value is "".
+     * @param { String } [abilityName] - Name of the ability. The default value is "".
+     * @param { String } [moduleName] - Name of the module to which the ability belongs. The default value is "".
+     * @param { UInt32 } [flags] - How the Want object will be handled. By default, a number is passed in. The default
      * value is 0.
-     * @param { String } uri - Data carried. The default value is "".
-     * @param { String } action - Action to take, such as viewing and sharing application details. The default value is
+     * @param { String } [uri] - Data carried. The default value is "".
+     * @param { String } [action] - Action to take, such as viewing and sharing application details. The default value is
      * "".
-     * @param { Array<String> } entities - Additional category information (such as browser and video player) of the
+     * @param { Array<String> } [entities] - Additional category information (such as browser and video player) of the
      * ability. The default value is an empty array.
-     * @param { String } wantType - MIME type, that is, the type of the file to open. The default value is "".
-     * @param { HashMap<String, WantValueType> } parameters - Map of parameters in the Want object. The default value
+     * @param { String } [dataType] - MIME type, that is, the type of the file to open. The default value is "".
+     * @param { HashMap<String, WantValueType> } [parameters] - Map of parameters in the Want object. The default value
      * is an empty map.
-     * @param { HashMap<String, Int32> } fds - Want file descriptor (FD), which is used to identify the Want file
+     * @param { HashMap<String, Int32> } [fds] - Want file descriptor (FD), which is used to identify the Want file
      * opened. Not supported yet. The default value is an empty map.
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityBase"
+        syscap: "SystemCapability.Ability.AbilityBase",
+        throwexception: true
     ]
     public init(
         deviceId!: String = "",
@@ -276,7 +270,7 @@ public class Want {
         uri!: String = "",
         action!: String = "",
         entities!: Array<String> = [],
-        wantType!: String = "",
+        dataType!: String = "",
         parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>(),
         fds!: HashMap<String, Int32> = HashMap<String, Int32>()
     ) {
@@ -289,7 +283,7 @@ public class Want {
         this.uri = uri
         this.action = action
         this.entities = entities
-        this.wantType = wantType
+        this.dataType = dataType
         this.parameters = parameters
         this.paramJsonObj_ = mapToJsonObject(parameters)
         if (fds.size != 0) {
@@ -326,7 +320,7 @@ public class Want {
         for (i in 0..entitiesSize) {
             this.entities[i] = unsafeEntities.getElement(i)
         }
-        this.wantType = params.wantType.toString()
+        this.dataType = params.dataType.toString()
         this.paramJsonObj_ = jsonStringUnWrapper(params.parameters.toString())
         this.parameters = mapFromJsonObject(paramJsonObj_)
         this.fds = HashMap<String, Int32>()
@@ -347,7 +341,7 @@ public class Want {
         unsafe {
             try (unsafeUri = LibC.mallocCString(uri).asResource(), unsafeAction = LibC
                 .mallocCString(action)
-                .asResource(), unsafeType = LibC.mallocCString(wantType).asResource(), unsafeParameters = LibC
+                .asResource(), unsafeType = LibC.mallocCString(dataType).asResource(), unsafeParameters = LibC
                 .mallocCString(jsonObjectWrapper(paramJsonObj_).toString())
                 .asResource()) {
                 let elementNameHandle = this.elementName_.createElementNameHandle()

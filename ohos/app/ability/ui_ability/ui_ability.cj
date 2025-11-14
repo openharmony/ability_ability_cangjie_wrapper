@@ -489,7 +489,6 @@ class UIAbilityImpl {}
  * UIAbility is an application component that has the UI.
  * The UIAbility module, inherited from Ability, provides lifecycle callbacks such as component creation, destruction,
  * and foreground/background switching.
- *
  */
 @!APILevel[
     since: "22",
@@ -571,8 +570,9 @@ public open class UIAbility <: Ability {
      * In other words, a UIAbility instance enters this lifecycle callback from a cold start. This API returns the
      * result synchronously and does not support asynchronous callback.
      *
-     * @param { Want } want - Indicates the Want information for starting the UIAbility.
-     * @param { LaunchParam } launchParam - Indicates the launch parameters.
+     * @param { Want } want - Want information, including the ability name and bundle name.
+     * @param { LaunchParam } launchParam - Parameters for starting the UIAbility, and the reason for
+     * the last abnormal exit.
      */
     @!APILevel[
         since: "22",
@@ -583,7 +583,7 @@ public open class UIAbility <: Ability {
     /**
      * Called when a WindowStage is created for this UIAbility.
      *
-     * @param { WindowStage } windowStage - Indicates the WindowStage object for this UIAbility.
+     * @param { WindowStage } windowStage - WindowStage information.
      */
     @!APILevel[
         since: "22",
@@ -595,7 +595,6 @@ public open class UIAbility <: Ability {
 
     /**
      * Called when the WindowStage is destroyed for this UIAbility.
-     *
      */
     @!APILevel[
         since: "22",
@@ -615,10 +614,8 @@ public open class UIAbility <: Ability {
      * This API returns the result synchronously or uses a promise to return the result.
      * After the onDestroy() lifecycle callback is executed, the application may exit. Consequently,
      * the asynchronous function (for example, asynchronously writing data to the database) in onDestroy() may fail to
-     * be
-     * executed. You can use the asynchronous lifecycle to ensure that the subsequent lifecycle continues only after the
-     * asynchronous function in onDestroy() finishes the execution.
-     *
+     * be executed. You can use the asynchronous lifecycle to ensure that the subsequent lifecycle continues only after
+     * the asynchronous function in onDestroy() finishes the execution.
      */
     @!APILevel[
         since: "22",
@@ -631,8 +628,9 @@ public open class UIAbility <: Ability {
      * It is called between onWillForeground and onDidForeground.
      * It can be used to request system resources required, for example, requesting location services when the
      * application transitions to the foreground.
+     * 
+     * **NOTE**:
      * This API returns the result synchronously and does not support asynchronous callback.
-     *
      */
     @!APILevel[
         since: "22",
@@ -647,10 +645,13 @@ public open class UIAbility <: Ability {
     public open func onDidForeground(): Unit {}
 
     /**
-     * Triggered when the application transitions from the foreground to the background.
-     * It is called between onWillBackground and onDidBackground.
-     * It can be used to release resources when the UI is no longer visible, for example, stopping location services.
-     *
+     * Triggered when the application transitions from the background to the foreground.
+     * It is called between onWillForeground and onDidForeground.
+     * It can be used to request system resources required, for example, requesting location services when the
+     * application transitions to the foreground.
+     * 
+     * **NOTE**:
+     * This API returns the result synchronously and does not support asynchronous callback.
      */
     @!APILevel[
         since: "22",
@@ -675,11 +676,8 @@ public open class UIAbility <: Ability {
      * The triggering of the onNewWant lifecycle of a UIAbility instance indicates that this launch is a hot launch.
      * Note that a hot launch does not necessarily trigger the onNewWant lifecycle.
      *
-     * If you need to prevent the onNewWant lifecycle from being triggered in specific scenarios,
-     * you must call the {@link UIAbilityContext.setOnNewWantSkipScenarios} interface to suppress its callback.
-     *
-     * @param { Want } want - Indicates the Want information for starting the UIAbility.
-     * @param { LaunchParam } launchParam - Indicates the launch parameters.
+     * @param { Want } want - Want information, such as the ability name and bundle name.
+     * @param { LaunchParam } launchParam - Reason for the UIAbility startup and the last abnormal exit.
      */
     @!APILevel[
         since: "22",

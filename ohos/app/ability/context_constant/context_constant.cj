@@ -28,7 +28,6 @@ const ERROR_CODE_INNER: Int32 = 16000050
 
 /**
  * File area mode
- *
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -38,7 +37,6 @@ const ERROR_CODE_INNER: Int32 = 16000050
 public enum AreaMode {
     /**
      * System level device encryption area
-     *
      */
     @!APILevel[
         since: "22",
@@ -48,7 +46,6 @@ public enum AreaMode {
     |
     /**
      * User credential encryption area
-     *
      */
     @!APILevel[
         since: "22",
@@ -59,7 +56,6 @@ public enum AreaMode {
     /**
      * User credential encryption area
      * when screen locked, can read/write, and create file
-     *
      */
     @!APILevel[
         since: "22",
@@ -71,7 +67,6 @@ public enum AreaMode {
      * User credential encryption area
      * when screen locked, FEB2.0 can read/write, FEB3.0 can't
      * read/write, and all can't create file.
-     *
      */
     @!APILevel[
         since: "22",
@@ -83,7 +78,6 @@ public enum AreaMode {
      * User privacy sensitive encryption area
      * when the screen locked, a closed file cannot be opened, read, or written,
      * a file can be created and then opened, read, or written.
-     *
      */
     @!APILevel[
         since: "22",

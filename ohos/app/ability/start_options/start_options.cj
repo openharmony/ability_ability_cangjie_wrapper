@@ -20,7 +20,7 @@ package ohos.app.ability.start_options
 import ohos.app.ability.ability_constant.{WindowMode, WINDOW_MODE_UNDEFINED}
 import ohos.app.ability.completion_handler.CompletionHandler
 import ohos.app.ability.context_constant.{ProcessMode, StartupVisibility, PROCESS_MODE_UNSPECIFIED, STARTUP_VISIBILITY_UNSPECIFIED}
-import ohos.bundle.bundle_manager.SupportWindowMode
+import ohos.bundle.bundle_manager.SupportedWindowMode
 import ohos.multimedia.image.PixelMap
 import ohos.labels.{APILevel, Hide}
 import ohos.window.WindowCreateParams
@@ -29,7 +29,6 @@ class StartOptionsImpl {}
 
 /**
  * StartOptions is the basic communication component of the system.
- *
  */
 @!APILevel[
     since: "22",
@@ -40,7 +39,6 @@ public open class StartOptions {
      * The type of WindowMode
      * WindowModeSplitPrimary and WindowModeSplitSecondary are
      * valid only in intra-app redirection scenarios.
-     *
      */
     @!APILevel[
         since: "22",
@@ -50,7 +48,6 @@ public open class StartOptions {
 
     /**
      * The type of displayId
-     *
      */
     @!APILevel[
         since: "22",
@@ -67,7 +64,7 @@ public open class StartOptions {
     var startupVisibility: ?StartupVisibility = None
     var startWindowIcon: ?PixelMap = None
     var startWindowBackgroundColor = ""
-    var supportWindowModes = Array<SupportWindowMode>()
+    var supportWindowModes = Array<SupportedWindowMode>()
     var minWindowWidth: Int32 = 0
     var minWindowHeight: Int32 = 0
     var maxWindowWidth: Int32 = 0
@@ -82,8 +79,8 @@ public open class StartOptions {
     /**
      * StartOptions constructor.
      *
-     * @param { ?WindowMode } windowMode - The type of WindowMode. The default value is None.
-     * @param { Int32 } displayId - The type of displayId. The default value is 0.
+     * @param { ?WindowMode } [windowMode] - The type of WindowMode. The default value is None.
+     * @param { Int32 } [displayId] - The type of displayId. The default value is 0.
      */
     @!APILevel[
         since: "22",

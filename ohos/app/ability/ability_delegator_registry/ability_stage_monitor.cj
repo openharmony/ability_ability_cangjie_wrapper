@@ -23,7 +23,6 @@ import ohos.labels.APILevel
 /**
  * Provide methods for matching monitored AbilityStage objects that meet specified conditions.
  * The most recently matched AbilityStage objects will be saved in the AbilityStageMonitor object.
- *
  */
 @!APILevel[
     since: "22",
@@ -32,7 +31,6 @@ import ohos.labels.APILevel
 public class AbilityStageMonitor <: FFIData {
     /**
      * The module name of the abilityStage to monitor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -41,7 +39,6 @@ public class AbilityStageMonitor <: FFIData {
     public var moduleName: String
     /**
      * The source path of the abilityStage to monitor.
-     *
      */
     @!APILevel[
         since: "22",
