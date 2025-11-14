@@ -133,7 +133,6 @@ class AbilityStageImpl {}
  * AbilityStage is a runtime class for HAP files.
  * AbilityStage notifies you of when you can perform HAP initialization such as resource pre-loading and thread
  * creation during the HAP loading.
- *
  */
 @!APILevel[
     since: "22",
@@ -218,8 +217,8 @@ public open class AbilityStage <: FFIData {
 
     /**
      * Called when the application is created.
+     * 
      * This API returns the result synchronously and does not support asynchronous callbacks.
-     *
      */
     @!APILevel[
         since: "22",

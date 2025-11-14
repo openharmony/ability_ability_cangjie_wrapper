@@ -22,7 +22,6 @@ import ohos.app.ability.want.{Want, WantHandle}
 
 /**
  * AbilityResult
- *
  */
 @!APILevel[
     since: "22",
@@ -32,7 +31,6 @@ public class AbilityResult {
     /**
      * Indicates the result code returned after the ability is destroyed. You can define the result
      * code to identify an error.
-     *
      */
     @!APILevel[
         since: "22",
@@ -43,7 +41,6 @@ public class AbilityResult {
     /**
      * Indicates the data returned after the ability is destroyed. You can define the data returned.
      * This parameter can be null.
-     *
      */
     @!APILevel[
         since: "22",
@@ -55,7 +52,7 @@ public class AbilityResult {
      * AbilityResult constructor.
      *
      * @param { Int32 } resultCode - Indicates the result code returned after the ability is destroyed.
-     * @param { Want } want - Indicates the data returned after the ability is destroyed. The default value is Want().
+     * @param { Want } [want] - Indicates the data returned after the ability is destroyed. The default value is Want().
      */
     @!APILevel[
         since: "22",

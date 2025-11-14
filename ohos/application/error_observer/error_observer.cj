@@ -72,8 +72,6 @@ public class ErrorObject {
 
 /**
  * The observer will be called by system when an error occurs.
- *
- * @relaiton export default class ErrorObserver
  */
 @!APILevel[
     since: "22",
@@ -82,7 +80,6 @@ public class ErrorObject {
 public class ErrorObserver {
     /**
      * Will be called when the js runtime throws an exception which doesn't caught by user.
-     *
      */
     @!APILevel[
         since: "22",
@@ -91,7 +88,6 @@ public class ErrorObserver {
     public var onUnhandledException: (String) -> Unit
     /**
      * Will be called when the js runtime throws an exception which doesn't caught by user.
-     *
      */
     @!APILevel[
         since: "22",
@@ -104,7 +100,7 @@ public class ErrorObserver {
      *
      * @param { (String) -> Unit } onUnhandledException - Will be called when the js runtime throws an exception which
      * doesn't caught by user.
-     * @param { Option<(ErrorObject) -> Unit> } onException - Will be called when the js runtime throws an exception
+     * @param { Option<(ErrorObject) -> Unit> } [onException] - Will be called when the js runtime throws an exception
      * which doesn't caught by user. The default value is None.
      */
     @!APILevel[

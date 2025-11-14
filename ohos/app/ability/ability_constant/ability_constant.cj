@@ -27,7 +27,6 @@ const ERROR_CODE_INNER: Int32 = 16000050
  * Defines the parameters for starting an ability.
  * The parameter values are automatically passed in by the system when the ability is started. You do not need to
  * change the values.
- *
  */
 @!APILevel[
     since: "22",
@@ -36,7 +35,6 @@ const ERROR_CODE_INNER: Int32 = 16000050
 public class LaunchParam {
     /**
      * Ability launch reason, which is an enumerated type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -49,7 +47,6 @@ public class LaunchParam {
 
     /**
      * Reason for the last exit, which is an enumerated type.
-     *
      */
     @!APILevel[
         since: "22",
@@ -82,7 +79,6 @@ public class LaunchParam {
  * Enumerates the initial ability launch reasons.
  * You can use it together with the value of launchReason in
  * onCreate(want, launchParam) of the UIAbility to complete different operations.
- *
  */
 @!APILevel[
     since: "22",
@@ -91,7 +87,6 @@ public class LaunchParam {
 public enum LaunchReason {
     /**
      * Unknown reason.
-     *
      */
     @!APILevel[
         since: "22",
@@ -101,7 +96,6 @@ public enum LaunchReason {
     |
     /**
      * The ability is started by calling startAbility.
-     *
      */
     @!APILevel[
         since: "22",
@@ -111,7 +105,6 @@ public enum LaunchReason {
     |
     /**
      * The ability is started by calling startAbilityByCall.
-     *
      */
     @!APILevel[
         since: "22",
@@ -121,7 +114,6 @@ public enum LaunchReason {
     |
     /**
      * The ability is started by means of cross-device migration.
-     *
      */
     @!APILevel[
         since: "22",
@@ -131,7 +123,6 @@ public enum LaunchReason {
     |
     /**
      * The ability is automatically started when the application is restored from a fault.
-     *
      */
     @!APILevel[
         since: "22",
@@ -185,7 +176,6 @@ public enum LaunchReason {
  * Enumerates the reasons for the last exit.
  * You can use it together with the value of lastExitReason in
  * onCreate(want, launchParam) of the UIAbility to complete different operations.
- *
  */
 @!APILevel[
     since: "22",
@@ -194,7 +184,6 @@ public enum LaunchReason {
 public enum LastExitReason {
     /**
      * Unknown reason.
-     *
      */
     @!APILevel[
         since: "22",
@@ -207,7 +196,6 @@ public enum LastExitReason {
     |
     /**
      * The ability exits normally because the user closes the application.
-     *
      */
     @!APILevel[
         since: "22",
@@ -217,7 +205,6 @@ public enum LastExitReason {
     |
     /**
      * The ability exits due to abnormal signals on the local host.
-     *
      */
     @!APILevel[
         since: "22",
@@ -230,7 +217,6 @@ public enum LastExitReason {
     |
     /**
      * The ability exits because watchdog detects that the application is frozen.
-     *
      */
     @!APILevel[
         since: "22",
@@ -284,7 +270,6 @@ public enum LastExitReason {
  * Enumerates the ability continuation results.
  * You can use it together with <code>onContinue(wantParam)</code> of the UIAbility to complete different
  * operations.
- *
  */
 @!APILevel[
     since: "22",
@@ -293,7 +278,6 @@ public enum LastExitReason {
 public enum OnContinueResult {
     /**
      * The ability continuation is accepted.
-     *
      */
     @!APILevel[
         since: "22",
@@ -305,7 +289,6 @@ public enum OnContinueResult {
      * The ability continuation is rejected.
      * If the application is abnormal in onContinue, which results in abnormal display during data restoration, this
      * error code is returned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -317,7 +300,6 @@ public enum OnContinueResult {
      * The version does not match.
      * The application on the initiator can obtain the version of the target application from onContinue. If the
      * ability continuation cannot be performed due to version mismatch, this error code is returned.
-     *
      */
     @!APILevel[
         since: "22",
@@ -341,7 +323,6 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
 /**
  * Enumerates the window mode when the ability is started.
  * It can be used together with startAbility to specify the window mode for starting the ability.
- *
  */
 @!APILevel[
     since: "22",
@@ -353,7 +334,6 @@ public enum WindowMode {
     |
     /**
      * Full screen mode. It takes effect only on 2-in-1 devices and tablets.
-     *
      */
     @!APILevel[
         since: "22",
@@ -365,7 +345,6 @@ public enum WindowMode {
      * Primary screen (left screen in the case of horizontal orientation) in split-screen mode. It is valid only in
      * intra-app redirection scenarios.
      * It takes effect only on foldable devices and tablets.
-     *
      */
     @!APILevel[
         since: "22",
@@ -377,7 +356,6 @@ public enum WindowMode {
      * Secondary screen (right screen in the case of horizontal orientation) in split-screen mode. It is valid only in
      * intra-app redirection scenarios.
      * It takes effect only on foldable devices and tablets.
-     *
      */
     @!APILevel[
         since: "22",
@@ -414,7 +392,6 @@ public enum WindowMode {
 /**
  * Enumerates the memory levels. You can use it in onMemoryLevel(level) of the UIAbility to complete
  * different operations.
- *
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -424,7 +401,6 @@ public enum WindowMode {
 public enum MemoryLevel {
     /**
      * Moderate memory usage.
-     *
      */
     @!APILevel[
         since: "22",
@@ -434,7 +410,6 @@ public enum MemoryLevel {
     |
     /**
      * Low memory usage.
-     *
      */
     @!APILevel[
         since: "22",
@@ -444,7 +419,6 @@ public enum MemoryLevel {
     |
     /**
      * High memory usage.
-     *
      */
     @!APILevel[
         since: "22",

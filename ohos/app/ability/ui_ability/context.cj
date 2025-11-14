@@ -63,7 +63,6 @@ class ContextImpl {}
 /**
  * The Context module, inherited frome BaseContext, provides context for abilities or applications, including
  * access to application-specific resources.
- *
  */
 @!APILevel[
     since: "22",
