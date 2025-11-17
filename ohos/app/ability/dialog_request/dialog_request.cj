@@ -25,7 +25,6 @@ const ERROR_CODE_INNER: Int32 = 16000050
 
 /**
  * The modal bullet box requests the result code.
- *
  */
 @!APILevel[
     since: "22",
@@ -34,7 +33,6 @@ const ERROR_CODE_INNER: Int32 = 16000050
 public enum ResultCode {
     /**
      * The modal bullet box requests succeeded.
-     *
      */
     @!APILevel[
         since: "22",
@@ -44,7 +42,6 @@ public enum ResultCode {
     | 
     /**
      * The modal bullet box requests Failed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -75,7 +72,6 @@ public enum ResultCode {
 
 /**
  * The result of requestDialogService with asynchronous callback.
- *
  */
 @!APILevel[
     since: "22",
@@ -84,7 +80,6 @@ public enum ResultCode {
 public class RequestResult {
     /**
      * The request result passed in by the user.
-     *
      */
     @!APILevel[
         since: "22",
@@ -94,7 +89,6 @@ public class RequestResult {
 
     /**
      * The request additional want data passed in by the user.
-     *
      */
     @!APILevel[
         since: "22",

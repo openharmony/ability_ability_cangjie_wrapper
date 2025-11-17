@@ -123,7 +123,6 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
 /**
  * Provide methods for matching monitored Ability objects that meet specified conditions.
  * The most recently matched Ability objects will be saved in the AbilityMonitor object.
- *
  */
 @!APILevel[
     since: "22",
@@ -132,7 +131,6 @@ func monitorOnWindowStageDestroy(monitorId: Int64, abilityId: Int64): Unit {
 public class AbilityMonitor <: FFIData {
     /**
      * The name of the ability to monitor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -141,7 +139,6 @@ public class AbilityMonitor <: FFIData {
     public var abilityName: String
     /**
      * The name of the module to monitor.
-     *
      */
     @!APILevel[
         since: "22",
@@ -150,7 +147,6 @@ public class AbilityMonitor <: FFIData {
     public var moduleName: String
     /**
      * Called back when the ability is created for initialization.
-     *
      */
     @!APILevel[
         since: "22",
@@ -159,7 +155,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityCreate: ?(UIAbility) -> Unit
     /**
      * Called back when the state of the ability changes to foreground.
-     *
      */
     @!APILevel[
         since: "22",
@@ -168,7 +163,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityForeground: ?(UIAbility) -> Unit
     /**
      * Called back when the state of the ability changes to background.
-     *
      */
     @!APILevel[
         since: "22",
@@ -177,7 +171,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityBackground: ?(UIAbility) -> Unit
     /**
      * Called back before the ability is destroyed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -186,7 +179,6 @@ public class AbilityMonitor <: FFIData {
     public var onAbilityDestroy: ?(UIAbility) -> Unit
     /**
      * Called back when an ability window stage is created.
-     *
      */
     @!APILevel[
         since: "22",
@@ -195,7 +187,6 @@ public class AbilityMonitor <: FFIData {
     public var onWindowStageCreate: ?(UIAbility) -> Unit
     /**
      * Called back when an ability window stage is restored.
-     *
      */
     @!APILevel[
         since: "22",
@@ -204,7 +195,6 @@ public class AbilityMonitor <: FFIData {
     public var onWindowStageRestore: ?(UIAbility) -> Unit
     /**
      * Called back when an ability window stage is destroyed.
-     *
      */
     @!APILevel[
         since: "22",
@@ -216,20 +206,20 @@ public class AbilityMonitor <: FFIData {
      * AbilityMonitor constructor.
      *
      * @param { String } abilityName - The name of the ability to monitor.
-     * @param { String } moduleName - The name of the module to monitor. The default value is "".
-     * @param { ?(UIAbility) -> Unit } onAbilityCreate - Called back when the ability is created for initialization.
+     * @param { String } [moduleName] - The name of the module to monitor. The default value is "".
+     * @param { ?(UIAbility) -> Unit } [onAbilityCreate] - Called back when the ability is created for initialization.
      * The default value is None.
-     * @param { ?(UIAbility) -> Unit } onAbilityForeground - Called back when the state of the ability changes to
+     * @param { ?(UIAbility) -> Unit } [onAbilityForeground] - Called back when the state of the ability changes to
      * foreground. The default value is None.
-     * @param { ?(UIAbility) -> Unit } onAbilityBackground - Called back when the state of the ability changes to
+     * @param { ?(UIAbility) -> Unit } [onAbilityBackground] - Called back when the state of the ability changes to
      * background. The default value is None.
-     * @param { ?(UIAbility) -> Unit } onAbilityDestroy - Called back before the ability is destroyed. The default
+     * @param { ?(UIAbility) -> Unit } [onAbilityDestroy] - Called back before the ability is destroyed. The default
      * value is None.
-     * @param { ?(UIAbility) -> Unit } onWindowStageCreate - Called back when an ability window stage is created. The
+     * @param { ?(UIAbility) -> Unit } [onWindowStageCreate] - Called back when an ability window stage is created. The
      * default value is None.
-     * @param { ?(UIAbility) -> Unit } onWindowStageRestore - Called back when an ability window stage is restored. The
+     * @param { ?(UIAbility) -> Unit } [onWindowStageRestore] - Called back when an ability window stage is restored. The
      * default value is None.
-     * @param { ?(UIAbility) -> Unit } onWindowStageDestroy - Called back when an ability window stage is destroyed.
+     * @param { ?(UIAbility) -> Unit } [onWindowStageDestroy] - Called back when an ability window stage is destroyed.
      * The default value is None.
      */
     @!APILevel[

@@ -24,7 +24,6 @@ class BaseContextImpl {}
 
 /**
  * The base context for Stage Mode.
- *
  */
 @!APILevel[
     since: "22",
@@ -33,7 +32,6 @@ class BaseContextImpl {}
 public abstract class BaseContext <: RemoteData {
     /**
      * Indicates the context is Stage Mode.
-     *
      */
     @!APILevel[
         since: "22",

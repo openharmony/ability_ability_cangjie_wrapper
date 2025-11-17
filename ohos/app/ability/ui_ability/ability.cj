@@ -25,7 +25,6 @@ class AbilityImpl {}
 
 /**
  * The class of an ability.
- *
  */
 @!APILevel[
     since: "22",

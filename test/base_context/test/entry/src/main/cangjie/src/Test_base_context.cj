@@ -155,7 +155,7 @@ class Test_base_context {
             uri: "",
             action: "",
             entities: [],
-            wantType: "",
+            dataType: "",
             parameters: valueMap1,
             fds: HashMap<String, Int32>())
 
@@ -166,7 +166,7 @@ class Test_base_context {
         @Expect(want.flags, 0)
         @Expect(want.action, "")
         @Expect(want.entities, [])
-        @Expect(want.wantType, "")
+        @Expect(want.dataType, "")
         let map = want.parameters
     }
 }

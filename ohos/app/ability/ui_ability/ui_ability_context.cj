@@ -158,7 +158,6 @@ class UIAbilityContextImpl {}
 
 /**
  * The context of an ability. It allows access to ability-specific resources.
- *
  */
 @!APILevel[
     since: "22",
@@ -260,10 +259,9 @@ public open class UIAbilityContext <: Context {
      * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
      * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
      *
-     * @param { Want } want - Indicates the Want information for starting the ability.
-     * @param { ?StartOptions } options - Indicates the start options. The default value is None.
+     * @param { Want } want - Indicates the ability to start.
+     * @param { ?StartOptions } [options] - Indicates the start options. The default value is None.
      * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-     * @throws { BusinessException } 401 - Parameter error.
      * @throws { BusinessException } 801 - Capability not support.
      * @throws { BusinessException } 16000001 - The specified ability does not exist.
      * @throws { BusinessException } 16000002 - Incorrect ability type.
@@ -298,7 +296,9 @@ public open class UIAbilityContext <: Context {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func startAbility(want: Want, options!: ?StartOptions = None): Unit {
         var errorCode: Int32 = 0
@@ -381,7 +381,9 @@ public open class UIAbilityContext <: Context {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func terminateSelf(): Unit {
         let errorCode = unsafe { BROKER.terminateSelf(this.getID()) }
@@ -391,15 +393,16 @@ public open class UIAbilityContext <: Context {
     /**
      * Destroys the Page ability while returning the specified result code and data to the caller.
      *
-     * @param { AbilityResult } parameter - Indicates the result parameter to return to the caller.
-     * @throws { BusinessException } 401 - Parameter error.
+     * @param { AbilityResult } parameter - Indicates the result to return.
      * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
      * @throws { BusinessException } 16000011 - The context does not exist.
      * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func terminateSelfWithResult(parameter: AbilityResult): Unit {
         let wantHandle = parameter.want.createWantHandle()
@@ -411,12 +414,13 @@ public open class UIAbilityContext <: Context {
     /**
      * Check to see ability is in terminating state.
      *
-     * @returns { Bool } Returns true if the ability is in terminating state, false otherwise.
+     * @returns { Bool } Returns true when ability is in terminating state, else returns false.
      * @throws { BusinessException } 16000011 - The context does not exist.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
     ]
     public func isTerminating(): Bool {
         var res = unsafe { BROKER.isTerminating(this.getID()) }
@@ -503,10 +507,9 @@ public open class UIAbilityContext <: Context {
      * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
      * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
      *
-     * @param { Want } want - Indicates the Want information for starting the ability.
-     * @param { AsyncCallback<AbilityResult> } callback - Indicates the callback to receive the result.
+     * @param { Want } want - Indicates the ability to start.
+     * @param { AsyncCallback<AbilityResult> } callback - The callback is used to return the result of startAbility.
      * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-     * @throws { BusinessException } 401 - Parameter error.
      * @throws { BusinessException } 16000001 - The specified ability does not exist.
      * @throws { BusinessException } 16000002 - Incorrect ability type.
      * @throws { BusinessException } 16000004 - Cannot start an invisible component.
@@ -537,7 +540,8 @@ public open class UIAbilityContext <: Context {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
     ]
     public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): Unit {
         let requestCode = genRequestCode()
@@ -559,11 +563,10 @@ public open class UIAbilityContext <: Context {
      * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
      * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
      *
-     * @param { Want } want - Indicates the Want information for starting the ability.
+     * @param { Want } want - Indicates the ability to start.
      * @param { StartOptions } options - Indicates the start options.
-     * @param { AsyncCallback<AbilityResult> } callback - Indicates the callback to receive the result.
+     * @param { AsyncCallback<AbilityResult> } callback - The callback is used to return the result of startAbility.
      * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-     * @throws { BusinessException } 401 - Parameter error.
      * @throws { BusinessException } 16000001 - The specified ability does not exist.
      * @throws { BusinessException } 16000004 - Cannot start an invisible component.
      * @throws { BusinessException } 16000005 - The specified process does not have the permission.
@@ -591,7 +594,8 @@ public open class UIAbilityContext <: Context {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
     ]
     public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit {
         let requestCode = genRequestCode()
@@ -672,10 +676,9 @@ public open class UIAbilityContext <: Context {
      * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible service
      * extension ability.
      *
-     * @param { Want } want - Indicates the Want information for starting the service extension ability.
-     * @param { AsyncCallback<RequestResult> } result - Indicates the callback to receive the request result.
+     * @param { Want } want - Indicates the dialog service to start.
+     * @param { AsyncCallback<RequestResult> } result - The callback is used to return the request result.
      * @throws { BusinessException } 201 - The application does not have permission to call the interface.
-     * @throws { BusinessException } 401 - Parameter error.
      * @throws { BusinessException } 16000001 - The specified ability does not exist.
      * @throws { BusinessException } 16000002 - Incorrect ability type.
      * @throws { BusinessException } 16000004 - Cannot start an invisible component.
@@ -695,7 +698,8 @@ public open class UIAbilityContext <: Context {
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
     ]
     public func requestDialogService(want: Want, result: AsyncCallback<RequestResult>): Unit {
         let wantHandle = want.createWantHandle()

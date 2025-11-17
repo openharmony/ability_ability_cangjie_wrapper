@@ -98,7 +98,6 @@ class TestRunnerImpl {}
 /**
  * Base class for the test framework.
  * If you want to implement your own unit test framework, you must inherit this class and overrides all its methods.
- *
  */
 @!APILevel[
     since: "22",
@@ -142,7 +141,6 @@ public open class TestRunner <: FFIData {
 
     /**
      * Prepare the unit testing environment for running test cases.
-     *
      */
     @!APILevel[
         since: "22",
@@ -152,7 +150,6 @@ public open class TestRunner <: FFIData {
 
     /**
      * Run all test cases.
-     *
      */
     @!APILevel[
         since: "22",

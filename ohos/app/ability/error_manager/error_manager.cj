@@ -62,7 +62,6 @@ public enum ErrorManagerEvent {
 
 /**
  * This module provides the function of error manager.
- *
  */
 @!APILevel[
     since: "22",
@@ -74,14 +73,15 @@ public class ErrorManager {
      * Register error observer.
      *
      * @param { ErrorManagerEvent } eventType - Indicates the error event type to observe.
-     * @param { ErrorObserver } observer - Indicates the error observer callback.
-     * @returns { Int32 } Returns the observer ID for unregistration.
+     * @param { ErrorObserver } observer - The error observer.
+     * @returns { Int32 } Returns the number code of the observer.
      * @throws { BusinessException } 16000003 - The specified ID does not exist.
-     * @throws { BusinessExecption } 16000050 - Internal error.
+     * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
     ]
     public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32 {
         let eventTypeValue = eventType.getValue()
@@ -107,13 +107,15 @@ public class ErrorManager {
      * Unregister error observer.
      *
      * @param { ErrorManagerEvent } eventType - Indicates the error event type to unregister.
-     * @param { Int32 } observerId - Indicates the observer ID returned from registration.
+     * @param { Int32 } observerId - Indicates the number code of the observer.
      * @throws { BusinessException } 16000003 - The specified ID does not exist.
-     * @throws { BusinessExecption } 16000050 - Internal error.
+     * @throws { BusinessException } 16000050 - Internal error.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit {
         let eventTypeValue = eventType.getValue()

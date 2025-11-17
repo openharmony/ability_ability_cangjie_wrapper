@@ -89,7 +89,6 @@ struct CJAbilityStageInfo {
 
 /**
  * Describes all lifecycle states of an ability.
- *
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -99,7 +98,6 @@ struct CJAbilityStageInfo {
 public enum AbilityLifecycleState {
     /**
      * Ability is in invalid state.
-     *
      */
     @!APILevel[
         since: "22",
@@ -108,9 +106,8 @@ public enum AbilityLifecycleState {
     Uninitialized
     |
     /**
-     * Ability is in invalid state.
-     *
-     */       
+     * Ability is in the created state.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -118,9 +115,8 @@ public enum AbilityLifecycleState {
     Create
     |
     /**
-     * Ability is in invalid state.
-     *
-     */   
+     * Ability is in the foreground state.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -128,19 +124,14 @@ public enum AbilityLifecycleState {
     Foreground
     |
     /**
-     * Ability is in invalid state.
-     *
-     */  
+     * Ability is in the background state.
+     */
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     Background
     |
-    /**
-     * Ability is in invalid state.
-     *
-     */  
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
@@ -269,7 +260,6 @@ struct CRecord {
 /**
  * A global register used to store the AbilityDelegator and AbilityDelegatorArgs objects registered
  * during application startup.
- *
  */
 @!APILevel[
     since: "22",
@@ -282,7 +272,7 @@ public class AbilityDelegatorRegistry {
     /**
      * Get the AbilityDelegator object of the application.
      *
-     * @returns { AbilityDelegator } Returns the AbilityDelegator instance.
+     * @returns { AbilityDelegator } Return the AbilityDelegator object initialized when the application is started.
      */
     @!APILevel[
         since: "22",
@@ -302,8 +292,7 @@ public class AbilityDelegatorRegistry {
     /**
      * Get unit test arguments stored in the AbilityDelegatorArgs object.
      *
-     * @returns { AbilityDelegatorArgs } Returns the AbilityDelegatorArgs instance.
-     * @throws { BusinessException } 16000050 - Internal error.
+     * @returns { AbilityDelegatorArgs } Return the previously registered AbilityDelegatorArgs object.
      */
     @!APILevel[
         since: "22",
@@ -327,7 +316,6 @@ public class AbilityDelegatorRegistry {
 
 /**
  * A object that records the result of shell command executes.
- *
  */
 @!APILevel[
     since: "22",
@@ -346,8 +334,6 @@ public class ShellCmdResult <: RemoteDataLite {
 
     /**
      * the cmd standard result.
-     *
-     * @returns { String } Returns the standard output result of shell command execution.
      */
     @!APILevel[
         since: "22",
@@ -370,8 +356,6 @@ public class ShellCmdResult <: RemoteDataLite {
     
     /**
      * shell cmd exec result.
-     *
-     * @returns { Int32 } Returns the exit code of shell command execution.
      */
     @!APILevel[
         since: "22",
@@ -393,7 +377,6 @@ public class ShellCmdResult <: RemoteDataLite {
 
 /**
  * A global test utility interface used for adding AbilityMonitor objects and control lifecycle states of abilities.
- *
  */
 @!APILevel[
     since: "22",
@@ -411,28 +394,29 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Start a new ability.
      *
-     * @param { Want } want - Indicates the Want information for starting the ability.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000001 - The specified ability does not exist.
-     * @throws { BusinessExecption } 16000002 - Incorrect ability type.
-     * @throws { BusinessExecption } 16000004 - Cannot start an invisible component.
-     * @throws { BusinessExecption } 16000005 - The specified process does not have the permission.
-     * @throws { BusinessExecption } 16000006 - Cross-user operations are not allowed.
-     * @throws { BusinessExecption } 16000008 - The crowdtesting application expires.
-     * @throws { BusinessExecption } 16000009 - An ability cannot be started or stopped in Wukong mode.
-     * @throws { BusinessExecption } 16000010 - The call with the continuation and prepare continuation flag is
+     * @param { Want } want - Indicates the ability to start
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000002 - Incorrect ability type.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is
      * forbidden.
-     * @throws { BusinessExecption } 16000011 - The context does not exist.
-     * @throws { BusinessExecption } 16000012 - The application is controlled.
-     * @throws { BusinessExecption } 16000013 - The application is controlled by EDM.
-     * @throws { BusinessExecption } 16000050 - Internal error.
-     * @throws { BusinessExecption } 16000053 - The ability is not on the top of the UI.
-     * @throws { BusinessExecption } 16000055 - Installation-free timed out.
-     * @throws { BusinessExecption } 16200001 - The caller has been released.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000012 - The application is controlled.
+     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     * @throws { BusinessException } 16000055 - Installation-free timed out.
+     * @throws { BusinessException } 16200001 - The caller has been released.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func startAbility(want: Want): Unit {
         let wantHandle = want.createWantHandle()
@@ -445,13 +429,14 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Execute the given command in the aa tools side.
      *
-     * @param { String } cmd - Indicates the shell command to be executed.
-     * @param { Int64 } timeoutSecs - Indicates the timeout duration in seconds. Default is 0.
+     * @param { String } cmd - Shell command
+     * @param { Int64 } [timeoutSecs] - Timeout, in seconds.
      * @returns { ShellCmdResult } Returns the result of the shell command execution.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        workerthread: true
     ]
     public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdResult {
         unsafe {
@@ -466,7 +451,7 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Obtain the application context.
      *
-     * @returns { Context } Returns the application context.
+     * @returns { Context } Returns the app Context.
      */
     @!APILevel[
         since: "22",
@@ -484,12 +469,13 @@ public class AbilityDelegator <: RemoteDataLite {
      * Finish the test and print log information to the unit testing console.
      * The total length of the log information to be printed cannot exceed 1000 characters.
      *
-     * @param { String } msg - Indicates the log message to be printed.
-     * @param { Int64 } code - Indicates the result code of the test.
+     * @param { String } msg - Log information.
+     * @param { Int64 } code - Result code.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        workerthread: true
     ]
     public func finishTest(msg: String, code: Int64): Unit {
         unsafe {
@@ -503,13 +489,14 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Add an AbilityMonitor object for monitoring the lifecycle state changes of the specified ability in this process.
      *
-     * @param { AbilityMonitor } monitor - Indicates the AbilityMonitor object to be added.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000100 - Calling AddAbilityMonitor failed.
+     * @param { AbilityMonitor } monitor - AbilityMonitor objects.
+     * @throws { BusinessException } 16000100 - Calling AddAbilityMonitor failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func addAbilityMonitor(monitor: AbilityMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -527,13 +514,14 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Remove a specified AbilityMonitor object from the application memory.
      *
-     * @param { AbilityMonitor } monitor - Indicates the AbilityMonitor object to be removed.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityMonitor failed.
+     * @param { AbilityMonitor } monitor - AbilityMonitor object.
+     * @throws { BusinessException } 16000100 - Calling RemoveAbilityMonitor failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func removeAbilityMonitor(monitor: AbilityMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -551,16 +539,17 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Wait for and returns the Ability object that matches the conditions set in the given AbilityMonitor.
      *
-     * @param { AbilityMonitor } monitor - Indicates the AbilityMonitor object that sets the conditions to match.
-     * @param { Int64 } timeout - Indicates the timeout duration in milliseconds. Default is 5000.
+     * @param { AbilityMonitor } monitor - AbilityMonitor object.
+     * @param { Int64 } [timeout] - Maximum wait time, in milliseconds.
      * @returns { UIAbility } Returns the Ability object that matches the conditions.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000050 - Internal error.
-     * @throws { BusinessExecption } 16000100 - Calling WaitAbilityMonitor failed.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000100 - Calling WaitAbilityMonitor failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility {
         var errorCode: Int32 = COMMON_FAILED
@@ -584,13 +573,14 @@ public class AbilityDelegator <: RemoteDataLite {
      * Add an AbilityStageMonitor object for monitoring the lifecycle state changes of the specified abilityStage in
      * this process.
      *
-     * @param { AbilityStageMonitor } monitor - Indicates the AbilityStageMonitor object to be added.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000100 - Calling AddAbilityStageMonitor failed.
+     * @param { AbilityStageMonitor } monitor - AbilityStageMonitor object.
+     * @throws { BusinessException } 16000100 - Calling AddAbilityStageMonitor failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -609,13 +599,14 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Remove a specified AbilityStageMonitor object from the application memory.
      *
-     * @param { AbilityStageMonitor } monitor - Indicates the AbilityStageMonitor object to be removed.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000100 - Calling RemoveAbilityStageMonitor failed.
+     * @param { AbilityStageMonitor } monitor - AbilityStageMonitor object.
+     * @throws { BusinessException } 16000100 - Calling RemoveAbilityStageMonitor failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -634,17 +625,17 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Wait for and returns the AbilityStage object that matches the conditions set in the given AbilityStageMonitor.
      *
-     * @param { AbilityStageMonitor } monitor - Indicates the AbilityStageMonitor object that sets the conditions to
-     * match.
-     * @param { Int64 } timeout - Indicates the timeout duration in milliseconds. Default is 5000.
+     * @param { AbilityStageMonitor } monitor - AbilityStageMonitor object.
+     * @param { Int64 } [timeout] - Maximum wait time, in milliseconds.
      * @returns { AbilityStage } Returns the AbilityStage object that matches the conditions.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000050 - Internal error.
-     * @throws { BusinessExecption } 16000100 - Calling WaitAbilityStageMonitor failed.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000100 - Calling WaitAbilityStageMonitor failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int64 = 5000): AbilityStage {
         var abilityStageId: Int64 = 0i64
@@ -668,12 +659,12 @@ public class AbilityDelegator <: RemoteDataLite {
      * Prints log information to the unit testing console.
      * The total length of the log information to be printed cannot exceed 1000 characters.
      *
-     * @param { String } msg - Indicates the log message to be printed.
-     * @throws { BusinessExecption } 401 - Parameter error.
+     * @param { String } msg - Log information.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        workerthread: true
     ]
     public func print(msg: String): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -688,9 +679,8 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Obtain the lifecycle state of a specified ability.
      *
-     * @param { UIAbility } ability - Indicates the UIAbility object to get the state.
-     * @returns { AbilityLifecycleState } Returns the lifecycle state of the specified ability.
-     * @throws { BusinessExecption } 401 - Parameter error.
+     * @param { UIAbility } ability - The Ability object.
+     * @returns { AbilityLifecycleState } Returns the state of the Ability object.
      */
     @!APILevel[
         since: "22",
@@ -711,12 +701,14 @@ public class AbilityDelegator <: RemoteDataLite {
      * Obtain the ability that is currently being displayed in this process.
      *
      * @returns { UIAbility } Returns the UIAbility object that is currently on top.
-     * @throws { BusinessExecption } 16000050 - Internal error.
-     * @throws { BusinessExecption } 16000100 - Calling GetCurrentTopAbility failed.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000100 - Calling GetCurrentTopAbility failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func getCurrentTopAbility(): UIAbility {
         var errorCode: Int32 = COMMON_FAILED
@@ -733,13 +725,14 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Invoke the Ability.onForeground() callback of a specified ability without changing its lifecycle state.
      *
-     * @param { UIAbility } ability - Indicates the UIAbility object to call onForeground.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000100 - Calling DoAbilityForeground failed.
+     * @param { UIAbility } ability - The ability object.
+     * @throws { BusinessException } 16000100 - Calling DoAbilityForeground failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func doAbilityForeground(ability: UIAbility): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -756,13 +749,14 @@ public class AbilityDelegator <: RemoteDataLite {
     /**
      * Invoke the Ability.onBackground() callback of a specified ability without changing its lifecycle state.
      *
-     * @param { UIAbility } ability - Indicates the UIAbility object to call onBackground.
-     * @throws { BusinessExecption } 401 - Parameter error.
-     * @throws { BusinessExecption } 16000100 - Calling DoAbilityBackground failed.
+     * @param { UIAbility } ability - The ability object.
+     * @throws { BusinessException } 16000100 - Calling DoAbilityBackground failed.
      */
     @!APILevel[
         since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
     ]
     public func doAbilityBackground(ability: UIAbility): Unit {
         var errorCode: Int32 = COMMON_FAILED
@@ -779,7 +773,6 @@ public class AbilityDelegator <: RemoteDataLite {
 
 /**
  * Store unit testing-related parameters, including test case names, and test runner name.
- *
  */
 @!APILevel[
     since: "22",
@@ -801,8 +794,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the bundle name of the application being tested.
-     *
-     * @returns { String } Returns the bundle name of the application being tested.
      */
     @!APILevel[
         since: "22",
@@ -832,8 +823,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the parameters used for unit testing.
-     *
-     * @returns { HashMap<String, String> } Returns the parameters used for unit testing.
      */
     @!APILevel[
         since: "22",
@@ -862,8 +851,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the class names of all test cases.
-     *
-     * @returns { String } Returns the class names of all test cases.
      */
     @!APILevel[
         since: "22",
@@ -893,8 +880,6 @@ public class AbilityDelegatorArgs <: RemoteDataLite {
 
     /**
      * the class name of the test runner used to execute test cases.
-     *
-     * @returns { String } Returns the class name of the test runner.
      */
     @!APILevel[
         since: "22",
