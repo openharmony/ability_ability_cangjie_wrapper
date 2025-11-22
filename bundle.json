@@ -65,6 +65,12 @@
           },
           {
             "name": "//foundation/ability/ability_cangjie_wrapper/ohos/application/test_runner:ohos.application.test_runner"
+          },
+          {
+            "name": "//foundation/ability/ability_cangjie_wrapper:copy_sdk_ability_cangjie_libs"
+          },
+          {
+            "name": "//foundation/ability/ability_cangjie_wrapper:copy_sdk_ability_cangjie_libs_kit"
           }
         ],
         "test": []
