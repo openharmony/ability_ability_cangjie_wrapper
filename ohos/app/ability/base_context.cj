@@ -37,12 +37,12 @@ public abstract class BaseContext <: RemoteData {
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public let stageMode: Bool
+    public let stageModel: Bool
 
     private let impl_: BaseContextImpl = BaseContextImpl()
 
-    init(id: Int64, stageMode: Bool) {
+    init(id: Int64, stageModel: Bool) {
         super(id)
-        this.stageMode = stageMode
+        this.stageModel = stageModel
     }
 }
