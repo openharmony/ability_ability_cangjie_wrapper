@@ -12,12 +12,7 @@
   "component": {
       "name": "ability_cangjie_wrapper",
       "subsystem": "ability",
-      "syscap": [
-        "SystemCapability.Ability.AbilityBase",
-        "SystemCapability.Ability.AbilityRuntime.AbilityCore",
-        "SystemCapability.Ability.AbilityRuntime.Core",
-        "SystemCapability.BundleManager.BundleFramework.Core"
-      ],
+      "syscap": [],
       "features": [],
       "adapted_system_type": [
           "standard"
