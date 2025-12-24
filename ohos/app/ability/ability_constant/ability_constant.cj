@@ -449,13 +449,35 @@ public enum MemoryLevel {
     }
 }
 
+/**
+ * Enumerates the scenarios for saving application data. You can use it in
+ * onSaveState(reason, wantParam) of the UIAbility to complete different operations.
+ */
 @Derive[ToString, Equatable]
-protected enum StateType {
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public enum StateType {
+    /**
+     * Saving the status in continuation.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Continuation
-    | AppRecovery
+    /**
+     * Saving the status in application recovery.
+     */
+    | @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AppRecovery
     | ...
 
-    protected func getValue(): Int32 {
+    func getValue(): Int32 {
         match (this) {
             case Continuation => 0
             case AppRecovery => 1
@@ -475,14 +497,64 @@ protected enum StateType {
     }
 }
 
+/**
+ * Enumerates the result types for the operation of saving application data. You can use it in
+ * onSaveState(reason, wantParam) of the UIAbility to complete different operations.
+ */
 @Derive[ToString, Equatable]
-protected enum OnSaveResult {
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public enum OnSaveResult {
+    /**
+     * Always agreed to save the status.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     AllAgree
-    | ContinuationReject
-    | ContinuationMismatch
-    | RecoveryAgree
-    | RecoveryReject
-    | AllReject
+    /**
+     * Rejected to save the status in continuation.
+     */
+    | @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    ContinuationReject
+    /**
+     * Continuation mismatch.
+     */
+    | @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    ContinuationMismatch
+    /**
+     * Agree to restore the saved state.
+     */
+    | @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    RecoveryAgree
+    /**
+     * Rejected to restore the saved status.
+     */
+    | @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    RecoveryReject
+    /**
+     * Always rejected to save the status.
+     */
+    | @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AllReject
     | ...
 
     protected func getValue(): Int32 {

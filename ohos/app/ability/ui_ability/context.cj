@@ -150,6 +150,19 @@ public open class Context <: BaseContext {
         }
     }
 
+    /**
+     * Event hub that implements event subscription, unsubscription, and triggering.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public prop eventHub: EventHub {
+        get() {
+            this.eventHub_.getOrThrow()
+        }
+    }
+
     @!Hide
     var databaseDir: ?String = None
 
@@ -171,7 +184,7 @@ public open class Context <: BaseContext {
     @!Hide
     let logFileDir: ?String = None
 
-    private var eventHub: ?EventHub = None
+    private var eventHub_: ?EventHub = None
 
     /**
      * Encryption level of the directory.

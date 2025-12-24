@@ -18,8 +18,11 @@
 package ohos.app.ability.ui_ability
 
 import ohos.ffi.FFIData
-import std.collection.HashMap
+import ohos.app.ability.configuration.Configuration
+import ohos.app.ability.ability_constant.MemoryLevel
 import ohos.labels.APILevel
+
+import std.collection.HashMap
 
 class AbilityImpl {}
 
@@ -54,6 +57,29 @@ abstract sealed class Ability <: FFIData {
                 "Repeated registration for Ability in " + name + ", please check.")
         }
     }
+
+    /**
+     * Called when the system configuration is updated.
+     *
+     * @param { Configuration } newConfig - Indicates the updated configuration.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onConfigurationUpdate(newConfig: Configuration): Unit {}
+
+    /**
+     * Called when the system has determined to trim the memory, for example, when the ability is running in the
+     * background and there is no enough memory for running as many background processes as possible.
+     *
+     * @param { MemoryLevel } level - Indicates the memory trim level, which shows the current memory usage status.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onMemoryLevel(level: MemoryLevel): Unit {}
 
     protected static func create(name: String): Option<Ability> {
         let optCreator = CREATORS.get(name)

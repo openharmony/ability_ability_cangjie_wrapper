@@ -20,7 +20,8 @@ package ohos.app.ability.ability_stage
 import std.collection.HashMap
 import ohos.ffi.{FFIData, FFIDataManager}
 import ohos.labels.APILevel
-import ohos.app.ability.configuration.{CJConfiguration, CConfiguration}
+import ohos.app.ability.configuration.{CJConfiguration, CConfiguration, Configuration}
+import ohos.app.ability.ability_constant.MemoryLevel
 import ohos.app.ability.want.{Want, WantHandle}
 import ohos.app.ability.ui_ability.AbilityStageContext
 import ohos.business_exception.BusinessException
@@ -225,6 +226,67 @@ public open class AbilityStage <: FFIData {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public open func onCreate(): Unit {}
+
+    /**
+     * Called when a specified ability is started.
+     *
+     * This API returns the result synchronously and does not support asynchronous callbacks.
+     * @param { Want } want - Want information about the target ability, such as the ability name and bundle name.
+     * @returns { String } Returns specified ID. If the ability with this ID has been started, no new instance is created and the
+     * ability is placed at the top of the stack. Otherwise, a new instance is created and started.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public open func onAcceptWant(want: Want): String {
+        ""
+    }
+
+    /**
+     * Called when the global configuration is updated.
+     * 
+     * This API returns the result synchronously and does not support asynchronous callbacks.
+     *
+     * @param { Configuration } newConfig - Callback invoked when the global configuration is updated. The global
+     * configuration indicates the configuration of the environment where the application is running and includes
+     * the language and color mode.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public open func onConfigurationUpdate(newConfig: Configuration): Unit {}
+
+    /**
+     * Called when the application is destroyed. This API is called during the normal lifecycle.
+     * If the application exits abnormally or is terminated, this API is not called.
+     *
+     * This API returns the result synchronously and does not support asynchronous callbacks.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public open func onDestroy(): Unit {}
+
+    /**
+     * Listens for changes in the system memory level status.
+     * When the system detects low memory resources, it will proactively invoke this callback.
+     * You can implement this callback to promptly release non-essential resources (such as cached data or temporary
+     * objects) upon receiving a memory shortage event, thereby preventing the application process from being forcibly
+     * terminated by the system.
+     * 
+     * This API returns the result synchronously and does not support asynchronous callbacks.
+     *
+     * @param { MemoryLevel } level - Memory level that indicates the memory usage status. When the
+     * specified memory level is reached, a callback will be invoked and the system will start adjustment.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public open func onMemoryLevel(level: MemoryLevel): Unit {}
 }
 
 @C
