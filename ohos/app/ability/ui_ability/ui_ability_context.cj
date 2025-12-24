@@ -22,9 +22,10 @@ import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
 import ohos.ability.connect_options.ConnectOptions
 import ohos.app.ability.configuration.{CConfiguration, Configuration}
 import ohos.app.ability.dialog_request.{RequestResult, ResultCode}
-import ohos.app.ability.open_link_options.CJOpenLinkOptions
+import ohos.app.ability.open_link_options.{CJOpenLinkOptions, OpenLinkOptions, toCJOpenLinkOptions}
 import ohos.app.ability.start_options.{StartOptions, CJStartOptions,
     CJNewStartOptions, startOptionsToCJNewStartOptions, startOptionsToExternal}
+import ohos.app.ability.ability_utils.{ERROR_CODE_INNER, getErrorMsg, checkCodeAndThrow}
 import ohos.base.{VectorInt32Handle, FFIVectorString}
 import ohos.business_exception.{BusinessException, AsyncCallback}
 import ohos.bundle.bundle_manager.{RetAbilityInfoV2, RetHapModuleInfoV2, AbilityInfo, HapModuleInfo}
@@ -315,6 +316,57 @@ public open class UIAbilityContext <: Context {
         checkCodeAndThrow(errorCode)
     }
 
+    /**
+     * Starts a new ability by implicit want. If the caller application is in foreground, you can use this method to start ability;
+     * If the caller application is in the background, you need to apply for permission:ohos.permission.START_ABILITIES_FROM_BACKGROUND.
+     * If the target ability is visible, you can start the target ability; If the target ability is invisible,
+     * you need to apply for permission:ohos.permission.START_INVISIBLE_ABILITY to start target invisible ability.
+     * If the target ability is in cross-device, you need to apply for permission:ohos.permission.DISTRIBUTED_DATASYNC.
+     *
+     * @param { String } link - Indicates the ability to start.
+     * @param { ?OpenLinkOptions } [ options ] - Indicates the open link options. The default value is None.
+     * @param { ?AsyncCallback<AbilityResult> } [ callback ] - The callback is used to return the ability result. The default value is None.
+     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000002 - Incorrect ability type.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000009 - An ability cannot be started or stopped in Wukong mode.
+     * @throws { BusinessException } 16000010 - The call with the continuation and prepare continuation flag is forbidden.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000012 - The application is controlled.
+     * @throws { BusinessException } 16000013 - The application is controlled by EDM.
+     * @throws { BusinessException } 16000019 - No matching ability is found.
+     * @throws { BusinessException } 16200001 - The caller has been released.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
+    public func openLink(link: String, options!: ?OpenLinkOptions = None,
+        callback!: ?AsyncCallback<AbilityResult> = None): Unit {
+        let requestCode = genRequestCode()
+        let lambdaDataId = if (let Some(v) <- callback) {
+            ResultCallbackForAbilityResult(v).getID()
+        } else {
+            -1 // No callback
+        }
+        var errorCode: Int32 = 0
+        unsafe {
+            try (cLink = LibC.mallocCString(link).asResource()) {
+                let cOption = toCJOpenLinkOptions(options)
+                errorCode = FFIAbilityContextOpenLink(this.getID(), cLink.value, cOption, requestCode, lambdaDataId)
+                cOption.free()
+            }
+        }
+        checkCodeAndThrow(errorCode)
+    }
+
     func startAbilityWithAccount(want: Want, accountId: Int32): Future<Unit> {
         spawn {
             let wantHandle = want.createWantHandle()
@@ -429,18 +481,17 @@ public open class UIAbilityContext <: Context {
     }
 
     /**
-     * @throws { BusinessError } 201 - The application does not have permission to call the interface.
-     * @throws { BusinessError } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
-     * @throws { BusinessError } 16000001 - The specified ability does not exist.
-     * @throws { BusinessError } 16000002 - Incorrect ability type.
-     * @throws { BusinessError } 16000004 - Cannot start an invisible component.
-     * @throws { BusinessError } 16000005 - The specified process does not have the permission.
-     * @throws { BusinessError } 16000006 - Cross-user operations are not allowed.
-     * @throws { BusinessError } 16000008 - The crowdtesting application expires.
-     * @throws { BusinessError } 16000011 - The context does not exist.
-     * @throws { BusinessError } 16000050 - Internal error.
-     * @throws { BusinessError } 16000053 - The ability is not on the top of the UI.
-     * @throws { BusinessError } 16000055 - Installation-free timed out.
+     * @throws { BusinessException } 201 - The application does not have permission to call the interface.
+     * @throws { BusinessException } 16000001 - The specified ability does not exist.
+     * @throws { BusinessException } 16000002 - Incorrect ability type.
+     * @throws { BusinessException } 16000004 - Cannot start an invisible component.
+     * @throws { BusinessException } 16000005 - The specified process does not have the permission.
+     * @throws { BusinessException } 16000006 - Cross-user operations are not allowed.
+     * @throws { BusinessException } 16000008 - The crowdtesting application expires.
+     * @throws { BusinessException } 16000011 - The context does not exist.
+     * @throws { BusinessException } 16000050 - Internal error.
+     * @throws { BusinessException } 16000053 - The ability is not on the top of the UI.
+     * @throws { BusinessException } 16000055 - Installation-free timed out.
      */
     func connectServiceExtensionAbility(want: Want, options: ConnectOptions): Int64 {
         let wantHandle = want.createWantHandle()

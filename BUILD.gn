@@ -16,9 +16,13 @@ import("//build/templates/cangjie/cjc.gni")
 ability_cangjie_wrapper_packages_ohos = [
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ability_constant:ohos.app.ability.ability_constant",
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/common:ohos.app.ability.common",
+  "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ability_utils:ohos.app.ability.ability_utils",
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/configuration:ohos.app.ability.configuration",
+  "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/configuration_constant:ohos.app.ability.configuration_constant",
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ability_delegator_registry:ohos.app.ability.ability_delegator_registry",
+  "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/app_manager:ohos.app.ability.app_manager",
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/want:ohos.app.ability.want",
+  "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/want_agent:ohos.app.ability.want_agent",
   "//foundation/ability/ability_cangjie_wrapper/ohos/application/event_hub:ohos.application.event_hub",
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/completion_handler:ohos.app.ability.completion_handler",
   "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability/ui_ability:ohos.app.ability.ui_ability",

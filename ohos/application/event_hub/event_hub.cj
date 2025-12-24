@@ -17,4 +17,17 @@
 
 protected package ohos.application.event_hub
 
-protected class EventHub {}
+import ohos.labels.APILevel
+
+import std.collection.{HashMap, ArrayList}
+
+/**
+ * The event center of a context, support the subscription and publication of events.
+ */
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public class EventHub {
+    protected init() {}
+}

@@ -20,6 +20,7 @@ package ohos.app.ability.ui_ability
 import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
 import ohos.app.ability.dialog_request.{RequestResult, ResultCode, CJDialogRequestResult}
 import ohos.app.ability.want.Want
+import ohos.app.ability.ability_utils.{ERROR_CODE_INNER, getErrorMsg}
 import ohos.business_exception.{BusinessException, AsyncCallback}
 import std.collection.HashMap
 import std.sync.{AtomicInt64, Mutex}

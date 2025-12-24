@@ -17,7 +17,140 @@
 
 package ohos.app.ability.configuration
 
-import ohos.labels.Hide
+import ohos.labels.{Hide, APILevel}
+import ohos.app.ability.configuration_constant.{ColorMode, Direction, ScreenDensity}
+
+/**
+ * configuration item.
+ */
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityBase"
+]
+public class Configuration {
+    /**
+     * Indicates the current language of the application.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var language: String
+
+    /**
+     * Indicates the current colorMode of the application.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var colorMode: ColorMode
+
+    /**
+     * Indicates the screen direction of the current device.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var direction: Direction
+
+    /**
+     * Indicates the screen density of the current device.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var screenDensity: ScreenDensity
+
+    /**
+     * Indicates the displayId of the current device.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var displayId: Int32
+
+    /**
+     * Indicates whether a pointer type device has connected.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var hasPointerDevice: Bool
+
+    /**
+     * Indicates the font id.
+     */
+    @!Hide
+    public var fontId: String = ""
+
+    /**
+     * Indicates the font size scale.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var fontSizeScale: Float64
+
+    /**
+     * Indicates the font weight scale.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var fontWeightScale: Float64
+
+    /**
+     * Indicates the mobile country code.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var mcc: String
+
+    /**
+     * Indicates the mobile network code.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    public var mnc: String
+    
+    @!Hide
+    var locale: Locale = Locale()
+
+    protected init(
+        language!: ?String = None,
+        colorMode!: ?ColorMode = None,
+        direction!: ?Direction = None,
+        screenDensity!: ?ScreenDensity = None,
+        displayId!: ?Int32 = None,
+        hasPointerDevice!: ?Bool = None,
+        fontSizeScale!: ?Float64 = None,
+        fontWeightScale!: ?Float64 = None,
+        mcc!: ?String = None,
+        mnc!: ?String = None
+    ) {
+        this.language = language.getOrThrow()
+        this.colorMode = colorMode.getOrThrow()
+        this.direction = direction.getOrThrow()
+        this.screenDensity = screenDensity.getOrThrow()
+        this.displayId = displayId.getOrThrow()
+        this.hasPointerDevice = hasPointerDevice.getOrThrow()
+        this.fontSizeScale = fontSizeScale.getOrThrow()
+        this.fontWeightScale = fontWeightScale.getOrThrow()
+        this.mcc = mcc.getOrThrow()
+        this.mnc = mnc.getOrThrow()
+    }
+}
 
 @C
 protected struct CConfiguration {
@@ -66,7 +199,6 @@ protected struct CJConfiguration {
     ) {}
 }
 
-@!Hide
-protected class Configuration {
-    protected init() {}
+class Locale {
+    init() {}
 }

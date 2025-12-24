@@ -15,30 +15,27 @@
 
 import("//build/templates/cangjie/cjc.gni")
 
-ohos_cangjie_shared_library("ohos.app.ability.ability_delegator_registry") {
+ohos_cangjie_shared_library("ohos.app.ability.want_agent") {
   sources = [
-    "ability_delegator_registry.cj",
-    "ability_monitor.cj",
-    "ability_stage_monitor.cj",
-    "hilog.cj",
-  ]
-
-  cj_external_deps = [
-    "cangjie_ark_interop:ohos.business_exception",
-    "cangjie_ark_interop:ohos.ffi",
-    "hiviewdfx_cangjie_wrapper:ohos.hilog",
-    "communication_cangjie_wrapper:ohos.rpc",
-    "cangjie_ark_interop:ohos.labels",
+    "want_agent.cj",
+    "want_agent_ffi.cj"
   ]
 
   cj_deps = [
-    "../ui_ability:ohos.app.ability.ui_ability",
+    "../ability_utils:ohos.app.ability.ability_utils",
     "../want:ohos.app.ability.want",
-    "../ability_stage:ohos.app.ability.ability_stage",
   ]
 
-  external_deps = [ "ability_runtime:cj_ability_ffi" ]
+  cj_external_deps = [
+    "cangjie_ark_interop:ohos.labels",
+    "cangjie_ark_interop:ohos.business_exception",
+    "cangjie_ark_interop:ohos.encoding.json",
+    "cangjie_ark_interop:ohos.ffi",
+  ]
 
+  external_deps = [
+    "ability_runtime:cj_want_agent_ffi"
+  ]
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"
 }

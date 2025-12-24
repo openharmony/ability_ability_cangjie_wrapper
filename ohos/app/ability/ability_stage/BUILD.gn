@@ -24,6 +24,7 @@ ohos_cangjie_shared_library("ohos.app.ability.ability_stage") {
   cj_deps = [
     "../../../application/event_hub:ohos.application.event_hub",
     "../configuration:ohos.app.ability.configuration",
+    "../ability_constant:ohos.app.ability.ability_constant",
     "../context_constant:ohos.app.ability.context_constant",
     "../ui_ability:ohos.app.ability.ui_ability",
     "../want:ohos.app.ability.want",
