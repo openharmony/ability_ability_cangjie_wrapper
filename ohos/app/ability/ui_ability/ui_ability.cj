@@ -19,8 +19,9 @@ package ohos.app.ability.ui_ability
 
 import ohos.app.ability.ability_constant.{LastExitReason, LaunchReason, LaunchParam,
     OnContinueResult, StateType, OnSaveResult}
-import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.want.{Want, WantHandle, WantValueType, mapFromJsonObject}
 import ohos.app.ability.configuration.{CConfiguration, CJConfiguration}
+import ohos.app.ability.ability_utils.ERROR_CODE_INNER
 import ohos.base.FFIVectorString
 import ohos.ffi.{FFIDataManager}
 import ohos.window.WindowStage
@@ -28,6 +29,8 @@ import ohos.encoding.json.{jsonObjectWrapper, jsonStringUnWrapper}
 
 import ohos.labels.{APILevel, Hide}
 import ohos.business_exception.BusinessException
+
+import std.collection.HashMap
 
 type AbilityHandle = UIntNative
 
@@ -335,7 +338,7 @@ func abilityOnContinue(id: Int64, params: CString): Int32 {
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let jsonValue = jsonStringUnWrapper(params.toString())
-            let res = ability.onContinue(jsonValue.toString())
+            let res = ability.onContinue(mapFromJsonObject(jsonValue))
             return res.getValue()
     }
 }
@@ -409,7 +412,7 @@ func abilityOnSaveState(id: Int64, reason: Int32, params: CString): CJNumberParm
         case Some(ability) =>
             let reasonType = StateType.parse(reason)
             let wantParam = jsonStringUnWrapper(params.toString())
-            let saveState = ability.onSaveState(reasonType, wantParam.toString())
+            let saveState = ability.onSaveState(reasonType, mapFromJsonObject(wantParam))
             let jsonCString = unsafe {
                 LibC.mallocCString(jsonObjectWrapper(wantParam).toString())
             }
@@ -429,7 +432,7 @@ func abilityOnShare(id: Int64, params: CString): CString {
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let wantParam = jsonStringUnWrapper(params.toString())
-            ability.onShare(wantParam.toString())
+            ability.onShare(mapFromJsonObject(wantParam))
             let jsonCString = unsafe {
                 LibC.mallocCString(jsonObjectWrapper(wantParam).toString())
             }
@@ -449,7 +452,7 @@ func abilityOnContinueWithParams(id: Int64, params: CString): CJNumberParmas {
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) =>
             let wantParam = jsonStringUnWrapper(params.toString())
-            let continueResult = ability.onContinue(wantParam.toString())
+            let continueResult = ability.onContinue(mapFromJsonObject(wantParam))
             let jsonCString = unsafe {
                 LibC.mallocCString(jsonObjectWrapper(wantParam).toString())
             }
@@ -591,7 +594,16 @@ public open class UIAbility <: Ability {
     ]
     public open func onWindowStageCreate(windowStage: WindowStage): Unit {}
 
-    func onWindowStageWillDestroy(_: WindowStage): Unit {}
+    /**
+     * Called when the WindowStage is about to be destroyed.
+     *
+     * @param { WindowStage } windowStage - WindowStage information.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onWindowStageWillDestroy(windowStage: WindowStage): Unit {}
 
     /**
      * Called when the WindowStage is destroyed for this UIAbility.
@@ -606,8 +618,13 @@ public open class UIAbility <: Ability {
      * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance
      * ability.
      *
+     * @param { WindowStage } windowStage - WindowStage information.
      */
-    func onWindowStageRestore(_: WindowStage): Unit {}
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onWindowStageRestore(windowStage: WindowStage): Unit {}
 
     /**
      * Called to clear resources when this UIAbility is destroyed.
@@ -665,10 +682,19 @@ public open class UIAbility <: Ability {
     @!Hide
     public open func onDidBackground(): Unit {}
 
-    func onContinue(_: String): OnContinueResult {
+    /**
+     * Called to save data during the UIAbility migration preparation process.
+     *
+     * @param { HashMap<String, WantValueType> } wantParam - want parameter.
+     * @returns { OnContinueResult } Returns continuation result.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onContinue(wantParam: HashMap<String, WantValueType>): OnContinueResult {
         OnContinueResult.Agree
     }
-
     /**
      * Called when a UIAbility instance that has undergone the following states is started again:
      * started in the foreground, running in the foreground, and switched to the background.
@@ -685,21 +711,78 @@ public open class UIAbility <: Ability {
     ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {}
 
-    func onDump(_: Array<String>): Array<String> {
+    /**
+     * Called when dump client information is required.
+     * This API can be used to dump non-sensitive information.
+     *
+     * @param { Array<String> } params - Parameters in the form of a command.
+     * @returns { Array<string> } Returns dumped information array.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onDump(params: Array<String>): Array<String> {
         return Array<String>()
     }
 
-    func onSaveState(_: StateType, _: String): OnSaveResult {
+  /**
+   * Called when the framework automatically saves the UIAbility state in the case of an application fault.
+   * When an application is faulty, the framework calls onSaveState to save the status of the UIAbility if
+   * auto-save is enabled.
+   *
+   * @param { StateType } reason - Reason for triggering the callback to save the UIAbility state.
+   * @param { HashMap<String, WantValueType> } wantParam - want parameter.
+   * @returns { OnSaveResult } Returns whether the UIAbility state is saved.
+   */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onSaveState(reason: StateType, wantParam: HashMap<String, WantValueType>): OnSaveResult {
         return OnSaveResult.RecoveryAgree
     }
 
-    func onShare(_: String): Unit {}
+    /**
+     * Called by this UIAbility to set data to share in the cross-device sharing scenario.
+     *
+     * @param { HashMap<String, WantValueType> } wantParam - Data to share.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onShare(wantParam: HashMap<String, WantValueType>): Unit {}
 
-    func onPrepareToTerminate(): Bool {
+  /**
+   * Called when this UIAbility is about to terminate. It allows for additional actions to be performed before the
+   * UIAbility is officially terminated.
+   * For example, you can prompt the user to confirm whether they want to terminate the UIAbility. If the user
+   * confirms, you can call terminateSelf to terminate it.
+   * 
+   * @returns { Bool } Returns whether to terminate the UIAbility.
+   */
+    @!APILevel[
+        since: "24",
+        permission: "ohos.permission.PREPARE_APP_TERMINATE",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onPrepareToTerminate(): Bool {
         return false
     }
 
-    func onBackPressed(): Bool {
+    /**
+     * Called when an operation of going back to the previous page is triggered on this UIAbility. The return value
+     * determines whether to destroy the UIAbility instance.
+     *
+     * @returns { Bool } Returns the value true means that the UIAbility instance will be moved to the background
+     * and will not be destroyed, and false means that the UIAbility instance will be destroyed.
+     */
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onBackPressed(): Bool {
         return true
     }
 

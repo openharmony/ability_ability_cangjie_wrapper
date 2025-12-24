@@ -18,7 +18,6 @@ import("//build/templates/cangjie/cjc.gni")
 ohos_cangjie_shared_library("ohos.app.ability.ui_ability") {
   sources = [
     "ability.cj",
-    "ability_errorcode.cj",
     "ability_stage_context.cj",
     "application_context.cj",
     "callback_utils.cj",
@@ -37,6 +36,7 @@ ohos_cangjie_shared_library("ohos.app.ability.ui_ability") {
     "../../../ability/connect_options:ohos.ability.connect_options",
     "../../../application/event_hub:ohos.application.event_hub",
     "../ability_constant:ohos.app.ability.ability_constant",
+    "../ability_utils:ohos.app.ability.ability_utils",
     "../completion_handler:ohos.app.ability.completion_handler",
     "../configuration:ohos.app.ability.configuration",
     "../context_constant:ohos.app.ability.context_constant",
