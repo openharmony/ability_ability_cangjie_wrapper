@@ -123,10 +123,10 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     var cacheDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var tempDir: ?String = None
 
     /**
@@ -150,25 +150,25 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     var databaseDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var preferencesDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var bundleCodeDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var distributedFilesDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var resourceDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var cloudFileDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     let logFileDir: ?String = None
 
     private var eventHub: ?EventHub = None
@@ -197,6 +197,6 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     var processName: ?String = None
 }
