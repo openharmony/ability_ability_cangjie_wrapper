@@ -178,7 +178,7 @@ public open class UIAbilityContext <: Context {
 
     private let UIAbilityContextImpl_ = UIAbilityContextImpl()
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop abilityInfo: AbilityInfo {
         get() {
             throw Exception()
@@ -189,7 +189,7 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop currentHapModuleInfo: HapModuleInfo {
         get() {
             throw Exception()
@@ -200,7 +200,7 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop config: Configuration {
         get() {
             throw Exception()
@@ -211,7 +211,7 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop windowStage: WindowStage {
         get() {
             throw Exception()

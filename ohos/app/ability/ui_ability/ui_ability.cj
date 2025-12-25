@@ -638,10 +638,10 @@ public open class UIAbility <: Ability {
     ]
     public open func onForeground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onWillForeground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onDidForeground(): Unit {}
 
     /**
@@ -659,10 +659,10 @@ public open class UIAbility <: Ability {
     ]
     public open func onBackground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onWillBackground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onDidBackground(): Unit {}
 
     func onContinue(_: String): OnContinueResult {
@@ -703,7 +703,7 @@ public open class UIAbility <: Ability {
         return true
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onCollaborate(_: String): CollaborateResult {
         throw Exception()
     }
@@ -772,12 +772,12 @@ foreign func RegisterCJAbilityFuncs(funcs: CFunc<(CPointer<CJAbilityFuncs>) -> U
 
 let REGISTER_ABILITY = unsafe { RegisterCJAbilityFuncs(abilityCjFuncsRegister) }
 
-@!Hide
+@!Hide[isChecked: true]
 public enum CollaborateResult {
-    @!Hide
+    @!Hide[isChecked: true]
     Accept
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Reject
     | ...
 }

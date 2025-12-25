@@ -42,7 +42,7 @@ public class LaunchParam {
     ]
     public var launchReason: LaunchReason
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal var launchReasonMessage: Option<String> = None
 
     /**
@@ -56,7 +56,7 @@ public class LaunchParam {
 
     var lastExitMessage: String = ""
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal var lastExitDetailInfo: Option<LastExitDetailInfo> = None
 
     protected init(
@@ -130,19 +130,19 @@ public enum LaunchReason {
     ]
     AppRecovery
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Share
     |
-    @!Hide
+    @!Hide[isChecked: true]
     AutoStartup
     |
-    @!Hide
+    @!Hide[isChecked: true]
     InsightIntent
     |
-    @!Hide
+    @!Hide[isChecked: true]
     PrepareContinuation
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Preload
     | ...
 
@@ -191,7 +191,7 @@ public enum LastExitReason {
     ]
     Unknown
     |
-    @!Hide
+    @!Hide[isChecked: true]
     AbilityNotResponding
     |
     /**
@@ -212,7 +212,7 @@ public enum LastExitReason {
     ]
     CppCrash
     |
-    @!Hide
+    @!Hide[isChecked: true]
     JsError
     |
     /**
@@ -224,19 +224,19 @@ public enum LastExitReason {
     ]
     AppFreeze
     |
-    @!Hide
+    @!Hide[isChecked: true]
     PerformanceControl
     |
-    @!Hide
+    @!Hide[isChecked: true]
     ResourceControl
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Upgrade
     |
-    @!Hide
+    @!Hide[isChecked: true]
     UserRequest
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Signal
     | ...
 
@@ -329,7 +329,7 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum WindowMode {
-    @!Hide
+    @!Hide[isChecked: true]
     WindowModeUndefined
     |
     /**
@@ -363,7 +363,7 @@ public enum WindowMode {
     ]
     WindowModeSplitSecondary
     |
-    @!Hide
+    @!Hide[isChecked: true]
     WindowModeFloating
     | ...
 
@@ -498,7 +498,7 @@ protected enum OnSaveResult {
     }
 }
 
-@!Hide
+@!Hide[isChecked: true]
 class LastExitDetailInfo {
     init() {}
 }

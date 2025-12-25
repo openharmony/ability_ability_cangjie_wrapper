@@ -66,7 +66,7 @@ protected struct CJConfiguration {
     ) {}
 }
 
-@!Hide
+@!Hide[isChecked: true]
 protected class Configuration {
     protected init() {}
 }
