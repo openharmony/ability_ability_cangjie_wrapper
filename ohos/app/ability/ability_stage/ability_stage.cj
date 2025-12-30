@@ -21,7 +21,7 @@ import std.collection.HashMap
 import ohos.ffi.{FFIData, FFIDataManager}
 import ohos.labels.APILevel
 import ohos.app.ability.configuration.{CJConfiguration, CConfiguration}
-import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.want.WantHandle
 import ohos.app.ability.ui_ability.AbilityStageContext
 import ohos.business_exception.BusinessException
 

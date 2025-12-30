@@ -72,7 +72,6 @@ public open class Context <: BaseContext {
     private var resourceManager_: ?ResourceManager = None
     private var applicationInfo_: ?ApplicationInfo = None
     private var processName_: ?String = None
-    private static var applicationContext_: ?ApplicationContext = None
     private let impl_: ContextImpl = ContextImpl()
 
     init(id: Int64) {

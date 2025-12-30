@@ -21,14 +21,14 @@ import ohos.app.ability.want.{Want, WantHandle}
 import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
 import ohos.ability.connect_options.ConnectOptions
 import ohos.app.ability.configuration.{CConfiguration, Configuration}
-import ohos.app.ability.dialog_request.{RequestResult, ResultCode}
+import ohos.app.ability.dialog_request.RequestResult
 import ohos.app.ability.open_link_options.CJOpenLinkOptions
 import ohos.app.ability.start_options.{StartOptions, CJStartOptions,
     CJNewStartOptions, startOptionsToCJNewStartOptions, startOptionsToExternal}
-import ohos.base.{VectorInt32Handle, FFIVectorString}
+import ohos.base.VectorInt32Handle
 import ohos.business_exception.{BusinessException, AsyncCallback}
 import ohos.bundle.bundle_manager.{RetAbilityInfoV2, RetHapModuleInfoV2, AbilityInfo, HapModuleInfo}
-import ohos.ffi.{RetDataBool, FFIDataManager, Callback1Param, Callback2Param}
+import ohos.ffi.RetDataBool
 import ohos.multimedia.image.PixelMap
 import ohos.window.WindowStage
 import std.sync.{AtomicInt32, Mutex, AtomicInt64}
