@@ -17,7 +17,7 @@
 
 package ohos.app.ability.app_recovery
 
-import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.want.WantHandle
 import ohos.labels.APILevel
 
 foreign {
