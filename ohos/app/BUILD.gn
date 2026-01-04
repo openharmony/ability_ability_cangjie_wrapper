@@ -16,7 +16,12 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app") {
-  sources = [ "app.cj" ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../mock/ohos.app.cj" ]
+  } else {
+    sources = [ "app.cj" ]
+  }
 
   subsystem_name = "ability"
   part_name = "ability_cangjie_wrapper"

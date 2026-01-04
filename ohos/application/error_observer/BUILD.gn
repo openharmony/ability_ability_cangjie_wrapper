@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.application.error_observer") {
-  sources = [
-    "error_observer.cj",
-    "error_observer_ffi.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../mock/ohos.application.error_observer.cj" ]
+  } else {
+    sources = [
+      "error_observer.cj",
+      "error_observer_ffi.cj",
+    ]
+  }
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
