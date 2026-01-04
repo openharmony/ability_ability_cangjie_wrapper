@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.ability_stage") {
-  sources = [
-    "ability_stage.cj",
-    "hilog.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.ability_stage.cj" ]
+  } else {
+    sources = [
+      "ability_stage.cj",
+      "hilog.cj",
+    ]
+  }
 
   cj_deps = [
     "../../../application/event_hub:ohos.application.event_hub",

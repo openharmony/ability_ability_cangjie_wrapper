@@ -16,7 +16,12 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.app_recovery") {
-  sources = [ "app_recovery.cj" ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.app_recovery.cj" ]
+  } else {
+    sources = [ "app_recovery.cj" ]
+  }
 
   cj_deps = [ "../want:ohos.app.ability.want" ]
 
