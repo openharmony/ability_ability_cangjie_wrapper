@@ -110,7 +110,7 @@ public class ProcessInformation {
     public var bundleType: BundleType
 
     /**
-     * The process state.
+     * The app clone index of current process if app is multi app mode.
      */
     @!APILevel[
         since: "24",
