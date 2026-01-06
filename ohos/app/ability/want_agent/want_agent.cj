@@ -31,7 +31,7 @@ import std.collection.HashMap
  * Obtains a WantAgent object.
  *
  * @param { WantAgentInfo } info - Information about the WantAgent object to obtain.
- * @returns { WantAgent } Returns wantAgent object.
+ * @returns { WantAgent } Returns the created WantAgent.
  * @throws { BusinessException } 16000007 - Service busy. There are concurrent tasks. Try again later.
  * @throws { BusinessException } 16000151 - Invalid wantAgent object.
  */
@@ -55,7 +55,7 @@ public func getWantAgent(info: WantAgentInfo): WantAgent {
 }
 
 /**
- * Target WantAgent object.
+ * WantAgent object.
  */
 @!APILevel[
     since: "24",
@@ -133,9 +133,9 @@ public class WantAgentInfo {
      *
      * @param { Array<Want> } wants - An array of all Wants for starting abilities or sending common events.
      * @param { Int32 } requestCode - Request code defined by the user.
-     * @param { OperationType } actionType - Type of the action specified in a Want.
-     * @param { Array<WantAgentFlags> } actionFlags - An array of flags for using the WantAgent.
-     * @param { HashMap<String, WantValueType> } extraInfos - Extra information about how the Want starts an ability.
+     * @param { OperationType } [ actionType ] - Type of the action specified in a Want.
+     * @param { Array<WantAgentFlags> } [ actionFlags ] - An array of flags for using the WantAgent.
+     * @param { HashMap<String, WantValueType> } [ extraInfos ] - Extra information about how the Want starts an ability.
      */
     @!APILevel[
         since: "24",
@@ -199,7 +199,7 @@ public class WantAgentInfo {
 }
 
 /**
- * Enumerates the flags used by the WantAgent objects.
+ * Enumerates the flags for using a WantAgent.
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -208,7 +208,8 @@ public class WantAgentInfo {
 ]
 public enum WantAgentFlags {
     /**
-     * The WantAgent object can be used only once.
+     * Indicates that the WantAgent can be used only once.
+     * This flag is valid only when OperationType is set to StartAbility, StartService or SendCommonEvent.
      */
     @!APILevel[
         since: "24",
@@ -216,7 +217,8 @@ public enum WantAgentFlags {
     ]
     OneTimeFlag
     /**
-     * The WantAgent object does not exist and hence it is not created. In this case, <code>null</code> is returned.
+     * Indicates that exception is throwed if the WantAgent does not exist.
+     * This flag is valid only when OperationType is set to StartAbility, StartService or SendCommonEvent.
      */
     | @!APILevel[
         since: "24",
@@ -224,7 +226,8 @@ public enum WantAgentFlags {
     ]
     NoBuildFlag
     /**
-     * The existing WantAgent object should be canceled before a new object is generated.
+     * Indicates that the existing WantAgent should be canceled before a new object is generated.
+     * This flag is valid only when OperationType is set to StartAbility, StartService or SendCommonEvent.
      */
     | @!APILevel[
         since: "24",
@@ -232,7 +235,8 @@ public enum WantAgentFlags {
     ]
     CancelPresentFlag
     /**
-     * Extra information of the existing WantAgent object is replaced with that of the new object.
+     * Indicates that the system only replaces the extra data of existing WantAgent with that of the new object.
+     * This flag is valid only when OperationType is set to StartAbility, StartService or SendCommonEvent.
      */
     | @!APILevel[
         since: "24",
@@ -240,7 +244,7 @@ public enum WantAgentFlags {
     ]
     UpdatePresentFlag
     /**
-     * The WantAgent object is immutable.
+     * Indicates that the created WantAgent should be immutable.
      */
     | @!APILevel[
         since: "24",
@@ -248,8 +252,7 @@ public enum WantAgentFlags {
     ]
     ConstantFlag
     /**
-     * The element property in the current Want can be replaced by the element property in the Want passed in
-     * WantAgent.trigger().
+     * Indicates that the current value of element can be replaced when the WantAgent is triggered.
      */
     | @!APILevel[
         since: "24",
@@ -257,8 +260,7 @@ public enum WantAgentFlags {
     ]
     ReplaceElement
     /**
-     * The action property in the current Want can be replaced by the action property in the Want passed in
-     * WantAgent.trigger().
+     * Indicates that the current value of action can be replaced when the WantAgent is triggered.
      */
     | @!APILevel[
         since: "24",
@@ -266,8 +268,7 @@ public enum WantAgentFlags {
     ]
     ReplaceAction
     /**
-     * The uri property in the current Want can be replaced by the uri property in the Want passed in
-     * WantAgent.trigger().
+     * Indicates that the current value of uri can be replaced when the WantAgent is triggered.
      */
     | @!APILevel[
         since: "24",
@@ -275,8 +276,7 @@ public enum WantAgentFlags {
     ]
     ReplaceUri
     /**
-     * The entities property in the current Want can be replaced by the entities property in
-     * the Want passed in WantAgent.trigger().
+     * Indicates that the current value of entities can be replaced when the WantAgent is triggered.
      */
     | @!APILevel[
         since: "24",
@@ -284,8 +284,7 @@ public enum WantAgentFlags {
     ]
     ReplaceEntities
     /**
-     * The bundleName property in the current Want can be replaced by the bundleName property
-     * in the Want passed in WantAgent.trigger().
+     * Indicates that the current value of packageName can be replaced when the WantAgent is triggered.
      */
     | @!APILevel[
         since: "24",
@@ -312,7 +311,7 @@ public enum WantAgentFlags {
 }
 
 /**
- * Enumerates the operation types of the WantAgent objects.
+ * Identifies the operation for using a WantAgent, such as starting an ability or sending a common event.
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -321,7 +320,7 @@ public enum WantAgentFlags {
 ]
 public enum OperationType {
     /**
-     * Unknown operation type.
+     * Unknown operation.
      */
     @!APILevel[
         since: "24",
@@ -345,7 +344,7 @@ public enum OperationType {
     ]
     StartAbilities
     /**
-     * Starts an ability without a UI (valid only in the FA model).
+     * Starts an ability without a UI.
      */
     | @!APILevel[
         since: "24",

@@ -584,9 +584,9 @@ public open class UIAbility <: Ability {
     public open func onCreate(want: Want, launchParam: LaunchParam): Unit {}
 
     /**
-     * Called when a WindowStage is created for this UIAbility.
+     * Called back when an ability window stage will destroy.
      *
-     * @param { WindowStage } windowStage - WindowStage information.
+     * @param { WindowStage } windowStage - Indecates the WindowSatge that will be destroyed.
      */
     @!APILevel[
         since: "22",
@@ -615,10 +615,9 @@ public open class UIAbility <: Ability {
     public open func onWindowStageDestroy(): Unit {}
 
     /**
-     * Called when the WindowStage is restored during the migration of this UIAbility, which is a multi-instance
-     * ability.
+     * Called back when an ability window stage is restored.
      *
-     * @param { WindowStage } windowStage - WindowStage information.
+     * @param { WindowStage } windowStage - Window stage to restore.
      */
     @!APILevel[
         since: "24",
@@ -683,10 +682,10 @@ public open class UIAbility <: Ability {
     public open func onDidBackground(): Unit {}
 
     /**
-     * Called to save data during the UIAbility migration preparation process.
+     * Called back when an ability prepares to continue.
      *
-     * @param { HashMap<String, WantValueType> } wantParam - want parameter.
-     * @returns { OnContinueResult } Returns continuation result.
+     * @param { HashMap<String, WantValueType> } wantParam - Indicates the want parameter.
+     * @returns { OnContinueResult } Returns the result of onContinue.
      */
     @!APILevel[
         since: "24",
@@ -713,10 +712,10 @@ public open class UIAbility <: Ability {
 
     /**
      * Called when dump client information is required.
-     * This API can be used to dump non-sensitive information.
+     * It is recommended that developers don't DUMP sensitive information.
      *
-     * @param { Array<String> } params - Parameters in the form of a command.
-     * @returns { Array<string> } Returns dumped information array.
+     * @param { Array<String> } params - Indicates the params from command.
+     * @returns { Array<String> } Returns the dump info array.
      */
     @!APILevel[
         since: "24",
@@ -727,13 +726,11 @@ public open class UIAbility <: Ability {
     }
 
   /**
-   * Called when the framework automatically saves the UIAbility state in the case of an application fault.
-   * When an application is faulty, the framework calls onSaveState to save the status of the UIAbility if
-   * auto-save is enabled.
+   * Called back when an ability prepares to save.
    *
-   * @param { StateType } reason - Reason for triggering the callback to save the UIAbility state.
-   * @param { HashMap<String, WantValueType> } wantParam - want parameter.
-   * @returns { OnSaveResult } Returns whether the UIAbility state is saved.
+   * @param { StateType } reason - State type when save.
+   * @param { HashMap<String, WantValueType> } wantParam - Indecates the want parameter.
+   * @returns { OnSaveResult } Returns the result of saving state.
    */
     @!APILevel[
         since: "24",
@@ -744,9 +741,9 @@ public open class UIAbility <: Ability {
     }
 
     /**
-     * Called by this UIAbility to set data to share in the cross-device sharing scenario.
+     * Called back when an ability shares data.
      *
-     * @param { HashMap<String, WantValueType> } wantParam - Data to share.
+     * @param { HashMap<String, WantValueType> } wantParam - Indicates the want parameter.
      */
     @!APILevel[
         since: "24",
@@ -755,12 +752,10 @@ public open class UIAbility <: Ability {
     public open func onShare(wantParam: HashMap<String, WantValueType>): Unit {}
 
   /**
-   * Called when this UIAbility is about to terminate. It allows for additional actions to be performed before the
-   * UIAbility is officially terminated.
-   * For example, you can prompt the user to confirm whether they want to terminate the UIAbility. If the user
-   * confirms, you can call terminateSelf to terminate it.
+   * Called back when an ability prepare to terminate.
    * 
-   * @returns { Bool } Returns whether to terminate the UIAbility.
+   * @returns { Bool } Returns true if the ability need to top terminating; returns false if the ability need to
+   * terminate.
    */
     @!APILevel[
         since: "24",
@@ -772,11 +767,10 @@ public open class UIAbility <: Ability {
     }
 
     /**
-     * Called when an operation of going back to the previous page is triggered on this UIAbility. The return value
-     * determines whether to destroy the UIAbility instance.
+     * Called back when back press is dispatched.
      *
-     * @returns { Bool } Returns the value true means that the UIAbility instance will be moved to the background
-     * and will not be destroyed, and false means that the UIAbility instance will be destroyed.
+     * @returns { Bool } Returns the value true means that the ability will move to background when back is pressed and
+     * false means that the ability will be destroyed when back is pressed.
      */
     @!APILevel[
         since: "24",
