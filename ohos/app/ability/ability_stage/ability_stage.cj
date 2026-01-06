@@ -231,6 +231,7 @@ public open class AbilityStage <: FFIData {
      * Called when a specified ability is started.
      *
      * This API returns the result synchronously and does not support asynchronous callbacks.
+     *
      * @param { Want } want - Want information about the target ability, such as the ability name and bundle name.
      * @returns { String } Returns specified ID. If the ability with this ID has been started, no new instance is created and the
      * ability is placed at the top of the stack. Otherwise, a new instance is created and started.

@@ -450,8 +450,7 @@ public enum MemoryLevel {
 }
 
 /**
- * Enumerates the scenarios for saving application data. You can use it in
- * onSaveState(reason, wantParam) of the UIAbility to complete different operations.
+ * Type of save state.
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -468,7 +467,7 @@ public enum StateType {
     ]
     Continuation
     /**
-     * Saving the status in application recovery.
+     * App recovery to restore the saved state.
      */
     | @!APILevel[
         since: "24",
@@ -498,8 +497,7 @@ public enum StateType {
 }
 
 /**
- * Enumerates the result types for the operation of saving application data. You can use it in
- * onSaveState(reason, wantParam) of the UIAbility to complete different operations.
+ * Type of onSave result.
  */
 @Derive[ToString, Equatable]
 @!APILevel[
@@ -508,7 +506,7 @@ public enum StateType {
 ]
 public enum OnSaveResult {
     /**
-     * Always agreed to save the status.
+     * Always agree to save the state.
      */
     @!APILevel[
         since: "24",
@@ -540,7 +538,7 @@ public enum OnSaveResult {
     ]
     RecoveryAgree
     /**
-     * Rejected to restore the saved status.
+     * Refuse to restore the saved state.
      */
     | @!APILevel[
         since: "24",
@@ -548,7 +546,7 @@ public enum OnSaveResult {
     ]
     RecoveryReject
     /**
-     * Always rejected to save the status.
+     * Always refuses to save the state.
      */
     | @!APILevel[
         since: "24",

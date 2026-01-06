@@ -105,7 +105,7 @@ public enum Direction {
     ]
     DirectionVertical
     /**
-     * Vertical direction.
+     * Horizontal direction.
      */
     | @!APILevel[
         since: "24",

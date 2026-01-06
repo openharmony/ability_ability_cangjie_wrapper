@@ -151,7 +151,7 @@ public open class Context <: BaseContext {
     }
 
     /**
-     * Event hub that implements event subscription, unsubscription, and triggering.
+     * Indicates evebt hub.
      */
     @!APILevel[
         since: "24",
