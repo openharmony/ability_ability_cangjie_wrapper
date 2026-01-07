@@ -16,20 +16,25 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.ui_ability") {
-  sources = [
-    "ability.cj",
-    "ability_errorcode.cj",
-    "ability_stage_context.cj",
-    "application_context.cj",
-    "callback_utils.cj",
-    "callee.cj",
-    "context.cj",
-    "context_interop.cj",
-    "hilog.cj",
-    "system_object_interop_type_to_js.cj",
-    "ui_ability.cj",
-    "ui_ability_context.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.ui_ability.cj" ]
+  } else {
+    sources = [
+      "ability.cj",
+      "ability_errorcode.cj",
+      "ability_stage_context.cj",
+      "application_context.cj",
+      "callback_utils.cj",
+      "callee.cj",
+      "context.cj",
+      "context_interop.cj",
+      "hilog.cj",
+      "system_object_interop_type_to_js.cj",
+      "ui_ability.cj",
+      "ui_ability_context.cj",
+    ]
+  }
 
   cj_deps = [
     "..:ohos.app.ability",
