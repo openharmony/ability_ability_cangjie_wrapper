@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.dialog_request") {
-  sources = [
-    "dialog_request.cj",
-    "hilog.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.dialog_request.cj" ]
+  } else {
+    sources = [
+      "dialog_request.cj",
+      "hilog.cj",
+    ]
+  }
 
   cj_deps = [ "../want:ohos.app.ability.want" ]
 

@@ -16,7 +16,12 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.start_options") {
-  sources = [ "start_options.cj" ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.start_options.cj" ]
+  } else {
+    sources = [ "start_options.cj" ]
+  }
 
   cj_deps = [
     "../ability_constant:ohos.app.ability.ability_constant",

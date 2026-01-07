@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.ability_constant") {
-  sources = [
-    "ability_constant.cj",
-    "hilog.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.ability_constant.cj" ]
+  } else {
+    sources = [
+      "ability_constant.cj",
+      "hilog.cj",
+    ]
+  }
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.ffi",
