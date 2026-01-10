@@ -184,7 +184,7 @@ public open class Context <: BaseContext {
     @!Hide
     let logFileDir: ?String = None
 
-    private var eventHub_: ?EventHub = None
+    private var eventHub_: ?EventHub = EventHub()
 
     /**
      * Encryption level of the directory.
