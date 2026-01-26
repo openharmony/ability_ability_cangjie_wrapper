@@ -53,27 +53,27 @@ public enum LaunchReason {
     Unknown
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     StartAbility
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Call
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Continuation
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     AppRecovery
     | ...
 }
@@ -90,21 +90,21 @@ public enum LastExitReason {
     Unknown
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Normal
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     CppCrash
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     AppFreeze
     | ...
 }
@@ -121,15 +121,15 @@ public enum OnContinueResult {
     Agree
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Reject
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Mismatch
     | ...
 }
@@ -146,15 +146,15 @@ public enum WindowMode {
     WindowModeFullscreen
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     WindowModeSplitPrimary
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     WindowModeSplitSecondary
     | ...
 }
@@ -171,15 +171,15 @@ public enum MemoryLevel {
     MemoryLevelModerate
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     MemoryLevelLow
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     MemoryLevelCritical
     | ...
 }

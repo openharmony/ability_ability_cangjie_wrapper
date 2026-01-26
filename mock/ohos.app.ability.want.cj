@@ -124,33 +124,38 @@ public enum WantValueType {
     @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
-    ] Int64Value(Int64)
+    ]
+    Int64Value(Int64)
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    Float64Value(Float64)
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    StringValue(String)
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    BoolValue(Bool)
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    ArrayValue(Array<WantValueType>)
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityBase"
-        ]
-        HashMap<String, WantValueType>)
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+        HashMapValue(HashMap<String, WantValueType>)
     | ...
 }
 

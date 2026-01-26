@@ -28,7 +28,8 @@ public enum ErrorManagerEvent {
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    Error | ...
+    Error
+    | ...
 }
 
 @!APILevel[
