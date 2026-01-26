@@ -155,7 +155,7 @@ public enum WantValueType {
         since: "22",
         syscap: "SystemCapability.Ability.AbilityBase"
     ]
-        HashMapValue(HashMap<String, WantValueType>)
+    HashMapValue(HashMap<String, WantValueType>)
     | ...
 }
 
