@@ -18,15 +18,27 @@ package ohos.app.ability.start_options
 import ohos.app.ability.ability_constant.*
 import ohos.labels.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public open class StartOptions {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var windowMode: ?WindowMode
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var displayId: Int32
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public init(
         windowMode!: ?WindowMode = None,
         displayId!: Int32 = 0

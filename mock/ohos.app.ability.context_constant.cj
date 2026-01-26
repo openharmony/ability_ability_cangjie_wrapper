@@ -17,35 +17,66 @@ package ohos.app.ability.context_constant
 
 import ohos.labels.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public enum AreaMode {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     El1
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+            since: "22",
+            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        ]
     El2
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+            since: "22",
+            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        ]
     El3
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+            since: "22",
+            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        ]
     El4
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+            since: "22",
+            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+        ]
     El5
     | ...
 }
 
 extend AreaMode <: ToString {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public func toString(): String {
         return String()
     }
 }
 
 extend AreaMode <: Equatable<AreaMode> {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public operator func ==(other: AreaMode): Bool {
         return true
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public operator func !=(other: AreaMode): Bool {
         return true
     }

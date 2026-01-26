@@ -17,7 +17,10 @@ package ohos.app.ability.app_recovery
 
 import ohos.labels.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public func restartApp(): Unit {
     return ()
 }

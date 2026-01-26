@@ -19,15 +19,27 @@ import ohos.app.ability.want.*
 import ohos.labels.*
 import std.collection.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityBase"
+]
 public class AbilityResult {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var resultCode: Int32
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var want: Want
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public init(resultCode: Int32, want!: Want = Want()) {
         super()
         this.resultCode = 0
