@@ -29,27 +29,27 @@ public enum AreaMode {
     El1
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     El2
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     El3
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     El4
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     El5
     | ...
 }

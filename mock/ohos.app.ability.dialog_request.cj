@@ -30,9 +30,9 @@ public enum ResultCode {
     ResultOk
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     ResultCancel
     | ...
 }

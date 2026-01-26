@@ -33,27 +33,27 @@ public enum AbilityLifecycleState {
     Uninitialized
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Create
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Foreground
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Background
     |
     @!APILevel[
-            since: "22",
-            syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-        ]
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Destroy
     | ...
 }
