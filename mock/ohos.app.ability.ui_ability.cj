@@ -41,20 +41,32 @@ protected func getStageContext(abilityContext: UIAbilityContext): StageContext {
 
 
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+]
 abstract sealed class Ability <: FFIData {
     
     public init() {
         super()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public static func registerCreator(name: String, creator: () -> Ability): Unit {}
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class AbilityStageContext <: Context {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var currentHapModuleInfo: HapModuleInfo
     
     public init() {
@@ -63,7 +75,10 @@ public class AbilityStageContext <: Context {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class ApplicationContext <: Context {
     
     public init() {
@@ -71,9 +86,15 @@ public class ApplicationContext <: Context {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public open class Context <: BaseContext {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public prop resourceManager: ResourceManager {
         
         get() {
@@ -81,7 +102,10 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public prop applicationInfo: ApplicationInfo {
         
         get() {
@@ -89,7 +113,10 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public prop filesDir: String {
         
         get() {
@@ -97,7 +124,10 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop area: AreaMode {
         
         get() {
@@ -113,41 +143,68 @@ public open class Context <: BaseContext {
 }
 
 extend Context <: SystemObjectInteropTypeToJS {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public func toJSValue(context: JSContext): JSValue {
         return JSValue(context, napiValueToArkTsValue(CPointer<Unit>()))
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public func createUIAbilityContextFromJSValue(context: JSContext, input: JSValue): UIAbilityContext {
     return UIAbilityContext()
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public func createAbilityStageContextFromJSValue(context: JSContext, input: JSValue): AbilityStageContext {
     return AbilityStageContext()
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public func createApplicationContextFromJSValue(context: JSContext, input: JSValue): ApplicationContext {
     return ApplicationContext()
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public func createContextFromJSValue(context: JSContext, input: JSValue): Context {
     return Context()
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public interface SystemObjectInteropTypeToJS {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     func toJSValue(context: JSContext): JSValue
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+]
 public open class UIAbility <: Ability {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public mut prop context: UIAbilityContext {
         
         get() {
@@ -157,7 +214,10 @@ public open class UIAbility <: Ability {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public mut prop launchWant: Want {
         
         get() {
@@ -179,7 +239,10 @@ public open class UIAbility <: Ability {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public mut prop lastRequestWant: Want {
         
         get() {
@@ -201,37 +264,58 @@ public open class UIAbility <: Ability {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onCreate(want: Want, launchParam: LaunchParam): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onWindowStageCreate(windowStage: WindowStage): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onWindowStageDestroy(): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onDestroy(): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onForeground(): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onBackground(): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {
         return ()
     }
@@ -241,39 +325,73 @@ public open class UIAbility <: Ability {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public open class UIAbilityContext <: Context {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func startAbility(want: Want, options!: ?StartOptions = None): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func terminateSelf(): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func terminateSelfWithResult(parameter: AbilityResult): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
+    ]
     public func isTerminating(): Bool {
         return true
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
+    ]
     public func startAbilityForResult(want: Want, callback: AsyncCallback<AbilityResult>): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
+    ]
     public func startAbilityForResult(want: Want, options: StartOptions, callback: AsyncCallback<AbilityResult>): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
+    ]
     public func requestDialogService(want: Want, result: AsyncCallback<RequestResult>): Unit {
         return ()
     }

@@ -18,9 +18,15 @@ package ohos.app.ability
 import ohos.labels.*
 import ohos.ffi.RemoteData
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public abstract class BaseContext <: RemoteData {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public let stageModel: Bool
     
     public init() {
