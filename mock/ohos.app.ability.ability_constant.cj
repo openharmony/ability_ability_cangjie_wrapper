@@ -22,13 +22,13 @@ import ohos.labels.*
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public class LaunchParam {
-@!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var launchReason: LaunchReason
 
-@!APILevel[
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
