@@ -17,15 +17,27 @@ package ohos.application.error_observer
 
 import ohos.labels.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class ErrorObject {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public let name: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public let message: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public let stack: Option<String>
     
     public init() {
@@ -36,15 +48,27 @@ public class ErrorObject {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class ErrorObserver {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onUnhandledException: (String) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onException: Option<(ErrorObject) -> Unit>
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public init(
         onUnhandledException: (String) -> Unit,
         onException!: Option<(ErrorObject) -> Unit> = None

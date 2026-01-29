@@ -18,21 +18,40 @@ package ohos.app.ability.dialog_request
 import ohos.app.ability.want.*
 import ohos.labels.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public enum ResultCode {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     ResultOk
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     ResultCancel
     | ...
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class RequestResult {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var result: ResultCode
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var want: Want
     
     protected init(result: ResultCode, want!: Want = Want()) {

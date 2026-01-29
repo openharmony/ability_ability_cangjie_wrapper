@@ -19,39 +19,76 @@ import ohos.labels.*
 import std.collection.*
 import ohos.encoding.json.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityBase"
+]
 public class Want {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var deviceId: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var bundleName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var abilityName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var moduleName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var flags: UInt32
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var uri: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var action: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var entities: Array<String>
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var dataType: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
     public var parameters: HashMap<String, WantValueType>
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase", throwexception: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase",
+        throwexception: true
+    ]
     public init(
         deviceId!: String = "",
         bundleName!: String = "",
@@ -79,15 +116,46 @@ public class Want {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityBase"
+]
 public enum WantValueType {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"] Int64Value(Int64)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"] Float64Value(Float64)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"] StringValue(String)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"] BoolValue(Bool)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"] ArrayValue(Array<WantValueType>)
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityBase"] HashMapValue(
-        HashMap<String, WantValueType>)
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    Int64Value(Int64)
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    Float64Value(Float64)
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    StringValue(String)
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    BoolValue(Bool)
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    ArrayValue(Array<WantValueType>)
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityBase"
+    ]
+    HashMapValue(HashMap<String, WantValueType>)
     | ...
 }
 
