@@ -21,48 +21,88 @@ import ohos.app.ability.want.Want
 import ohos.labels.APILevel
 import std.collection.HashMap
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public enum AbilityLifecycleState {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Uninitialized
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Create
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Foreground
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Background
-    | @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    |
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     Destroy
     | ...
 }
 
 extend AbilityLifecycleState <: ToString {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public func toString(): String {
         return String()
     }
 }
 
 extend AbilityLifecycleState <: Equatable<AbilityLifecycleState> {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public operator func ==(other: AbilityLifecycleState): Bool {
         return true
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public operator func !=(other: AbilityLifecycleState): Bool {
         return true
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class AbilityDelegatorRegistry {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public static func getAbilityDelegator(): AbilityDelegator {
         return AbilityDelegator()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public static func getArguments(): AbilityDelegatorArgs {
         return AbilityDelegatorArgs()
     }
@@ -72,9 +112,15 @@ public class AbilityDelegatorRegistry {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class ShellCmdResult {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop exitCode: Int32 {
         
         get() {
@@ -84,7 +130,10 @@ public class ShellCmdResult {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop stdResult: String {
         
         get() {
@@ -99,79 +148,150 @@ public class ShellCmdResult {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class AbilityDelegator {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func startAbility(want: Want): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        workerthread: true
+    ]
     public func executeShellCommand(cmd: String, timeoutSecs!: Int64 = 0): ShellCmdResult {
         return ShellCmdResult()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public func getAppContext(): Context {
         return Context()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        workerthread: true
+    ]
     public func finishTest(msg: String, code: Int64): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func addAbilityMonitor(monitor: AbilityMonitor): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func removeAbilityMonitor(monitor: AbilityMonitor): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func waitAbilityMonitor(monitor: AbilityMonitor, timeout!: Int64 = 5000): UIAbility {
         return UIAbility()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func addAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func removeAbilityStageMonitor(monitor: AbilityStageMonitor): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout!: Int64 = 5000): AbilityStage {
         return AbilityStage()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        workerthread: true
+    ]
     public func print(msg: String): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public func getAbilityState(ability: UIAbility): AbilityLifecycleState {
         return AbilityLifecycleState.Uninitialized
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func getCurrentTopAbility(): UIAbility {
         return UIAbility()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func doAbilityForeground(ability: UIAbility): Unit {
         return ()
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public func doAbilityBackground(ability: UIAbility): Unit {
         return ()
     }
@@ -181,9 +301,15 @@ public class AbilityDelegator {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class AbilityDelegatorArgs {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop bundleName: String {
         
         get() {
@@ -193,7 +319,10 @@ public class AbilityDelegatorArgs {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop parameters: HashMap<String, String> {
         
         get() {
@@ -203,7 +332,10 @@ public class AbilityDelegatorArgs {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop testCaseNames: String {
         
         get() {
@@ -213,7 +345,10 @@ public class AbilityDelegatorArgs {
         set(_) {}
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public mut prop testRunnerClassName: String {
         
         get() {
@@ -228,36 +363,69 @@ public class AbilityDelegatorArgs {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class AbilityMonitor {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var abilityName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var moduleName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onAbilityCreate: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onAbilityForeground: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onAbilityBackground: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onAbilityDestroy: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onWindowStageCreate: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onWindowStageRestore: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var onWindowStageDestroy: ?(UIAbility) -> Unit
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public init(
         abilityName: String,
         moduleName!: String = "",
@@ -282,15 +450,27 @@ public class AbilityMonitor {
     }
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class AbilityStageMonitor {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var moduleName: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public var srcEntrance: String
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
     public init(
         moduleName: String,
         srcEntrance: String

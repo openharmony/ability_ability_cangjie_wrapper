@@ -19,20 +19,39 @@ public import ohos.application.error_observer.*
 import ohos.application.error_observer.*
 import ohos.labels.*
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public enum ErrorManagerEvent {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
-    Error | ...
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    Error
+    | ...
 }
 
-@!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core"]
+@!APILevel[
+    since: "22",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
 public class ErrorManager {
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true
+    ]
     public static func on(eventType: ErrorManagerEvent, observer: ErrorObserver): Int32 {
         return 0
     }
 
-    @!APILevel[since: "22", syscap: "SystemCapability.Ability.AbilityRuntime.Core", throwexception: true, workerthread: true]
+    @!APILevel[
+        since: "22",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
     public static func off(eventType: ErrorManagerEvent, observerId: Int32): Unit {
         return ()
     }
