@@ -20,6 +20,7 @@ ohos_cangjie_shared_library("ohos.application.event_hub") {
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.labels",
+    "hiviewdfx_cangjie_wrapper:ohos.hilog",
   ]
 
   subsystem_name = "ability"
