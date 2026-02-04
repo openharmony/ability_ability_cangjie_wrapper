@@ -19,7 +19,7 @@ package ohos.app.ability.ui_ability
 
 import ohos.ffi.FFIData
 import std.collection.HashMap
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 class AbilityImpl {}
 
@@ -44,6 +44,7 @@ abstract sealed class Ability <: FFIData {
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
+    @!Hide
     public static func registerCreator(name: String, creator: () -> Ability): Unit {
         let optCreator = CREATORS.get(name)
         match (optCreator) {
