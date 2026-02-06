@@ -156,7 +156,8 @@ public enum LaunchReason {
             case 2 => Call
             case 3 => Continuation
             case 4 => AppRecovery
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
+            case _ => ABILITY_LOG.error("LaunchReason: The native layer returns a value ${value} outside the specified range.")
+                      Unknown
         }
     }
 
