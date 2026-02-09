@@ -268,7 +268,7 @@ struct CRecord {
 public class AbilityDelegatorRegistry {
     static var delegator_: ?AbilityDelegator = None
     static var delegatorArgs_: ?AbilityDelegatorArgs = None
-
+    init() {}
     /**
      * Get the AbilityDelegator object of the application.
      *
