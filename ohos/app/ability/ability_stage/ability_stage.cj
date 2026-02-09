@@ -143,7 +143,8 @@ public open class AbilityStage <: FFIData {
     private static let CREATORS = HashMap<String, () -> AbilityStage>()
     private var abilityStageContext: Option<AbilityStageContext> = Option<AbilityStageContext>.None
     private let impl_: AbilityStageImpl = AbilityStageImpl()
-
+    @!Hide
+    protected init() {}
     /**
      * register AbilityStage
      *

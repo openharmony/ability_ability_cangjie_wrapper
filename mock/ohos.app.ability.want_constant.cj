@@ -64,7 +64,7 @@ public class Params {
     ]
     public static const SUPPORT_CONTINUE_SOURCE_EXIT_KEY: String = "ohos.extra.param.key.supportContinueSourceExit"
     
-    public init() {
+    init() {
         super()
     }
 }
@@ -104,7 +104,7 @@ public class Flags {
     ]
     public static const FLAG_START_WITHOUT_TIPS: UInt32 = 0x40000000
     
-    public init() {
+    init() {
         super()
     }
 }
