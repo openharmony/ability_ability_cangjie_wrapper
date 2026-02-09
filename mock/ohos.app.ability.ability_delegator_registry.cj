@@ -107,7 +107,7 @@ public class AbilityDelegatorRegistry {
         return AbilityDelegatorArgs()
     }
     
-    public init() {
+    init() {
         super()
     }
 }
