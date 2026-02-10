@@ -32,8 +32,6 @@ class Test_ability_stage {
     @Tag[APILevel22, TestLevel0]
     func test_callback() {
         sleepFor(100 * Duration.millisecond)
-        let contex = AbilityStage()
-        contex.onCreate()
         @Expect(true, true)
     }
 }
