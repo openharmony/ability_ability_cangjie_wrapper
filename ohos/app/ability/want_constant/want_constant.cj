@@ -27,6 +27,7 @@ import ohos.labels.APILevel
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class Params {
+    init() {}
     /**
      * Indicates the ability in this want can back to the current top ability even though they are not in the same
      * mission stack.
@@ -98,6 +99,7 @@ public class Params {
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class Flags {
+    init() {}
     /**
      * Indicates the grant to perform read operations on the URI.
      */

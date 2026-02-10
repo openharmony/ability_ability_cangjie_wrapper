@@ -500,7 +500,8 @@ public open class UIAbility <: Ability {
     private var abilityContext: Option<UIAbilityContext> = Option<UIAbilityContext>.None
     private let callee_: Callee = Callee()
     private let impl_: UIAbilityImpl = UIAbilityImpl()
-
+    @!Hide
+    protected init() {}
     /**
      * Context of the UIAbility.
      *
