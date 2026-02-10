@@ -36,7 +36,6 @@ class Test_ability_delegator_registry {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func test_getArguments() {
-        let delegatorRegistry = AbilityDelegatorRegistry()
         let args = AbilityDelegatorRegistry.getArguments()
         Hilog.info(0, "CangjieTest", "arg is ${args.bundleName}")
         Hilog.info(0, "CangjieTest", "arg is ${args.bundleName}")
