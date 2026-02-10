@@ -31,7 +31,11 @@ public import ohos.app.ability.start_options.*
 public import ohos.app.ability.ui_ability.*
 public import ohos.app.ability.want.*
 public import ohos.app.ability.want_constant.*
-
+public import ohos.app.ability.app_manager.*
+public import ohos.app.ability.configuration.*
+public import ohos.app.ability.configuration_constant.*
+public import ohos.app.ability.want_agent.*
+public import ohos.application.event_hub.*
 // ability_access_ctrl
 public import ohos.ability_access_ctrl.*
 
