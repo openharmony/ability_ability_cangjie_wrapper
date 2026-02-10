@@ -22,8 +22,11 @@ ohos_cangjie_shared_library("kit.AbilityKit") {
   cj_deps = [
     "../../ohos/app/ability/ability_constant:ohos.app.ability.ability_constant",
     "../../ohos/app/ability/ability_stage:ohos.app.ability.ability_stage",
+    "../../ohos/app/ability/app_manager:ohos.app.ability.app_manager",
     "../../ohos/app/ability/app_recovery:ohos.app.ability.app_recovery",
     "../../ohos/app/ability/common:ohos.app.ability.common",
+    "../../ohos/app/ability/configuration:ohos.app.ability.configuration",
+    "../../ohos/app/ability/configuration_constant:ohos.app.ability.configuration_constant",
     "../../ohos/app/ability/completion_handler:ohos.app.ability.completion_handler",
     "../../ohos/app/ability/configuration:ohos.app.ability.configuration",
     "../../ohos/app/ability/context_constant:ohos.app.ability.context_constant",
@@ -33,7 +36,9 @@ ohos_cangjie_shared_library("kit.AbilityKit") {
     "../../ohos/app/ability/start_options:ohos.app.ability.start_options",
     "../../ohos/app/ability/ui_ability:ohos.app.ability.ui_ability",
     "../../ohos/app/ability/want:ohos.app.ability.want",
+    "../../ohos/app/ability/want_agent:ohos.app.ability.want_agent",
     "../../ohos/app/ability/want_constant:ohos.app.ability.want_constant",
+    "../../ohos/application/event_hub:ohos.application.event_hub",
   ]
 
   cj_external_deps = [
