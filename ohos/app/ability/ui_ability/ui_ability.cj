@@ -732,10 +732,7 @@ public open class UIAbility <: Ability {
    * @param { HashMap<String, WantValueType> } wantParam - Indecates the want parameter.
    * @returns { OnSaveResult } Returns the result of saving state.
    */
-    @!APILevel[
-        since: "24",
-        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
-    ]
+    @!Hide
     public open func onSaveState(reason: StateType, wantParam: HashMap<String, WantValueType>): OnSaveResult {
         return OnSaveResult.RecoveryAgree
     }

@@ -343,13 +343,7 @@ public enum OperationType {
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     StartAbilities
-    /**
-     * Starts an ability without a UI.
-     */
-    | @!APILevel[
-        since: "24",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
+    | @!Hide
     StartService
     /**
      * Sends a common event.
