@@ -42,7 +42,7 @@
           "//foundation/ability/ability_cangjie_wrapper/ohos:ability_package",
           "//foundation/ability/ability_cangjie_wrapper/kit/AbilityKit:kit.AbilityKit"
         ],
-        "inner_api": [
+        "inner_kits": [
           {
             "name": "//foundation/ability/ability_cangjie_wrapper/ohos/app/ability:ohos.app.ability"
           },

@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Copyright (c) 2026 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -16,9 +16,14 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.ability_utils") {
-  sources = [
-    "ability_utils.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.ability_utils.cj" ]
+  } else {
+    sources = [
+      "ability_utils.cj",
+    ]
+  }
 
   cj_external_deps = [
     "cangjie_ark_interop:ohos.business_exception",
