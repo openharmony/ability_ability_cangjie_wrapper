@@ -1,4 +1,4 @@
-# Copyright (c) 2025 Huawei Device Co., Ltd.
+# Copyright (c) 2026 Huawei Device Co., Ltd.
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.app_manager") {
-  sources = [
-    "app_manager.cj",
-    "app_manager_ffi.cj"
-  ]
+
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.app_manager.cj" ]
+  } else {
+    sources = [
+      "app_manager.cj",
+      "app_manager_ffi.cj"
+    ]
+  }
 
   cj_deps = [
     "../ability_utils:ohos.app.ability.ability_utils"

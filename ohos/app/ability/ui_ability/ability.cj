@@ -20,7 +20,7 @@ package ohos.app.ability.ui_ability
 import ohos.ffi.FFIData
 import ohos.app.ability.configuration.Configuration
 import ohos.app.ability.ability_constant.MemoryLevel
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 
 import std.collection.HashMap
 
@@ -47,6 +47,7 @@ abstract sealed class Ability <: FFIData {
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
+    @!Hide
     public static func registerCreator(name: String, creator: () -> Ability): Unit {
         let optCreator = CREATORS.get(name)
         match (optCreator) {

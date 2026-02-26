@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.want") {
-  sources = [
-    "want.cj",
-    "want_value.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.want.cj" ]
+  } else {
+    sources = [
+      "want.cj",
+      "want_value.cj",
+    ]
+  }
 
   cj_external_deps = [
     "arkui_cangjie_wrapper:ohos.base",

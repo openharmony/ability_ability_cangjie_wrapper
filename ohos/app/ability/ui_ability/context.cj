@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025-2026 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -72,7 +72,6 @@ public open class Context <: BaseContext {
     private var resourceManager_: ?ResourceManager = None
     private var applicationInfo_: ?ApplicationInfo = None
     private var processName_: ?String = None
-    private static var applicationContext_: ?ApplicationContext = None
     private let impl_: ContextImpl = ContextImpl()
 
     init(id: Int64) {
@@ -123,10 +122,10 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     var cacheDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var tempDir: ?String = None
 
     /**
@@ -160,28 +159,29 @@ public open class Context <: BaseContext {
     public prop eventHub: EventHub {
         get() {
             this.eventHub_.getOrThrow()
+
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     var databaseDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var preferencesDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var bundleCodeDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var distributedFilesDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var resourceDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var cloudFileDir: ?String = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     let logFileDir: ?String = None
 
     private var eventHub_: ?EventHub = EventHub()
@@ -210,6 +210,6 @@ public open class Context <: BaseContext {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     var processName: ?String = None
 }

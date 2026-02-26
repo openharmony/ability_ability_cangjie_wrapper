@@ -16,10 +16,15 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.application.test_runner") {
-  sources = [
-    "hilog.cj",
-    "test_runner.cj",
-  ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../mock/ohos.application.test_runner.cj" ]
+  } else {
+    sources = [
+      "hilog.cj",
+      "test_runner.cj",
+    ]
+  }
 
   cj_external_deps = [
     "arkui_cangjie_wrapper:ohos.base",
