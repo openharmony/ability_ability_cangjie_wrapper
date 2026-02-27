@@ -21,15 +21,15 @@ import ohos.app.ability.want.{Want, WantHandle}
 import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
 import ohos.ability.connect_options.ConnectOptions
 import ohos.app.ability.configuration.{CConfiguration, Configuration}
-import ohos.app.ability.dialog_request.{RequestResult, ResultCode}
+import ohos.app.ability.dialog_request.RequestResult
 import ohos.app.ability.open_link_options.{CJOpenLinkOptions, OpenLinkOptions, toCJOpenLinkOptions}
 import ohos.app.ability.start_options.{StartOptions, CJStartOptions,
     CJNewStartOptions, startOptionsToCJNewStartOptions, startOptionsToExternal}
 import ohos.app.ability.ability_utils.{ERROR_CODE_INNER, getErrorMsg, checkCodeAndThrow}
-import ohos.base.{VectorInt32Handle, FFIVectorString}
+import ohos.base.VectorInt32Handle
 import ohos.business_exception.{BusinessException, AsyncCallback}
 import ohos.bundle.bundle_manager.{RetAbilityInfoV2, RetHapModuleInfoV2, AbilityInfo, HapModuleInfo}
-import ohos.ffi.{RetDataBool, FFIDataManager, Callback1Param, Callback2Param}
+import ohos.ffi.RetDataBool
 import ohos.multimedia.image.PixelMap
 import ohos.window.WindowStage
 import std.sync.{AtomicInt32, Mutex, AtomicInt64}
@@ -179,7 +179,7 @@ public open class UIAbilityContext <: Context {
 
     private let UIAbilityContextImpl_ = UIAbilityContextImpl()
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop abilityInfo: AbilityInfo {
         get() {
             throw Exception()
@@ -190,7 +190,7 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop currentHapModuleInfo: HapModuleInfo {
         get() {
             throw Exception()
@@ -201,7 +201,7 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop config: Configuration {
         get() {
             throw Exception()
@@ -212,7 +212,7 @@ public open class UIAbilityContext <: Context {
         }
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal mut prop windowStage: WindowStage {
         get() {
             throw Exception()

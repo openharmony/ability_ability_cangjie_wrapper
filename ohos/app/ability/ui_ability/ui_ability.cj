@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025-2026 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -654,10 +654,10 @@ public open class UIAbility <: Ability {
     ]
     public open func onForeground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onWillForeground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onDidForeground(): Unit {}
 
     /**
@@ -675,10 +675,10 @@ public open class UIAbility <: Ability {
     ]
     public open func onBackground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onWillBackground(): Unit {}
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onDidBackground(): Unit {}
 
     /**
@@ -694,6 +694,7 @@ public open class UIAbility <: Ability {
     public open func onContinue(wantParam: HashMap<String, WantValueType>): OnContinueResult {
         OnContinueResult.Agree
     }
+
     /**
      * Called when a UIAbility instance that has undergone the following states is started again:
      * started in the foreground, running in the foreground, and switched to the background.
@@ -725,14 +726,14 @@ public open class UIAbility <: Ability {
         return Array<String>()
     }
 
-  /**
-   * Called back when an ability prepares to save.
-   *
-   * @param { StateType } reason - State type when save.
-   * @param { HashMap<String, WantValueType> } wantParam - Indecates the want parameter.
-   * @returns { OnSaveResult } Returns the result of saving state.
-   */
-    @!Hide
+    /**
+     * Called back when an ability prepares to save.
+     *
+     * @param { StateType } reason - State type when save.
+     * @param { HashMap<String, WantValueType> } wantParam - Indecates the want parameter.
+     * @returns { OnSaveResult } Returns the result of saving state.
+     */
+    @!Hide[isChecked: true]
     public open func onSaveState(reason: StateType, wantParam: HashMap<String, WantValueType>): OnSaveResult {
         return OnSaveResult.RecoveryAgree
     }
@@ -750,7 +751,7 @@ public open class UIAbility <: Ability {
 
   /**
    * Called back when an ability prepare to terminate.
-   * 
+   *
    * @returns { Bool } Returns true if the ability need to top terminating; returns false if the ability need to
    * terminate.
    */
@@ -777,7 +778,7 @@ public open class UIAbility <: Ability {
         return true
     }
 
-    @!Hide
+    @!Hide[isChecked: true]
     public open func onCollaborate(_: String): CollaborateResult {
         throw Exception()
     }
@@ -846,12 +847,12 @@ foreign func RegisterCJAbilityFuncs(funcs: CFunc<(CPointer<CJAbilityFuncs>) -> U
 
 let REGISTER_ABILITY = unsafe { RegisterCJAbilityFuncs(abilityCjFuncsRegister) }
 
-@!Hide
+@!Hide[isChecked: true]
 public enum CollaborateResult {
-    @!Hide
+    @!Hide[isChecked: true]
     Accept
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Reject
     | ...
 }

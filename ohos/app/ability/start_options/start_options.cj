@@ -73,7 +73,7 @@ public open class StartOptions {
     var hideStartWindow: Bool = false
     private let impl_: StartOptionsImpl = StartOptionsImpl()
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal var windowCreateParams: Option<WindowCreateParams> = None
 
     /**

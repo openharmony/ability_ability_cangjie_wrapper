@@ -36,6 +36,7 @@ public import ohos.app.ability.configuration.*
 public import ohos.app.ability.configuration_constant.*
 public import ohos.app.ability.want_agent.*
 public import ohos.application.event_hub.*
+
 // ability_access_ctrl
 public import ohos.ability_access_ctrl.*
 
