@@ -17,7 +17,7 @@
 
 package ohos.app.ability.ui_ability
 
-import ohos.app.ability.want.{Want, WantHandle}
+import ohos.app.ability.want.WantHandle
 import ohos.ffi.{RemoteDataManager, CArrI64, FFIDataManager, Callback1Param, Callback2Param}
 import ohos.window.WindowStage
 import ohos.labels.APILevel

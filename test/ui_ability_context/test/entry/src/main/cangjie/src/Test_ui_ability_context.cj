@@ -188,7 +188,6 @@ class Test_ui_ability_context {
     @TestCase
     @Tag[APILevel22, TestLevel0]
     func test_UIAbility() {
-        let ability = UIAbility()
         let want = Want(bundleName: "com.example.myapplication", abilityName: "EntryAbility")
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025-2026 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -42,7 +42,7 @@ public class LaunchParam {
     ]
     public var launchReason: LaunchReason
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal var launchReasonMessage: Option<String> = None
 
     /**
@@ -56,7 +56,7 @@ public class LaunchParam {
 
     var lastExitMessage: String = ""
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal var lastExitDetailInfo: Option<LastExitDetailInfo> = None
 
     protected init(
@@ -130,19 +130,19 @@ public enum LaunchReason {
     ]
     AppRecovery
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Share
     |
-    @!Hide
+    @!Hide[isChecked: true]
     AutoStartup
     |
-    @!Hide
+    @!Hide[isChecked: true]
     InsightIntent
     |
-    @!Hide
+    @!Hide[isChecked: true]
     PrepareContinuation
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Preload
     | ...
 
@@ -156,7 +156,8 @@ public enum LaunchReason {
             case 2 => Call
             case 3 => Continuation
             case 4 => AppRecovery
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
+            case _ => ABILITY_LOG.error("LaunchReason: The native layer returns a value ${value} outside the specified range.")
+                      Unknown
         }
     }
 
@@ -191,7 +192,7 @@ public enum LastExitReason {
     ]
     Unknown
     |
-    @!Hide
+    @!Hide[isChecked: true]
     AbilityNotResponding
     |
     /**
@@ -212,7 +213,7 @@ public enum LastExitReason {
     ]
     CppCrash
     |
-    @!Hide
+    @!Hide[isChecked: true]
     JsError
     |
     /**
@@ -224,19 +225,19 @@ public enum LastExitReason {
     ]
     AppFreeze
     |
-    @!Hide
+    @!Hide[isChecked: true]
     PerformanceControl
     |
-    @!Hide
+    @!Hide[isChecked: true]
     ResourceControl
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Upgrade
     |
-    @!Hide
+    @!Hide[isChecked: true]
     UserRequest
     |
-    @!Hide
+    @!Hide[isChecked: true]
     Signal
     | ...
 
@@ -329,7 +330,7 @@ protected const WINDOW_MODE_UNDEFINED: Int32 = 0
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
 public enum WindowMode {
-    @!Hide
+    @!Hide[isChecked: true]
     WindowModeUndefined
     |
     /**
@@ -363,7 +364,7 @@ public enum WindowMode {
     ]
     WindowModeSplitSecondary
     |
-    @!Hide
+    @!Hide[isChecked: true]
     WindowModeFloating
     | ...
 
@@ -568,7 +569,7 @@ public enum OnSaveResult {
     }
 }
 
-@!Hide
+@!Hide[isChecked: true]
 class LastExitDetailInfo {
     init() {}
 }

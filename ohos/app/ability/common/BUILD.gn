@@ -16,7 +16,12 @@
 import("//build/templates/cangjie/cjc.gni")
 
 ohos_cangjie_shared_library("ohos.app.ability.common") {
-  sources = [ "common.cj" ]
+  
+  if (is_mingw || is_mac){
+    sources = [ "../../../../mock/ohos.app.ability.common.cj" ]
+  } else {
+    sources = [ "common.cj" ]
+  }
 
   cj_deps = [
     "../../../ability/ability_result:ohos.ability.ability_result",

@@ -25,6 +25,7 @@ import ohos.labels.{APILevel, Hide}
 
 /**
  * Define the available options for openLink API.
+ *
  */
 @!APILevel[
     since: "24",
@@ -34,6 +35,7 @@ public class OpenLinkOptions {
     /**
      * Open the URL only if the URL is a valid app linking and
      * there is an installed app capable of opening that URL.
+     *
      */
     @!APILevel[
         since: "24",
@@ -41,19 +43,16 @@ public class OpenLinkOptions {
     ]
     public var appLinkingOnly: Bool
 
-    /**
-     * OpenLinkOptions parameters in the form of custom key-value pairs.
-     */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
     public var parameters: HashMap<String, WantValueType>
 
-    @!Hide
+    @!Hide[isChecked: true]
     var completionHandler: ?CompletionHandler = None
 
-    @!Hide
+    @!Hide[isChecked: true]
     var hideFailureTipDialog: Bool = false
 
     /**

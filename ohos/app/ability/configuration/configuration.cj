@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025 Huawei Device Co., Ltd.
+ * Copyright (c) 2025-2026 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,16 +21,16 @@ import ohos.labels.{Hide, APILevel}
 import ohos.app.ability.configuration_constant.{ColorMode, Direction, ScreenDensity}
 
 /**
- * configuration item.
- */
+* configuration item.
+*/
 @!APILevel[
     since: "24",
     syscap: "SystemCapability.Ability.AbilityBase"
 ]
 public class Configuration {
     /**
-     * Indicates the current language of the application.
-     */
+    * Indicates the current language of the application.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -38,8 +38,8 @@ public class Configuration {
     public var language: String
 
     /**
-     * Indicates the current colorMode of the application.
-     */
+    * Indicates the current colorMode of the application.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -47,8 +47,8 @@ public class Configuration {
     public var colorMode: ColorMode
 
     /**
-     * Indicates the screen direction of the current device.
-     */
+    * Indicates the screen direction of the current device.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -56,8 +56,8 @@ public class Configuration {
     public var direction: Direction
 
     /**
-     * Indicates the screen density of the current device.
-     */
+    * Indicates the screen density of the current device.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -65,8 +65,8 @@ public class Configuration {
     public var screenDensity: ScreenDensity
 
     /**
-     * Indicates the displayId of the current device.
-     */
+    * Indicates the displayId of the current device.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -74,8 +74,8 @@ public class Configuration {
     public var displayId: Int32
 
     /**
-     * Indicates whether a pointer type device has connected.
-     */
+    * Indicates whether a pointer type device has connected.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -83,14 +83,14 @@ public class Configuration {
     public var hasPointerDevice: Bool
 
     /**
-     * Indicates the font id.
-     */
+    * Indicates the font id.
+    */
     @!Hide
     public var fontId: String = ""
 
     /**
-     * Indicates the font size scale.
-     */
+    * Indicates the font size scale.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -98,8 +98,8 @@ public class Configuration {
     public var fontSizeScale: Float64
 
     /**
-     * Indicates the font weight scale.
-     */
+    * Indicates the font weight scale.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -107,8 +107,8 @@ public class Configuration {
     public var fontWeightScale: Float64
 
     /**
-     * Indicates the mobile country code.
-     */
+    * Indicates the mobile country code.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"
@@ -116,8 +116,8 @@ public class Configuration {
     public var mcc: String
 
     /**
-     * Indicates the mobile network code.
-     */
+    * Indicates the mobile network code.
+    */
     @!APILevel[
         since: "24",
         syscap: "SystemCapability.Ability.AbilityBase"

@@ -69,7 +69,7 @@ public class AbilityStageContext <: Context {
     ]
     public var currentHapModuleInfo: HapModuleInfo
 
-    @!Hide
+    @!Hide[isChecked: true]
     internal var config: Configuration = Configuration()
 
     protected init(id: Int64) {
