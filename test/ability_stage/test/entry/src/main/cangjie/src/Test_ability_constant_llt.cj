@@ -21,11 +21,6 @@ import std.unittest.*
 import std.unittest.common.*
 import std.unittest.testmacro.*
 
-func getLaunchParam(): LaunchParam {
-    let param: ?LaunchParam = None
-    return param.getOrThrow()
-}
-
 @Test
 class TestAbilityConstantLlt {
     // ==================== LaunchParam.launchReason 测试 ====================

@@ -38,4 +38,7 @@ func testsuite(): Unit {
     registerTestSuite("TestWantInitLltPart1", {=> TestWantInitLltPart1()})
     registerTestSuite("TestWantInitLltPart2", {=> TestWantInitLltPart2()})
     registerTestSuite("TestWantInitLltPart3", {=> TestWantInitLltPart3()})
+    registerTestSuite("TestUIAbilityLlt", {=> TestUIAbilityLlt()})
+    registerTestSuite("TestContextLlt", {=> TestContextLlt()})
+    registerTestSuite("TestAbilityStageLltPart1", {=> TestAbilityStageLltPart1()})
 }
