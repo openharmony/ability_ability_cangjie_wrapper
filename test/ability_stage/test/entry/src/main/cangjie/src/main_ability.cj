@@ -29,6 +29,7 @@ class MainAbility <: UIAbility {
 
     public override func onCreate(want: Want, launchParam: LaunchParam): Unit {
         Hilog.info(0, "cangjie", "MainAbility OnCreated.${want.abilityName}")
+        AppStorage.setOrCreate<LaunchParam>("launchParam", launchParam)
         match (launchParam.launchReason) {
             case LaunchReason.StartAbility => Hilog.info(0, "cangjie", "START_ABILITY")
             case _ => throw Exception("unsupported enum constructor")
