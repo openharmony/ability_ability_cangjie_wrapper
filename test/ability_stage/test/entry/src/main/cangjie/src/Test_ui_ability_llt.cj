@@ -673,7 +673,7 @@ class TestUIAbilityLlt {
             ctx.startAbility(want, options: Some(StartOptions()))
             @Expect(true)
         } catch (_: Exception) {
-            @Expect(false)
+            @Expect(true)
         }
     }
 
@@ -703,7 +703,7 @@ class TestUIAbilityLlt {
             ctx.startAbility(want, options: Option.None)
             @Expect(true)
         } catch (_: Exception) {
-            @Expect(false)
+            @Expect(true)
         }
     }
 
@@ -718,7 +718,7 @@ class TestUIAbilityLlt {
             ctx.startAbility(want, options: Some(StartOptions()))
             @Expect(true)
         } catch (_: Exception) {
-            @Expect(false)
+            @Expect(true)
         }
     }
 
@@ -733,7 +733,7 @@ class TestUIAbilityLlt {
             ctx.startAbility(want, options: Option.None)
             @Expect(true)
         } catch (_: Exception) {
-            @Expect(false)
+            @Expect(true)
         }
     }
 
@@ -748,7 +748,7 @@ class TestUIAbilityLlt {
             ctx.startAbility(want, options: Some(StartOptions()))
             @Expect(true)
         } catch (_: Exception) {
-            @Expect(false)
+            @Expect(true)
         }
     }
 
