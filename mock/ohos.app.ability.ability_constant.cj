@@ -211,3 +211,121 @@ extend MemoryLevel <: Equatable<MemoryLevel> {
         return true
     }
 }
+
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public enum StateType {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    Continuation
+    |
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AppRecovery
+    | ...
+}
+
+extend StateType <: ToString {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public func toString(): String {
+        return String()
+    }
+}
+
+extend StateType <: Equatable<StateType> {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public operator func ==(other: StateType): Bool {
+        return true
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public operator func !=(other: StateType): Bool {
+        return true
+    }
+}
+
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public enum OnSaveResult {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AllAgree
+    |
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    ContinuationReject
+    |
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    ContinuationMismatch
+    |
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    RecoveryAgree
+    |
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    RecoveryReject
+    |
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    AllReject
+    | ...
+}
+
+extend OnSaveResult <: ToString {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public func toString(): String {
+        return String()
+    }
+}
+
+extend OnSaveResult <: Equatable<OnSaveResult> {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public operator func ==(other: OnSaveResult): Bool {
+        return true
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public operator func !=(other: OnSaveResult): Bool {
+        return true
+    }
+}
