@@ -13,37 +13,22 @@
  * limitations under the License.
  */
 
-package ohos.app.ability.ability_stage
+package ohos.application.event_hub
 
-import ohos.app.ability.ui_ability.*
-import ohos.labels.*
-import ohos.app.ability.configuration.Configuration
-import ohos.app.ability.ability_constant.MemoryLevel
-import ohos.app.ability.want.Want
+import ohos.hilog.HilogChannel
+import ohos.labels.APILevel
+import std.collection.*
 
 @!APILevel[
-    since: "22",
+    since: "24",
     syscap: "SystemCapability.Ability.AbilityRuntime.Core"
 ]
-public open class AbilityStage {
+public class EventHub {
     @!APILevel[
-        since: "22",
+        since: "24",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public mut prop context: AbilityStageContext {
-        
-        get() {
-            return AbilityStageContext()
-        }
-        
-        set(_) {}
-    }
-
-    @!APILevel[
-        since: "22",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onCreate(): Unit {
+    public func on<T>(event: String, callback: EventObserver<T>): Unit {
         return ()
     }
 
@@ -51,15 +36,7 @@ public open class AbilityStage {
         since: "24",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public open func onAcceptWant(want: Want): String {
-        return String()
-    }
-
-    @!APILevel[
-        since: "24",
-        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
-    ]
-    public open func onConfigurationUpdate(newConfig: Configuration): Unit {
+    public func off<T>(event: String, callback: ?EventObserver<T>): Unit {
         return ()
     }
 
@@ -67,7 +44,7 @@ public open class AbilityStage {
         since: "24",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public open func onDestroy(): Unit {
+    public func off(event: String): Unit {
         return ()
     }
 
@@ -75,11 +52,33 @@ public open class AbilityStage {
         since: "24",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
-    public open func onMemoryLevel(level: MemoryLevel): Unit {
+    public func emit<T>(event: String, data: T): Unit {
         return ()
     }
-
+    
     public init() {
         super()
+    }
+}
+
+@!APILevel[
+    since: "24",
+    syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+]
+public class EventObserver<T> {
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public init(callback: (T) -> Unit) {
+        super()
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public func invoke(data: T): Unit {
+        return ()
     }
 }

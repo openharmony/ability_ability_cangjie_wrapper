@@ -27,11 +27,15 @@ import ohos.ark_interop.*
 import ohos.bundle.bundle_manager.*
 import ohos.business_exception.AsyncCallback
 import ohos.labels.*
-import ohos.resource_manager.*
-import ohos.window.*
+import ohos.resource_manager.ResourceManager
+import ohos.window.WindowStage
 import std.collection.*
 import ohos.ark_interop_helper.*
+
+
 import ohos.ffi.FFIData
+import ohos.application.event_hub.EventHub
+import ohos.app.ability.open_link_options.OpenLinkOptions
 
 type StageContext = CPointer<Unit>
 
@@ -52,10 +56,20 @@ abstract sealed class Ability <: FFIData {
     }
 
     @!APILevel[
-        since: "22",
+        since: "24",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
-    public static func registerCreator(name: String, creator: () -> Ability): Unit {}
+    public open func onConfigurationUpdate(newConfig: Configuration): Unit {
+        return ()
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onMemoryLevel(level: MemoryLevel): Unit {
+        return ()
+    }
 }
 
 @!APILevel[
@@ -121,6 +135,17 @@ public open class Context <: BaseContext {
         
         get() {
             return String()
+        }
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core"
+    ]
+    public prop eventHub: EventHub {
+        
+        get() {
+            return EventHub()
         }
     }
 
@@ -281,10 +306,26 @@ public open class UIAbility <: Ability {
     }
 
     @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onWindowStageWillDestroy(windowStage: WindowStage): Unit {
+        return ()
+    }
+
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onWindowStageDestroy(): Unit {
+        return ()
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onWindowStageRestore(windowStage: WindowStage): Unit {
         return ()
     }
 
@@ -313,11 +354,52 @@ public open class UIAbility <: Ability {
     }
 
     @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onContinue(wantParam: HashMap<String, WantValueType>): OnContinueResult {
+        return OnContinueResult.Agree
+    }
+
+    @!APILevel[
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
     ]
     public open func onNewWant(want: Want, launchParam: LaunchParam): Unit {
         return ()
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onDump(params: Array<String>): Array<String> {
+        return Array()
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onShare(wantParam: HashMap<String, WantValueType>): Unit {
+        return ()
+    }
+
+    @!APILevel[
+        since: "24",
+        permission: "ohos.permission.PREPARE_APP_TERMINATE",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onPrepareToTerminate(): Bool {
+        return true
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.AbilityCore"
+    ]
+    public open func onBackPressed(): Bool {
+        return true
     }
     
     public init() {
@@ -337,6 +419,17 @@ public open class UIAbilityContext <: Context {
         workerthread: true
     ]
     public func startAbility(want: Want, options!: ?StartOptions = None): Unit {
+        return ()
+    }
+
+    @!APILevel[
+        since: "24",
+        syscap: "SystemCapability.Ability.AbilityRuntime.Core",
+        throwexception: true,
+        workerthread: true
+    ]
+    public func openLink(link: String, options!: ?OpenLinkOptions = None,
+        callback!: ?AsyncCallback<AbilityResult> = None): Unit {
         return ()
     }
 
