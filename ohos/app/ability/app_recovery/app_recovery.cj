@@ -26,8 +26,6 @@ foreign {
     func FFIAppRecoveryRestartApp(): Unit
 
     func FFIAppRecoverySaveAppState(ctxId: Int64): Bool
-
-    func FFIAppRecoverySetRestartWant(want: WantHandle): Bool
 }
 
 /**
