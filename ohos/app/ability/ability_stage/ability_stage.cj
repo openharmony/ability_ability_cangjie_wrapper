@@ -19,7 +19,7 @@ package ohos.app.ability.ability_stage
 
 import std.collection.HashMap
 import ohos.ffi.{FFIData, FFIDataManager}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.app.ability.configuration.{CJConfiguration, CConfiguration}
 import ohos.app.ability.want.WantHandle
 import ohos.app.ability.ui_ability.AbilityStageContext
@@ -143,7 +143,8 @@ public open class AbilityStage <: FFIData {
     private static let CREATORS = HashMap<String, () -> AbilityStage>()
     private var abilityStageContext: Option<AbilityStageContext> = Option<AbilityStageContext>.None
     private let impl_: AbilityStageImpl = AbilityStageImpl()
-
+    @!Hide
+    protected init() {}
     /**
      * register AbilityStage
      *
@@ -154,6 +155,7 @@ public open class AbilityStage <: FFIData {
         since: "22",
         syscap: "SystemCapability.Ability.AbilityRuntime.Core"
     ]
+    @!Hide
     public static func registerCreator(moduleName: String, creator: () -> AbilityStage): Unit {
         let optCreator = CREATORS.get(moduleName)
         match (optCreator) {

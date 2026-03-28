@@ -19,7 +19,7 @@ package ohos.application.test_runner
 
 import std.collection.HashMap
 import ohos.ffi.{FFIData, FFIDataManager}
-import ohos.labels.APILevel
+import ohos.labels.{APILevel, Hide}
 import ohos.ui_test.UITest
 import ohos.business_exception.BusinessException
 
@@ -106,7 +106,8 @@ class TestRunnerImpl {}
 public open class TestRunner <: FFIData {
     private static let CREATORS = HashMap<String, () -> TestRunner>()
     private let impl_: TestRunnerImpl = TestRunnerImpl()
-
+    @!Hide
+    protected init() {}
     /**
      * TestRunner register.
      *

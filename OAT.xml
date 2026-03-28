@@ -8,6 +8,7 @@
         <filefilterlist>
             <filefilter name="defaultFilter" desc="File not to check">
                 <filteritem type="filename" name="*.png | *.jpg" desc="代码架构图片文件"/>
+                <filteritem type="filename" name="*.ttf" desc="all ttf file have check "/>
             </filefilter>
         </filefilterlist>
         <licensematcherlist>
