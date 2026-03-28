@@ -64,6 +64,7 @@ import std.io.ByteBuffer
 import stdx.encoding.json.stream.JsonWriter
 import std.collection.filterMap
 import kit.PerformanceAnalysisKit.Hilog
+import kit.ArkUI.{WindowStage}
 
 foreign func __gcov_dump(): Unit
 
@@ -909,6 +910,20 @@ public func getAbilityStageContext(): AbilityStageContext {
     match (AppStorage.get<AbilityStageContext>("abilityStageContext")) {
         case None => throw Exception("failed to get ability stage context")
         case Some(abilityStageContext) => abilityStageContext
+    }
+}
+
+func getWindowStage(): WindowStage {
+    match (AppStorage.get<WindowStage>("windowStage")) {
+        case None => throw Exception("failed to get windowStage")
+        case Some(windowStage) => windowStage
+    }
+}
+
+func getLaunchParam(): LaunchParam {
+    match (AppStorage.get<LaunchParam>("launchParam")) {
+        case None => throw Exception("failed to get launchParam")
+        case Some(launchParam) => launchParam
     }
 }
 
