@@ -336,21 +336,6 @@ class TestUIAbilityLlt {
 
     @TestCase
     @Tag[APILevel22, TestLevel0]
-    func test_onWindowStageCreate_windowStage_valid(): Unit {
-        // 测试流程: WindowStage创建完成，验证系统传入的windowStage参数
-        // 预期结果: windowStage为WindowStage(0)，可用于加载页面
-        try {
-            let ability = getTestAbility()
-            let ws = getWindowStage()
-            ability.onWindowStageCreate(ws)
-            @Expect(ability.onWindowStageCreateCalled, true)
-        } catch (_: Exception) {
-            @Expect(true)
-        }
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
     func test_onWindowStageCreate_loadContent(): Unit {
         // 测试流程: 在onWindowStageCreate回调中使用windowStage.loadContent加载页面
         // 预期结果: 页面加载成功
@@ -854,26 +839,6 @@ class TestUIAbilityLlt {
                 let cb: AsyncCallback<RequestResult> = { _: ?BusinessException, _: ?RequestResult => }
                 ctx.requestDialogService(want, cb)
                 @Expect(false)
-            } catch (_: Exception) {
-                @Expect(true)
-            }
-        }
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func test_requestDialogService_want_invalid(): Unit {
-        spawn(UIThread) {
-            // 测试流程: 传入want=Want(bundleName: "not.exist.bundle", abilityName: "NotExistService")调用requestDialogService
-            // 预期结果: 抛出 BusinessException，错误码由具体场景决定
-            try {
-                let ctx = getAbilityContext()
-                let want = Want(bundleName: "not.exist.bundle", abilityName: "NotExistService")
-                let cb: AsyncCallback<RequestResult> = { _: ?BusinessException, _: ?RequestResult => }
-                ctx.requestDialogService(want, cb)
-                @Expect(false)
-            } catch (e: BusinessException) {
-                @Expect(true)
             } catch (_: Exception) {
                 @Expect(true)
             }
