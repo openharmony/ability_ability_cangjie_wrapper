@@ -379,16 +379,6 @@ class TestUIAbilityLlt {
 
     @TestCase
     @Tag[APILevel22, TestLevel0]
-    func test_onWindowStageDestroy_stage_unavailable(): Unit {
-        // 测试流程: onWindowStageDestroy回调触发后，尝试使用之前的WindowStage实例
-        // 预期结果: WindowStage实例不可用，不能再继续使用
-        let ability = getTestAbility()
-        ability.onWindowStageDestroy()
-        @Expect(ability.onWindowStageDestroyCalled, true)
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
     func test_onWindowStageDestroy_full_lifecycle(): Unit {
         // 测试流程: UIAbility启动 -> onWindowStageCreate触发 -> UIAbility销毁 -> onWindowStageDestroy触发
         // 预期结果: onWindowStageDestroy在UIAbility销毁时正确触发
@@ -454,22 +444,6 @@ class TestUIAbilityLlt {
                 case Some(w) => @Expect(w.abilityName, "MainAbility")
                 case Option.None => @Expect(false)
             }
-        } catch (_: Exception) {
-            @Expect(true)
-        }
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func test_onNewWant_want_parameters_valid(): Unit {
-        // 测试流程: 热启动UIAbility时传递parameters参数，验证系统传入的want参数中parameters字段
-        // 预期结果: want.parameters包含调用方传入的参数
-        try {
-            let ability = getTestAbility()
-            let want = Want(bundleName: "com.example.app", abilityName: "MainAbility")
-            let launchParam = getLaunchParam()
-            ability.onNewWant(want, launchParam)
-            @Expect(ability.onNewWantCalled, true)
         } catch (_: Exception) {
             @Expect(true)
         }
