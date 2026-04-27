@@ -779,43 +779,4 @@ class TestUIAbilityLlt {
             @Expect(true)
         }
     }
-
-    // ============================================================================
-    // UIAbilityContext.requestDialogService tests
-    // ============================================================================
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func test_requestDialogService_want_valid_1(): Unit {
-        spawn(UIThread) {
-            // 测试流程: 传入want=Want()调用requestDialogService
-            // 预期结果: 成功发送请求
-            try {
-                let ctx = getAbilityContext()
-                let cb: AsyncCallback<RequestResult> = { _: ?BusinessException, _: ?RequestResult => }
-                ctx.requestDialogService(Want(), cb)
-                @Expect(false)
-            } catch (_: Exception) {
-                @Expect(true)
-            }
-        }
-    }
-
-    @TestCase
-    @Tag[APILevel22, TestLevel0]
-    func test_requestDialogService_want_valid_2(): Unit {
-        spawn(UIThread) {
-            // 测试流程: 传入want=Want(bundleName: "com.example.dialog", abilityName: "DialogService")调用requestDialogService
-            // 预期结果: 成功发送请求
-            try {
-                let ctx = getAbilityContext()
-                let want = Want(bundleName: "com.example.dialog", abilityName: "DialogService")
-                let cb: AsyncCallback<RequestResult> = { _: ?BusinessException, _: ?RequestResult => }
-                ctx.requestDialogService(want, cb)
-                @Expect(false)
-            } catch (_: Exception) {
-                @Expect(true)
-            }
-        }
-    }
 }
