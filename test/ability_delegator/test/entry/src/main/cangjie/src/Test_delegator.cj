@@ -27,6 +27,7 @@ import kit.AbilityKit.*
 import kit.TestKit.*
 import std.runtime.gc
 import kit.PerformanceAnalysisKit.Hilog
+import kit.BasicServicesKit.*
 
 @Test
 class Test_ability_delegator {
@@ -52,7 +53,11 @@ class Test_ability_delegator {
         sleepFor(1.second)
         var state = delegator.getAbilityState(ability)
         delegator.removeAbilityMonitor(monitor)
-        @Expect(state, AbilityLifecycleState.Background)
+        if (DeviceInfo.deviceType == "car") {
+            @Expect(state, AbilityLifecycleState.Foreground)
+        } else {
+            @Expect(state, AbilityLifecycleState.Background)
+        }
         delegator.doAbilityForeground(ability)
         sleepFor(1.second)
         state = delegator.getAbilityState(ability)
