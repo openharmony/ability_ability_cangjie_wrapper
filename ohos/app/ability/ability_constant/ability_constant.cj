@@ -334,7 +334,7 @@ public enum WindowMode {
     WindowModeUndefined
     |
     /**
-     * Full screen mode. It takes effect only on 2-in-1 devices and tablets.
+     * Full screen mode. It takes effect only on tablets.
      */
     @!APILevel[
         since: "22",
