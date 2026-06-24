@@ -363,6 +363,7 @@ func abilityOnConfigurationUpdate(id: Int64, configuration: CConfiguration): Uni
     match (optAbility) {
         case None =>
             ABILITY_LOG.error("No such Ability: " + id.toString())
+            unsafe { configuration.free() }
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         case Some(ability) => unsafe { configuration.free() }
     }

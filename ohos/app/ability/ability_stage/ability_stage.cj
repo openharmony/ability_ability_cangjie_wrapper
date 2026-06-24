@@ -122,7 +122,9 @@ func abilityStageOnConfigurationUpdated(_: Int64, _: CJConfiguration): Unit {
 }
 
 @C
-func abilityStageOnConfigurationUpdated2(_: Int64, _: CConfiguration): Unit {}
+func abilityStageOnConfigurationUpdated2(_: Int64, configuration: CConfiguration): Unit {
+    unsafe { configuration.free() }
+}
 
 @C
 func abilityStageOnMemoryLevel(_: Int64, _: Int32): Unit {}

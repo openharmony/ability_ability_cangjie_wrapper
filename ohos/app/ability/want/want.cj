@@ -302,29 +302,32 @@ public class Want {
             throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
         var paramsHandle = unsafe { FFICJWantGetWantInfo(wantHandle) }
-        let params = unsafe { paramsHandle.read() }
+        try {
+            let params = unsafe { paramsHandle.read() }
 
-        var entitiesHandle = params.entities
-        var unsafeEntities = FFIVectorString(entitiesHandle)
-        var entitiesSize = unsafeEntities.getSize()
+            var entitiesHandle = params.entities
+            var unsafeEntities = FFIVectorString(entitiesHandle)
+            var entitiesSize = unsafeEntities.getSize()
 
-        this.elementName_ = ElementName(params.elementName)
-        this.deviceId = elementName_.deviceId
-        this.bundleName = elementName_.bundleName
-        this.abilityName = elementName_.abilityName
-        this.moduleName = elementName_.moduleName
-        this.flags = params.flags
-        this.uri = params.uri.toString()
-        this.action = params.action.toString()
-        this.entities = Array<String>(entitiesSize, repeat: "")
-        for (i in 0..entitiesSize) {
-            this.entities[i] = unsafeEntities.getElement(i)
+            this.elementName_ = ElementName(params.elementName)
+            this.deviceId = elementName_.deviceId
+            this.bundleName = elementName_.bundleName
+            this.abilityName = elementName_.abilityName
+            this.moduleName = elementName_.moduleName
+            this.flags = params.flags
+            this.uri = params.uri.toString()
+            this.action = params.action.toString()
+            this.entities = Array<String>(entitiesSize, repeat: "")
+            for (i in 0..entitiesSize) {
+                this.entities[i] = unsafeEntities.getElement(i)
+            }
+            this.dataType = params.dataType.toString()
+            this.paramJsonObj_ = jsonStringUnWrapper(params.parameters.toString())
+            this.parameters = mapFromJsonObject(paramJsonObj_)
+            this.fds = HashMap<String, Int32>()
+        } finally {
+            unsafe { FFICJWantParamsDelete(paramsHandle) }
         }
-        this.dataType = params.dataType.toString()
-        this.paramJsonObj_ = jsonStringUnWrapper(params.parameters.toString())
-        this.parameters = mapFromJsonObject(paramJsonObj_)
-        this.fds = HashMap<String, Int32>()
-        unsafe { FFICJWantParamsDelete(paramsHandle) }
     }
 
     // available only for this package.
