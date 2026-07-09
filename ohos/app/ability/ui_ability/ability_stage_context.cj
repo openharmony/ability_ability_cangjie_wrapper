@@ -21,33 +21,6 @@ import ohos.app.ability.configuration.{CConfiguration, Configuration}
 import ohos.bundle.bundle_manager.{HapModuleInfo, RetHapModuleInfoV2}
 import ohos.labels.{APILevel, Hide}
 
-@C
-struct CurrentHapModuleInfo {
-    CurrentHapModuleInfo(
-        let name: CString,
-        let icon: CString,
-        let iconId: Int32,
-        let label: CString,
-        let labelId: Int32,
-        let description: CString,
-        let descriptionId: Int32,
-        let mainElementName: CString,
-        let installationFree: Bool,
-        let hashValue: CString
-    ) {}
-
-    func free(): Unit {
-        unsafe {
-            LibC.free(this.name)
-            LibC.free(this.icon)
-            LibC.free(this.label)
-            LibC.free(this.description)
-            LibC.free(this.mainElementName)
-            LibC.free(this.hashValue)
-        }
-    }
-}
-
 foreign func FFICJGetHapModuleInfo(id: Int64): RetHapModuleInfoV2
 
 foreign func FFICJGetConfiguration(id: Int64): CConfiguration

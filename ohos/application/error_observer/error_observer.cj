@@ -53,12 +53,6 @@ public class ErrorObject {
     ]
     public let stack: Option<String>
 
-    init(name: String, message: String, stack!: Option<String> = None) {
-        this.name = name
-        this.message = message
-        this.stack = stack
-    }
-
     init(ret: CErrorObject) {
         this.name = ret.name.toString()
         this.message = ret.message.toString()

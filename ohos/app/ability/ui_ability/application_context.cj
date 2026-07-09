@@ -22,24 +22,8 @@ import ohos.ffi.{RemoteDataManager, CArrI64, FFIDataManager, Callback1Param, Cal
 import ohos.window.WindowStage
 import ohos.labels.APILevel
 
-@C
-struct CApplicationInfo {
-    CApplicationInfo(
-        let name: CString,
-        let bundleName: CString
-    ) {}
-    func free(): Unit {
-        unsafe {
-            LibC.free(this.name)
-            LibC.free(this.bundleName)
-        }
-    }
-}
-
 foreign {
     func FFIGetArea(id: Int64): Int64
-
-    func FFICJApplicationInfo(id: Int64): CPointer<CApplicationInfo>
 
     func FfiCJApplicationContextOnOnEnvironment(id: Int64, cfgCallbackId: Int64, memCallbackId: Int64,
         errCode: CPointer<Int32>): Int32
@@ -68,31 +52,6 @@ foreign {
     func FfiCJApplicationContextSetSupportedProcessCache(id: Int64, isSupported: Bool, errCode: CPointer<Int32>): Unit
 
     func FfiCJApplicationContextSetFontSizeScale(id: Int64, fontSizeScale: Float64): Int32
-}
-
-func abilityCallbackWapperId(callback: (UIAbility) -> Unit): Int64 {
-    let wrapper = {
-        id: Int64 =>
-            let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-            match (optAbility) {
-                case None => ABILITY_LOG.error("No such Ability: " + id.toString())
-                case Some(ability) => callback(ability)
-            }
-    }
-    return Callback1Param<Int64, Unit>(wrapper).getID()
-}
-
-func abilityWindowStageCallbackWapperId(callback: (UIAbility, WindowStage) -> Unit): Int64 {
-    let wrapper = {
-        id: Int64, windowStageHandle: WindowStageHandle =>
-            let optAbility = FFIDataManager.getInstance().getData<UIAbility>(id)
-            let windowStage = WindowStage(windowStageHandle)
-            match (optAbility) {
-                case None => ABILITY_LOG.error("No such Ability: " + id.toString())
-                case Some(ability) => callback(ability, windowStage)
-            }
-    }
-    return Callback2Param<Int64, WindowStageHandle, Unit>(wrapper).getID()
 }
 
 /**

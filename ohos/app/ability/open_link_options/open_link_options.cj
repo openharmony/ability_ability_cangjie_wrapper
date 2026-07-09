@@ -47,25 +47,3 @@ class OpenLinkOptions {
         this.parameters = parameters
     }
 }
-
-unsafe func toCJOpenLinkOptions(option: ?OpenLinkOptions): CJOpenLinkOptions {
-    if (let Some(v) <- option) {
-        let paramJsonObj = mapToJsonObject(v.parameters)
-        return CJOpenLinkOptions(true, v.appLinkingOnly, LibC.mallocCString(jsonObjectWrapper(paramJsonObj).toString()))
-    } else {
-        return CJOpenLinkOptions(false, false, CString(CPointer<UInt8>()))
-    }
-}
-
-@C
-protected struct CJOpenLinkOptions {
-    protected CJOpenLinkOptions(
-        let hasValue: Bool,
-        let appLinkingOnly: Bool,
-        let parameters: CString
-    ) {}
-
-    protected unsafe func free() {
-        LibC.free(parameters)
-    }
-}

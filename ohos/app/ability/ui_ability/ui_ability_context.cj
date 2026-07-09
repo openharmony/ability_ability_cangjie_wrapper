@@ -22,7 +22,6 @@ import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
 import ohos.ability.connect_options.ConnectOptions
 import ohos.app.ability.configuration.{CConfiguration, Configuration}
 import ohos.app.ability.dialog_request.RequestResult
-import ohos.app.ability.open_link_options.CJOpenLinkOptions
 import ohos.app.ability.start_options.{StartOptions, CJStartOptions,
     CJNewStartOptions, startOptionsToCJNewStartOptions, startOptionsToExternal}
 import ohos.base.VectorInt32Handle
@@ -64,12 +63,6 @@ foreign {
     func FFIAbilityContextPropCurrentHapModuleInfo(id: Int64, errCode: CPointer<Int32>): RetHapModuleInfoV2
 
     func FFIAbilityContextPropConfiguration(id: Int64, errCode: CPointer<Int32>): CConfiguration
-
-    func FFIAbilityContextOpenLink(id: Int64, cLink: CString, cOpenLinkOptions: CJOpenLinkOptions, requestCode: Int32,
-        lambdaId: Int64): Int32
-
-    func FFIAbilityContextOpenAtomicService(id: Int64, cAppId: CString, cAtomicServiceOptions: CJAtomicServiceOptions,
-        requestCode: Int32, lambdaId: Int64): Int32
 
     func FFIAbilityContextBackToCallerAbilityWithResult(id: Int64, cAbilityResult: CJAbilityResult, requestCode: CString): Int32
 
@@ -130,20 +123,6 @@ struct CJPermissionRequestResult {
         let permissions: VectorStringHandle,
         let authResults: VectorInt32Handle
     ) {}
-}
-
-@C
-struct CJAtomicServiceOptions {
-    CJAtomicServiceOptions(
-        let hasValue: Bool,
-        let flags: Int32,
-        let parameters: CString,
-        let startOptions: CJNewStartOptions
-    ) {}
-
-    unsafe func free() {
-        LibC.free(parameters)
-    }
 }
 
 type StageContext = CPointer<Unit>
@@ -315,27 +294,6 @@ public open class UIAbilityContext <: Context {
         checkCodeAndThrow(errorCode)
     }
 
-    func startAbilityWithAccount(want: Want, accountId: Int32): Future<Unit> {
-        spawn {
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe { BROKER.startAbilityWithAccount(this.getID(), wantHandle, accountId) }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_LOG.info("startAbilityWithAccount: errorCode is ${errorCode}")
-        }
-    }
-
-    func startAbilityWithAccount(want: Want, accountId: Int32, options: StartOptions): Future<Unit> {
-        spawn {
-            var cOptions = startOptionsToExternal(options)
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe {
-                BROKER.startAbilityWithAccountAndOption(this.getID(), wantHandle, accountId, inout cOptions)
-            }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_LOG.info("startAbilityWithAccount: errorCode is ${errorCode}")
-        }
-    }
-
     func startServiceExtensionAbility(want: Want): Future<Unit> {
         spawn {
             let wantHandle = want.createWantHandle()
@@ -426,30 +384,6 @@ public open class UIAbilityContext <: Context {
         var res = unsafe { BROKER.isTerminating(this.getID()) }
         checkCodeAndThrow(res.code)
         return res.data
-    }
-
-    /**
-     * @throws { BusinessError } 201 - The application does not have permission to call the interface.
-     * @throws { BusinessError } 401 - Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.
-     * @throws { BusinessError } 16000001 - The specified ability does not exist.
-     * @throws { BusinessError } 16000002 - Incorrect ability type.
-     * @throws { BusinessError } 16000004 - Cannot start an invisible component.
-     * @throws { BusinessError } 16000005 - The specified process does not have the permission.
-     * @throws { BusinessError } 16000006 - Cross-user operations are not allowed.
-     * @throws { BusinessError } 16000008 - The crowdtesting application expires.
-     * @throws { BusinessError } 16000011 - The context does not exist.
-     * @throws { BusinessError } 16000050 - Internal error.
-     * @throws { BusinessError } 16000053 - The ability is not on the top of the UI.
-     * @throws { BusinessError } 16000055 - Installation-free timed out.
-     */
-    func connectServiceExtensionAbility(want: Want, options: ConnectOptions): Int64 {
-        let wantHandle = want.createWantHandle()
-        var res = unsafe { BROKER.connectAbility(this.getID(), wantHandle, options.getID()) }
-        unsafe { Want.releaseWantHandle(wantHandle) }
-        if (res != 0) {
-            throw BusinessException(res, getErrorMsg(res))
-        }
-        afterConnectAbility(want, res, options)
     }
 
     private func afterConnectAbility(want: Want, res: Int32, options: ConnectOptions) {

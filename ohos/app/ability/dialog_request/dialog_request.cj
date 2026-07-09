@@ -60,14 +60,6 @@ public enum ResultCode {
             case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case ResultOk => 0
-            case ResultCancel => 1
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-        }
-    }
 }
 
 /**

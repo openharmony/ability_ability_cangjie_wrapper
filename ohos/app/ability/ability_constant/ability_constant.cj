@@ -59,14 +59,6 @@ public class LaunchParam {
     @!Hide[isChecked: true]
     internal var lastExitDetailInfo: Option<LastExitDetailInfo> = None
 
-    protected init(
-        launchReason!: LaunchReason = LaunchReason.Unknown,
-        lastExitReason!: LastExitReason = LastExitReason.Normal
-    ) {
-        this.launchReason = launchReason
-        this.lastExitReason = lastExitReason
-    }
-
     protected init(lastExitMessage: String, launchReason!: LaunchReason = LaunchReason.Unknown,
         lastExitReason!: LastExitReason = LastExitReason.Normal) {
         this.lastExitMessage = lastExitMessage
@@ -160,17 +152,6 @@ public enum LaunchReason {
                       Unknown
         }
     }
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case Unknown => 0
-            case StartAbility => 1
-            case Call => 2
-            case Continuation => 3
-            case AppRecovery => 4
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-        }
-    }
 }
 
 /**
@@ -253,16 +234,6 @@ public enum LastExitReason {
             case _ =>
                 ABILITY_LOG.info("No corresponding LastExitReason: ${value}")
                 Unknown
-        }
-    }
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case Unknown => 0
-            case Normal => 2
-            case CppCrash => 3
-            case AppFreeze => 5
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
         }
     }
 }
@@ -368,18 +339,6 @@ public enum WindowMode {
     WindowModeFloating
     | ...
 
-    /**
-    * @throws { BusinessException } 16000050 - Internal error.
-    */
-    protected static func parse(value: Int32): WindowMode {
-        match (value) {
-            case 1 => WindowModeFullscreen
-            case 100 => WindowModeSplitPrimary
-            case 101 => WindowModeSplitSecondary
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-        }
-    }
-
     protected func getValue(): Int32 {
         match (this) {
             case WindowModeFullscreen => 1
@@ -427,27 +386,6 @@ public enum MemoryLevel {
     ]
     MemoryLevelCritical
     | ...
-
-    /**
-    * @throws { BusinessException } 16000050 - Internal error.
-    */
-    protected static func parse(value: Int32): MemoryLevel {
-        match (value) {
-            case 0 => MemoryLevelModerate
-            case 1 => MemoryLevelLow
-            case 2 => MemoryLevelCritical
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-        }
-    }
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case MemoryLevelModerate => 0
-            case MemoryLevelLow => 1
-            case MemoryLevelCritical => 2
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-        }
-    }
 }
 
 @Derive[ToString, Equatable]
@@ -455,14 +393,6 @@ protected enum StateType {
     Continuation
     | AppRecovery
     | ...
-
-    protected func getValue(): Int32 {
-        match (this) {
-            case Continuation => 0
-            case AppRecovery => 1
-            case _ => throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-        }
-    }
 
     /**
     * @throws { BusinessException } 16000050 - Internal error.
