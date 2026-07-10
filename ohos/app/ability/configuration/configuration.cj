@@ -34,19 +34,6 @@ protected struct CConfiguration {
         var mnc: CString
     ) {}
 
-    protected init() {
-        language = CString(CPointer())
-        colorMode = 0
-        direction = 0
-        screenDensity = 0
-        displayId = 0
-        hasPointerDevice = false
-        fontSizeScale = 0.0
-        fontWeightScale = 0.0
-        mcc = CString(CPointer())
-        mnc = CString(CPointer())
-    }
-
     protected unsafe func free(): Unit {
         LibC.free(language)
         LibC.free(mcc)

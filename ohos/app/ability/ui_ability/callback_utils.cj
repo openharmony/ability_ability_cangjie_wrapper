@@ -157,15 +157,6 @@ protected struct CJAbilityResultCbInfo {
     ) {}
 }
 
-unsafe func getCJAbilityResultCbInfo(callback: ?AsyncCallback<AbilityResult>): CJAbilityResultCbInfo {
-    let lambdaDataId = if (let Some(v) <- callback) {
-        ResultCallbackForAbilityResult(v).getID()
-    } else {
-        -1 // No callback
-    }
-    return CJAbilityResultCbInfo(lambdaDataId, invokeAbilityResultCallback)
-}
-
 @C
 struct CJAbilityCallbacks {
     CJAbilityCallbacks(
