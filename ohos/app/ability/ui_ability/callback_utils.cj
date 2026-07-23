@@ -150,14 +150,6 @@ func invokeDialogRequestResultCallback(
 }
 
 @C
-protected struct CJAbilityResultCbInfo {
-    protected CJAbilityResultCbInfo(
-        let lambdaId: Int64,
-        let cjCallback: CFunc<(Int64, Int32, CPointer<CJAbilityResult>) -> Unit>
-    ) {}
-}
-
-@C
 struct CJAbilityCallbacks {
     CJAbilityCallbacks(
         let invokeAbilityResultCallback: CFunc<(Int64, Int32, CPointer<CJAbilityResult>) -> Unit>,

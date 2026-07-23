@@ -19,7 +19,6 @@ package ohos.app.ability.ui_ability
 
 import ohos.app.ability.want.{Want, WantHandle}
 import ohos.ability.ability_result.{AbilityResult, CJAbilityResult}
-import ohos.ability.connect_options.ConnectOptions
 import ohos.app.ability.configuration.{CConfiguration, Configuration}
 import ohos.app.ability.dialog_request.RequestResult
 import ohos.app.ability.start_options.{StartOptions, CJStartOptions,
@@ -147,7 +146,6 @@ public open class UIAbilityContext <: Context {
 
     // connectId is the id of the ability connected shared by all UIAbilityContext objects.
     private static var connectId = AtomicInt64(0)
-    private static var abilityConnects = HashMap<Int64, (Want, ConnectOptions)>()
 
     // curRequestCode is the key of callbacks stored in native owned by UIAbilityContext instance.
     private var curRequestCode = AtomicInt32(0)
@@ -294,42 +292,6 @@ public open class UIAbilityContext <: Context {
         checkCodeAndThrow(errorCode)
     }
 
-    func startServiceExtensionAbility(want: Want): Future<Unit> {
-        spawn {
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe { BROKER.startServiceExtensionAbility(this.getID(), wantHandle) }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_LOG.info("startServiceExtensionAbility: errorCode is ${errorCode}")
-        }
-    }
-
-    func startServiceExtensionAbilityWithAccount(want: Want, accountId: Int32): Future<Unit> {
-        spawn {
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe { BROKER.startServiceExtensionAbilityWithAccount(this.getID(), wantHandle, accountId) }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_LOG.info("startServiceExtensionAbilityWithAccount: errorCode is ${errorCode}")
-        }
-    }
-
-    func stopServiceExtensionAbility(want: Want): Future<Unit> {
-        spawn {
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe { BROKER.stopServiceExtensionAbility(this.getID(), wantHandle) }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_LOG.info("stopServiceExtensionAbility: errorCode is ${errorCode}")
-        }
-    }
-
-    func stopServiceExtensionAbilityWithAccount(want: Want, accountId: Int32): Future<Unit> {
-        spawn {
-            let wantHandle = want.createWantHandle()
-            let errorCode = unsafe { BROKER.stopServiceExtensionAbilityWithAccount(this.getID(), wantHandle, accountId) }
-            unsafe { Want.releaseWantHandle(wantHandle) }
-            ABILITY_LOG.info("stopServiceExtensionAbilityWithAccount: errorCode is ${errorCode}")
-        }
-    }
-
     /**
      * Destroys this Page ability.
      *
@@ -384,52 +346,6 @@ public open class UIAbilityContext <: Context {
         var res = unsafe { BROKER.isTerminating(this.getID()) }
         checkCodeAndThrow(res.code)
         return res.data
-    }
-
-    private func afterConnectAbility(want: Want, res: Int32, options: ConnectOptions) {
-        if (res == SUCCESS_CODE) {
-            connectId.fetchAdd(1)
-            let id = connectId.load()
-            synchronized(mtx) {
-                abilityConnects.add(id, (want, options))
-            }
-            ABILITY_LOG.info("Connect Ability successfully and the connectId is ${id}")
-            return id
-        }
-        options.onFailed(res)
-        throw BusinessException(ERROR_CODE_INNER, "Internal error.")
-    }
-
-    func connectAbilityWithAccount(want: Want, accountId: Int32, options: ConnectOptions): Int64 {
-        let wantHandle = want.createWantHandle()
-        var res = unsafe { BROKER.connectAbilityWithAccount(this.getID(), wantHandle, accountId, options.getID()) }
-        unsafe { Want.releaseWantHandle(wantHandle) }
-        afterConnectAbility(want, res, options)
-    }
-
-    func disconnectAbility(connection: Int64): Future<Unit> {
-        spawn {
-            var item = abilityConnects.get(connection)
-            match (item) {
-                case None => ABILITY_LOG.error("Failed to get want and connectOptions, id is: ${connection}")
-                case Some(connects) => dealDisconnectAbility(connection, connects)
-            }
-        }
-    }
-
-    private func dealDisconnectAbility(connection: Int64, connects: (Want, ConnectOptions)) {
-        var wantHandle = connects[0].createWantHandle()
-        var connectOptions = connects[1]
-        let errorCode = unsafe { BROKER.disconnectAbility(this.getID(), wantHandle, connectOptions.getID()) }
-        unsafe { Want.releaseWantHandle(wantHandle) }
-        if (errorCode == SUCCESS_CODE) {
-            synchronized(mtx) {
-                abilityConnects.remove(connection)
-            }
-            ABILITY_LOG.info("Succeed to disconnect Ability")
-        } else {
-            ABILITY_LOG.error("Failed to disconnect Ability: errorCode is ${errorCode}")
-        }
     }
 
     /**
@@ -547,58 +463,6 @@ public open class UIAbilityContext <: Context {
         }
         unsafe { Want.releaseWantHandle(wantHandle) }
         checkCodeAndThrow(errorCode)
-    }
-
-    func startAbilityForResultWithAccount(
-        want: Want,
-        accountId: Int32,
-        callback: AsyncCallback<AbilityResult>
-    ): Unit {
-        let requestCode = genRequestCode()
-        let wantHandle = want.createWantHandle()
-        let lambdaData = ResultCallbackForAbilityResult(callback)
-        let errorCode = unsafe {
-            BROKER.startAbilityForResultWithAccount(
-                this.getID(),
-                wantHandle,
-                accountId,
-                requestCode,
-                lambdaData.getID()
-            )
-        }
-        unsafe { Want.releaseWantHandle(wantHandle) }
-        ABILITY_LOG.info("startAbilityForResultWithAccount: errorCode is ${errorCode}")
-    }
-
-    func startAbilityForResultWithAccount(
-        want: Want,
-        accountId: Int32,
-        options: StartOptions,
-        callback: AsyncCallback<AbilityResult>
-    ): Unit {
-        let requestCode = genRequestCode()
-        var cOptions = startOptionsToExternal(options)
-        let wantHandle = want.createWantHandle()
-        let lambdaData = ResultCallbackForAbilityResult(callback)
-        let errorCode = unsafe {
-            BROKER.startAbilityForResultWithAccountAndOption(
-                this.getID(),
-                wantHandle,
-                accountId,
-                inout cOptions,
-                requestCode,
-                lambdaData.getID()
-            )
-        }
-        unsafe { Want.releaseWantHandle(wantHandle) }
-        ABILITY_LOG.info("startAbilityForResultWithAccount: errorCode is ${errorCode}")
-    }
-
-    func setMissionIcon(icon: PixelMap): Future<Unit> {
-        spawn {
-            let errorCode = unsafe { BROKER.setMissionIcon(this.getID(), icon.getID()) }
-            ABILITY_LOG.info("setMissionIcon: errorCode is ${errorCode}")
-        }
     }
 
     /**

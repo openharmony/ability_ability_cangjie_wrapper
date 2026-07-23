@@ -16,34 +16,3 @@
 // The Cangjie API is in Beta. For details on its capabilities and limitations, please refer to the README file.
 
 package ohos.app.ability.open_link_options
-
-import std.collection.HashMap
-import ohos.app.ability.want.{mapToJsonObject, WantValueType}
-import ohos.encoding.json.jsonObjectWrapper
-
-/**
- * Define the available options for openLink API.
- *
- */
-class OpenLinkOptions {
-    /**
-     * Open the URL only if the URL is a valid app linking and
-     * there is an installed app capable of opening that URL.
-     *
-     */
-    var appLinkingOnly: Bool
-
-    /**
-     * OpenLinkOptions parameters in the form of custom key-value pairs.
-     *
-     */
-    var parameters: HashMap<String, WantValueType>
-
-    /**
-     * OpenLinkOptions constructor.
-     */
-    init(appLinkingOnly!: Bool = false, parameters!: HashMap<String, WantValueType> = HashMap<String, WantValueType>()) {
-        this.appLinkingOnly = appLinkingOnly
-        this.parameters = parameters
-    }
-}
